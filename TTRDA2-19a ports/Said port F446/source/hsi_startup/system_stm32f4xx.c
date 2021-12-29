@@ -388,8 +388,8 @@
 #define PLL_R      7
 #endif /* STM32F446xx */ 
 
-#if defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F446xx) || defined(STM32F469_479xx)
-#define PLL_N      360
+#if defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F469_479xx)
+#define PLL_N      336
 /* SYSCLK = PLL_VCO / PLL_P */
 #define PLL_P      2
 #endif /* STM32F427_437x || STM32F429_439xx || STM32F446xx || STM32F469_479xx */
@@ -405,6 +405,12 @@
 /* SYSCLK = PLL_VCO / PLL_P */
 #define PLL_P      4
 #endif /* STM32F401xx */
+
+#if defined(STM32F446xx)
+#define PLL_N      336
+/* SYSCLK = PLL_VCO / PLL_P */
+#define PLL_P      4
+#endif /* STM32F446xx */
 
 #if defined(STM32F410xx) || defined(STM32F411xE)
 #define PLL_N      400
@@ -434,13 +440,17 @@
   uint32_t SystemCoreClock = 168000000;
 #endif /* STM32F40_41xxx */
 
-#if defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F446xx) || defined(STM32F469_479xx)
-  uint32_t SystemCoreClock = 180000000;
+#if defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F469_479xx)
+  uint32_t SystemCoreClock = 168000000;
 #endif /* STM32F427_437x || STM32F429_439xx || STM32F446xx || STM32F469_479xx */
 
 #if defined(STM32F401xx)
   uint32_t SystemCoreClock = 84000000;
 #endif /* STM32F401xx */
+
+#if defined(STM32F446xx)
+  uint32_t SystemCoreClock = 84000000;
+#endif /* STM32F446xx */
 
 #if defined(STM32F410xx) || defined(STM32F411xE)
   uint32_t SystemCoreClock = 100000000;
@@ -657,7 +667,7 @@ static void SetSysClock(void)
   __IO uint32_t StartUpCounter = 0, HSEStatus = 0;
   
   /* Enable HSE */
-  RCC->CR |= ((uint32_t)RCC_CR_HSEON);
+  RCC->CR |= ((uint32_t)RCC_CR_HSEON | RCC_CR_HSEBYP);
  
   /* Wait till HSE is ready and if Time out is reached exit */
   do
@@ -684,13 +694,13 @@ static void SetSysClock(void)
     /* HCLK = SYSCLK / 1*/
     RCC->CFGR |= RCC_CFGR_HPRE_DIV1;
 
-#if defined(STM32F40_41xxx) || defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F446xx) || defined(STM32F469_479xx)    
+#if defined(STM32F40_41xxx) || defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F469_479xx)    
     /* PCLK2 = HCLK / 2*/
     RCC->CFGR |= RCC_CFGR_PPRE2_DIV2;
     
     /* PCLK1 = HCLK / 4*/
     RCC->CFGR |= RCC_CFGR_PPRE1_DIV4;
-#endif /* STM32F40_41xxx || STM32F427_437x || STM32F429_439xx  || STM32F446xx || STM32F469_479xx */
+#endif /* STM32F40_41xxx || STM32F427_437x || STM32F429_439xx  || STM32F469_479xx */
 
 #if defined(STM32F401xx)
     /* PCLK2 = HCLK / 2*/
@@ -699,6 +709,14 @@ static void SetSysClock(void)
     /* PCLK1 = HCLK / 4*/
     RCC->CFGR |= RCC_CFGR_PPRE1_DIV2;
 #endif /* STM32F401xx */
+
+#if defined(STM32F446xx)
+    /* PCLK2 = HCLK / 2*/
+    RCC->CFGR |= RCC_CFGR_PPRE2_DIV1;
+    
+    /* PCLK1 = HCLK / 4*/
+    RCC->CFGR |= RCC_CFGR_PPRE1_DIV2;
+#endif /* STM32F446xx */
 
 #if defined(STM32F40_41xxx) || defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F401xx) || defined(STM32F469_479xx)    
     /* Configure the main PLL */
@@ -722,6 +740,7 @@ static void SetSysClock(void)
    
 #if defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F446xx) || defined(STM32F469_479xx)
     /* Enable the Over-drive to extend the clock frequency to 180 Mhz */
+		/*
     PWR->CR |= PWR_CR_ODEN;
     while((PWR->CSR & PWR_CSR_ODRDY) == 0)
     {
@@ -729,7 +748,8 @@ static void SetSysClock(void)
     PWR->CR |= PWR_CR_ODSWEN;
     while((PWR->CSR & PWR_CSR_ODSWRDY) == 0)
     {
-    }      
+    } 
+		*/		
     /* Configure Flash prefetch, Instruction cache, Data cache and wait state */
     FLASH->ACR = FLASH_ACR_PRFTEN | FLASH_ACR_ICEN |FLASH_ACR_DCEN |FLASH_ACR_LATENCY_5WS;
 #endif /* STM32F427_437x || STM32F429_439xx || STM32F446xx || STM32F469_479xx */
