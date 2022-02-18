@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.89340298">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.89340298" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings />
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser" />
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="elf" artifactName="adcs" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" cleanCommand="rm -rf" description="" id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.89340298" name="Debug" parent="fr.ac6.managedbuild.config.gnu.cross.exe.debug" postannouncebuildStep="Generating binary and Printing size information:" postbuildStep="arm-none-eabi-objcopy -O binary &quot;${BuildArtifactFileBaseName}.elf&quot; &quot;${BuildArtifactFileBaseName}.bin&quot; &amp;&amp; arm-none-eabi-size &quot;${BuildArtifactFileName}&quot;">
+					<folderInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.89340298." name="/" resourcePath="">
+						<toolChain id="fr.ac6.managedbuild.toolchain.gnu.cross.exe.debug.143523540" name="Ac6 STM32 MCU GCC" superClass="fr.ac6.managedbuild.toolchain.gnu.cross.exe.debug">
+							<option id="fr.ac6.managedbuild.option.gnu.cross.prefix.955467143" name="Prefix" superClass="fr.ac6.managedbuild.option.gnu.cross.prefix" value="arm-none-eabi-" valueType="string" />
+							<option id="fr.ac6.managedbuild.option.gnu.cross.mcu.736528695" name="Mcu" superClass="fr.ac6.managedbuild.option.gnu.cross.mcu" value="STM32F405RGTx" valueType="string" />
+							<option id="fr.ac6.managedbuild.option.gnu.cross.board.799442609" name="Board" superClass="fr.ac6.managedbuild.option.gnu.cross.board" value="adcs" valueType="string" />
+							<option id="fr.ac6.managedbuild.option.gnu.cross.instructionSet.689093250" name="Instruction Set" superClass="fr.ac6.managedbuild.option.gnu.cross.instructionSet" value="fr.ac6.managedbuild.option.gnu.cross.instructionSet.thumbII" valueType="enumerated" />
+							<option id="fr.ac6.managedbuild.option.gnu.cross.fpu.2133684427" name="Floating point hardware" superClass="fr.ac6.managedbuild.option.gnu.cross.fpu" value="fr.ac6.managedbuild.option.gnu.cross.fpu.fpv4-sp-d16" valueType="enumerated" />
+							<option id="fr.ac6.managedbuild.option.gnu.cross.floatabi.1391898140" name="Floating-point ABI" superClass="fr.ac6.managedbuild.option.gnu.cross.floatabi" value="fr.ac6.managedbuild.option.gnu.cross.floatabi.hard" valueType="enumerated" />
+							<option id="fr.ac6.managedbuild.option.gnu.cross.path.1067524833" name="Path" superClass="fr.ac6.managedbuild.option.gnu.cross.path" value="${openstm32_compiler_path}" valueType="string" />
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="fr.ac6.managedbuild.targetPlatform.gnu.cross.1165029783" isAbstract="false" osList="all" superClass="fr.ac6.managedbuild.targetPlatform.gnu.cross" />
+							<builder buildPath="${workspace_loc:/adcs}/Debug" id="fr.ac6.managedbuild.builder.gnu.cross.416393433" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="fr.ac6.managedbuild.builder.gnu.cross">
+								<outputEntries>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Debug" />
+								</outputEntries>
+							</builder>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.695212206" name="MCU GCC Compiler" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler">
+								<option defaultValue="gnu.c.optimization.level.none" id="fr.ac6.managedbuild.gnu.c.compiler.option.optimization.level.748992000" name="Optimization Level" superClass="fr.ac6.managedbuild.gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" value="fr.ac6.managedbuild.gnu.c.optimization.level.none" valueType="enumerated" />
+								<option id="gnu.c.compiler.option.debugging.level.2051965166" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated" />
+								<option id="gnu.c.compiler.option.include.paths.2032618197" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/SystemView/Config" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/ecss_services/platform/adcs/hal/stm32" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/SystemView/OS" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/SystemView/SEGGER" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/Inc" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/ecss_services/services" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/ecss_services/core" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/ecss_services/platform/adcs" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/Drivers/STM32F4xx_HAL_Driver/Inc" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/Drivers/CMSIS/Include" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/Drivers/CMSIS/Device/ST/STM32F4xx/Include" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/Debug/" />
+									<listOptionValue builtIn="false" value="../Inc" />
+								<listOptionValue builtIn="false" value="../Drivers/STM32F4xx_HAL_Driver/Inc" /></option>
+								<option id="gnu.c.compiler.option.preprocessor.def.symbols.132567677" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="__weak=&quot;__attribute__((weak))&quot;" />
+									<listOptionValue builtIn="false" value="__packed=&quot;__attribute__((__packed__))&quot;" />
+									<listOptionValue builtIn="false" value="USE_HAL_DRIVER" />
+									<listOptionValue builtIn="false" value="STM32F405xx" />
+								</option>
+								<option id="fr.ac6.managedbuild.gnu.c.compiler.option.misc.other.1840510053" superClass="fr.ac6.managedbuild.gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-fmessage-length=0" valueType="string" />
+								<option id="fr.ac6.managedbuid.gnu.c.compiler.option.misc.other.2138523979" name="Other flags" superClass="fr.ac6.managedbuid.gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-fmessage-length=0 -u _printf_float -DARM_MATH_CM4=1" valueType="string" />
+								<option id="gnu.c.compiler.option.dialect.std.576175473" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.c99" valueType="enumerated" />
+								<option id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.ffunction.1836281276" name="Place the function in their own section (-ffunction-sections)" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.ffunction" useByScannerDiscovery="false" value="true" valueType="boolean" />
+								<option id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.fdata.1051968746" name="Place the data in their own section (-fdata-sections)" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.fdata" useByScannerDiscovery="false" value="true" valueType="boolean" />
+								<option id="gnu.c.compiler.option.misc.verbose.1035281583" name="Verbose (-v)" superClass="gnu.c.compiler.option.misc.verbose" useByScannerDiscovery="false" value="true" valueType="boolean" />
+								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c.1695385882" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c" />
+								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.s.1194792988" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.s" />
+							</tool>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.cpp.compiler.1972868888" name="MCU G++ Compiler" superClass="fr.ac6.managedbuild.tool.gnu.cross.cpp.compiler">
+								<option id="gnu.cpp.compiler.option.optimization.level.508796387" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated" />
+								<option id="gnu.cpp.compiler.option.debugging.level.758001831" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated" />
+							</tool>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.c.linker.1758388029" name="MCU GCC Linker" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.linker">
+								<option id="fr.ac6.managedbuild.tool.gnu.cross.c.linker.script.1374065163" name="Linker Script (-T)" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.linker.script" value="../STM32F405RGTx_FLASH.ld" valueType="string" />
+								<option id="gnu.c.link.option.libs.590975216" name="Libraries (-l)" superClass="gnu.c.link.option.libs" />
+								<option id="gnu.c.link.option.paths.1682471338" name="Library search path (-L)" superClass="gnu.c.link.option.paths" />
+								<option id="gnu.c.link.option.ldflags.1540146044" name="Linker flags" superClass="gnu.c.link.option.ldflags" value="-specs=nosys.specs -specs=rdimon.specs" valueType="string" />
+								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.733382161" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)" />
+									<additionalInput kind="additionalinput" paths="$(LIBS)" />
+								</inputType>
+							</tool>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.cpp.linker.1448683286" name="MCU G++ Linker" superClass="fr.ac6.managedbuild.tool.gnu.cross.cpp.linker" />
+							<tool id="fr.ac6.managedbuild.tool.gnu.archiver.1820374209" name="MCU GCC Archiver" superClass="fr.ac6.managedbuild.tool.gnu.archiver" />
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.assembler.923416544" name="MCU GCC Assembler" superClass="fr.ac6.managedbuild.tool.gnu.cross.assembler">
+								<option id="gnu.both.asm.option.include.paths.701658352" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/SystemView/Config" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/ecss_services/platform/adcs/hal/stm32" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/SystemView/OS" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/SystemView/SEGGER" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/Inc" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/ecss_services/services" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/ecss_services/core" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/ecss_services/platform/adcs" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/Drivers/STM32F4xx_HAL_Driver/Inc" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/Drivers/CMSIS/Include" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/Drivers/CMSIS/Device/ST/STM32F4xx/Include" />
+									<listOptionValue builtIn="false" value="/home/azisi/Documents/UPSat/upsat-adcs-software/adcs/Debug/" />
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1532127361" superClass="cdt.managedbuild.tool.gnu.assembler.input" />
+								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.assembler.input.61673818" superClass="fr.ac6.managedbuild.tool.gnu.cross.assembler.input" />
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.89340298.1838525386" name="large_data_service.h" rcbsApplicability="disable" resourcePath="services/large_data_service.h" toolsToInvoke="" />
+					<fileInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.89340298.530377730" name="mass_storage_service.h" rcbsApplicability="disable" resourcePath="services/mass_storage_service.h" toolsToInvoke="" />
+					<fileInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.89340298.119841418" name="scheduling_service.h" rcbsApplicability="disable" resourcePath="services/scheduling_service.h" toolsToInvoke="" />
+					<fileInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.89340298.821964091" name="geomag.h" rcbsApplicability="disable" resourcePath="Inc/geomag.h" toolsToInvoke="" />
+					<fileInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.89340298.1627787892" name="system.h" rcbsApplicability="disable" resourcePath="Inc/system.h" toolsToInvoke="" />
+					<fileInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.89340298.2093079125" name="adcs_gps.h" rcbsApplicability="disable" resourcePath="Inc/adcs_gps.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.864619065" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.562111878" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths="" />
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.90447350" name="Resource Custom Build Step Output Type" />
+						</tool>
+					</fileInfo>
+					<fileInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.89340298.466760270" name="sun_pos.h" rcbsApplicability="disable" resourcePath="Inc/sun_pos.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1507477455" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.328996983" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths="" />
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.1458610575" name="Resource Custom Build Step Output Type" />
+						</tool>
+					</fileInfo>
+					<fileInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.89340298.1793963100" name="sgp4.h" rcbsApplicability="disable" resourcePath="Inc/sgp4.h" toolsToInvoke="" />
+					<fileInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.89340298.847142679" name="su_mnlp.h" rcbsApplicability="disable" resourcePath="core/su_mnlp.h" toolsToInvoke="">
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.347799333" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.7780253" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths="" />
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.2082628441" name="Resource Custom Build Step Output Type" />
+						</tool>
+					</fileInfo>
+					<sourceEntries>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers" />
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Inc" />
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Src" />
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="SystemView" />
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="adcs" />
+						<entry excluding="su_mnlp.c|su_mnlp.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="core" />
+						<entry excluding="scheduling_service.h|mass_storage_service.h|mass_storage_service.c|scheduling_service.c|large_data_service.c|large_data_service.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="services" />
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings" />
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="adcs.fr.ac6.managedbuild.target.gnu.cross.exe.369807503" name="Executable" projectType="fr.ac6.managedbuild.target.gnu.cross.exe" />
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders" />
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration artifactName="adcs" configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="adcs" />
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets" />
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="" />
+		<scannerConfigBuildInfo instanceId="fr.ac6.managedbuild.config.gnu.cross.exe.debug.1058017303;fr.ac6.managedbuild.config.gnu.cross.exe.debug.1058017303.;fr.ac6.managedbuild.tool.gnu.cross.c.compiler.1843601705;fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c.2039260623">
+			<autodiscovery enabled="false" problemReportingEnabled="true" selectedProfileId="" />
+		</scannerConfigBuildInfo>
+		<!--scannerConfigBuildInfo instanceId="fr.ac6.managedbuild.config.gnu.cross.exe.release.$(RELEASE_CONFIG_UID);fr.ac6.managedbuild.config.gnu.cross.exe.release.$(RELEASE_CONFIG_UID).;fr.ac6.managedbuild.tool.gnu.cross.c.compiler.$(RELEASE_TOOL_COMPILER_UID);cdt.managedbuild.tool.gnu.c.compiler.input.$(RELEASE_TOOL_COMPILER_INPUT_UID)">
+			<autodiscovery enabled="false" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo-->
+	</storageModule>
+</cproject>

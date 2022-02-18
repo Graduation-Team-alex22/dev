@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.731099811">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.731099811" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="elf" artifactName="adcs" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.731099811" name="Debug" parent="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug">
+					<folderInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.731099811." name="/" resourcePath="">
+						<toolChain id="com.st.stm32cube.ide.mcu.gnu.managedbuild.toolchain.exe.debug.1079572990" name="MCU ARM GCC" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.toolchain.exe.debug">
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.convertverilog.2043320961" name="Convert to Verilog file (-O verilog)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.convertverilog" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.showsize.1969272123" name="Show size information about built artifact" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.showsize" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.converthex.1879576639" name="Convert to Intel Hex file (-O ihex)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.converthex" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.convertsymbolsrec.154851142" name="Convert to Motorola S-record (symbols) file (-O symbolsrec)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.convertsymbolsrec" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.convertbinary.741178352" name="Convert to binary file (-O binary)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.convertbinary" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.convertsrec.436330878" name="Convert to Motorola S-record file (-O srec)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.convertsrec" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_mcu.1572446334" name="MCU" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_mcu" useByScannerDiscovery="true" value="STM32F405RGTx" valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board.1704731084" name="Board" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board" useByScannerDiscovery="false" value="genericBoard" valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.instructionset.327774396" name="Instruction set" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.instructionset" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.instructionset.value.thumb2" valueType="enumerated"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi.1594158956" name="Floating-point ABI" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.floatabi.value.hard" valueType="enumerated"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu.37302024" name="Floating-point unit" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.fpu.value.fpv4-sp-d16" valueType="enumerated"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_cpuid.1888663991" name="CPU" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_cpuid" useByScannerDiscovery="false" value="0" valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_coreid.1244993640" name="Core" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_coreid" useByScannerDiscovery="false" value="0" valueType="string"/>
+							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.runtimelibrary_c.158467563" name="Runtime library" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.runtimelibrary_c" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.runtimelibrary_c.value.standard_c" valueType="enumerated"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.targetplatform.1749371425" isAbstract="false" osList="all" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.targetplatform"/>
+							<builder buildPath="${workspace_loc:/adcs}/Debug" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.builder.213986636" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.builder"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.1071839021" name="MCU GCC Assembler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler">
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel.1221180548" name="Debug level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel.value.g3" valueType="enumerated"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths.2030634851" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;D:\_g_project\dev\Said WS\ADCS source\upsat-ecss-services-master\services&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/ECSS_Services/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/ECSS_Services/platform/adcs}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/ECSS_Services/platform/adcs/hal/stm32}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/ECSS_Services/services}&quot;"/>
+								</option>
+								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input.2064088125" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input"/>
+							</tool>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1782228488" name="MCU GCC Compiler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler">
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.debuglevel.1646629264" name="Debug level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.debuglevel" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.debuglevel.value.g3" valueType="enumerated"/>
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.optimization.level.1588904016" name="Optimization level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.optimization.level" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.optimization.level.value.o0" valueType="enumerated"/>
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.ffunction.1609556126" name="Place functions in their own sections (-ffunction-sections)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.ffunction" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.fdata.75044116" name="Place data in their own sections (-fdata-sections)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.fdata" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths.1922192628" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/adcs/SystemView/Config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/adcs/SystemView/OS}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/adcs/SystemView/SEGGER}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/adcs/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/adcs/Drivers/STM32F4xx_HAL_Driver/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/adcs/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/adcs/Drivers/CMSIS/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/adcs/Drivers/CMSIS/Device/ST/STM32F4xx/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/adcs/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/ECSS_Services/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/ECSS_Services/platform/adcs}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/ECSS_Services/platform/adcs/hal/stm32}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/ECSS_Services/services}&quot;"/>
+								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.definedsymbols.98327875" name="Define symbols (-D)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.definedsymbols" useByScannerDiscovery="false" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="__weak=&quot;__attribute__((weak))&quot;"/>
+									<listOptionValue builtIn="false" value="__packed=&quot;__attribute__((__packed__))&quot;"/>
+									<listOptionValue builtIn="false" value="USE_HAL_DRIVER"/>
+									<listOptionValue builtIn="false" value="STM32F405xx"/>
+								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.otherflags.1454687227" name="Other flags" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.otherflags" useByScannerDiscovery="true" valueType="stringList">
+									<listOptionValue builtIn="false" value="-u _printf_float -DARM_MATH_CM4=1"/>
+								</option>
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.languagestandard.1446564845" name="Language standard" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.languagestandard" useByScannerDiscovery="true" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.languagestandard.value.isoc99" valueType="enumerated"/>
+								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.717864458" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
+							</tool>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.634548784" name="MCU G++ Compiler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler">
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.debuglevel.744116937" name="Debug level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.debuglevel" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.debuglevel.value.g3" valueType="enumerated"/>
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.optimization.level.876570656" name="Optimization level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.optimization.level.value.o0" valueType="enumerated"/>
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.ffunction.1285447902" name="Place functions in their own sections (-ffunction-sections)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.ffunction" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.fdata.1348421294" name="Place data in their own sections (-fdata-sections)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.fdata" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.noexceptions.847905529" name="Disable handling exceptions (-fno-exceptions)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.noexceptions" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.nortti.960536799" name="Disable generation of information about every class with virtual functions (-fno-rtti)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.compiler.option.nortti" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.582297980" name="MCU GCC Linker" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker">
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.script.1606934060" name="Linker Script (-T)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.script" value="../STM32F405RGTx_FLASH.ld" valueType="string"/>
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.gcsections.788426322" name="Discard unused sections (-Wl,--gc-sections)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.gcsections" value="true" valueType="boolean"/>
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.systemcalls.528166242" name="System calls" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.systemcalls" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.systemcalls.value.minimalimplementation" valueType="enumerated"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.otherflags.1218431202" name="Other flags" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.option.otherflags" valueType="stringList">
+									<listOptionValue builtIn="false" value="-specs=rdimon.specs"/>
+								</option>
+								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.input.2059931505" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.linker.1993413747" name="MCU G++ Linker" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.linker">
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.linker.option.script.1006527933" name="Linker Script (-T)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.linker.option.script" value="${workspace_loc:/${ProjName}/LinkerScript.ld}" valueType="string"/>
+								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.linker.option.gcsections.2010655374" name="Discard unused sections (-Wl,--gc-sections)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.cpp.linker.option.gcsections" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.archiver.2041734213" name="MCU GCC Archiver" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.archiver"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.size.1912990640" name="MCU Size" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.size"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objdump.listfile.1320287964" name="MCU Output Converter list file" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objdump.listfile"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.hex.162643904" name="MCU Output Converter Hex" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.hex"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.binary.1051074388" name="MCU Output Converter Binary" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.binary"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.verilog.884746529" name="MCU Output Converter Verilog" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.verilog"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.srec.1645482454" name="MCU Output Converter Motorola S-rec" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.srec"/>
+							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec.1441436147" name="MCU Output Converter Motorola S-rec with symbols" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec"/>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.731099811.core/su_mnlp.h" name="su_mnlp.h" rcbsApplicability="disable" resourcePath="core/su_mnlp.h" toolsToInvoke=""/>
+					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.731099811.796948773" name="su_mnlp.h" rcbsApplicability="disable" resourcePath="ECSS_Services/core/su_mnlp.h" toolsToInvoke=""/>
+					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.731099811.services/scheduling_service.h" name="scheduling_service.h" rcbsApplicability="disable" resourcePath="services/scheduling_service.h" toolsToInvoke=""/>
+					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.731099811.services/large_data_service.h" name="large_data_service.h" rcbsApplicability="disable" resourcePath="services/large_data_service.h" toolsToInvoke=""/>
+					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.731099811.services/mass_storage_service.h" name="mass_storage_service.h" rcbsApplicability="disable" resourcePath="services/mass_storage_service.h" toolsToInvoke=""/>
+					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.731099811.Inc/system.h" name="system.h" rcbsApplicability="disable" resourcePath="Inc/system.h" toolsToInvoke=""/>
+					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.731099811.Inc/adcs_gps.h" name="adcs_gps.h" rcbsApplicability="disable" resourcePath="Inc/adcs_gps.h" toolsToInvoke=""/>
+					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.731099811.Inc/sun_pos.h" name="sun_pos.h" rcbsApplicability="disable" resourcePath="Inc/sun_pos.h" toolsToInvoke=""/>
+					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.731099811.Inc/geomag.h" name="geomag.h" rcbsApplicability="disable" resourcePath="Inc/geomag.h" toolsToInvoke=""/>
+					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.731099811.Inc/sgp4.h" name="sgp4.h" rcbsApplicability="disable" resourcePath="Inc/sgp4.h" toolsToInvoke=""/>
+					<sourceEntries>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="ECSS_Services/core"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="ECSS_Services/platform/adcs"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="ECSS_Services/services"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Inc"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Src"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="SystemView"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="adcs"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="adcs.fr.ac6.managedbuild.target.gnu.cross.exe.369807503" name="Executable"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/adcs"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="scannerConfiguration">
+		<!--scannerConfigBuildInfo instanceId="fr.ac6.managedbuild.config.gnu.cross.exe.release.$(RELEASE_CONFIG_UID);fr.ac6.managedbuild.config.gnu.cross.exe.release.$(RELEASE_CONFIG_UID).;fr.ac6.managedbuild.tool.gnu.cross.c.compiler.$(RELEASE_TOOL_COMPILER_UID);cdt.managedbuild.tool.gnu.c.compiler.input.$(RELEASE_TOOL_COMPILER_INPUT_UID)">
+			<autodiscovery enabled="false" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo--><autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.731099811;com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.731099811.;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1782228488;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.717864458">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="fr.ac6.managedbuild.config.gnu.cross.exe.debug.1058017303;fr.ac6.managedbuild.config.gnu.cross.exe.debug.1058017303.;fr.ac6.managedbuild.tool.gnu.cross.c.compiler.1843601705;fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c.2039260623">
+			<autodiscovery enabled="false" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+</cproject>
