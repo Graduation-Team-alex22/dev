@@ -1,0 +1,10 @@
+.\objects\verification_service.o: ..\source\upsat-ecss-services-master\services\verification_service.c
+.\objects\verification_service.o: ..\source\upsat-ecss-services-master\services\verification_service.h
+.\objects\verification_service.o: ..\source\upsat-ecss-services-master\services\services.h
+.\objects\verification_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\verification_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\verification_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\verification_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\verification_service.o: ..\source\upsat-ecss-services-master\services\subsystems_ids.h
+.\objects\verification_service.o: ..\source\hsi_startup\system.h
+.\objects\verification_service.o: ..\source\upsat-ecss-services-master\services\service_utilities.h

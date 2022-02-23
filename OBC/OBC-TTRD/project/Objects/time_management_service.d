@@ -1,0 +1,9 @@
+.\objects\time_management_service.o: ..\source\upsat-ecss-services-master\services\time_management_service.c
+.\objects\time_management_service.o: ..\source\upsat-ecss-services-master\services\time_management_service.h
+.\objects\time_management_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\time_management_service.o: ..\source\upsat-ecss-services-master\services\services.h
+.\objects\time_management_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\time_management_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\time_management_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\time_management_service.o: ..\source\upsat-ecss-services-master\services\subsystems_ids.h
+.\objects\time_management_service.o: ..\source\hsi_startup\system.h

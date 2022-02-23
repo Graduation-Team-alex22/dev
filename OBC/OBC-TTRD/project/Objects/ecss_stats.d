@@ -1,0 +1,11 @@
+.\objects\ecss_stats.o: ..\source\upsat-ecss-services-master\core\ecss_stats.c
+.\objects\ecss_stats.o: ..\source\upsat-ecss-services-master\core\ecss_stats.h
+.\objects\ecss_stats.o: ..\source\upsat-ecss-services-master\services\services.h
+.\objects\ecss_stats.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\ecss_stats.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\ecss_stats.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\ecss_stats.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\ecss_stats.o: ..\source\upsat-ecss-services-master\services\subsystems_ids.h
+.\objects\ecss_stats.o: ..\source\hsi_startup\system.h
+.\objects\ecss_stats.o: ..\source\upsat-ecss-services-master\services\service_utilities.h
+.\objects\ecss_stats.o: ..\source\upsat-ecss-services-master\core\sysview.h
