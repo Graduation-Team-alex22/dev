@@ -16,7 +16,7 @@
 #define TM_MONTH_NOVEMBER       ((uint8_t)0x11U)
 #define TM_MONTH_DECEMBER       ((uint8_t)0x12U)
 
-#define MAX_YEAR 21
+#define MAX_YEAR 22
 
 #define MIN_QB_SECS 2678400
 #define MAX_QB_SECS 662774400
@@ -32,63 +32,76 @@ typedef struct{
     uint8_t sec;
 } time_utc_t;
 
-
-/*
 typedef struct{
-    uint32_t epoch;
-    uint32_t elapsed;
-    time_utc_t utc;
-} time_keeping_t;
-*/
-
-typedef struct{
-    int ep_year; /* Year of epoch, e.g. 94 for 1994, 100 for 2000AD */
-    double ep_day; /* Day of epoch from 00:00 Jan 1st ( = 1.0 ) */
+    int ep_year; 			/* Year of epoch, e.g. 94 for 1994, 100 for 2000AD */
+    double ep_day; 		/* Day of epoch from 00:00 Jan 1st ( = 1.0 ) */
 } tle_epoch_t; // _tle_epoch
-
-
-// time_utc_t utc;
 
 typedef struct {
     uint8_t set_time;
     time_utc_t utc;
-    tle_epoch_t tle_epoch; // TLE epoch
-    double decyear; // Decimal year, for IGRF
-    double jd; // Julian days from 1st Jan 1900, for SGP4
-    double gps_sec; // Time in sec of "gps_week" week
-    uint16_t gps_week; // Number of weeks from GPS starting date
-} time_keeping_adcs;
+    tle_epoch_t tle_epoch; 			// TLE epoch
+    double decyear; 						// Decimal year, for IGRF
+    double jd; 									// Julian days from 1st Jan 1900, for SGP4
+    double gps_sec; 						// Time in sec of "gps_week" week
+    uint16_t gps_week; 					// Number of weeks from GPS starting date
+} time_keeping_adcs_t;
+
+static time_keeping_adcs_t time_keeping_adcs = {0};
 
 
-// extern SAT_returnState crt_pkt(tc_tm_pkt *pkt, TC_TM_app_id app_id, uint8_t type, uint8_t ack, uint8_t ser_type, uint8_t ser_subtype, TC_TM_app_id dest_id);
-// extern SAT_returnState route_pkt(tc_tm_pkt *pkt);
+/**********************************************************
+										SUPPORTED APIs
+**********************************************************/
+/*
+	Initializes the RTC peripheral and sets the clock
+	from OBC.
 
-void cnv_UTC_QB50(time_utc_t utc, uint32_t *qb);
-void set_time_QB50(uint32_t qb);
-void set_time_UTC(time_utc_t utc);
-void get_time_QB50(uint32_t *qb);
-void get_time_UTC(time_utc_t *utc);
-uint32_t return_time_QB50();
+	NOTE: OBC communication must be initialized first.
+*/
+void time_init();
 
-// SAT_returnState time_management_app(tc_tm_pkt *pck);
-// SAT_returnState time_management_report_time_in_utc(tc_tm_pkt *pkt, TC_TM_app_id dest_id);
-// SAT_returnState time_management_report_time_in_qb50(tc_tm_pkt *pkt, TC_TM_app_id dest_id);
-// SAT_returnState time_management_crt_pkt_TC(tc_tm_pkt *pkt, uint8_t sid, TC_TM_app_id app_id);
-// SAT_returnState time_management_crt_pkt_TM(tc_tm_pkt *pkt, uint8_t sid, TC_TM_app_id app_id);
-// SAT_returnState time_management_request_time_in_utc( TC_TM_app_id dest_id);
-// SAT_returnState time_management_force_time_update( TC_TM_app_id dest_id);
+/*
+	Tries to update time_keeping_adcs from the RTC peripheral.
+	if the RTC peripheral is not correctly set, we should get time from OBC,
+	update time_keeping_adcs, and set the RTC peripheral accordingly.
+*/
+void time_update();
+
+/*
+	Sets time_keeping_adcs
+*/
+void time_setTime(time_keeping_adcs_t*);
+
+/*
+	Gets time_keeping_adcs
+*/
+time_keeping_adcs_t time_getTime();
 
 
-// extern time_keeping_adcs adcs_time;
+/******** conversion functions ***********/
+/*
+	calculates time_keeping_adcs.tle_epoch from 
+	time_keeping_adcs.UTC
+*/
+void tle_epoch(time_keeping_adcs_t *t);
 
-void tle_epoch(time_keeping_adcs *t);
-void decyear(time_keeping_adcs *t);
-void julday(time_keeping_adcs *t);
-void gps2utc(time_keeping_adcs *t);
-/**
- * Convert UTC to Decyimal year and Julian day.
- * @return
- */
-void time_converter();
+/*
+	calculates time_keeping_adcs.decyear from 
+	time_keeping_adcs.UTC
+*/
+void decyear(time_keeping_adcs_t *t);
+
+/*
+	calculates time_keeping_adcs.jd from 
+	time_keeping_adcs.UTC
+*/
+void julday(time_keeping_adcs_t *t);
+
+/*
+	Conversion from GPS time and week to UTC.
+*/
+void gps2utc(time_keeping_adcs_t *t);
+
 
 #endif
