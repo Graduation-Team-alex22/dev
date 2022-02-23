@@ -1,0 +1,10 @@
+.\objects\housekeeping_service.o: ..\source\upsat-ecss-services-master\services\housekeeping_service.c
+.\objects\housekeeping_service.o: ..\source\upsat-ecss-services-master\services\housekeeping_service.h
+.\objects\housekeeping_service.o: ..\source\upsat-ecss-services-master\services\services.h
+.\objects\housekeeping_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\housekeeping_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\housekeeping_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\housekeeping_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\housekeeping_service.o: ..\source\upsat-ecss-services-master\services\subsystems_ids.h
+.\objects\housekeeping_service.o: ..\source\hsi_startup\system.h
+.\objects\housekeeping_service.o: ..\source\upsat-ecss-services-master\services\service_utilities.h
