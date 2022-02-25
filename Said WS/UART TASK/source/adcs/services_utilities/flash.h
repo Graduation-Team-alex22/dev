@@ -22,10 +22,10 @@ typedef enum {
 } flash_status_e;  // flash_status
 
 
-flash_status_e flash_init();
-flash_status_e flash_write_enable();
+flash_status_e flash_init(void);
+flash_status_e flash_write_enable(void);
 flash_status_e flash_readID(uint8_t *id);
-flash_status_e flash_chip_erase();
+flash_status_e flash_chip_erase(void);
 flash_status_e flash_erase_block4K(uint32_t address);
 flash_status_e flash_write_byte(uint8_t data, uint32_t address);
 flash_status_e flash_write_page(uint8_t *data, uint8_t data_len, uint32_t address);

@@ -196,7 +196,7 @@ uint32_t PROCESSOR_TASK_Update(void)
          {
          // Simple temperature reporting (for demo purposes)
          // Temperature assumed to be > 0 on the testbench ...
-         UART2_BUF_O_Write_String_To_Buffer("CPU temp: ");
+         UART2_BUF_O_Write_String_To_Buffer("\nCPU temp: ");
          UART2_BUF_O_Write_Number03_To_Buffer(Temp_c);
          UART2_BUF_O_Write_String_To_Buffer("\n");
          }

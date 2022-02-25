@@ -1,7 +1,7 @@
 #include "flash.h"
 
 
-flash_status_e flash_init(){
+flash_status_e flash_init(void){
 	/*
 	uint8_t flash_id = 0;
 	// Initialize flash memory 

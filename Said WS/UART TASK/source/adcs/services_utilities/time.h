@@ -1,7 +1,29 @@
+/**********************************************************
+Implementation of the time module. This module provides a
+real-time clock for other modules. It supports different time
+formats.
+It depends basically on:
+	- RTC peripheral
+	- obc_comm module
+
+The module assumes:
+	- 24-hour format
+	- calender data is stored in BCD format
+
+Notes: changing clock settings will affect the RTC tick.
+
+Module Category:	Services
+
+Auther: Mohamed Said (AKA: Alpha_Arslan)
+Date:		2022-02-23
+
+**********************************************************/
 #ifndef TIME_H__
 #define TIME_H__
 
 #include "stdint.h"
+#include "../hsi_library/stm32f4xx_rtc.h"
+#include "common.h"
 
 #define TM_MONTH_JANUARY        ((uint8_t)0x01U)
 #define TM_MONTH_FEBRUARY       ((uint8_t)0x02U)
@@ -59,24 +81,17 @@ static time_keeping_adcs_t time_keeping_adcs = {0};
 
 	NOTE: OBC communication must be initialized first.
 */
-void time_init();
+uint8_t time_init(void);
 
 /*
-	Tries to update time_keeping_adcs from the RTC peripheral.
-	if the RTC peripheral is not correctly set, we should get time from OBC,
-	update time_keeping_adcs, and set the RTC peripheral accordingly.
+	Updates time_keeping_adcs from the RTC peripheral.
 */
-void time_update();
-
-/*
-	Sets time_keeping_adcs
-*/
-void time_setTime(time_keeping_adcs_t*);
+void time_update(void);
 
 /*
 	Gets time_keeping_adcs
 */
-time_keeping_adcs_t time_getTime();
+time_keeping_adcs_t time_getTime(void);
 
 
 /******** conversion functions ***********/
@@ -84,24 +99,30 @@ time_keeping_adcs_t time_getTime();
 	calculates time_keeping_adcs.tle_epoch from 
 	time_keeping_adcs.UTC
 */
-void tle_epoch(time_keeping_adcs_t *t);
+void tle_epoch(void);
 
 /*
 	calculates time_keeping_adcs.decyear from 
 	time_keeping_adcs.UTC
 */
-void decyear(time_keeping_adcs_t *t);
+void decyear(void);
 
 /*
 	calculates time_keeping_adcs.jd from 
 	time_keeping_adcs.UTC
 */
-void julday(time_keeping_adcs_t *t);
+void julday(void);
 
 /*
 	Conversion from GPS time and week to UTC.
 */
-void gps2utc(time_keeping_adcs_t *t);
+void gps2utc(void);
 
+/**
+  * @brief  Convert from 2 digit BCD to Binary.
+  * @param  Value: BCD value to be converted.
+  * @retval Converted word
+  */
+static uint8_t RTC_Bcd2ToByte(uint8_t Value);
 
 #endif

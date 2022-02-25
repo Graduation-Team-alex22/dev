@@ -926,6 +926,16 @@
               <FileType>5</FileType>
               <FilePath>..\source\adcs\services_utilities\flash.h</FilePath>
             </File>
+            <File>
+              <FileName>time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\services_utilities\time.c</FilePath>
+            </File>
+            <File>
+              <FileName>flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\services_utilities\flash.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

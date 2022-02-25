@@ -40,3 +40,5 @@
 .\objects\apptask_uart_hello.o: ..\source\tasks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\apptask_uart_hello.o: ..\source\tasks\apptask_uart_hello.h
 .\objects\apptask_uart_hello.o: ..\source\tasks\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h
+.\objects\apptask_uart_hello.o: ..\source\tasks\../adcs/services_utilities/time.h
+.\objects\apptask_uart_hello.o: ..\source\tasks\../adcs/services_utilities/common.h
