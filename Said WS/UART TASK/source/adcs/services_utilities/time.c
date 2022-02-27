@@ -16,47 +16,54 @@
 */
 uint8_t time_init(void){
 	/******* init the RTC peripheral *******/
+	// to set up RTC clock control registers in the RCC peripheral,
+	// We need to enable access to those register as they are proteced
+	// by PWR register
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR, ENABLE);
-	PWR_BackupAccessCmd(ENABLE);				// to enable write access
-	// start LSE clock
-	RCC_LSEConfig(RCC_LSE_ON);
-	//wait untill LSE stablizes
-	while( (RCC->BDCR & RCC_BDCR_LSERDY) == 0);
-	// enable the clock and choose LSE clock source
-	RCC_RTCCLKConfig(RCC_RTCCLKSource_LSE);
-	RCC_RTCCLKCmd(ENABLE);
+	PWR_BackupAccessCmd(ENABLE);
+	// now we can setup RTC peripheral clock and clock source
+	RCC_LSEConfig(RCC_LSE_ON);									// start LSE clock
+	while( (RCC->BDCR & RCC_BDCR_LSERDY) == 0);	// wait untill LSE stablizes
+	RCC_RTCCLKConfig(RCC_RTCCLKSource_LSE);			// choose LSE as clock source
+	RCC_RTCCLKCmd(ENABLE);											// enable the clock 
 	
-	// RTC is initialized with default parameters: 24h format, default prescalars
+	/******* init the RTC parameters *******/
+	// RTC is initialized with default parameters: 24h format, default prescalars for LSE
 	RTC_InitTypeDef rtc_init_struct;
 	RTC_StructInit(&rtc_init_struct);
 	if(RTC_Init(&rtc_init_struct) == ERROR) return 110;
 	
-	// get time and date from obc
-	uint32_t rtc_calender[2] = {0};
-	//obc_comm_get_time(rtc_calender); // rtc_calender[3~0] = TR, rtc_calender[7~4] = DR
-	
-	/******* set the time and date of RTC *******/
-	// disable write protection and enter initialization mode
-	RTC_WriteProtectionCmd(DISABLE);
-	if(RTC_EnterInitMode() == ERROR) return 111;
-	RTC->WPR = 0xCA;
-  RTC->WPR = 0x53;
-	
-	// write to TR and DR registers
-	RTC->TR = rtc_calender[0] & RTC_TR_RESERVED_MASK;
-	RTC->DR = rtc_calender[1] & RTC_DR_RESERVED_MASK;
-	
-	// enable write protection and exit initialization mode
-	RTC->WPR = 0xFF; 
-	RTC_ExitInitMode();
-	RTC_WriteProtectionCmd(ENABLE);
-	PWR_BackupAccessCmd(DISABLE);				// to enable write access
-	
-	// update time_keeping_adcs
-	time_update();
-	
-	return 0;		// no error
-	
+	/******* RTC Clock time check *******/
+	// check if the time is set correctly
+	time_update();		// update time_keeping_adcs according to current time of RTC
+	if(time_keeping_adcs.utc.year >= CURRENT_YEAR){
+		return 0;				// time is correctly set. No error.
+	}else{
+		uint32_t rtc_calender[2] = {0x00124530, 0x00220227};
+		
+		//obc_comm_get_time(rtc_calender); // rtc_calender[0] = TR, rtc_calender[1] = DR
+		
+		/******* set the time and date of RTC *******/
+		// disable write protection and enter initialization mode
+		RTC_WriteProtectionCmd(DISABLE);
+		if(RTC_EnterInitMode() == ERROR) return 111;
+		RTC->WPR = 0xCA;
+		RTC->WPR = 0x53;
+		
+		// write to TR and DR registers
+		RTC->TR = rtc_calender[0] & RTC_TR_RESERVED_MASK;
+		RTC->DR = rtc_calender[1] & RTC_DR_RESERVED_MASK;
+		
+		// enable write protection and exit initialization mode
+		RTC->WPR = 0xFF; 
+		RTC_ExitInitMode();
+		RTC_WriteProtectionCmd(ENABLE);
+		
+		time_update();		// update time_keeping_adcs according to current time of RTC
+	}
+	PWR_BackupAccessCmd(DISABLE);								// Re-disable access to protected registers
+
+	return 0;		// no error	
 }
 
 /*
@@ -160,4 +167,42 @@ static uint8_t RTC_Bcd2ToByte(uint8_t Value)
   uint8_t tmp = 0;
   tmp = ((uint8_t)(Value & (uint8_t)0xF0) >> (uint8_t)0x4) * 10;
   return (tmp + (Value & (uint8_t)0x0F));
+}
+
+static inline void convert(char* p, uint8_t num){
+	p[0] = (num%100 /10) + 48;
+	p[1] = (num%10) + 48;
+	
+}
+
+void print_time(char *s){
+	// "20XX-XX-XX XX:XX:XX";
+	char temp[2];
+	s[0] = '2';
+	s[1] = '0';
+	convert(temp, time_keeping_adcs.utc.year);
+	s[2] = temp[0];
+	s[3] = temp[1];
+	s[4] = '-';
+	convert(temp, time_keeping_adcs.utc.month);
+	s[5] = temp[0];
+	s[6] = temp[1];
+	s[7] = '-'; 
+	convert(temp, time_keeping_adcs.utc.day);
+	s[8] = temp[0];
+	s[9] = temp[1];
+	s[10] = ' '; 
+	convert(temp, time_keeping_adcs.utc.hour);
+	s[11] = temp[0];
+	s[12] = temp[1];
+	s[13] = ':';
+	convert(temp, time_keeping_adcs.utc.min);
+	s[14] = temp[0];
+	s[15] = temp[1];
+	s[16] = ':'; 
+	convert(temp, time_keeping_adcs.utc.sec);
+	s[17] = temp[0];
+	s[18] = temp[1]; 
+	s[19] = 0; 
+	
 }

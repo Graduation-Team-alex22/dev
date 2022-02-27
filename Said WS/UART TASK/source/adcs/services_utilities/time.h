@@ -8,7 +8,6 @@ It depends basically on:
 
 The module assumes:
 	- 24-hour format
-	- calender data is stored in BCD format
 
 Notes: changing clock settings will affect the RTC tick.
 
@@ -38,10 +37,13 @@ Date:		2022-02-23
 #define TM_MONTH_NOVEMBER       ((uint8_t)0x11U)
 #define TM_MONTH_DECEMBER       ((uint8_t)0x12U)
 
-#define MAX_YEAR 22
+#define MAX_YEAR 								22
+#define CURRENT_YEAR						22
 
-#define MIN_QB_SECS 2678400
-#define MAX_QB_SECS 662774400
+#define MIN_QB_SECS 						2678400
+#define MAX_QB_SECS 						662774400
+
+#define PRINT_TIME_STR_LENGTH		20
 
 
 typedef struct{
@@ -80,6 +82,8 @@ static time_keeping_adcs_t time_keeping_adcs = {0};
 	from OBC.
 
 	NOTE: OBC communication must be initialized first.
+
+Return: Error code. Zero if no error.
 */
 uint8_t time_init(void);
 
@@ -124,5 +128,7 @@ void gps2utc(void);
   * @retval Converted word
   */
 static uint8_t RTC_Bcd2ToByte(uint8_t Value);
+
+void print_time(char*);
 
 #endif
