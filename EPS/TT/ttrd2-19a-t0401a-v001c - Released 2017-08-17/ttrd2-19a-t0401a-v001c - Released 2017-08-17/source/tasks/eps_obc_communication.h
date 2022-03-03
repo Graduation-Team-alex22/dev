@@ -1,8 +1,7 @@
 /*
  * eps_obc_communication.h
  *
- *  Created on: feb 16, 2022
- *      Author: ariolis
+ *  
  */
 
 #ifndef _EPS_OBC_COMMUNICATION_H_
