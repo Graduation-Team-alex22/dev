@@ -98,40 +98,31 @@ void TEMP_SENSOR_Init(void)
 -*----------------------------------------------------------------------------*/
 uint32_t TEMP_SENSOR_update(void)
 {
-	I2C1_Init();
-	// Genetrate I2C start sequence 
-	I2C_GenerateSTART(I2C1, ENABLE);
-	// Wait for generating the start and take the bus
-	while (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_MODE_SELECT));
-	// Send slave address and select master transmitter mode
-	I2C_Send7bitAddress(I2C1, TEMP_SENSOR_ADDRESS,  I2C_Direction_Transmitter);
-	// Wait for slave to be acknowledged
-	while (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
-	// Send the register address to get the data from it
-	I2C_SendData(I2C1, TEMP_REG_ADDRESS);
-	// Wait until data has been written in the data register and is shifted out on the bus
-	while (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
 	// Generate repeated start
 	I2C_GenerateSTART(I2C1, ENABLE); 
 	// Wait for generating the repeated start and take the bus
 	while (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_MODE_SELECT));
-	// Send slave address and select master reciever mode
+	
+	//Enable acknowledge
+	I2C_AcknowledgeConfig(I2C1, ENABLE);
+	// Send slave address and select master reciever mode 
+	
 	I2C_Send7bitAddress(I2C1, TEMP_SENSOR_ADDRESS,  I2C_Direction_Receiver);
 	// Wait for slave to be acknowledged
 	while (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
+		
 	// Wait till recieving the first byte from the bus
 	while (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_BYTE_RECEIVED));
 	upper_byte = I2C_ReceiveData(I2C1);
-	// Disable ACK of received data as we recieve only 2 bytes
-	I2C_AcknowledgeConfig(I2C1, DISABLE); 
+	
+	// Disable acknowledge
+	I2C_AcknowledgeConfig(I2C1, DISABLE);
 	// Wait till recieving the second byte from the bus
 	while (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_BYTE_RECEIVED));
 	lower_byte = I2C_ReceiveData(I2C1);
+	
 	// Stop the communication 
 	I2C_GenerateSTOP(I2C1, ENABLE);
-	
-	// Deinitialize the I2C1 peripheral registers to their default reset values
-	I2C_DeInit(I2C1);
 	
 	/*Calculate temperature value and print it using UART*/
 	temperature_value = TEMP_SENSOR_Calculate_Value();
