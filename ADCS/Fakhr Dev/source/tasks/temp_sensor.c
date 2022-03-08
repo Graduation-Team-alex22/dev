@@ -100,13 +100,13 @@ uint32_t TEMP_SENSOR_update(void)
 {
 	// Generate repeated start
 	I2C_GenerateSTART(I2C1, ENABLE); 
-	// Wait for generating the repeated start and take the bus
+	// Wait for generating the start and take the bus
 	while (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_MODE_SELECT));
 	
 	//Enable acknowledge
 	I2C_AcknowledgeConfig(I2C1, ENABLE);
-	// Send slave address and select master reciever mode 
 	
+	// Send slave address and select master reciever mode 
 	I2C_Send7bitAddress(I2C1, TEMP_SENSOR_ADDRESS,  I2C_Direction_Receiver);
 	// Wait for slave to be acknowledged
 	while (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
