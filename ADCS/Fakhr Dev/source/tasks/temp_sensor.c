@@ -1,3 +1,8 @@
+/*-------------------------------------------------------------------------------*-
+  Temperature sensor module
+	This module use I2C1 peripheral to read temperature value from temperature sensor
+	
+-*--------------------------------------------------------------------------------*/
 #include "temp_sensor.h"
 #include "../hsi_library/stm32f4xx_i2c.h"
 #include "../port/port.h"
@@ -5,18 +10,46 @@
 #include "stdio.h"
 #include "string.h"
 
+// ------ Private variables --------------------------------------------------
 static uint8_t lower_byte = 0;
 static uint8_t upper_byte = 0;
 static float temperature_value;
 static char buff[8];
 
-
+// ------ Private function prototypes ----------------------------------------
 static void I2C1_Init(void);
 static void I2C1_GPIO_Init(void);
 static float TEMP_SENSOR_Calculate_Value(void);
 
 
+/*----------------------------------------------------------------------------*-
 
+  TEMP_SENSOR_Init()
+
+  Initialisation function for Temperature sensor module.
+
+  PARAMETERS:
+     None.
+
+  LONG-TERM DATA:
+     None 
+   
+  MCU HARDWARE:
+     I2C1 pins.
+
+  PRE-CONDITION CHECKS:
+     None.
+
+  POST-CONDITION CHECKS:
+     None.
+
+  ERROR DETECTION / ERROR HANDLING:
+     None.
+
+  RETURN VALUE:
+     None.
+
+-*----------------------------------------------------------------------------*/
 void TEMP_SENSOR_Init(void)
 {
 	// Init GPIO of I2C1 
@@ -25,6 +58,44 @@ void TEMP_SENSOR_Init(void)
 	I2C1_Init();
 }
 
+/*----------------------------------------------------------------------------*-
+
+  TEMP_SENSOR_update()
+
+  Temperature reading task.
+   
+  PARAMETERS:
+     None.
+
+  LONG-TERM DATA:
+     temperature_value  
+   
+  MCU HARDWARE:
+     I2C1 pins.
+
+  PRE-CONDITION CHECKS:
+     Data integrity checks. --> Not implemented yet
+     Register configuration checks. --> Not implemented yet
+
+     If any PreC check fails, we force a shutdown
+     [other behaviour may be more appropriate in your system.]
+
+  POST-CONDITION CHECKS:
+     None.
+
+  ERROR DETECTION / ERROR HANDLING: --> Not implemented yet
+     See PreCs and PostCs.
+
+  WCET:
+     Not yet determined.
+
+  BCET:
+     Not yet determined.
+
+  RETURN VALUE:
+     RETURN_NORMAL_STATE (fixed).
+
+-*----------------------------------------------------------------------------*/
 uint32_t TEMP_SENSOR_update(void)
 {
 	I2C1_Init();
@@ -71,8 +142,34 @@ uint32_t TEMP_SENSOR_update(void)
 	 
 	return RETURN_NORMAL_STATE;
 }
+/*----------------------------------------------------------------------------*-
 
+  TEMP_SENSOR_Calculate_Value()
 
+  Calculate current temperature sensor value.
+   
+  PARAMETERS:
+     None.
+     
+  LONG-TERM DATA:
+     None.
+   
+  MCU HARDWARE:
+     None.
+
+  PRE-CONDITION CHECKS:
+     None.
+
+  POST-CONDITION CHECKS:
+     None.
+
+  ERROR DETECTION / ERROR HANDLING:
+     None.
+
+  RETURN VALUE:
+     Temperature value.
+
+-*----------------------------------------------------------------------------*/
 static float TEMP_SENSOR_Calculate_Value(void)
 {
 	float ret = 0;
@@ -92,11 +189,66 @@ static float TEMP_SENSOR_Calculate_Value(void)
 	return ret;
 }
 
+/*----------------------------------------------------------------------------*-
+  TEMP_SENSOR_Get_Value()
+
+  Return current temperature sensor value.
+   
+  PARAMETERS:
+     None.
+     
+  LONG-TERM DATA:
+     None.
+   
+  MCU HARDWARE:
+     None.
+
+  PRE-CONDITION CHECKS:
+     None.
+
+  POST-CONDITION CHECKS:
+     None.
+
+  ERROR DETECTION / ERROR HANDLING:
+     None.
+
+  RETURN VALUE:
+     Temperature value.
+
+-*----------------------------------------------------------------------------*/
 float TEMP_SENSOR_Get_Value(void)
 {
 	return temperature_value; 
 }
+/*----------------------------------------------------------------------------*-
 
+  I2C1_Init()
+
+  Set up I2C1 configurations.
+
+  PARAMETER:
+     None.
+
+  LONG-TERM DATA:
+     Timeout_us_g (W) --> Not implemented yet
+     Timeout_us_ig (W) --> Not implemented yet
+
+  MCU HARDWARE:
+     I2C1.
+
+  PRE-CONDITION CHECKS:
+     None.
+
+  POST-CONDITION CHECKS:
+     None.
+
+  ERROR DETECTION / ERROR HANDLING:
+     None.
+
+  RETURN VALUE:
+     None.
+
+-*----------------------------------------------------------------------------*/
 static void I2C1_Init(void)
 {
 	I2C_InitTypeDef I2C_InitStruct;
@@ -116,7 +268,34 @@ static void I2C1_Init(void)
 	// Enable I2C1
   I2C_Cmd(I2C1, ENABLE);	
 }
+/*----------------------------------------------------------------------------*-
 
+  I2C1_GPIO_Init()
+
+  Set up I2C1 GPIO pins.
+
+  PARAMETER:
+     None.
+
+  LONG-TERM DATA:
+     None.
+
+  MCU HARDWARE:
+     I2C1 GPIO pins.
+
+  PRE-CONDITION CHECKS:
+     None.
+
+  POST-CONDITION CHECKS:
+     None.
+
+  ERROR DETECTION / ERROR HANDLING:
+     None.
+
+  RETURN VALUE:
+     None.
+
+-*----------------------------------------------------------------------------*/
 static void I2C1_GPIO_Init(void)
 {
 	
