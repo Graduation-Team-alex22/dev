@@ -34,7 +34,7 @@ typedef enum TC_74_STATUS{
     DEVICE_STATUS_LAST_VALUE
 }TC_74_STATUS;
 
-void I2c2_init(void);
+void TC74_init(void);
 	
 /*get temperature reading from the tc74 sensor with the specified device address - returns status*/
 TC_74_STATUS TC74_read_device_temperature(uint8_t *h_i2c, uint8_t device_i2c_address, int8_t *receive_word );
@@ -44,6 +44,7 @@ TC_74_STATUS TC74_device_wake_up(uint8_t *h_i2c, uint8_t device_i2c_address);
 TC_74_STATUS TC74_device_sleep(uint8_t *h_i2c, uint8_t device_i2c_address);
 /*get sensor status*/
 TC_74_STATUS TC74_read_device_status(uint8_t *h_i2c, uint8_t device_i2c_address);
+
 
 
 #endif

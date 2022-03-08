@@ -21,12 +21,13 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
 Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
-E:\Cube Sat EPS\TT\ttrd2-19a-t0401a-v001c - Released 2017-08-17\ttrd2-19a-t0401a-v001c - Released 2017-08-17\project\ttrd_eres02.uvprojx
+C:\Users\Abdelrahman Ahmed\Documents\GitHub\dev\EPS\TT\ttrd2-19a-t0401a-v001c - Released 2017-08-17\ttrd2-19a-t0401a-v001c - Released 2017-08-17\project\ttrd_eres02.uvprojx
 Project File Date:  02/18/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'E:\Program Files\New Folder\keil\ARM\ARMCC\Bin'
 Build target 'STM32F407VG'
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.c...
 compiling eps_state.c...
 ..\source\tasks\eps_soft_error_handling.h(101): warning:  #1-D: last line of file ends without a newline
     */
@@ -37,9 +38,53 @@ compiling eps_state.c...
 ..\source\tasks\eps_state.c(88): warning:  #177-D: function "EPS_update_state_adc_measurements"  was declared but never referenced
   static EPS_soft_error_status EPS_update_state_adc_measurements(volatile EPS_State *state, uint8_t  *hadc_eps){
 ..\source\tasks\eps_state.c: 4 warnings, 0 errors
+compiling eps_obc_communication.c...
+..\source\tasks\eps_obc_communication.h(15): warning:  #1-D: last line of file ends without a newline
+  #endif /* _EPS_OBC_COMMUNICATION_H_ */
+..\source\tasks\eps_obc_communication.c(133): warning:  #177-D: variable "size"  was declared but never referenced
+  	uint16_t size = 0;
+..\source\tasks\eps_obc_communication.c(144): warning:  #1-D: last line of file ends without a newline
+  	
+..\source\tasks\eps_obc_communication.c(16): warning:  #550-D: variable "Tx_buffer_g"  was set but never used
+  static char Tx_buffer_g[uart_temp];
+..\source\tasks\eps_obc_communication.c(17): warning:  #550-D: variable "Tx_buffer_ig"  was set but never used
+  static char Tx_buffer_ig[uart_temp];  // Inverted copy
+..\source\tasks\eps_obc_communication.c(20): warning:  #177-D: variable "Sent_idx_g"  was declared but never referenced
+  static uint32_t Sent_idx_g  = 0;  
+..\source\tasks\eps_obc_communication.c(21): warning:  #177-D: variable "Sent_idx_ig"  was declared but never referenced
+  static uint32_t Sent_idx_ig = ~0;  
+..\source\tasks\eps_obc_communication.c(24): warning:  #177-D: variable "Wait_idx_g"  was declared but never referenced
+  static uint32_t Wait_idx_g  = 0;  
+..\source\tasks\eps_obc_communication.c(25): warning:  #177-D: variable "Wait_idx_ig"  was declared but never referenced
+  static uint32_t Wait_idx_ig = ~0; 
+..\source\tasks\eps_obc_communication.c(29): warning:  #550-D: variable "Timeout_us_ig"  was set but never used
+  static uint32_t Timeout_us_ig;
+..\source\tasks\eps_obc_communication.c: 10 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.c...
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.c...
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.c...
+compiling tc74.c...
+..\source\tasks\tc74.c(65): warning:  #188-D: enumerated type mixed with another type
+  	 return device_status;
+..\source\tasks\tc74.c(81): warning:  #188-D: enumerated type mixed with another type
+  	 return device_status;
+..\source\tasks\tc74.c(118): warning:  #1-D: last line of file ends without a newline
+  	}
+..\source\tasks\tc74.c(111): warning:  #177-D: variable "res"  was declared but never referenced
+  	 uint8_t res;
+..\source\tasks\tc74.c: 4 warnings, 0 errors
+assembling startup_stm32f407xx.s...
+compiling ttrd2-19a-t0401a-v001a_assert_failed.c...
+compiling system_stm32f4xx.c...
+compiling ttrd2-18a-t0401a-v001a_monittor_i.c...
+compiling ttrd2-19a-t0401a-v001b_predicttor_i.c...
+compiling ttrd2-19a-t0401a-v001b_run_time_tests.c...
+compiling ttrd2-04a-t0401a-v001a_pfc_reporting.c...
+compiling ttrd2-19a-t0401a-v001b_processor.c...
+compiling ttrd2-19a-t0401a-v001c_scheduler.c...
 linking...
 Program Size: Code=17668 RO-data=424 RW-data=1040 ZI-data=2912  
-".\Objects\TTRD-ERES2.axf" - 0 Error(s), 4 Warning(s).
+".\Objects\TTRD-ERES2.axf" - 0 Error(s), 18 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -52,7 +97,7 @@ Package Vendor: Keil
   E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:06
 </pre>
 </body>
 </html>

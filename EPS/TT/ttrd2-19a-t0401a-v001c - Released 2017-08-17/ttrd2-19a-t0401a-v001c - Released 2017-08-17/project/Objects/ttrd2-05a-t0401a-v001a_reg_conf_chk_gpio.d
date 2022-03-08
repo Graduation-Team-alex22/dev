@@ -36,10 +36,10 @@
 .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o: ..\source\hsi_reg_config_checks\../main/../hsi_library/stm32f4xx_dac.h
 .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o: ..\source\hsi_reg_config_checks\../main/../hsi_library/stm32f4xx_dcmi.h
 .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o: ..\source\hsi_reg_config_checks\../main/../hsi_library/stm32f4xx_fsmc.h
-.\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o: ..\source\hsi_reg_config_checks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.h
-.\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o: ..\source\hsi_reg_config_checks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.h
-.\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o: ..\source\hsi_reg_config_checks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h
-.\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o: ..\source\hsi_reg_config_checks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h
+.\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o: ..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.h
+.\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o: ..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.h
+.\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o: ..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h
+.\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o: ..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h
 .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o: ..\source\hsi_reg_config_checks\../main/../port/port.h
 .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o: ..\source\hsi_reg_config_checks\../main/../port/../main/main.h
 .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o: ..\source\hsi_reg_config_checks\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h

@@ -54,6 +54,8 @@ void TC74_init(void){
 I2C_Init(I2C2,&I2C_InitStructure);
 
 }
+
+
  TC_74_STATUS TC74_read_device_temperature(uint8_t *h_i2c, uint8_t device_i2c_address, int8_t *receive_word ) {
 
 	 
