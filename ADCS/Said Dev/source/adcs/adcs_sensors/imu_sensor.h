@@ -1,53 +1,58 @@
+/**********************************************************
+Implementation of the imu module. This module provides an interface
+to the MPU-9255 chip. The chip contains three devices:
+		- 3D Accelerometer
+		- 3D Gyroscope
+		- 3D Compass
+		
+It depends basically on:
+	- I2C peripheral (400KHz)
+
+The module assumes:
+	- MPU pin AD0 is connected to ground
+
+Notes: None
+
+Module Category:	Sensors
+
+Update Stages: Single-Stage
+
+Auther: Mohamed Said (AKA: Alpha_Arslan)
+Date:		2022-03-11
+
+**********************************************************/
+
 #ifndef IMU_SENSOR_H__
 #define IMU_SENSOR_H__
 
-#include "sensors_common.h"
 
-/* IMU LSM9DS0 */
-#define GYRO_ADDR       0x6B
-#define GYRO_VAL        0x28
-#define CTRL_REG1_G     0x20
-#define WHO_AM_I_G      0x0F
-#define GYRO_ID         0xD4
-#define GYRO_GAIN       8.75 / 1e3	// DPS
+#include <stdint.h>
+#include "../hsi_library/stm32f4xx_i2c.h"
 
-#define XM_ADDR         0x1D
-#define XM_CTR_REG      0x1F
-#define WHO_AM_I_XM     0x0F
-#define XM_ID           0x49
-#define XM_VAL          0x08
-#define XM_GAIN         8           // nT/LSB
+#define 	IMU_I2C_CLOCK       400000U
+#define		IMU_I2C_ADD					((uint8_t)0xD0)
+#define 	IMU_WHOIAM_ADD			((uint8_t)0x75)
+#define 	IMU_WHOIAM_VAL			((uint8_t)0x71)
+#define		IMU_PWR_MGMT_1			((uint8_t)0x6B)
+#define		IMU_PWR_MGMT_2			((uint8_t)0x6C)
 
-#define LSM9DS0_TIMEOUT 500         // in ms
-#define LSM9DS0_MASK    0x80
-/* Gyroscope offsets */
-#define AUTO_GYRO_CALIB 0
-#define GYRO_N          100         // Calculate gyroscope offset
-#define GYRO_OFFSET_X   72.38
-#define GYRO_OFFSET_Y   381.63
-#define GYRO_OFFSET_Z   409.60
+#define		IMU_ACCEL_H					((uint8_t)0x3B)
+
 
 typedef struct {
-    int16_t gyr_raw[3];
-    float gyr[3];
-    float gyr_prev[3];
-    float gyr_f[3];
-    float calib_gyr[3];
-    sensor_status_e gyr_status;
+    float Ax, Ay, Az;         /*!< Accelerometer raw data */
+    float Gx, Gy, Gz;         /*!< Gyroscope raw data */
+    float Mx, My, Mz;         /*!< Magnetometer raw data */
+    int16_t Ax_Raw, Ay_Raw, Az_Raw;         /*!< Accelerometer raw data */
+    int16_t Gx_Raw, Gy_Raw, Gz_Raw;         /*!< Gyroscope raw data */
+    int16_t Mx_Raw, My_Raw, Mz_Raw;         /*!< Magnetometer raw data */
+    int16_t	Temprature_Raw;									/*!< Temperature raw data */
 
-    int16_t xm_raw[3];
-    float xm_norm;
-    float xm[3];
-    float xm_prev[3];
-    float xm_f[3];
-    sensor_status_e xm_status;
+    float AMult, GMult, MMult;
 } imu_sensor_t;
 
-void calib_lsm9ds0_gyro(imu_sensor_t *pImuSensor);
-sensor_status_e imu_gyro_init(imu_sensor_t *pImuSensor);
-sensor_status_e imu_gyro_update(imu_sensor_t *pImuSensor);
-sensor_status_e imu_xm_init(imu_sensor_t *pImuSensor);
-sensor_status_e imu_xm_update(imu_sensor_t *pImuSensor);
-
+uint8_t IMU_Init(I2C_TypeDef* I2Cx);
+uint8_t IMU_Update(I2C_TypeDef* I2Cx);
+imu_sensor_t IMU_Get_Data(void);
 
 #endif

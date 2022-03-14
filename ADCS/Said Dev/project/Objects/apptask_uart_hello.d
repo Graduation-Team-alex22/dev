@@ -40,4 +40,5 @@
 .\objects\apptask_uart_hello.o: ..\source\tasks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\apptask_uart_hello.o: ..\source\tasks\apptask_uart_hello.h
 .\objects\apptask_uart_hello.o: ..\source\tasks\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h
-.\objects\apptask_uart_hello.o: ..\source\tasks\../adcs/services_utilities/uart_dma_rx.h
+.\objects\apptask_uart_hello.o: ..\source\tasks\../adcs/adcs_sensors/imu_sensor.h
+.\objects\apptask_uart_hello.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

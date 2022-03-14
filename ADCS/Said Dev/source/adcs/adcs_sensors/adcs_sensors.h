@@ -40,9 +40,9 @@ typedef struct {
 // static adcs_switch_state_t adcs_switch_state = {.sens_sw=SWITCH_ON, .gps_sw=SWITCH_ON};
 
 
-void sensors_init();
-void sensors_update();
-adcs_sensors_t sensors_getData();
+void sensors_init(void);
+void sensors_update(void);
+adcs_sensors_t sensors_getData(void);
 
 
 
@@ -59,11 +59,11 @@ void adcs_pwr_switch_set(adcs_switch_state_t* tmp);
 	turns on/off the hardware (sensors/gps) based
 	on the values in: adcs_switch_state
 */
-void adcs_pwr_switch_update();
+void adcs_pwr_switch_update(void);
 /*
 	returns a copy of: adcs_switch_state
 */
-adcs_switch_state_t adcs_pwr_switch_get();
+adcs_switch_state_t adcs_pwr_switch_get(void);
 
 
 #endif

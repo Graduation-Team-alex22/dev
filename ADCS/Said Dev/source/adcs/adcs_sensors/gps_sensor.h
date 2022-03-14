@@ -60,8 +60,8 @@ typedef struct {
 SAT_returnState gps_parse_fields(uint8_t *buf, const uint8_t size, uint8_t (*res)[NMEA_MAX_FIELDS]);
 SAT_returnState gps_parse_logic(const uint8_t (*res)[NMEA_MAX_FIELDS], gps_sensor_t *pGpsSensor);
 
-void init_gps_uart();
-void get_gps_sentences();
+void init_gps_uart(void);
+void get_gps_sentences(void);
 void init_gps(time_utc_t gps_utc, gps_sensor_t *pGps_sensor);
 void update_gps_alarm_from_flash(time_utc_t gps_utc,
         gps_sensor_t *gps_state_value);

@@ -516,6 +516,7 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
 
          // Report Mode / State (for demo purposes only)
          UART2_BUF_O_Write_String_To_Buffer("NORMAL_M\n");
+				 UART2_BUF_O_Send_All_Data();
 
          // Set up scheduler for 5 ms ticks
          SCH_Init_Microseconds(5000);
@@ -547,7 +548,7 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          // Set up WDT 
          // Timeout is parameter * 125 µs: param 80 => ~10 ms
          // NOTE: WDT driven by RC oscillator - timing varies with temperature            
-         WATCHDOG_Init(80);
+         //WATCHDOG_Init(80);
 
          // Add tasks to schedule.
          // Parameters are:
@@ -566,7 +567,7 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          SCH_Add_Task(ADC1_Update,           0,  100, 36, 35);   // ADC1
          SCH_Add_Task(PROCESSOR_TASK_Update, 0,  200, 17, 2);    // Proc task   
          SCH_Add_Task(UART2_BUF_O_Update,    0,  1,   212, 104); // UART2
-				 SCH_Add_Task(uart_hello_Update,		 0,	 50,	700, 0);
+				 SCH_Add_Task(uart_hello_Update,		 0,	 50,	4000, 0);
 
          // Feed the watchdog
          WATCHDOG_Update();

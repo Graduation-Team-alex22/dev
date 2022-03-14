@@ -75,6 +75,10 @@ void time_update(void){
 			fields (seconds, minutes, ...) are arranged in RTC registers
 			TR (time register) and DR (date register). 
 	*/
+	
+	// pre-condition
+	/*************/
+	
 	uint32_t temp_reg = (RTC->TR & RTC_TR_RESERVED_MASK);
 	time_keeping_adcs.utc.sec = RTC_Bcd2ToByte((uint8_t) temp_reg);
 	time_keeping_adcs.utc.min = RTC_Bcd2ToByte((uint8_t) (temp_reg >> 8));
@@ -89,6 +93,9 @@ void time_update(void){
 	tle_epoch();
 	decyear();
 	julday();
+	
+	// post-condition
+	/*************/
 	
 }
 

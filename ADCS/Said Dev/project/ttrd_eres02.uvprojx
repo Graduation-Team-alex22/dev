@@ -882,14 +882,14 @@
               <FilePath>..\source\adcs\adcs_sensors\tmp_sensor.h</FilePath>
             </File>
             <File>
-              <FileName>tmp_sensor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\source\adcs\adcs_sensors\tmp_sensor.c</FilePath>
-            </File>
-            <File>
               <FileName>sensors_common.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\source\adcs\adcs_sensors\sensors_common.h</FilePath>
+            </File>
+            <File>
+              <FileName>imu_sensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\adcs_sensors\imu_sensor.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -935,16 +935,6 @@
               <FileName>flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\adcs\services_utilities\flash.c</FilePath>
-            </File>
-            <File>
-              <FileName>uart_dma_rx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\source\adcs\services_utilities\uart_dma_rx.c</FilePath>
-            </File>
-            <File>
-              <FileName>uart_dma_rx.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\adcs\services_utilities\uart_dma_rx.h</FilePath>
             </File>
           </Files>
         </Group>

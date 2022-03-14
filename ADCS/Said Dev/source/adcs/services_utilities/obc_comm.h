@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-void update_eps_pkt();
+void update_eps_pkt(void);
 //adcs_error_status init_obc_communication(uint32_t boot_cnt);
 //adcs_error_status update_obc_communication();
 
