@@ -209,13 +209,11 @@ uint8_t IMU_Update(I2C_TypeDef* I2Cx)
 {
 	uint8_t tmpbyte;
 	
-	
 	// Generate start
 	I2C_GenerateSTART(I2Cx, ENABLE); 
 	// Wait for generating the start and take the bus
 	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_MODE_SELECT, MAX_WAIT) == TIMEOUT)
 	{return ERROR_CODE_TIMEOUT;}
-	
 	
 	// Send slave address and select master transmitter mode 
 	I2C_Send7bitAddress(I2Cx, IMU_I2C_ADD, I2C_Direction_Transmitter);
@@ -224,11 +222,9 @@ uint8_t IMU_Update(I2C_TypeDef* I2Cx)
 	{return ERROR_CODE_DEVICE_NOT_CONNECTED;}
 	
 	// sending address of register to be read
-	
 	I2C_SendData(I2Cx, IMU_ACCEL_H);
 	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_TRANSMITTED, MAX_WAIT) == TIMEOUT)
 	{return ERROR_CODE_SEND_FAIL;}
-	
 	
 	
 	/**************** Read Accel ****************/
@@ -236,7 +232,6 @@ uint8_t IMU_Update(I2C_TypeDef* I2Cx)
 	I2C_GenerateSTART(I2Cx, ENABLE); 
 	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_MODE_SELECT, MAX_WAIT) == TIMEOUT)
 	{return ERROR_CODE_TIMEOUT;}
-	
 	
 	// Send slave address and select master receiver mode 
 	I2C_Send7bitAddress(I2Cx, IMU_I2C_ADD, I2C_Direction_Receiver);
@@ -258,6 +253,10 @@ uint8_t IMU_Update(I2C_TypeDef* I2Cx)
 	imu_sensor_data.Ax_Raw |= tmpbyte;
 	imu_sensor_data.Ax = (float)imu_sensor_data.Ax_Raw * 2.0f / 32768.0f;
 	
+	// wait for a byte to be recieved
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_RECV_FAIL;}
+	
 	// ACCEL_YOUT_H
 	tmpbyte = I2C_ReceiveData(I2Cx);
 	imu_sensor_data.Ay_Raw = (int16_t)(tmpbyte << 8);
@@ -271,8 +270,9 @@ uint8_t IMU_Update(I2C_TypeDef* I2Cx)
 	imu_sensor_data.Ay_Raw |= tmpbyte;
 	imu_sensor_data.Ay = (float)imu_sensor_data.Ay_Raw * 2.0f / 32768.0f;
 	
-	// disable ACK before receiving last byte
-	I2C_AcknowledgeConfig(I2Cx, DISABLE);
+	// wait for a byte to be recieved
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_RECV_FAIL;}
 	
 	// ACCEL_ZOUT_H
 	tmpbyte = I2C_ReceiveData(I2Cx);
@@ -287,18 +287,165 @@ uint8_t IMU_Update(I2C_TypeDef* I2Cx)
 	imu_sensor_data.Az_Raw |= tmpbyte;
 	imu_sensor_data.Az = (float)imu_sensor_data.Az_Raw * 2.0f / 32768.0f;
 	
+	// wait for a byte to be recieved
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_RECV_FAIL;}
+	
+	
 	/************** Read Temperature ************/
+	// TEMPRATURE_H
+	tmpbyte = I2C_ReceiveData(I2Cx);
+	imu_sensor_data.Temprature_Raw = (int16_t)(tmpbyte << 8);
 	
+	// wait for a byte to be recieved
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_RECV_FAIL;}
 	
+	// TEMPRATURE_L
+	tmpbyte = I2C_ReceiveData(I2Cx);
+	imu_sensor_data.Temprature_Raw |= tmpbyte;
+	
+	// wait for a byte to be recieved
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_RECV_FAIL;}
 	
 	/***************** Read Gyro ****************/
+	// GYRO_XOUT_H
+	tmpbyte = I2C_ReceiveData(I2Cx);
+	imu_sensor_data.Gx_Raw = (int16_t)(tmpbyte << 8);
 	
+	// wait for a byte to be recieved
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_RECV_FAIL;}
 	
+	// GYRO_XOUT_L
+	tmpbyte = I2C_ReceiveData(I2Cx);
+	imu_sensor_data.Gx_Raw |= tmpbyte;
+	imu_sensor_data.Gx = (float)imu_sensor_data.Gx_Raw * 250.0f / 32768.0f;
 	
-	/***************** Read Mag *****************/
+	// wait for a byte to be recieved
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_RECV_FAIL;}
+	
+	// GYRO_YOUT_H
+	tmpbyte = I2C_ReceiveData(I2Cx);
+	imu_sensor_data.Gy_Raw = (int16_t)(tmpbyte << 8);
+	
+	// wait for a byte to be recieved
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_RECV_FAIL;}
+	
+	// GYRO_YOUT_L
+	tmpbyte = I2C_ReceiveData(I2Cx);
+	imu_sensor_data.Gy_Raw |= tmpbyte;
+	imu_sensor_data.Gy = (float)imu_sensor_data.Gy_Raw * 250.0f / 32768.0f;
+	
+	// wait for a byte to be recieved
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_RECV_FAIL;}
+	
+	// disable ACK before receiving last byte
+	I2C_AcknowledgeConfig(I2Cx, DISABLE);
+	
+	// GYRO_ZOUT_H
+	tmpbyte = I2C_ReceiveData(I2Cx);
+	imu_sensor_data.Gz_Raw = (int16_t)(tmpbyte << 8);
+	
+	// wait for a byte to be recieved
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_RECV_FAIL;}
+	
+	// GYRO_ZOUT_L
+	tmpbyte = I2C_ReceiveData(I2Cx);
+	imu_sensor_data.Gz_Raw |= tmpbyte;
+	imu_sensor_data.Gz = (float)imu_sensor_data.Gz_Raw * 250.0f / 32768.0f;
 	
 	I2C_GenerateSTOP(I2Cx, ENABLE);
 	I2C_AcknowledgeConfig(I2Cx, ENABLE);
+	
+	/***************** Read Mag *****************/
+	// Generate start
+	I2C_GenerateSTART(I2Cx, ENABLE); 
+	// Wait for generating the start and take the bus
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_MODE_SELECT, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_TIMEOUT;}
+	
+	// Send slave address and select master transmitter mode 
+	I2C_Send7bitAddress(I2Cx, IMU_I2C_ADD, I2C_Direction_Transmitter);
+	// Wait for slave to be acknowledged
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_DEVICE_NOT_CONNECTED;}
+	
+	// sending address of register to be read
+	I2C_SendData(I2Cx, IMU_GYRO_H);
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_TRANSMITTED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_SEND_FAIL;}
+	
+	// generate restart
+	I2C_GenerateSTART(I2Cx, ENABLE); 
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_MODE_SELECT, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_TIMEOUT;}
+	
+	// Send slave address and select master receiver mode 
+	I2C_Send7bitAddress(I2Cx, IMU_I2C_ADD, I2C_Direction_Receiver);
+	
+	// wait for a byte to be recieved
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_RECV_FAIL;}
+	
+	// MAG_XOUT_H
+	tmpbyte = I2C_ReceiveData(I2Cx);
+	imu_sensor_data.Mx_Raw = (int16_t)(tmpbyte << 8);
+	
+	// wait for a byte to be recieved
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_RECV_FAIL;}
+	
+	// MAG_XOUT_L
+	tmpbyte = I2C_ReceiveData(I2Cx);
+	imu_sensor_data.Mx_Raw |= tmpbyte;
+	imu_sensor_data.Mx = (float)imu_sensor_data.Mx_Raw * 10.0f * 4912.0f / 32768.0f;
+	
+	// wait for a byte to be recieved
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_RECV_FAIL;}
+	
+	// MAG_YOUT_H
+	tmpbyte = I2C_ReceiveData(I2Cx);
+	imu_sensor_data.My_Raw = (int16_t)(tmpbyte << 8);
+	
+	// wait for a byte to be recieved
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_RECV_FAIL;}
+	
+	// MAG_YOUT_L
+	tmpbyte = I2C_ReceiveData(I2Cx);
+	imu_sensor_data.My_Raw |= tmpbyte;
+	imu_sensor_data.My = (float)imu_sensor_data.My_Raw * 10.0f * 4912.0f / 32768.0f;
+	
+	// wait for a byte to be recieved
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_RECV_FAIL;}
+	
+	// disable ACK before receiving last byte
+	I2C_AcknowledgeConfig(I2Cx, DISABLE);
+	
+	// MAG_ZOUT_H
+	tmpbyte = I2C_ReceiveData(I2Cx);
+	imu_sensor_data.Mz_Raw = (int16_t)(tmpbyte << 8);
+	
+	// wait for a byte to be recieved
+	if(wait_for_event(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED, MAX_WAIT) == TIMEOUT)
+	{return ERROR_CODE_RECV_FAIL;}
+	
+	// MAG_ZOUT_L
+	tmpbyte = I2C_ReceiveData(I2Cx);
+	imu_sensor_data.Mz_Raw |= tmpbyte;
+	imu_sensor_data.Mz = (float)imu_sensor_data.Mz_Raw * 10.0f * 4912.0f / 32768.0f;
+	
+	I2C_GenerateSTOP(I2Cx, ENABLE);
+	I2C_AcknowledgeConfig(I2Cx, ENABLE);
+	
 	return 0;
 }
 

@@ -37,7 +37,7 @@ Date:		2022-03-11
 #define		IMU_PWR_MGMT_2			((uint8_t)0x6C)
 
 #define		IMU_ACCEL_H					((uint8_t)0x3B)
-
+#define		IMU_GYRO_H					((uint8_t)0x03)
 
 typedef struct {
     float Ax, Ay, Az;         /*!< Accelerometer raw data */

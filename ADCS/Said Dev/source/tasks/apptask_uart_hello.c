@@ -84,7 +84,6 @@ uint32_t uart_hello_Update(void){
 #endif
 	
 #ifdef TEST_IMU
-	UART2_BUF_O_Write_String_To_Buffer("\nIMU test: Acc_X: ");
 	uint8_t error_code = IMU_Update(I2C1);
 	if(error_code)
 	{
@@ -94,10 +93,9 @@ uint32_t uart_hello_Update(void){
 	imu_sensor_t t = IMU_Get_Data();
 	
 	char buf[100];
-	sprintf(buf, "%.8f \t %.8f \t %.8f", t.Ax, t.Ay, t.Az);
+	sprintf(buf, "A: %+.3f %+.3f %+.3f  G: %+.3f %+.3f %+.3f  M: %+.3f %+.3f %+.3f\n",
+								t.Ax, t.Ay, t.Az, t.Gx, t.Gy, t.Gz, t.Mx, t.My, t.Mz);
 	UART2_BUF_O_Write_String_To_Buffer(buf);
-	
-	
 #endif
 
 	// send it away

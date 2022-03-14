@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\TTRD-ERES2.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\TTRD-ERES2.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Mar 14 18:47:25 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Mar 14 20:48:42 2022
 <BR><P>
-<H3>Maximum Stack Usage =        368 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        464 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 uart_hello_Update &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 <P>
@@ -641,7 +641,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8a]"></a>__2sprintf</STRONG> (Thumb, 34 bytes, Stack size 32 bytes, noretval__2sprintf.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 128 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 136 + Unknown Stack Size
 <LI>Call Chain = __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sputc
@@ -650,8 +650,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_hello_Update
 </UL>
 
-<P><STRONG><a name="[8c]"></a>__printf</STRONG> (Thumb, 270 bytes, Stack size 32 bytes, __printf_wp.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32 + Unknown Stack Size
+<P><STRONG><a name="[8c]"></a>__printf</STRONG> (Thumb, 308 bytes, Stack size 40 bytes, __printf_flags_wp.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40 + Unknown Stack Size
 <LI>Call Chain = __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_percent
@@ -692,7 +692,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8b]"></a>_printf_char_common</STRONG> (Thumb, 32 bytes, Stack size 64 bytes, _printf_char_common.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 104 + Unknown Stack Size
 <LI>Call Chain = _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__printf
@@ -1106,7 +1106,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_hello_Init
 </UL>
 
-<P><STRONG><a name="[cd]"></a>IMU_Update</STRONG> (Thumb, 442 bytes, Stack size 16 bytes, imu_sensor.o(i.IMU_Update))
+<P><STRONG><a name="[cd]"></a>IMU_Update</STRONG> (Thumb, 1402 bytes, Stack size 16 bytes, imu_sensor.o(i.IMU_Update))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = IMU_Update &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_SendData
@@ -1948,8 +1948,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 
-<P><STRONG><a name="[72]"></a>uart_hello_Update</STRONG> (Thumb, 128 bytes, Stack size 216 bytes, apptask_uart_hello.o(i.uart_hello_Update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 368 + Unknown Stack Size
+<P><STRONG><a name="[72]"></a>uart_hello_Update</STRONG> (Thumb, 258 bytes, Stack size 312 bytes, apptask_uart_hello.o(i.uart_hello_Update))
+<BR><BR>[Stack]<UL><LI>Max Depth = 464 + Unknown Stack Size
 <LI>Call Chain = uart_hello_Update &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_Update
