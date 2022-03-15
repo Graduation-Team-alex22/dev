@@ -65,8 +65,13 @@ void uart_hello_Init(void){
 	{
 		PROCESSOR_Perform_Safe_Shutdown(error_code);
 	}
-	error_code = IMU_Init(I2C1);
 	
+	// print calibration values
+	imu_sensor_t t = IMU_Get_Data();
+	char buf[100];
+	sprintf(buf, "Calib: %+.3f %+.3f %+.3f \n",
+								 t.M_Calib[0], t.M_Calib[1], t.M_Calib[2]);
+	UART2_BUF_O_Write_String_To_Buffer(buf);
 	
 #endif
 	

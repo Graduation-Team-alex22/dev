@@ -31,13 +31,28 @@ Date:		2022-03-11
 
 #define 	IMU_I2C_CLOCK       400000U
 #define		IMU_I2C_ADD					((uint8_t)0xD0)
+// magnometer device address
+#define		IMU_AKM_ADD					((uint8_t)0x0C << 1)
 #define 	IMU_WHOIAM_ADD			((uint8_t)0x75)
 #define 	IMU_WHOIAM_VAL			((uint8_t)0x71)
 #define		IMU_PWR_MGMT_1			((uint8_t)0x6B)
 #define		IMU_PWR_MGMT_2			((uint8_t)0x6C)
+#define		IMU_MAG_CTRL				((uint8_t)0x0A)
+#define		IMU_MAG_ASAX				((uint8_t)0x10)
 
-#define		IMU_ACCEL_H					((uint8_t)0x3B)
-#define		IMU_GYRO_H					((uint8_t)0x03)
+// magnometer continuous mode 1 (8 Hz)
+#define		IMU_MAG_CONT1				((uint8_t)2)
+// magnometer continuous mode 2 (100 Hz)
+#define		IMU_MAG_CONT2				((uint8_t)6)
+// magnometer 16-bit resolution
+#define		IMU_MAG_16BIT				((uint8_t)1<<4)
+
+#define		IMU_ACCEL_DATA			((uint8_t)0x3B)
+#define		IMU_GYRO_DATA				((uint8_t)0x43)
+#define		IMU_MAG_DATA				((uint8_t)0x03)
+#define		IMU_MAG_ST1					((uint8_t)0x02)
+#define		IMU_INT_PIN_CFG			((uint8_t)0x37)
+#define		IMU_REG_CONFIG			((uint8_t)0x37)
 
 typedef struct {
     float Ax, Ay, Az;         /*!< Accelerometer raw data */
@@ -49,6 +64,8 @@ typedef struct {
     int16_t	Temprature_Raw;									/*!< Temperature raw data */
 
     float AMult, GMult, MMult;
+	
+		float M_Calib[3];
 } imu_sensor_t;
 
 uint8_t IMU_Init(I2C_TypeDef* I2Cx);

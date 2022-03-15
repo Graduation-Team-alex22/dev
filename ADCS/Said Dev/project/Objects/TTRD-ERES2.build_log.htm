@@ -27,10 +27,19 @@ Project File Date:  03/12/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'STM32F446RE'
-compiling ttrd2-19a-t0401a-v001b_predicttor_i.c...
+compiling imu_sensor.c...
+..\source\adcs\adcs_sensors\imu_sensor.c(203): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	calib[0] = (float)(data[0] - 128)/256.0 + 1.0;
+..\source\adcs\adcs_sensors\imu_sensor.c(204): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	calib[1] = (float)(data[1] - 128)/256.0 + 1.0;
+..\source\adcs\adcs_sensors\imu_sensor.c(205): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	calib[2] = (float)(data[2] - 128)/256.0 + 1.0;
+..\source\adcs\adcs_sensors\imu_sensor.c(22): warning:  #177-D: variable "measure_param"  was declared but never referenced
+  } measure_param;
+..\source\adcs\adcs_sensors\imu_sensor.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=26452 RO-data=748 RW-data=1040 ZI-data=2984  
-".\Objects\TTRD-ERES2.axf" - 0 Error(s), 0 Warning(s).
+Program Size: Code=28222 RO-data=746 RW-data=1040 ZI-data=2992  
+".\Objects\TTRD-ERES2.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -43,7 +52,7 @@ Package Vendor: Keil
   C:\Users\bluph\AppData\Local\Arm\Packs\.Download\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>
