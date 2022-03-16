@@ -891,6 +891,16 @@
               <FileType>1</FileType>
               <FilePath>..\source\adcs\adcs_sensors\imu_sensor.c</FilePath>
             </File>
+            <File>
+              <FileName>driver_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\adcs_sensors\driver_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>driver_i2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\adcs\adcs_sensors\driver_i2c.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -1,6 +1,7 @@
 .\objects\imu_sensor.o: ..\source\adcs\adcs_sensors\imu_sensor.c
 .\objects\imu_sensor.o: ..\source\adcs\adcs_sensors\imu_sensor.h
 .\objects\imu_sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\imu_sensor.o: ..\source\adcs\adcs_sensors\driver_i2c.h
 .\objects\imu_sensor.o: ..\source\hsi_library\../hsi_library/stm32f4xx_i2c.h
 .\objects\imu_sensor.o: ..\source\hsi_library\../hsi_library/stm32f4xx.h
 .\objects\imu_sensor.o: ..\source\hsi_library\../hsi_library/core_cm4.h

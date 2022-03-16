@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\TTRD-ERES2.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\TTRD-ERES2.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Tue Mar 15 22:39:22 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Mar 16 02:14:44 2022
 <BR><P>
 <H3>Maximum Stack Usage =        496 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-uart_hello_Update &rArr; IMU_Update &rArr; I2Cx_Recv_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+__rt_entry_main &rArr; main &rArr; PROCESSOR_Init &rArr; PROCESSOR_Configure_Reqd_MoSt &rArr; uart_hello_Init &rArr; IMU_Init &rArr; IMU_Mag_Calib &rArr; I2Cx_Send_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 <P>
 <H3>
 Functions with no stack information
@@ -295,7 +295,7 @@ Global Symbols
 <P><STRONG><a name="[143]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[83]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 488 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 496 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; PROCESSOR_Init &rArr; PROCESSOR_Configure_Reqd_MoSt &rArr; uart_hello_Init &rArr; IMU_Init &rArr; IMU_Mag_Calib &rArr; I2Cx_Send_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1082,7 +1082,7 @@ Global Symbols
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2Cx_Recv_Bytes
 </UL>
 
-<P><STRONG><a name="[c8]"></a>I2Cx_Recv_Bytes</STRONG> (Thumb, 272 bytes, Stack size 32 bytes, imu_sensor.o(i.I2Cx_Recv_Bytes))
+<P><STRONG><a name="[c8]"></a>I2Cx_Recv_Bytes</STRONG> (Thumb, 262 bytes, Stack size 32 bytes, driver_i2c.o(i.I2Cx_Recv_Bytes))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = I2Cx_Recv_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_SendData
@@ -1098,7 +1098,7 @@ Global Symbols
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_Mag_Calib
 </UL>
 
-<P><STRONG><a name="[ca]"></a>I2Cx_Send_Bytes</STRONG> (Thumb, 174 bytes, Stack size 32 bytes, imu_sensor.o(i.I2Cx_Send_Bytes))
+<P><STRONG><a name="[ca]"></a>I2Cx_Send_Bytes</STRONG> (Thumb, 166 bytes, Stack size 32 bytes, driver_i2c.o(i.I2Cx_Send_Bytes))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = I2Cx_Send_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Start
@@ -1114,7 +1114,7 @@ Global Symbols
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_Configure
 </UL>
 
-<P><STRONG><a name="[cb]"></a>IMU_Configure</STRONG> (Thumb, 36 bytes, Stack size 24 bytes, imu_sensor.o(i.IMU_Configure))
+<P><STRONG><a name="[cb]"></a>IMU_Configure</STRONG> (Thumb, 40 bytes, Stack size 24 bytes, imu_sensor.o(i.IMU_Configure))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = IMU_Configure &rArr; I2Cx_Send_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2Cx_Send_Bytes
@@ -1132,7 +1132,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ce]"></a>IMU_Init</STRONG> (Thumb, 142 bytes, Stack size 16 bytes, imu_sensor.o(i.IMU_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = IMU_Init &rArr; IMU_Mag_Calib &rArr; I2Cx_Send_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = IMU_Init &rArr; IMU_Mag_Calib &rArr; I2Cx_Send_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Init
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
@@ -1144,8 +1144,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_hello_Init
 </UL>
 
-<P><STRONG><a name="[d1]"></a>IMU_Mag_Calib</STRONG> (Thumb, 436 bytes, Stack size 48 bytes, imu_sensor.o(i.IMU_Mag_Calib))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = IMU_Mag_Calib &rArr; I2Cx_Send_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[d1]"></a>IMU_Mag_Calib</STRONG> (Thumb, 456 bytes, Stack size 56 bytes, imu_sensor.o(i.IMU_Mag_Calib))
+<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = IMU_Mag_Calib &rArr; I2Cx_Send_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Start
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Get_Timer_State
@@ -1159,15 +1159,15 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_Init
 </UL>
 
-<P><STRONG><a name="[d6]"></a>IMU_Update</STRONG> (Thumb, 592 bytes, Stack size 24 bytes, imu_sensor.o(i.IMU_Update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = IMU_Update &rArr; I2Cx_Recv_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[d6]"></a>IMU_Update</STRONG> (Thumb, 632 bytes, Stack size 32 bytes, imu_sensor.o(i.IMU_Update))
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = IMU_Update &rArr; I2Cx_Recv_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2Cx_Recv_Bytes
 </UL>
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_hello_Update
 </UL>
 
-<P><STRONG><a name="[d0]"></a>IMU_Wakeup</STRONG> (Thumb, 170 bytes, Stack size 24 bytes, imu_sensor.o(i.IMU_Wakeup))
+<P><STRONG><a name="[d0]"></a>IMU_Wakeup</STRONG> (Thumb, 104 bytes, Stack size 24 bytes, imu_sensor.o(i.IMU_Wakeup))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = IMU_Wakeup &rArr; I2Cx_Send_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2Cx_Send_Bytes
@@ -1175,7 +1175,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_Init
 </UL>
 
-<P><STRONG><a name="[cf]"></a>Is_IMU_Connected</STRONG> (Thumb, 44 bytes, Stack size 24 bytes, imu_sensor.o(i.Is_IMU_Connected))
+<P><STRONG><a name="[cf]"></a>Is_IMU_Connected</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, imu_sensor.o(i.Is_IMU_Connected))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = Is_IMU_Connected &rArr; I2Cx_Recv_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2Cx_Recv_Bytes
@@ -1264,7 +1264,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[f2]"></a>PROCESSOR_Init</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 488 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 496 + Unknown Stack Size
 <LI>Call Chain = PROCESSOR_Init &rArr; PROCESSOR_Configure_Reqd_MoSt &rArr; uart_hello_Init &rArr; IMU_Init &rArr; IMU_Mag_Calib &rArr; I2Cx_Send_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Identify_Reqd_MoSt
@@ -1667,9 +1667,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_Char
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Read_Channel
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_Mag_Calib
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2Cx_Send_Bytes
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wait_for_event
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2Cx_Send_Bytes
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_Mag_Calib
 </UL>
 
 <P><STRONG><a name="[ab]"></a>TIMEOUT_T3_USEC_Init</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, ttrd2-05a-t0401a-v001a_timeout_t3.o(i.TIMEOUT_T3_USEC_Init))
@@ -1695,9 +1695,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_Char
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Read_Channel
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_Mag_Calib
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2Cx_Send_Bytes
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wait_for_event
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2Cx_Send_Bytes
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_Mag_Calib
 </UL>
 
 <P><STRONG><a name="[109]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_ClearITPendingBit))
@@ -1816,6 +1816,7 @@ Global Symbols
 <LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Check_Data_Integrity
 </UL>
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_hello_Update
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_hello_Init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
 </UL>
@@ -1965,7 +1966,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[84]"></a>main</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 488 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 496 + Unknown Stack Size
 <LI>Call Chain = main &rArr; PROCESSOR_Init &rArr; PROCESSOR_Configure_Reqd_MoSt &rArr; uart_hello_Init &rArr; IMU_Init &rArr; IMU_Mag_Calib &rArr; I2Cx_Send_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Start
@@ -1975,8 +1976,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[ec]"></a>uart_hello_Init</STRONG> (Thumb, 244 bytes, Stack size 256 bytes, apptask_uart_hello.o(i.uart_hello_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 464 + Unknown Stack Size
+<P><STRONG><a name="[ec]"></a>uart_hello_Init</STRONG> (Thumb, 248 bytes, Stack size 256 bytes, apptask_uart_hello.o(i.uart_hello_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 472 + Unknown Stack Size
 <LI>Call Chain = uart_hello_Init &rArr; IMU_Init &rArr; IMU_Mag_Calib &rArr; I2Cx_Send_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_Init
@@ -1985,6 +1986,7 @@ Global Symbols
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Cmd
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Update
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
@@ -1995,8 +1997,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 
-<P><STRONG><a name="[72]"></a>uart_hello_Update</STRONG> (Thumb, 258 bytes, Stack size 328 bytes, apptask_uart_hello.o(i.uart_hello_Update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 496 + Unknown Stack Size
+<P><STRONG><a name="[72]"></a>uart_hello_Update</STRONG> (Thumb, 258 bytes, Stack size 224 bytes, apptask_uart_hello.o(i.uart_hello_Update))
+<BR><BR>[Stack]<UL><LI>Max Depth = 400 + Unknown Stack Size
 <LI>Call Chain = uart_hello_Update &rArr; IMU_Update &rArr; I2Cx_Recv_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_Update
@@ -2009,6 +2011,17 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
 </UL>
+<P><STRONG><a name="[c9]"></a>wait_for_event</STRONG> (Thumb, 58 bytes, Stack size 24 bytes, driver_i2c.o(i.wait_for_event))
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Start
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Get_Timer_State
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_CheckEvent
+</UL>
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2Cx_Send_Bytes
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2Cx_Recv_Bytes
+</UL>
+
 <P><STRONG><a name="[7e]"></a>_get_lc_numeric</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, lc_numeric_c.o(locale$$code))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = _get_lc_numeric
 </UL>
@@ -2146,7 +2159,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[e0]"></a>PROCESSOR_Configure_Reqd_MoSt</STRONG> (Thumb, 662 bytes, Stack size 16 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt))
-<BR><BR>[Stack]<UL><LI>Max Depth = 480 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 488 + Unknown Stack Size
 <LI>Call Chain = PROCESSOR_Configure_Reqd_MoSt &rArr; uart_hello_Init &rArr; IMU_Init &rArr; IMU_Mag_Calib &rArr; I2Cx_Send_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_hello_Init
@@ -2197,17 +2210,6 @@ Local Symbols
 
 <P><STRONG><a name="[f0]"></a>PROCESSOR_Set_MoSt</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Set_MoSt))
 <BR><BR>[Called By]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Identify_Reqd_MoSt
-</UL>
-
-<P><STRONG><a name="[c9]"></a>wait_for_event</STRONG> (Thumb, 58 bytes, Stack size 24 bytes, imu_sensor.o(i.wait_for_event))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
-</UL>
-<BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Start
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Get_Timer_State
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_CheckEvent
-</UL>
-<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2Cx_Send_Bytes
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2Cx_Recv_Bytes
 </UL>
 
 <P><STRONG><a name="[11d]"></a>_dadd1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, daddsub_clz.o(x$fpl$dadd), UNUSED)

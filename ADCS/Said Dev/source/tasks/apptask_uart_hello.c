@@ -9,6 +9,9 @@
 //#define 	TEST_TIME
 #define			TEST_IMU
 
+
+char buf[100];
+
 void uart_hello_Init(void){
 #ifdef TEST_TIME
 	UART2_BUF_O_Write_String_To_Buffer("\n***RTC test INIT***\n");
@@ -72,6 +75,7 @@ void uart_hello_Init(void){
 	sprintf(buf, "Calib: %+.3f %+.3f %+.3f \n",
 								 t.M_Calib[0], t.M_Calib[1], t.M_Calib[2]);
 	UART2_BUF_O_Write_String_To_Buffer(buf);
+	UART2_BUF_O_Update();
 	
 #endif
 	
@@ -97,7 +101,6 @@ uint32_t uart_hello_Update(void){
 	
 	imu_sensor_t t = IMU_Get_Data();
 	
-	char buf[100];
 	sprintf(buf, "A: %+.3f %+.3f %+.3f  G: %+.3f %+.3f %+.3f  M: %+.3f %+.3f %+.3f\n",
 								t.Ax, t.Ay, t.Az, t.Gx, t.Gy, t.Gz, t.Mx, t.My, t.Mz);
 	UART2_BUF_O_Write_String_To_Buffer(buf);
