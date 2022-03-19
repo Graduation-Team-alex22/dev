@@ -117,3 +117,42 @@ uint8_t I2Cx_Recv_Bytes(I2C_TypeDef* I2Cx, uint8_t device_add, uint8_t reg_add, 
 	return NO_ERROR;
 }
 
+uint8_t I2Cx_Is_Device_Connected(I2C_TypeDef* I2Cx, uint8_t device_add, uint8_t whoiam_reg_add, uint8_t whoiam_reg_val, uint32_t timeout)
+{
+	uint8_t error_code;
+	uint8_t data[1];
+	
+	/************ check if the device is connected ************/
+	error_code = I2Cx_Recv_Bytes(I2Cx, device_add, whoiam_reg_add, data, 1, timeout);
+	if(error_code){ return error_code;}
+	
+	// check for right WHO_I_AM value
+	if( whoiam_reg_add != 0xFF && data[0] != whoiam_reg_val)
+	{
+		return ERROR_CODE_BAD_WHOIAM;
+	}
+	
+	return NO_ERROR;
+}
+
+uint8_t I2Cx_Slave_Scanner(I2C_TypeDef* I2Cx, uint8_t *pDevices, uint8_t max_devices, uint32_t timeout)
+{
+	uint8_t index = 0, i = 1;
+	
+	while(i++ < 128 && index <= max_devices	)
+	{
+		// generate start
+		I2C_GenerateSTART(I2Cx, ENABLE); 
+		if(wait_for_event(I2Cx, I2C_EVENT_MASTER_MODE_SELECT, timeout) == TIMEOUT)
+		{continue;}
+		
+		// Send slave address and select master transmitter mode 
+		I2C_Send7bitAddress(I2Cx, (i << 1), I2C_Direction_Transmitter);
+		// Wait for slave to be acknowledged
+		if(wait_for_event(I2Cx, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED, timeout) == TIMEOUT)
+		{continue;}
+		
+		pDevices[index] = (i << 1);
+		index++;
+	}
+}
