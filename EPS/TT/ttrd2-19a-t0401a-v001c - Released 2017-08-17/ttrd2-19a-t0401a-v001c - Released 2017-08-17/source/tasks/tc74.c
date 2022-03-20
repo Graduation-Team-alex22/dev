@@ -76,7 +76,6 @@ uint16_t device_status;
 
  	 
  		uint8_t device_status = TC74_read_device_status(h_i2c, device_i2c_address);
- 	 
 
 	 return device_status;
  }
