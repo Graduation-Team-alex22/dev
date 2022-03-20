@@ -98,15 +98,27 @@ void TEMP_SENSOR_Init(void)
 -*----------------------------------------------------------------------------*/
 uint32_t TEMP_SENSOR_update(void)
 {
+	// Genetrate I2C start sequence 
+	I2C_GenerateSTART(I2C1, ENABLE);
+	// Wait for generating the start and take the bus
+	while (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_MODE_SELECT));
+	
+	// Send slave address and select master transmitter mode
+	I2C_Send7bitAddress(I2C1, TEMP_SENSOR_ADDRESS,  I2C_Direction_Transmitter);
+	// Wait for slave to be acknowledged
+	while (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
+	
+	// Send the register address to get the data from it
+	I2C_SendData(I2C1, TEMP_REG_ADDRESS);
+	// Wait until data has been written in the data register and is shifted out on the bus
+	while (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
+	
 	// Generate repeated start
 	I2C_GenerateSTART(I2C1, ENABLE); 
 	// Wait for generating the start and take the bus
 	while (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_MODE_SELECT));
-	
-	//Enable acknowledge
-	I2C_AcknowledgeConfig(I2C1, ENABLE);
-	
-	// Send slave address and select master reciever mode 
+		
+	// Send slave address and select master reciever mode 	
 	I2C_Send7bitAddress(I2C1, TEMP_SENSOR_ADDRESS,  I2C_Direction_Receiver);
 	// Wait for slave to be acknowledged
 	while (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
@@ -123,6 +135,9 @@ uint32_t TEMP_SENSOR_update(void)
 	
 	// Stop the communication 
 	I2C_GenerateSTOP(I2C1, ENABLE);
+	
+	//Enable acknowledge
+	I2C_AcknowledgeConfig(I2C1, ENABLE);
 	
 	/*Calculate temperature value and print it using UART*/
 	temperature_value = TEMP_SENSOR_Calculate_Value();

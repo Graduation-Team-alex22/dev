@@ -46,7 +46,7 @@ This code is copyright (c) 2014-2017 SafeTTy Systems Ltd.
 
 // The tick lists for each mode
 // (No tick list for Fail Safe mode)
-#define LENGTH_OF_TICK_LIST_TASKS_NORMAL 508
+#define LENGTH_OF_TICK_LIST_TASKS_NORMAL 506
 
 // Length of "Task Sequence Initialisation Period"
 // See 'ERES2' (Chapter 19) for details.
@@ -95,7 +95,7 @@ uint8_t TICK_LIST_NORMAL[LENGTH_OF_TICK_LIST_TASKS_NORMAL] =
 0,5,                                    // Tick : 0000000047
 0,2,5,                                  // Tick : 0000000048
 0,5,                                    // Tick : 0000000049
-0,2,5,6,                                  // Tick : 0000000050
+0,2,5,                                  // Tick : 0000000050
 0,5,                                    // Tick : 0000000051
 0,2,5,                                  // Tick : 0000000052
 0,5,                                    // Tick : 0000000053
@@ -195,7 +195,7 @@ uint8_t TICK_LIST_NORMAL[LENGTH_OF_TICK_LIST_TASKS_NORMAL] =
 0,5,                                    // Tick : 0000000147
 0,2,5,                                  // Tick : 0000000148
 0,5,                                    // Tick : 0000000149
-0,2,5,6,                                  // Tick : 0000000150
+0,2,5,                                  // Tick : 0000000150
 0,5,                                    // Tick : 0000000151
 0,2,5,                                  // Tick : 0000000152
 0,5,                                    // Tick : 0000000153

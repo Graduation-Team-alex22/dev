@@ -13,6 +13,8 @@ Notes: changing clock settings will affect the RTC tick.
 
 Module Category:	Services
 
+Update Stages: Single-Stage
+
 Auther: Mohamed Said (AKA: Alpha_Arslan)
 Date:		2022-02-23
 
