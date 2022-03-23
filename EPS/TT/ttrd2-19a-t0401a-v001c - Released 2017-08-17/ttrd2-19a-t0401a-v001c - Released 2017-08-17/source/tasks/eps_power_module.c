@@ -8,8 +8,8 @@
 #include "eps_power_module.h"
 #include "stm32f4xx_tim.h"
 #include "stm32f4xx_rcc.h"
-//#include "eps_state.h"
-
+#include "eps_state.h"
+#include "../port/port.h"
 
 //extern ADC_HandleTypeDef hadc;
 //extern TIM_HandleTypeDef htim3;
