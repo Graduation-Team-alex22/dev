@@ -1,6 +1,6 @@
 .\objects\eps_power_module.o: ..\source\tasks\eps_power_module.c
 .\objects\eps_power_module.o: ..\source\tasks\eps_power_module.h
-.\objects\eps_power_module.o: ..\source\hsi_library\stm32f4xx_i2c.h
+.\objects\eps_power_module.o: ..\source\hsi_library\stm32f4xx_adc.h
 .\objects\eps_power_module.o: ..\source\hsi_library\stm32f4xx.h
 .\objects\eps_power_module.o: ..\source\hsi_library\core_cm4.h
 .\objects\eps_power_module.o: E:\Program Files\New Folder\keil\ARM\ARMCC\Bin\..\include\stdint.h
@@ -10,8 +10,8 @@
 .\objects\eps_power_module.o: ..\source\hsi_startup\system_stm32f4xx.h
 .\objects\eps_power_module.o: ..\source\hsi_library\stm32f4xx_conf.h
 .\objects\eps_power_module.o: ..\source\hsi_library\stm32f4xx_adc.h
-.\objects\eps_power_module.o: ..\source\hsi_library\stm32f4xx.h
 .\objects\eps_power_module.o: ..\source\hsi_library\stm32f4xx_crc.h
+.\objects\eps_power_module.o: ..\source\hsi_library\stm32f4xx.h
 .\objects\eps_power_module.o: ..\source\hsi_library\stm32f4xx_dbgmcu.h
 .\objects\eps_power_module.o: ..\source\hsi_library\stm32f4xx_dma.h
 .\objects\eps_power_module.o: ..\source\hsi_library\stm32f4xx_exti.h
@@ -36,3 +36,16 @@
 .\objects\eps_power_module.o: ..\source\hsi_library\stm32f4xx_dac.h
 .\objects\eps_power_module.o: ..\source\hsi_library\stm32f4xx_dcmi.h
 .\objects\eps_power_module.o: ..\source\hsi_library\stm32f4xx_fsmc.h
+.\objects\eps_power_module.o: ..\source\tasks\eps_state.h
+.\objects\eps_power_module.o: ..\source\tasks\eps_soft_error_handling.h
+.\objects\eps_power_module.o: ..\source\tasks\../port/port.h
+.\objects\eps_power_module.o: ..\source\tasks\../port/../main/main.h
+.\objects\eps_power_module.o: ..\source\tasks\../port/../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.h
+.\objects\eps_power_module.o: ..\source\tasks\../port/../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.h
+.\objects\eps_power_module.o: ..\source\tasks\../port/../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h
+.\objects\eps_power_module.o: ..\source\tasks\../port/../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h
+.\objects\eps_power_module.o: ..\source\tasks\../port/../main/../port/port.h
+.\objects\eps_power_module.o: ..\source\tasks\../port/../main/../processor/ttrd2-19a-t0401a-v001b_processor.h
+.\objects\eps_power_module.o: ..\source\tasks\../port/../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h
+.\objects\eps_power_module.o: ..\source\tasks\../port/../main/../scheduler/../main/main.h
+.\objects\eps_power_module.o: ..\source\tasks\../port/../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h

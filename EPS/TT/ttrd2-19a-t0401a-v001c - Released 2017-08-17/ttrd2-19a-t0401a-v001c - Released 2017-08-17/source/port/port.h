@@ -72,8 +72,8 @@
 #ifndef INC_EPS_CONFIGURATION_H_
 #define INC_EPS_CONFIGURATION_H_
 
-#include "stm32l1xx_hal.h"
-#include "eps_soft_error_handling.h"
+//#include "stm32l1xx_hal.h"
+//#include "eps_soft_error_handling.h"
 
 /** @addtogroup eps_configuration
   * @{

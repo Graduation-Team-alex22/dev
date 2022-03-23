@@ -41,11 +41,11 @@ void EPS_PowerModule_init(EPS_PowerModule *module_X, uint32_t starting_pwm_dutyc
 	module_X->incremennt_flag = 1;//start by incrementing
 	//module_X->hadc_power_module = hadc_power_module;
 	module_X->ADC_channel_current = ADC_channel_current;
-	//module_X->ADC_channel_voltage = ADC_channel_voltage;
+	module_X->ADC_channel_voltage = ADC_channel_voltage;
 
 	/*Start pwm with initialized from cube mx pwm duty cycle for timerX at timer_channel.*/
-	//uint16_t HAL_TIM_PWM_Start(htim, timer_channel);
-TIM_TimeBaseInitTypeDef  TIM_3_InitStruct ;
+//  uint16_t HAL_TIM_PWM_Start(htim, timer_channel);
+  TIM_TimeBaseInitTypeDef  TIM_3_InitStruct ;
 	// 	Enable TIM clock 
 	RCC_APB1PeriphResetCmd(RCC_APB1Periph_TIM3, ENABLE);
 	
@@ -87,9 +87,10 @@ TIM_TimeBaseInitTypeDef  TIM_3_InitStruct ;
   * @param  module_right: pointer to right solar panel side power module
   * @retval Error status for handling and debugging.
   */
-uint16_t EPS_PowerModule_init_ALL(EPS_PowerModule *module_top, EPS_PowerModule *module_bottom, EPS_PowerModule *module_left, EPS_PowerModule *module_right){
+uint16_t EPS_PowerModule_init_ALL(EPS_PowerModule *module_top, EPS_PowerModule *module_bottom, EPS_PowerModule *module_left, EPS_PowerModule *module_right)
+{
 
-//	uint16_t error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_ALL;
+uint16_t error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_ALL;
 
 	/*start timer3 pwm base generation (initialized pwm duty cycle from mx must be 0) */
 	//HAL_TIM_Base_Start(&htim3);

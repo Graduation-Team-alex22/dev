@@ -6,8 +6,42 @@
 
 #ifndef _EPS_POWER_MODULE_H_
 #define _EPS_POWER_MODULE_H_
+//////
+//typedef struct
+//{
+//  __IO uint32_t CR1;          /*!< TIM control register 1,              Address offset: 0x00 */
+//  __IO uint32_t CR2;          /*!< TIM control register 2,              Address offset: 0x04 */
+//  __IO uint32_t SMCR;         /*!< TIM slave Mode Control register,     Address offset: 0x08 */
+//  __IO uint32_t DIER;         /*!< TIM DMA/interrupt enable register,   Address offset: 0x0C */
+//  __IO uint32_t SR;           /*!< TIM status register,                 Address offset: 0x10 */
+//  __IO uint32_t EGR;          /*!< TIM event generation register,       Address offset: 0x14 */
+//  __IO uint32_t CCMR1;        /*!< TIM capture/compare mode register 1, Address offset: 0x18 */
+//  __IO uint32_t CCMR2;        /*!< TIM capture/compare mode register 2, Address offset: 0x1C */
+//  __IO uint32_t CCER;         /*!< TIM capture/compare enable register, Address offset: 0x20 */
+//  __IO uint32_t CNT;          /*!< TIM counter register,                Address offset: 0x24 */
+//  __IO uint32_t PSC;          /*!< TIM prescaler register,              Address offset: 0x28 */
+//  __IO uint32_t ARR;          /*!< TIM auto-reload register,            Address offset: 0x2C */
+//  uint32_t      RESERVED12;   /*!< Reserved, 0x30                                            */    
+//  __IO uint32_t CCR1;         /*!< TIM capture/compare register 1,      Address offset: 0x34 */    
+//  __IO uint32_t CCR2;         /*!< TIM capture/compare register 2,      Address offset: 0x38 */    
+//  __IO uint32_t CCR3;         /*!< TIM capture/compare register 3,      Address offset: 0x3C */
+//  __IO uint32_t CCR4;         /*!< TIM capture/compare register 4,      Address offset: 0x40 */
+//  uint32_t      RESERVED17;   /*!< Reserved, 0x44                                            */ 
+//  __IO uint32_t DCR;          /*!< TIM DMA control register,            Address offset: 0x48 */
+//  __IO uint32_t DMAR;         /*!< TIM DMA address for full transfer,   Address offset: 0x4C */
+//  __IO uint32_t OR;           /*!< TIM option register,                 Address offset: 0x50 */
+//} TIM_TypeDef;
 
-
+//typedef struct
+//{
+//  TIM_TypeDef              *Instance;     /*!< Register base address             */
+//  TIM_Base_InitTypeDef     Init;          /*!< TIM Time Base required parameters */
+//  HAL_TIM_ActiveChannel    Channel;       /*!< Active channel                    */
+//  DMA_HandleTypeDef        *hdma[7];      /*!< DMA Handlers array
+//                                             This array is accessed by a @ref TIM_DMA_Handle_index */
+//  HAL_LockTypeDef          Lock;          /*!< Locking object                    */
+//  __IO HAL_TIM_StateTypeDef   State;      /*!< TIM operation state               */
+//}TIM_HandleTypeDef;
 
 
 
@@ -36,7 +70,7 @@ typedef struct {
 	uint32_t timChannel;/**<  assign the proper timer channel assigned to module pwm output*/
 	//ADC_HandleTypeDef *hadc_power_module;/**<  adc handle for voltage and current measurements for each power module*/
 	uint32_t ADC_channel_current;/**<  adc channel; for current measurements for this power module*/
-//	uint32_t ADC_channel_voltage;/**<  adc channel for voltage measurements for this power module*/
+	uint32_t ADC_channel_voltage;/**<  adc channel for voltage measurements for this power module*/
 
 }EPS_PowerModule;
 
