@@ -62,15 +62,16 @@
 #define UART2_TX_PIN       GPIO_Pin_2
 
 //UART3 Tx & Rx Interface
-#define UART3_PORT         GPIOB
-#define UART3_TX_PIN       GPIO_Pin_10
-#define UART3_RX_PIN       GPIO_Pin_11
+#define UART3_PORT        	GPIOB
+#define UART3_RX_PIN      	GPIO_Pin_11
+#define UART3_RX_PINSOURCE	GPIO_PinSource11
 
-
-//I2C1 Interface
-#define I2C1_PORT					`  GPIOB			
+//I2C1 Interface(Temperature sensor)
+#define I2C1_PORT						 GPIOB			
 #define I2C1_SCL_PIN				 GPIO_Pin_6
-#define I2C1_SDA_PIN			`` GPIO_Pin_7
+#define I2C1_SDA_PIN				 GPIO_Pin_7
+
+
 
 
 #endif
