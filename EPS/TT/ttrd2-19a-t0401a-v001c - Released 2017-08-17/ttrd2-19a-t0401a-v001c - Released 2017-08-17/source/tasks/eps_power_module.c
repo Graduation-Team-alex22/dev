@@ -77,13 +77,6 @@ TIM_TimeBaseInitTypeDef  TIM_3_InitStruct ;
 	TIM_SelectOCxM( TIM3, TIM_Channel_2, TIM_OCMode_PWM1);
 	TIM_SelectOCxM( TIM3, TIM_Channel_3, TIM_OCMode_PWM1);
 	TIM_SelectOCxM( TIM3, TIM_Channel_4, TIM_OCMode_PWM1);
-
-
-
-	
-	
-	
-
 }
 
 /**
@@ -227,5 +220,72 @@ void EPS_PowerModule_mppt_update_pwm(EPS_PowerModule *moduleX){
   * @retval None.
   */
 void EPS_PowerModule_mppt_apply_pwm(EPS_PowerModule *moduleX){
+	
+	
+		/*power calculation*/
+
+	volatile uint32_t power_now_avg = moduleX->voltage * moduleX->current;
+	uint32_t duty_cycle = moduleX->pwm_duty_cycle;
+
+
+	/*if solar cell voltage is below threshold, reset mppt point search starting from startup dutycycle*/
+	if(moduleX->voltage<MPPT_VOLTAGE_THRESHOLD){
+
+		duty_cycle = MPPT_STARTUP_PWM_DUTYCYCLE;
+
+	}
+	else{
+
+		uint32_t step_size = MPPT_STEP_SIZE;
+
+		/*decide duty cycle orientation - set increment flag.*/
+		if (power_now_avg  <(moduleX->previous_power)){
+
+			if (moduleX->incremennt_flag>0){
+
+				if(moduleX->voltage  <(moduleX->previous_voltage -5)){
+					moduleX->incremennt_flag = 0;
+				}
+
+			}
+			else{
+				moduleX->incremennt_flag = 1;
+			}
+		}
+		/*add appropriate offset - create new duty cycle.*/
+
+		if(moduleX->incremennt_flag){
+			duty_cycle = duty_cycle+step_size;
+		}
+		else{
+			duty_cycle = duty_cycle-step_size;
+		}
+		/*Check for Overflow and Underflow*/
+		if (duty_cycle>(160+MPPT_STEP_SIZE)){//first check for underflow
+			duty_cycle= MPPT_STARTUP_PWM_DUTYCYCLE;//
+		}
+		if (duty_cycle==(160+MPPT_STEP_SIZE)){//then check for overflow
+			duty_cycle=160;
+		}
+
+	}
+
+	  moduleX->previous_power = power_now_avg;
+	  moduleX->previous_voltage = moduleX->voltage;
+	  moduleX->pwm_duty_cycle = duty_cycle;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
