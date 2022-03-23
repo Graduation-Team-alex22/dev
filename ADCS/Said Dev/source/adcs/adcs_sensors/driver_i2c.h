@@ -18,15 +18,17 @@ Date:		2022-03-15
 #define NO_ERROR													0			// don't change
 #define ERROR_CODE_TIMEOUT 								1
 #define ERROR_CODE_DEVICE_NOT_CONNECTED		2
+#define ERROR_CODE_BAD_WHOIAM							3
 #define	ERROR_CODE_START_FAIL							4
 #define	ERROR_CODE_SEND_FAIL							5
 #define	ERROR_CODE_RECV_FAIL							6
 #define ERROR_CODE_COMM_FAIL							7
 
-
 /************ Public Interfaces ************/
 uint8_t I2Cx_Send_Bytes(I2C_TypeDef* I2Cx, uint8_t device_add, uint8_t reg_add, uint8_t* pData, uint8_t size, uint16_t timeout);
 uint8_t I2Cx_Recv_Bytes(I2C_TypeDef* I2Cx, uint8_t device_add, uint8_t reg_add, uint8_t* pData, uint8_t size, uint16_t timeout);
 uint8_t wait_for_event(I2C_TypeDef* I2Cx, uint32_t event, uint32_t timeout );
+uint8_t I2Cx_Is_Device_Connected(I2C_TypeDef* I2Cx, uint8_t device_add, uint8_t whoiam_reg_add, uint8_t whoiam_reg_val, uint32_t timeout);
+uint8_t I2Cx_Slave_Scanner(I2C_TypeDef* I2Cx,uint8_t *pDevices, uint8_t max_devices, uint32_t timeout);
 
 #endif

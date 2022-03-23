@@ -15,9 +15,9 @@ Notes: None
 
 Module Category:	Sensors
 
-Update Stages: Single-Stage
+Update Stages: 3-Stages
 
-Auther: Mohamed Said (AKA: Alpha_Arslan)
+Auther: Mohamed Said & Ali Fakharany
 Date:		2022-03-11
 
 **********************************************************/

@@ -901,6 +901,11 @@
               <FileType>5</FileType>
               <FilePath>..\source\adcs\adcs_sensors\driver_i2c.h</FilePath>
             </File>
+            <File>
+              <FileName>mgn_sensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\adcs_sensors\mgn_sensor.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

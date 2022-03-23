@@ -45,6 +45,44 @@ void EPS_PowerModule_init(EPS_PowerModule *module_X, uint32_t starting_pwm_dutyc
 
 	/*Start pwm with initialized from cube mx pwm duty cycle for timerX at timer_channel.*/
 	//uint16_t HAL_TIM_PWM_Start(htim, timer_channel);
+TIM_TimeBaseInitTypeDef  TIM_3_InitStruct ;
+	// 	Enable TIM clock 
+	RCC_APB1PeriphResetCmd(RCC_APB1Periph_TIM3, ENABLE);
+	
+	TIM_3_InitStruct.TIM_ClockDivision =TIM_CKD_DIV1;
+	TIM_3_InitStruct.TIM_CounterMode = TIM_CounterMode_Up ;
+	TIM_3_InitStruct.TIM_Period = 0 ;
+	TIM_3_InitStruct.TIM_Prescaler=0xa0;
+	
+	TIM_TimeBaseInit(TIM3, &TIM_3_InitStruct);
+	
+	 TIM_OCInitTypeDef sConfigOC;
+	 sConfigOC.TIM_OCMode= TIM_OCMode_PWM1;
+	 sConfigOC.TIM_OutputState=TIM_OutputState_Enable;
+	 sConfigOC.TIM_Pulse= 0x00;
+	 sConfigOC.TIM_OCPolarity=TIM_OCPolarity_High;
+	 TIM_OC1FastConfig(TIM3,TIM_OCFast_Enable);
+	 TIM_OC1Init(TIM3, &sConfigOC);
+	 TIM_OC2Init(TIM3, &sConfigOC);
+	 TIM_OC3Init(TIM3, &sConfigOC);
+   TIM_OC4Init(TIM3, &sConfigOC);
+	 TIM_SelectOutputTrigger(TIM3, TIM_TRGOSource_Reset);
+	 TIM_SelectMasterSlaveMode(TIM3,TIM_MasterSlaveMode_Disable);
+	 
+		//@brief  Selects the TIM Output Compare Mode.
+  //* @note   This function disables the selected channel before changing the Output
+  //*         Compare Mode. If needed, user has to enable this channel using
+  //*         TIM_CCxCmd() and TIM_CCxNCmd() functions.
+	TIM_SelectOCxM( TIM3, TIM_Channel_1, TIM_OCMode_PWM1);
+	TIM_SelectOCxM( TIM3, TIM_Channel_2, TIM_OCMode_PWM1);
+	TIM_SelectOCxM( TIM3, TIM_Channel_3, TIM_OCMode_PWM1);
+	TIM_SelectOCxM( TIM3, TIM_Channel_4, TIM_OCMode_PWM1);
+
+
+
+	
+	
+	
 
 }
 

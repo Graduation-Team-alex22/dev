@@ -3,7 +3,7 @@
 
 /************ PRIVATE DEFINITIONS ************/
 // Error Codes
-#define 	ERROR_CODE_BAD_WHOIAM		3
+
 
 // Timeout Periods
 #define 	I2C_EVENT_WAIT					50			// microseconds
@@ -50,7 +50,6 @@ static struct	{
 static imu_sensor_t imu_sensor_data;
 
 /***************** PRIVATE FUNC *********************/
-uint8_t Is_IMU_Connected(I2C_TypeDef* I2Cx);
 uint8_t	IMU_Wakeup(I2C_TypeDef* I2Cx);
 uint8_t	IMU_Configure(I2C_TypeDef* I2Cx);
 uint8_t IMU_Mag_Calib(I2C_TypeDef* I2Cx, float* calib);
@@ -94,7 +93,7 @@ uint8_t IMU_Init(I2C_TypeDef* I2Cx)
   TIMEOUT_T3_USEC_Init();
 	
 	// check if the device is connected
-	error_code = Is_IMU_Connected(I2Cx);
+	error_code = I2Cx_Is_Device_Connected(I2Cx, IMU_I2C_ADD, IMU_REG_WHOIAM, IMU_WHOIAM_VAL, I2C_EVENT_WAIT);
 	if(error_code){ return error_code+100;}
 
 	// reset the device, turn off sleep mode, set clock source
@@ -115,24 +114,6 @@ uint8_t IMU_Init(I2C_TypeDef* I2Cx)
 	return 0;
 }
 
-
-uint8_t Is_IMU_Connected(I2C_TypeDef* I2Cx)
-{
-	uint8_t error_code;
-	uint8_t data[1];
-	
-	/************ check if the device is connected ************/
-	error_code = I2Cx_Recv_Bytes(I2Cx, IMU_I2C_ADD, IMU_REG_WHOIAM, data, 1, I2C_EVENT_WAIT);
-	if(error_code){ return error_code;}
-	
-	// check for right WHO_I_AM value
-	if(data[0] != IMU_WHOIAM_VAL)
-	{
-		return ERROR_CODE_BAD_WHOIAM;
-	}
-
-	return 0;
-}
 
 
 uint8_t	IMU_Wakeup(I2C_TypeDef* I2Cx)
