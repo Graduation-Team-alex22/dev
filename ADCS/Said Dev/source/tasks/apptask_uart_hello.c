@@ -4,8 +4,9 @@
 
 //#define 	TEST_TIME
 //#define			TEST_IMU
-#define			TEST_MGN
+//#define			TEST_MGN
 //#define			I2C_SCANNER
+#define    TEST_GPS
 
 #ifdef TEST_IMU
 	#include "../adcs/adcs_sensors/imu_sensor.h"
@@ -15,13 +16,14 @@
 	#include "../adcs/adcs_sensors/mgn_sensor.h"
 #endif
 
-
+#ifdef TEST_GPS
+	#include "../adcs/adcs_sensors/gps_sensor.h"
+	
+#endif
 
 #define SW_PRESSED (0)
 
-
-
-char buf[100];
+char buf[96];
 
 void uart_hello_Init(void){
 #ifdef TEST_TIME
@@ -194,6 +196,27 @@ void uart_hello_Init(void){
 	UART2_BUF_O_Send_All_Data();
 
 #endif
+
+#ifdef TEST_GPS
+
+  //----------set up GPIO pin A1 as usart4 RX pin-----------
+  GPIO_InitTypeDef GPIO_InitStructure;
+  // GPIOB clock enable 
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+  // GPIO config
+  GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_1; 
+  GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF;
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+  GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
+  GPIO_PinAFConfig(GPIOA, GPIO_PinSource1, GPIO_AF_UART4);
+
+  GPS_Sensor_Init(UART4, DMA1_Stream2, DMA_Channel_4);
+	UART2_BUF_O_Write_String_To_Buffer("GPS TEST INIT\n");
+	UART2_BUF_O_Send_All_Data();
+
+#endif
 }
 
 uint32_t uart_hello_Update(void){
@@ -230,7 +253,7 @@ uint32_t uart_hello_Update(void){
 	
 	mgn_sensor_t t = MGN_Sensor_GetData();
 	/*
-	sp/*rintf(buf, "X: %+.4f  Y: %+.4f  Z:%+.4f\n  %6d   %6d   %6d \n",
+	sprintf(buf, "X: %+.4f  Y: %+.4f  Z:%+.4f\n  %6d   %6d   %6d \n",
 								t.mag[0], t.mag[1], t.mag[2], t.raw[0], t.raw[1], t.raw[2]);
 	*/
 	
@@ -264,6 +287,23 @@ uint32_t uart_hello_Update(void){
 	
 #endif
 	
+	
+#ifdef TEST_GPS
+	uint16_t sn = GPS_Sensor_Update();
+	UART2_BUF_O_Write_String_To_Buffer("SN: ");
+	UART2_BUF_O_Write_Number03_To_Buffer(sn);
+	UART2_BUF_O_Write_Char_To_Buffer('\n');
+	
+	GPS_Sensor_GetData(buf);
+	UART2_BUF_O_Write_String_To_Buffer(buf);
+	GPS_Sensor_GetData(buf);
+	UART2_BUF_O_Write_String_To_Buffer(buf);
+	GPS_Sensor_GetData(buf);
+	UART2_BUF_O_Write_String_To_Buffer(buf);
+	
+	
+#endif
 	// send it away
-	return UART2_BUF_O_Update();
+	//UART2_BUF_O_Send_All_Data();
+	return 0;
 }

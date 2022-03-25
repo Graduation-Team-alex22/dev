@@ -260,6 +260,11 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          UART2_BUF_O_Write_String_To_Buffer("\nFAIL_SAFE_S\n");
          UART2_BUF_O_Send_All_Data();
 
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
+					 
          // Trigger "fail safe" behaviour
          PROCESSOR_Perform_Safe_Shutdown(PROCESSOR_Retrieve_PFC());
 
@@ -272,6 +277,11 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_01_PROCESSOR_MEMORY_CHECKS_S\n");
          UART2_BUF_O_Send_All_Data();
 
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
+					 
          // PLACEHOLDER: 
 
          // Here we will add calls to third-party library for checks of
@@ -296,6 +306,11 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_02_SOFTWARE_CONFIGURATION_CHECKS_S\n");
          UART2_BUF_O_Send_All_Data();
 
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
+					 
          // PLACEHOLDER: 
 
          // Here we will check the software configuration (matched to 'Golden Signature')
@@ -317,6 +332,11 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_03_ENVIRONMENT_CHECKS_S\n");
          UART2_BUF_O_Send_All_Data();
 
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
+					 
          // Here we check only the CPU temperature 
          // via the sensor on the STM32F401, which is linked to ADC1
          ADC1_Init();
@@ -357,7 +377,12 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          // Report Mode / State (for demo purposes only)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_04_WDT_CHECK_S\n");
          UART2_BUF_O_Send_All_Data();
-
+				 
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(200));
+					 
          // See ERES2, Chapter 16
 
          // NOTE:
@@ -386,6 +411,11 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_05a_SCHEDULER_OSC_CHECK_M\n");
          UART2_BUF_O_Send_All_Data();
 
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
+					 
          // Having confirmed that the iWDT is operational,
          // we now use this component to test the scheduler operation
          // (and the MCU oscillator frequency, using the iWDT osc as a benchmark)
@@ -425,6 +455,11 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_05b_SCHEDULER_OSC_CHECK_M\n");
          UART2_BUF_O_Send_All_Data();
 
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
+					 
          // This is the second part of our scheduler / oscillator check
 
          // In this test, we should *not* refresh the iWDT correctly: 
@@ -457,6 +492,11 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_06a_MONITTOR_ORUN_CHECK_M\n");
          UART2_BUF_O_Send_All_Data();
 
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
+					 
          // See ERES2, Chapter 18
          
          // Set up the scheduler
@@ -477,7 +517,12 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          {
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_06b_MONITTOR_URUN_CHECK_M\n");
          UART2_BUF_O_Send_All_Data();
-
+         
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
+					 
          // See ERES2, Chapter 18
          
          // Set up the scheduler 
@@ -516,6 +561,22 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
 
          // Report Mode / State (for demo purposes only)
          UART2_BUF_O_Write_String_To_Buffer("NORMAL_M\n");
+				 UART2_BUF_O_Send_All_Data();
+					 
+				 UART2_BUF_O_Write_String_To_Buffer("Inshallah the dots will connect one day 101010101\n");
+				 UART2_BUF_O_Write_String_To_Buffer("Inshallah the dots will connect one day 101010101\n");
+				 UART2_BUF_O_Write_String_To_Buffer("Inshallah the dots will connect one day 101010101\n");
+				 UART2_BUF_O_Write_String_To_Buffer("Inshallah the dots will connect one day 101010101\n");
+				// UART2_BUF_O_Write_String_To_Buffer("Inshallah the dots will connect one day 101010101\n");
+				// UART2_BUF_O_Write_String_To_Buffer("Inshallah the dots will connect one day 101010101\n");
+				// UART2_BUF_O_Write_String_To_Buffer("Inshallah the dots will connect one day 101010101\n");
+				// UART2_BUF_O_Write_String_To_Buffer("Inshallah the dots will connect one day 101010101\n");
+				 UART2_BUF_O_Send_All_Data();
+					 
+				 UART2_BUF_O_Write_String_To_Buffer("NORMAL_M3\n");
+				 UART2_BUF_O_Send_All_Data();
+					 
+				 UART2_BUF_O_Write_String_To_Buffer("NORMAL_M4\n");
 				 UART2_BUF_O_Send_All_Data();
 
          // Set up scheduler for 5 ms ticks
@@ -565,13 +626,13 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          SCH_Add_Task(HEARTBEAT_SW_Update,   0,  200, 7,  0/*6*/);    // Heartbeat
          SCH_Add_Task(SWITCH_BUTTON1_Update, 10, 2,   8,  0/*7*/);    // Switch
          SCH_Add_Task(ADC1_Update,           0,  100, 36, 35);   // ADC1
-         SCH_Add_Task(PROCESSOR_TASK_Update, 0,  200, 17, 2);    // Proc task   
-         SCH_Add_Task(UART2_BUF_O_Update,    0,  1,   212, 104); // UART2
-				 SCH_Add_Task(uart_hello_Update,		 0,	 100,	4000, 0);
+         SCH_Add_Task(PROCESSOR_TASK_Update, 0,  200, 40, 2);    // Proc task   
+         SCH_Add_Task(UART2_BUF_O_Update,    0,  1,   212, 0); // UART2
+				 SCH_Add_Task(uart_hello_Update,		 1,	 50,	4000, 0);
 
          // Feed the watchdog
          WATCHDOG_Update();
-
+				 
          break;
          }
       }
@@ -922,7 +983,7 @@ void PROCESSOR_Perform_Safe_Shutdown(const uint32_t PFC)
       PROCESSOR_Change_MoSt();
       }
 
-   if (WDT_state == WDT_UNKNOWN_STATE)
+   if (WDT_state == WDT_UNKNOWN_STATE )
       {
       // Reset (with the aim of disabling the iWDT, just in case)
       PROCESSOR_Store_Reqd_MoSt(FAIL_SAFE_S);
@@ -930,11 +991,16 @@ void PROCESSOR_Perform_Safe_Shutdown(const uint32_t PFC)
       PROCESSOR_Change_MoSt();
       }
 
-   // If we've got this far, we assume that the iWDT is *not* running
+   // If we've got this far, we assume that the iWDT is *not* running (we are in FAIL_SAFE mode already)
 
+		// stop the schedular just in case, disable the interrupt of TIM2
+		NVIC->ICER[TIM2_IRQn >> 0x05] =
+		(uint32_t)0x01 << (TIM2_IRQn & (uint8_t)0x1F);
+			
    // Set up 'Heartbeat' LED pin to report the PFC
    REPORT_PFC_Init();
 
+			
    while(1)
       {
       // 0.5-second delay (max timeout is ~65 ms => we use 50 ms x 10)
