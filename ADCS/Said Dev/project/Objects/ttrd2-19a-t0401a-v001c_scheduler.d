@@ -40,3 +40,4 @@
 .\objects\ttrd2-19a-t0401a-v001c_scheduler.o: ..\source\scheduler\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\ttrd2-19a-t0401a-v001c_scheduler.o: ..\source\scheduler\ttrd2-18a-t0401a-v001a_monittor_i.h
 .\objects\ttrd2-19a-t0401a-v001c_scheduler.o: ..\source\scheduler\ttrd2-19a-t0401a-v001b_predicttor_i.h
+.\objects\ttrd2-19a-t0401a-v001c_scheduler.o: ..\source\scheduler\../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h

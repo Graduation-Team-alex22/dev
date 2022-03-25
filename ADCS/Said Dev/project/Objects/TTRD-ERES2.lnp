@@ -65,6 +65,7 @@
 ".\objects\imu_sensor.o"
 ".\objects\driver_i2c.o"
 ".\objects\mgn_sensor.o"
+".\objects\gps_sensor.o"
 ".\objects\time.o"
 ".\objects\flash.o"
 --strict --scatter ".\Objects\TTRD-ERES2.sct"

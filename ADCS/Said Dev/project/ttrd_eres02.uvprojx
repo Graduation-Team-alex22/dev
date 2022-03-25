@@ -906,6 +906,11 @@
               <FileType>1</FileType>
               <FilePath>..\source\adcs\adcs_sensors\mgn_sensor.c</FilePath>
             </File>
+            <File>
+              <FileName>gps_sensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\adcs_sensors\gps_sensor.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
