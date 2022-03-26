@@ -152,18 +152,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>346</LineNumber>
+          <LineNumber>39</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134233252</Address>
+          <Address>134243916</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\source\scheduler\ttrd2-18a-t0401a-v001a_monittor_i.c</Filename>
+          <Filename>..\source\adcs\adcs_sensors\gps_sensor.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\TTRD_ERES2\../source/scheduler/ttrd2-18a-t0401a-v001a_monittor_i.c\346</Expression>
+          <Expression>\\TTRD_ERES2\../source/adcs/adcs_sensors/gps_sensor.c\39</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -214,7 +214,7 @@
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>0</SubType>
-          <ItemText>Tx_buffer_g</ItemText>
+          <ItemText>tr_gpgsa.pStr+10</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow1>

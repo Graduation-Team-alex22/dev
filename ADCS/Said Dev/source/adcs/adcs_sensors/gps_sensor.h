@@ -20,10 +20,37 @@
 #define GPS_BAUDRATE		9600
 #define GPS_RX_BUFFER_SIZE ((uint16_t)512)
 
+typedef struct {
+    double x;
+    double y;
+    double z;
+} xyz_t;
+
+typedef enum {
+    GPS_ERROR_FLASH = 0,
+    GPS_OFF,
+    GPS_UNLOCK,
+    GPS_RESET
+} _gps_status;
+
+typedef struct {
+    uint8_t d3fix;
+    xyz_t p_gps_ecef; // in km
+    xyz_t v_gps_ecef; // in km/s
+    float utc_time;
+    double sec;
+    uint16_t week;
+    uint8_t num_sat;
+    _gps_status status;
+    uint8_t reset_flag;
+		float DOP[3];
+} gps_sensor_t;
 
 uint8_t GPS_Sensor_Init(USART_TypeDef * uartx, DMA_Stream_TypeDef * DMA_streamx, uint32_t DMA_channelx);
 uint16_t GPS_Sensor_Update(void);
 uint8_t GPS_Sensor_GetData(char * buf);
+gps_sensor_t get_struct(void);
+
 
 
 /*
@@ -46,28 +73,8 @@ uint8_t GPS_Sensor_GetData(char * buf);
 #define NMEA_LSV_VZ_WGS     5
 #define NMEA_GGA_TIME       1
 #define NMEA_GGA_NUM_SAT    7
-typedef struct {
-    double x;
-    double y;
-    double z;
-} xyz_t;
-typedef enum {
-    GPS_ERROR_FLASH = 0,
-    GPS_OFF,
-    GPS_UNLOCK,
-    GPS_RESET
-} _gps_status;
-typedef struct {
-    uint8_t d3fix;
-    xyz_t p_gps_ecef; // in km
-    xyz_t v_gps_ecef; // in km/s
-    float utc_time;
-    double sec;
-    uint16_t week;
-    uint8_t num_sat;
-    _gps_status status;
-    uint8_t reset_flag;
-} gps_sensor_t;
+
+
 //SAT_returnState gps_parse_fields(uint8_t *buf, const uint8_t size, uint8_t (*res)[NMEA_MAX_FIELDS]);
 //SAT_returnState gps_parse_logic(const uint8_t (*res)[NMEA_MAX_FIELDS], gps_sensor_t *pGpsSensor);
 void init_gps_uart();

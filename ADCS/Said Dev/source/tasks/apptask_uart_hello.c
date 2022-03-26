@@ -289,21 +289,32 @@ uint32_t uart_hello_Update(void){
 	
 	
 #ifdef TEST_GPS
+
+	char buff[20] = {0};
+	gps_sensor_t t;
+	
 	uint16_t sn = GPS_Sensor_Update();
-	UART2_BUF_O_Write_String_To_Buffer("SN: ");
-	UART2_BUF_O_Write_Number03_To_Buffer(sn);
-	UART2_BUF_O_Write_Char_To_Buffer('\n');
+	sprintf(buff, "SN: %d \n", sn);
+	UART2_BUF_O_Write_String_To_Buffer(buff);
 	
-	GPS_Sensor_GetData(buf);
+	sn = GPS_Sensor_GetData(buf);
+	t = get_struct();
+	sprintf(buff, "TR: %d \t DOP:  %.2f  %.2f  %.2f\n", sn, t.DOP[0], t.DOP[1], t.DOP[2]);
+	UART2_BUF_O_Write_String_To_Buffer(buff);
 	UART2_BUF_O_Write_String_To_Buffer(buf);
-	GPS_Sensor_GetData(buf);
+	sn = GPS_Sensor_GetData(buf);
+	t = get_struct();
+	sprintf(buff, "TR: %d \t DOP:  %.2f  %.2f  %.2f\n", sn, t.DOP[0], t.DOP[1], t.DOP[2]);
+	UART2_BUF_O_Write_String_To_Buffer(buff);
 	UART2_BUF_O_Write_String_To_Buffer(buf);
-	GPS_Sensor_GetData(buf);
+	sn = GPS_Sensor_GetData(buf);
+	t = get_struct();
+	sprintf(buff, "TR: %d \t DOP:  %.2f  %.2f  %.2f\n", sn, t.DOP[0], t.DOP[1], t.DOP[2]);
+	UART2_BUF_O_Write_String_To_Buffer(buff);
 	UART2_BUF_O_Write_String_To_Buffer(buf);
-	
 	
 #endif
 	// send it away
-	//UART2_BUF_O_Send_All_Data();
+	UART2_BUF_O_Send_All_Data();
 	return 0;
 }
