@@ -290,26 +290,40 @@ uint32_t uart_hello_Update(void){
 	
 #ifdef TEST_GPS
 
-	char buff[20] = {0};
+	char buff[50] = {0};
 	gps_sensor_t t;
 	
 	uint16_t sn = GPS_Sensor_Update();
-	sprintf(buff, "SN: %d \n", sn);
+	sprintf(buff, "\nSN: %d \n", sn);
 	UART2_BUF_O_Write_String_To_Buffer(buff);
 	
 	sn = GPS_Sensor_GetData(buf);
 	t = get_struct();
-	sprintf(buff, "TR: %d \t DOP:  %.2f  %.2f  %.2f\n", sn, t.DOP[0], t.DOP[1], t.DOP[2]);
+	sprintf(buff, "TR: %d \n DOP:  %.2f  %.2f  %.2f\n", sn, t.DOP[0], t.DOP[1], t.DOP[2]);
+	UART2_BUF_O_Write_String_To_Buffer(buff);
+	sprintf(buff, "TIME: %.2f  LAT: %f  LON: %5.5f  ALT: %2.2f\n",t.utc_time, t.p_gps_lla[0], t.p_gps_lla[1], t.p_gps_lla[2]);
+	UART2_BUF_O_Write_String_To_Buffer(buff);
+	sprintf(buff, "FIX: %d  SatNum: %2d\n",t.d3fix, t.num_sat);
 	UART2_BUF_O_Write_String_To_Buffer(buff);
 	UART2_BUF_O_Write_String_To_Buffer(buf);
+	
 	sn = GPS_Sensor_GetData(buf);
 	t = get_struct();
-	sprintf(buff, "TR: %d \t DOP:  %.2f  %.2f  %.2f\n", sn, t.DOP[0], t.DOP[1], t.DOP[2]);
+	sprintf(buff, "TR: %d \n DOP:  %.2f  %.2f  %.2f\n", sn, t.DOP[0], t.DOP[1], t.DOP[2]);
+	UART2_BUF_O_Write_String_To_Buffer(buff);
+	sprintf(buff, "TIME: %.2f  LAT: %f  LON: %5.5f  ALT: %2.2f\n",t.utc_time, t.p_gps_lla[0], t.p_gps_lla[1], t.p_gps_lla[2]);
+	UART2_BUF_O_Write_String_To_Buffer(buff);
+	sprintf(buff, "FIX: %d  SatNum: %2d\n",t.d3fix, t.num_sat);
 	UART2_BUF_O_Write_String_To_Buffer(buff);
 	UART2_BUF_O_Write_String_To_Buffer(buf);
+	
 	sn = GPS_Sensor_GetData(buf);
 	t = get_struct();
-	sprintf(buff, "TR: %d \t DOP:  %.2f  %.2f  %.2f\n", sn, t.DOP[0], t.DOP[1], t.DOP[2]);
+	sprintf(buff, "TR: %d \n DOP:  %.2f  %.2f  %.2f\n", sn, t.DOP[0], t.DOP[1], t.DOP[2]);
+	UART2_BUF_O_Write_String_To_Buffer(buff);
+	sprintf(buff, "TIME: %.2f  LAT: %f  LON: %5.5f  ALT: %2.2f\n",t.utc_time, t.p_gps_lla[0], t.p_gps_lla[1], t.p_gps_lla[2]);
+	UART2_BUF_O_Write_String_To_Buffer(buff);
+	sprintf(buff, "FIX: %d  SatNum: %2d\n",t.d3fix, t.num_sat);
 	UART2_BUF_O_Write_String_To_Buffer(buff);
 	UART2_BUF_O_Write_String_To_Buffer(buf);
 	

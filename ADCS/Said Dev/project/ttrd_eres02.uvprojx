@@ -956,6 +956,11 @@
               <FileType>1</FileType>
               <FilePath>..\source\adcs\services_utilities\flash.c</FilePath>
             </File>
+            <File>
+              <FileName>common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\services_utilities\common.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

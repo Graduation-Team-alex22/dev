@@ -1,6 +1,8 @@
 #ifndef COMMON_H__
 #define COMMON_H__
 
+#include "stdint.h"
+
 #define PI      3.141592654
 #define TWOPI   6.283185308
 #define HALFPI  1.570796327
@@ -37,5 +39,10 @@
 #define RHO     5.75E-13    // Atmospheric Density Kg/m^3 in 400 km
 #define MASS    2.3         // Mass of cubesat in Kg
 #define AREA    0.1*0.1     // Cross-sectional effective Area m^2
+
+double str_to_float(char* str, uint8_t length);
+double str_to_float_nl(char* str, uint8_t* get_len);
+inline uint8_t is_digit(char c);
+
 
 #endif

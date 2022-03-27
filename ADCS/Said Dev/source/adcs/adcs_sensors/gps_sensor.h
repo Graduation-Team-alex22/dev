@@ -34,16 +34,17 @@ typedef enum {
 } _gps_status;
 
 typedef struct {
-    uint8_t d3fix;
-    xyz_t p_gps_ecef; // in km
-    xyz_t v_gps_ecef; // in km/s
-    float utc_time;
+    uint8_t d3fix;               // 0 no fix , 1 fix , 2 differential fix
+    xyz_t p_gps_ecef;            // in km
+		double p_gps_lla[3];			   // altitude in meters - from sea level
+    xyz_t v_gps_ecef;            // in km/s
+    float utc_time;              // HHMMSS.xx
     double sec;
     uint16_t week;
-    uint8_t num_sat;
+    uint8_t num_sat;             // number of GPS satellites in vision
     _gps_status status;
     uint8_t reset_flag;
-		float DOP[3];
+	  float DOP[3];                // Delusion of precision (lower is better) - order: P H V
 } gps_sensor_t;
 
 uint8_t GPS_Sensor_Init(USART_TypeDef * uartx, DMA_Stream_TypeDef * DMA_streamx, uint32_t DMA_channelx);

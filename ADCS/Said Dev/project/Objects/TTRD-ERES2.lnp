@@ -68,6 +68,7 @@
 ".\objects\gps_sensor.o"
 ".\objects\time.o"
 ".\objects\flash.o"
+".\objects\common.o"
 --strict --scatter ".\Objects\TTRD-ERES2.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
