@@ -2140,7 +2140,7 @@ I (..\source\hsi_library\../support_functions/../main/../port/../main/main.h)(0x
 I (..\source\hsi_library\../support_functions/../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\hsi_library\../support_functions/../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x6200171B)
 I (..\source\hsi_library\../support_functions/../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
-F (..\source\adcs\adcs_sensors\gps_sensor.c)(0x623FBC06)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-IC:\Users\bluph\AppData\Local\Arm\Packs\.Download\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F446xx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX -DUSE_HSE_BYPASS-o .\objects\gps_sensor.o --omf_browse .\objects\gps_sensor.crf --depend .\objects\gps_sensor.d)
+F (..\source\adcs\adcs_sensors\gps_sensor.c)(0x623FC892)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-IC:\Users\bluph\AppData\Local\Arm\Packs\.Download\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F446xx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX -DUSE_HSE_BYPASS-o .\objects\gps_sensor.o --omf_browse .\objects\gps_sensor.crf --depend .\objects\gps_sensor.d)
 I (..\source\adcs\adcs_sensors\gps_sensor.h)(0x623FBB04)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x602577DE)
 I (..\source\hsi_library\../hsi_library/stm32f4xx_usart.h)(0x586B3C30)
@@ -2169,7 +2169,7 @@ I (..\source\hsi_library\../hsi_library/stm32f4xx_syscfg.h)(0x581CC67C)
 I (..\source\hsi_library\../hsi_library/stm32f4xx_tim.h)(0x581CC67C)
 I (..\source\hsi_library\../hsi_library/stm32f4xx_wwdg.h)(0x581CC67C)
 I (..\source\hsi_library\../hsi_library/misc.h)(0x581CC67C)
-I (..\source\adcs\adcs_sensors\../services_utilities/common.h)(0x623F7DE1)
+I (..\source\adcs\adcs_sensors\../services_utilities/nmea_parsing.h)(0x623FC97A)
 F (..\source\adcs\services_utilities\services.h)(0x620EAAC8)()
 F (..\source\adcs\services_utilities\time.h)(0x622B4025)()
 F (..\source\adcs\services_utilities\obc_comm.h)(0x622CC3B5)()
@@ -2213,6 +2213,11 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x602577DE)
 F (..\source\adcs\services_utilities\common.c)(0x623F7DE1)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-IC:\Users\bluph\AppData\Local\Arm\Packs\.Download\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F446xx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX -DUSE_HSE_BYPASS-o .\objects\common.o --omf_browse .\objects\common.crf --depend .\objects\common.d)
 I (..\source\adcs\services_utilities\common.h)(0x623F7DE1)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x602577DE)
+F (..\source\adcs\services_utilities\nmea_parsing.h)(0x623FC97A)()
+F (..\source\adcs\services_utilities\nmea_parsing.c)(0x623FC6C1)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-IC:\Users\bluph\AppData\Local\Arm\Packs\.Download\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="536" -DSTM32F446xx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX -DUSE_HSE_BYPASS-o .\objects\nmea_parsing.o --omf_browse .\objects\nmea_parsing.crf --depend .\objects\nmea_parsing.d)
+I (..\source\adcs\services_utilities\nmea_parsing.h)(0x623FC97A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x602577DE)
+I (..\source\adcs\services_utilities\../services_utilities/common.h)(0x623F7DE1)
 F (..\source\adcs\adcs_actuators\adcs_actuators.h)(0x620FCB69)()
 F (..\source\adcs\adcs_actuators\mgn_driver.h)(0x620EAAE2)()
 F (..\source\adcs\adcs_actuators\spin_driver.h)(0x620EAAE6)()

@@ -1166,7 +1166,7 @@ Section Cross References
     mgn_sensor.o(i.MGN_Sensor_Update) refers to d2f.o(x$fpl$d2f) for __aeabi_d2f
     mgn_sensor.o(i.MGN_Sensor_Update) refers to mgn_sensor.o(.data) for mgn_I2Cx_g
     mgn_sensor.o(i.MGN_Sensor_Update) refers to mgn_sensor.o(.bss) for mgn_data_g
-    gps_sensor.o(i.GPS_Sensor_GetData) refers to gps_sensor.o(i.sentence_parsing) for sentence_parsing
+    gps_sensor.o(i.GPS_Sensor_GetData) refers to nmea_parsing.o(i.nmea_sentence_parsing) for nmea_sentence_parsing
     gps_sensor.o(i.GPS_Sensor_GetData) refers to gps_sensor.o(.data) for nmea_pointer_g
     gps_sensor.o(i.GPS_Sensor_GetData) refers to gps_sensor.o(.bss) for nmea_sentences_g
     gps_sensor.o(i.GPS_Sensor_Init) refers to ttrd2-19a-t0401a-v001a_assert_failed.o(i.assert_failed) for assert_failed
@@ -1177,32 +1177,15 @@ Section Cross References
     gps_sensor.o(i.GPS_Sensor_Init) refers to stm32f4xx_usart.o(i.USART_Cmd) for USART_Cmd
     gps_sensor.o(i.GPS_Sensor_Init) refers to stm32f4xx_dma.o(i.DMA_Cmd) for DMA_Cmd
     gps_sensor.o(i.GPS_Sensor_Init) refers to stm32f4xx_usart.o(i.USART_DMACmd) for USART_DMACmd
+    gps_sensor.o(i.GPS_Sensor_Init) refers to nmea_parsing.o(i.nmea_parser_init) for nmea_parser_init
     gps_sensor.o(i.GPS_Sensor_Init) refers to gps_sensor.o(.data) for dma_streamx_g
     gps_sensor.o(i.GPS_Sensor_Init) refers to gps_sensor.o(.bss) for Rx_buffer_g
     gps_sensor.o(i.GPS_Sensor_Update) refers to stm32f4xx_dma.o(i.DMA_GetCurrDataCounter) for DMA_GetCurrDataCounter
     gps_sensor.o(i.GPS_Sensor_Update) refers to gps_sensor.o(.data) for dma_streamx_g
     gps_sensor.o(i.GPS_Sensor_Update) refers to gps_sensor.o(.bss) for Rx_buffer_g
+    gps_sensor.o(i.get_struct) refers to nmea_parsing.o(i.nmea_sentence_getOutput) for nmea_sentence_getOutput
     gps_sensor.o(i.get_struct) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
     gps_sensor.o(i.get_struct) refers to gps_sensor.o(.bss) for gps_sensor_data
-    gps_sensor.o(i.lla_f) refers to common.o(i.str_to_float_nl) for str_to_float_nl
-    gps_sensor.o(i.lla_f) refers to basic.o(x$fpl$basic) for __aeabi_dneg
-    gps_sensor.o(i.root_f) refers to gps_sensor.o(i.xnode_proccess) for xnode_proccess
-    gps_sensor.o(i.root_f) refers to gps_sensor.o(.data) for tr_root
-    gps_sensor.o(i.sentence_parsing) refers to gps_sensor.o(i.update_node_func) for update_node_func
-    gps_sensor.o(i.sentence_parsing) refers to gps_sensor.o(i.root_f) for root_f
-    gps_sensor.o(i.sentence_parsing) refers to gps_sensor.o(.data) for tr_root
-    gps_sensor.o(i.time_f) refers to common.o(i.str_to_float) for str_to_float
-    gps_sensor.o(i.time_f) refers to d2f.o(x$fpl$d2f) for __aeabi_d2f
-    gps_sensor.o(i.update_node_func) refers to gps_sensor.o(i.xdop_f) for xdop_f
-    gps_sensor.o(i.update_node_func) refers to gps_sensor.o(.data) for tr_pdop
-    gps_sensor.o(i.update_node_func) refers to gps_sensor.o(i.time_f) for time_f
-    gps_sensor.o(i.update_node_func) refers to gps_sensor.o(i.lla_f) for lla_f
-    gps_sensor.o(i.update_node_func) refers to gps_sensor.o(i.fix_f) for fix_f
-    gps_sensor.o(i.update_node_func) refers to gps_sensor.o(i.satnum_f) for satnum_f
-    gps_sensor.o(i.xdop_f) refers to common.o(i.str_to_float) for str_to_float
-    gps_sensor.o(i.xdop_f) refers to d2f.o(x$fpl$d2f) for __aeabi_d2f
-    gps_sensor.o(.data) refers to gps_sensor.o(.bss) for gps_sensor_data
-    gps_sensor.o(.data) refers to gps_sensor.o(.conststring) for .conststring
     time.o(i.decyear) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
     time.o(i.decyear) refers to dflt_clz.o(x$fpl$dflt) for __aeabi_i2d
     time.o(i.decyear) refers to ddiv.o(x$fpl$ddiv) for __aeabi_ddiv
@@ -1253,6 +1236,26 @@ Section Cross References
     common.o(i.str_to_float) refers to ddiv.o(x$fpl$ddiv) for __aeabi_ddiv
     common.o(i.str_to_float) refers to daddsub_clz.o(x$fpl$dadd) for __aeabi_dadd
     common.o(i.str_to_float_nl) refers to common.o(i.str_to_float) for str_to_float
+    nmea_parsing.o(i.lla_f) refers to common.o(i.str_to_float_nl) for str_to_float_nl
+    nmea_parsing.o(i.lla_f) refers to basic.o(x$fpl$basic) for __aeabi_dneg
+    nmea_parsing.o(i.nmea_parser_init) refers to nmea_parsing.o(i.xdop_f) for xdop_f
+    nmea_parsing.o(i.nmea_parser_init) refers to nmea_parsing.o(.data) for tr_pdop
+    nmea_parsing.o(i.nmea_parser_init) refers to nmea_parsing.o(i.time_f) for time_f
+    nmea_parsing.o(i.nmea_parser_init) refers to nmea_parsing.o(i.lla_f) for lla_f
+    nmea_parsing.o(i.nmea_parser_init) refers to nmea_parsing.o(i.fix_f) for fix_f
+    nmea_parsing.o(i.nmea_parser_init) refers to nmea_parsing.o(i.satnum_f) for satnum_f
+    nmea_parsing.o(i.nmea_sentence_getOutput) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
+    nmea_parsing.o(i.nmea_sentence_getOutput) refers to nmea_parsing.o(.bss) for parser_output
+    nmea_parsing.o(i.nmea_sentence_parsing) refers to nmea_parsing.o(i.root_f) for root_f
+    nmea_parsing.o(i.nmea_sentence_parsing) refers to nmea_parsing.o(.data) for tr_root
+    nmea_parsing.o(i.root_f) refers to nmea_parsing.o(i.xnode_proccess) for xnode_proccess
+    nmea_parsing.o(i.root_f) refers to nmea_parsing.o(.data) for tr_root
+    nmea_parsing.o(i.time_f) refers to common.o(i.str_to_float) for str_to_float
+    nmea_parsing.o(i.time_f) refers to d2f.o(x$fpl$d2f) for __aeabi_d2f
+    nmea_parsing.o(i.xdop_f) refers to common.o(i.str_to_float) for str_to_float
+    nmea_parsing.o(i.xdop_f) refers to d2f.o(x$fpl$d2f) for __aeabi_d2f
+    nmea_parsing.o(.data) refers to nmea_parsing.o(.bss) for parser_output
+    nmea_parsing.o(.data) refers to nmea_parsing.o(.conststring) for .conststring
     __2sprintf.o(.text) refers to _printf_char_common.o(.text) for _printf_char_common
     __2sprintf.o(.text) refers to _sputc.o(.text) for _sputc
     noretval__2sprintf.o(.text) refers to _printf_char_common.o(.text) for _printf_char_common
@@ -2482,16 +2485,16 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
     ../clib/angel/dczerorl2.s                0x00000000   Number         0  __dczerorl2.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_locale_intlibspace.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_locale.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
@@ -2501,63 +2504,63 @@ Image Symbol Table
     ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/bigflt.c                         0x00000000   Number         0  bigflt0.o ABSOLUTE
     ../clib/btod.s                           0x00000000   Number         0  btod.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
     ../clib/locale.s                         0x00000000   Number         0  lc_numeric_c.o ABSOLUTE
     ../clib/longlong.s                       0x00000000   Number         0  lludiv10.o ABSOLUTE
     ../clib/memcpset.s                       0x00000000   Number         0  strcmpv7m.o ABSOLUTE
     ../clib/memcpset.s                       0x00000000   Number         0  rt_memcpy_w.o ABSOLUTE
     ../clib/memcpset.s                       0x00000000   Number         0  rt_memclr_w.o ABSOLUTE
     ../clib/misc.s                           0x00000000   Number         0  printf_stubs.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_dec.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_ss.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_nopercent.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_infnan.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  noretval__2sprintf.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_pad.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_ss_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_intcommon.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _sputc.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_flags.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __2sprintf.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_intcommon.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_ss_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_dec.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  _printf_char_common.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_wp.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_d.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_dec.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_ss.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_dec.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_infnan.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_nopercent.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __2sprintf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  noretval__2sprintf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_pad.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf.o ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent_end.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent.o ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  _printf_f.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_d.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../fplib/basic.s                         0x00000000   Number         0  basic.o ABSOLUTE
@@ -2653,6 +2656,7 @@ Image Symbol Table
     ..\source\adcs\adcs_sensors\mgn_sensor.c 0x00000000   Number         0  mgn_sensor.o ABSOLUTE
     ..\source\adcs\services_utilities\common.c 0x00000000   Number         0  common.o ABSOLUTE
     ..\source\adcs\services_utilities\flash.c 0x00000000   Number         0  flash.o ABSOLUTE
+    ..\source\adcs\services_utilities\nmea_parsing.c 0x00000000   Number         0  nmea_parsing.o ABSOLUTE
     ..\source\adcs\services_utilities\time.c 0x00000000   Number         0  time.o ABSOLUTE
     ..\source\hsi_library\misc.c             0x00000000   Number         0  misc.o ABSOLUTE
     ..\source\hsi_library\stm32f4xx_adc.c    0x00000000   Number         0  stm32f4xx_adc.o ABSOLUTE
@@ -2830,160 +2834,161 @@ Image Symbol Table
     i.GPIO_SetBits                           0x08002818   Section        0  stm32f4xx_gpio.o(i.GPIO_SetBits)
     i.GPS_Sensor_GetData                     0x080028d4   Section        0  gps_sensor.o(i.GPS_Sensor_GetData)
     i.GPS_Sensor_Init                        0x08002930   Section        0  gps_sensor.o(i.GPS_Sensor_Init)
-    i.GPS_Sensor_Update                      0x08002b24   Section        0  gps_sensor.o(i.GPS_Sensor_Update)
-    i.HEARTBEAT_SW_Init                      0x08002c84   Section        0  ttrd2-05a-t0401a-v001a_heartbeat_sw_task.o(i.HEARTBEAT_SW_Init)
-    i.HEARTBEAT_SW_Update                    0x08002cb8   Section        0  ttrd2-05a-t0401a-v001a_heartbeat_sw_task.o(i.HEARTBEAT_SW_Update)
-    i.MONITTORi_Disable                      0x08002d24   Section        0  ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Disable)
-    i.MONITTORi_Init                         0x08002d36   Section        0  ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Init)
-    i.MONITTORi_Start                        0x08002d38   Section        0  ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Start)
-    i.MONITTORi_Stop                         0x08002e40   Section        0  ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Stop)
-    i.NVIC_Init                              0x08002ed4   Section        0  misc.o(i.NVIC_Init)
-    i.NVIC_PriorityGroupConfig               0x08002fa4   Section        0  misc.o(i.NVIC_PriorityGroupConfig)
-    i.PREDICTTORi_Check_Task_Sequence        0x08003004   Section        0  ttrd2-19a-t0401a-v001b_predicttor_i.o(i.PREDICTTORi_Check_Task_Sequence)
-    i.PREDICTTORi_Init                       0x080031cc   Section        0  ttrd2-19a-t0401a-v001b_predicttor_i.o(i.PREDICTTORi_Init)
-    i.PROCESSOR_Change_MoSt                  0x080031e8   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Change_MoSt)
-    i.PROCESSOR_Configure_Reqd_MoSt          0x08003214   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
-    PROCESSOR_Configure_Reqd_MoSt            0x08003215   Thumb Code   932  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
-    i.PROCESSOR_Get_MoSt                     0x080037b0   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Get_MoSt)
-    i.PROCESSOR_Identify_Reqd_MoSt           0x080037d4   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Identify_Reqd_MoSt)
-    PROCESSOR_Identify_Reqd_MoSt             0x080037d5   Thumb Code   104  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Identify_Reqd_MoSt)
-    i.PROCESSOR_Init                         0x0800383c   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Init)
-    i.PROCESSOR_Perform_Safe_Shutdown        0x08003848   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Perform_Safe_Shutdown)
-    i.PROCESSOR_Retrieve_PFC                 0x080038c0   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Retrieve_PFC)
-    PROCESSOR_Retrieve_PFC                   0x080038c1   Thumb Code    26  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Retrieve_PFC)
-    i.PROCESSOR_Retrieve_Reqd_MoSt           0x080038e0   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Retrieve_Reqd_MoSt)
-    PROCESSOR_Retrieve_Reqd_MoSt             0x080038e1   Thumb Code    28  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Retrieve_Reqd_MoSt)
-    i.PROCESSOR_Set_MoSt                     0x08003900   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Set_MoSt)
-    PROCESSOR_Set_MoSt                       0x08003901   Thumb Code    12  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Set_MoSt)
-    i.PROCESSOR_Store_PFC                    0x08003914   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Store_PFC)
-    i.PROCESSOR_Store_Reqd_MoSt              0x08003948   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Store_Reqd_MoSt)
-    i.PROCESSOR_TASK_Init                    0x08003980   Section        0  ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Init)
-    i.PROCESSOR_TASK_Retrieve_State          0x080039a0   Section        0  ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Retrieve_State)
-    PROCESSOR_TASK_Retrieve_State            0x080039a1   Thumb Code    26  ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Retrieve_State)
-    i.PROCESSOR_TASK_Store_State             0x080039c0   Section        0  ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Store_State)
-    PROCESSOR_TASK_Store_State               0x080039c1   Thumb Code    48  ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Store_State)
-    i.PROCESSOR_TASK_Update                  0x080039f4   Section        0  ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Update)
-    i.PWR_BackupAccessCmd                    0x08003ad0   Section        0  stm32f4xx_pwr.o(i.PWR_BackupAccessCmd)
-    i.RCC_AHB1PeriphClockCmd                 0x08003b18   Section        0  stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd)
-    i.RCC_APB1PeriphClockCmd                 0x08003b90   Section        0  stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd)
-    i.RCC_APB2PeriphClockCmd                 0x08003c04   Section        0  stm32f4xx_rcc.o(i.RCC_APB2PeriphClockCmd)
-    i.RCC_ClearFlag                          0x08003c7c   Section        0  stm32f4xx_rcc.o(i.RCC_ClearFlag)
-    i.RCC_GetClocksFreq                      0x08003c90   Section        0  stm32f4xx_rcc.o(i.RCC_GetClocksFreq)
-    i.RCC_GetFlagStatus                      0x08003e58   Section        0  stm32f4xx_rcc.o(i.RCC_GetFlagStatus)
-    i.REG_CONFIG_CHECKS_ADC1_Check           0x08003f0c   Section        0  ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.o(i.REG_CONFIG_CHECKS_ADC1_Check)
-    i.REG_CONFIG_CHECKS_ADC1_Store           0x08003f88   Section        0  ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.o(i.REG_CONFIG_CHECKS_ADC1_Store)
-    i.REG_CONFIG_CHECKS_GPIO_Check           0x08003fcc   Section        0  ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o(i.REG_CONFIG_CHECKS_GPIO_Check)
-    i.REG_CONFIG_CHECKS_GPIO_Store           0x0800425c   Section        0  ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o(i.REG_CONFIG_CHECKS_GPIO_Store)
-    i.REG_CONFIG_CHECKS_UART_Check           0x080043f0   Section        0  ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o(i.REG_CONFIG_CHECKS_UART_Check)
-    i.REG_CONFIG_CHECKS_UART_Store           0x0800453c   Section        0  ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o(i.REG_CONFIG_CHECKS_UART_Store)
-    i.REG_CONFIG_TIMER_Check                 0x08004608   Section        0  ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o(i.REG_CONFIG_TIMER_Check)
-    i.REG_CONFIG_TIMER_Store                 0x080048a8   Section        0  ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o(i.REG_CONFIG_TIMER_Store)
-    i.REPORT_PFC_Init                        0x08004a90   Section        0  ttrd2-04a-t0401a-v001a_pfc_reporting.o(i.REPORT_PFC_Init)
-    i.REPORT_PFC_Update                      0x08004ad0   Section        0  ttrd2-04a-t0401a-v001a_pfc_reporting.o(i.REPORT_PFC_Update)
-    i.RTT_05a_Scheduler_Osc_Test_Update      0x08004b64   Section        0  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_05a_Scheduler_Osc_Test_Update)
-    i.RTT_05b_Scheduler_Osc_Test_Update      0x08004b94   Section        0  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_05b_Scheduler_Osc_Test_Update)
-    i.RTT_06a_MoniTTor_Overrun_Test_Update   0x08004bbc   Section        0  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_06a_MoniTTor_Overrun_Test_Update)
-    i.RTT_06b_MoniTTor_Underrun_Test_Update  0x08004c08   Section        0  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_06b_MoniTTor_Underrun_Test_Update)
-    i.RTT_07_PredicTTor_Test_Update          0x08004c4c   Section        0  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_07_PredicTTor_Test_Update)
-    i.RTT_Startup_04_WDT_Check               0x08004c70   Section        0  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_Startup_04_WDT_Check)
-    i.SCH_Add_Task                           0x08004cec   Section        0  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Add_Task)
-    i.SCH_Dispatch_Tasks                     0x08004dec   Section        0  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Dispatch_Tasks)
-    i.SCH_Init_Microseconds                  0x08004f90   Section        0  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Init_Microseconds)
-    i.SCH_Set_Interrupt_Priority_Levels      0x0800507c   Section        0  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Set_Interrupt_Priority_Levels)
-    i.SCH_Start                              0x080050d4   Section        0  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Start)
-    i.SWITCH_BUTTON1_Get_State               0x080050f8   Section        0  ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Get_State)
-    i.SWITCH_BUTTON1_Init                    0x0800511c   Section        0  ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Init)
-    i.SWITCH_BUTTON1_Update                  0x08005164   Section        0  ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Update)
-    i.SetSysClock                            0x08005204   Section        0  system_stm32f4xx.o(i.SetSysClock)
-    SetSysClock                              0x08005205   Thumb Code   216  system_stm32f4xx.o(i.SetSysClock)
-    i.SysTick_Handler                        0x080052ec   Section        0  ttrd2-18a-t0401a-v001a_monittor_i.o(i.SysTick_Handler)
-    i.SystemInit                             0x08005310   Section        0  system_stm32f4xx.o(i.SystemInit)
-    i.TIM2_IRQHandler                        0x08005378   Section        0  ttrd2-19a-t0401a-v001c_scheduler.o(i.TIM2_IRQHandler)
-    i.TIMEOUT_T3_USEC_Get_Timer_State        0x0800543c   Section        0  ttrd2-05a-t0401a-v001a_timeout_t3.o(i.TIMEOUT_T3_USEC_Get_Timer_State)
-    i.TIMEOUT_T3_USEC_Init                   0x08005464   Section        0  ttrd2-05a-t0401a-v001a_timeout_t3.o(i.TIMEOUT_T3_USEC_Init)
-    i.TIMEOUT_T3_USEC_Start                  0x08005498   Section        0  ttrd2-05a-t0401a-v001a_timeout_t3.o(i.TIMEOUT_T3_USEC_Start)
-    i.TIM_ClearITPendingBit                  0x080054b8   Section        0  stm32f4xx_tim.o(i.TIM_ClearITPendingBit)
-    i.TIM_Cmd                                0x08005580   Section        0  stm32f4xx_tim.o(i.TIM_Cmd)
-    i.TIM_GetCounter                         0x0800566c   Section        0  stm32f4xx_tim.o(i.TIM_GetCounter)
-    i.TIM_ITConfig                           0x08005730   Section        0  stm32f4xx_tim.o(i.TIM_ITConfig)
-    i.TIM_SetCounter                         0x0800582c   Section        0  stm32f4xx_tim.o(i.TIM_SetCounter)
-    i.TIM_TimeBaseInit                       0x080058f4   Section        0  stm32f4xx_tim.o(i.TIM_TimeBaseInit)
-    i.TIM_TimeBaseStructInit                 0x08005a68   Section        0  stm32f4xx_tim.o(i.TIM_TimeBaseStructInit)
-    i.UART2_BUF_O_Check_Data_Integrity       0x08005a7c   Section        0  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Check_Data_Integrity)
-    i.UART2_BUF_O_Init                       0x08005ad0   Section        0  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Init)
-    i.UART2_BUF_O_Send_All_Data              0x08005be8   Section        0  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Send_All_Data)
-    i.UART2_BUF_O_Update                     0x08005c7c   Section        0  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Update)
-    i.UART2_BUF_O_Write_Char_To_Buffer       0x08005c98   Section        0  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_Char_To_Buffer)
-    i.UART2_BUF_O_Write_Number03_To_Buffer   0x08005cf8   Section        0  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_Number03_To_Buffer)
-    i.UART2_BUF_O_Write_Number04_To_Buffer   0x08005d4e   Section        0  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_Number04_To_Buffer)
-    i.UART2_BUF_O_Write_String_To_Buffer     0x08005dbc   Section        0  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_String_To_Buffer)
-    i.USART_ClearFlag                        0x08005dd4   Section        0  stm32f4xx_usart.o(i.USART_ClearFlag)
-    i.USART_Cmd                              0x08005ea8   Section        0  stm32f4xx_usart.o(i.USART_Cmd)
-    i.USART_DMACmd                           0x08005f5c   Section        0  stm32f4xx_usart.o(i.USART_DMACmd)
-    i.USART_Init                             0x08006024   Section        0  stm32f4xx_usart.o(i.USART_Init)
-    i.WATCHDOG_Get_State                     0x08006250   Section        0  ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Get_State)
-    i.WATCHDOG_Init                          0x08006274   Section        0  ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Init)
-    i.WATCHDOG_Update                        0x080062b4   Section        0  ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Update)
-    i.__ARM_fpclassify                       0x080062c8   Section        0  fpclassify.o(i.__ARM_fpclassify)
-    i._is_digit                              0x080062f8   Section        0  __printf_wp.o(i._is_digit)
-    i.assert_failed                          0x08006308   Section        0  ttrd2-19a-t0401a-v001a_assert_failed.o(i.assert_failed)
-    i.fix_f                                  0x08006358   Section        0  gps_sensor.o(i.fix_f)
-    i.get_struct                             0x0800636c   Section        0  gps_sensor.o(i.get_struct)
-    i.lla_f                                  0x08006380   Section        0  gps_sensor.o(i.lla_f)
-    i.main                                   0x080063d8   Section        0  main.o(i.main)
-    i.root_f                                 0x080063e8   Section        0  gps_sensor.o(i.root_f)
-    i.satnum_f                               0x08006440   Section        0  gps_sensor.o(i.satnum_f)
-    i.sentence_parsing                       0x08006468   Section        0  gps_sensor.o(i.sentence_parsing)
-    i.str_to_float                           0x08006480   Section        0  common.o(i.str_to_float)
-    i.str_to_float_nl                        0x08006530   Section        0  common.o(i.str_to_float_nl)
-    i.time_f                                 0x08006570   Section        0  gps_sensor.o(i.time_f)
-    i.uart_hello_Init                        0x080065a4   Section        0  apptask_uart_hello.o(i.uart_hello_Init)
-    i.uart_hello_Update                      0x0800660c   Section        0  apptask_uart_hello.o(i.uart_hello_Update)
-    i.update_node_func                       0x08006904   Section        0  gps_sensor.o(i.update_node_func)
-    i.xdop_f                                 0x0800696c   Section        0  gps_sensor.o(i.xdop_f)
-    i.xnode_proccess                         0x080069a8   Section        0  gps_sensor.o(i.xnode_proccess)
-    locale$$code                             0x08006a20   Section       44  lc_numeric_c.o(locale$$code)
-    x$fpl$basic                              0x08006a4c   Section       24  basic.o(x$fpl$basic)
-    $v0                                      0x08006a4c   Number         0  basic.o(x$fpl$basic)
-    x$fpl$d2f                                0x08006a64   Section       98  d2f.o(x$fpl$d2f)
-    $v0                                      0x08006a64   Number         0  d2f.o(x$fpl$d2f)
-    x$fpl$dadd                               0x08006ac8   Section      336  daddsub_clz.o(x$fpl$dadd)
-    $v0                                      0x08006ac8   Number         0  daddsub_clz.o(x$fpl$dadd)
-    _dadd1                                   0x08006ad9   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
-    x$fpl$ddiv                               0x08006c18   Section      688  ddiv.o(x$fpl$ddiv)
-    $v0                                      0x08006c18   Number         0  ddiv.o(x$fpl$ddiv)
-    ddiv_entry                               0x08006c1f   Thumb Code     0  ddiv.o(x$fpl$ddiv)
-    x$fpl$dflt                               0x08006ec8   Section       46  dflt_clz.o(x$fpl$dflt)
-    $v0                                      0x08006ec8   Number         0  dflt_clz.o(x$fpl$dflt)
-    x$fpl$dnaninf                            0x08006ef6   Section      156  dnaninf.o(x$fpl$dnaninf)
-    $v0                                      0x08006ef6   Number         0  dnaninf.o(x$fpl$dnaninf)
-    x$fpl$dretinf                            0x08006f92   Section       12  dretinf.o(x$fpl$dretinf)
-    $v0                                      0x08006f92   Number         0  dretinf.o(x$fpl$dretinf)
-    x$fpl$dsub                               0x08006fa0   Section      468  daddsub_clz.o(x$fpl$dsub)
-    $v0                                      0x08006fa0   Number         0  daddsub_clz.o(x$fpl$dsub)
-    _dsub1                                   0x08006fb1   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
-    x$fpl$f2d                                0x08007174   Section       86  f2d.o(x$fpl$f2d)
-    $v0                                      0x08007174   Number         0  f2d.o(x$fpl$f2d)
-    x$fpl$fnaninf                            0x080071ca   Section      140  fnaninf.o(x$fpl$fnaninf)
-    $v0                                      0x080071ca   Number         0  fnaninf.o(x$fpl$fnaninf)
-    x$fpl$fpinit                             0x08007256   Section       10  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x08007256   Number         0  fpinit.o(x$fpl$fpinit)
-    x$fpl$fretinf                            0x08007260   Section       10  fretinf.o(x$fpl$fretinf)
-    $v0                                      0x08007260   Number         0  fretinf.o(x$fpl$fretinf)
-    x$fpl$printf1                            0x0800726a   Section        4  printf1.o(x$fpl$printf1)
-    $v0                                      0x0800726a   Number         0  printf1.o(x$fpl$printf1)
-    x$fpl$usenofp                            0x0800726e   Section        0  usenofp.o(x$fpl$usenofp)
-    .constdata                               0x08007270   Section      148  bigflt0.o(.constdata)
-    tenpwrs_x                                0x08007270   Data          60  bigflt0.o(.constdata)
-    tenpwrs_i                                0x080072ac   Data          64  bigflt0.o(.constdata)
-    .conststring                             0x08007304   Section       14  gps_sensor.o(.conststring)
-    locale$$data                             0x08007334   Section       28  lc_numeric_c.o(locale$$data)
-    __lcnum_c_name                           0x08007338   Data           2  lc_numeric_c.o(locale$$data)
-    __lcnum_c_start                          0x08007340   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_point                          0x0800734c   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_thousands                      0x0800734e   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_grouping                       0x0800734f   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_end                            0x08007350   Data           0  lc_numeric_c.o(locale$$data)
+    i.GPS_Sensor_Update                      0x08002b28   Section        0  gps_sensor.o(i.GPS_Sensor_Update)
+    i.HEARTBEAT_SW_Init                      0x08002c88   Section        0  ttrd2-05a-t0401a-v001a_heartbeat_sw_task.o(i.HEARTBEAT_SW_Init)
+    i.HEARTBEAT_SW_Update                    0x08002cbc   Section        0  ttrd2-05a-t0401a-v001a_heartbeat_sw_task.o(i.HEARTBEAT_SW_Update)
+    i.MONITTORi_Disable                      0x08002d28   Section        0  ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Disable)
+    i.MONITTORi_Init                         0x08002d3a   Section        0  ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Init)
+    i.MONITTORi_Start                        0x08002d3c   Section        0  ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Start)
+    i.MONITTORi_Stop                         0x08002e44   Section        0  ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Stop)
+    i.NVIC_Init                              0x08002ed8   Section        0  misc.o(i.NVIC_Init)
+    i.NVIC_PriorityGroupConfig               0x08002fa8   Section        0  misc.o(i.NVIC_PriorityGroupConfig)
+    i.PREDICTTORi_Check_Task_Sequence        0x08003008   Section        0  ttrd2-19a-t0401a-v001b_predicttor_i.o(i.PREDICTTORi_Check_Task_Sequence)
+    i.PREDICTTORi_Init                       0x080031d0   Section        0  ttrd2-19a-t0401a-v001b_predicttor_i.o(i.PREDICTTORi_Init)
+    i.PROCESSOR_Change_MoSt                  0x080031ec   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Change_MoSt)
+    i.PROCESSOR_Configure_Reqd_MoSt          0x08003218   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
+    PROCESSOR_Configure_Reqd_MoSt            0x08003219   Thumb Code   932  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
+    i.PROCESSOR_Get_MoSt                     0x080037b4   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Get_MoSt)
+    i.PROCESSOR_Identify_Reqd_MoSt           0x080037d8   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Identify_Reqd_MoSt)
+    PROCESSOR_Identify_Reqd_MoSt             0x080037d9   Thumb Code   104  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Identify_Reqd_MoSt)
+    i.PROCESSOR_Init                         0x08003840   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Init)
+    i.PROCESSOR_Perform_Safe_Shutdown        0x0800384c   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Perform_Safe_Shutdown)
+    i.PROCESSOR_Retrieve_PFC                 0x080038c4   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Retrieve_PFC)
+    PROCESSOR_Retrieve_PFC                   0x080038c5   Thumb Code    26  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Retrieve_PFC)
+    i.PROCESSOR_Retrieve_Reqd_MoSt           0x080038e4   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Retrieve_Reqd_MoSt)
+    PROCESSOR_Retrieve_Reqd_MoSt             0x080038e5   Thumb Code    28  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Retrieve_Reqd_MoSt)
+    i.PROCESSOR_Set_MoSt                     0x08003904   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Set_MoSt)
+    PROCESSOR_Set_MoSt                       0x08003905   Thumb Code    12  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Set_MoSt)
+    i.PROCESSOR_Store_PFC                    0x08003918   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Store_PFC)
+    i.PROCESSOR_Store_Reqd_MoSt              0x0800394c   Section        0  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Store_Reqd_MoSt)
+    i.PROCESSOR_TASK_Init                    0x08003984   Section        0  ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Init)
+    i.PROCESSOR_TASK_Retrieve_State          0x080039a4   Section        0  ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Retrieve_State)
+    PROCESSOR_TASK_Retrieve_State            0x080039a5   Thumb Code    26  ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Retrieve_State)
+    i.PROCESSOR_TASK_Store_State             0x080039c4   Section        0  ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Store_State)
+    PROCESSOR_TASK_Store_State               0x080039c5   Thumb Code    48  ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Store_State)
+    i.PROCESSOR_TASK_Update                  0x080039f8   Section        0  ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Update)
+    i.PWR_BackupAccessCmd                    0x08003ad4   Section        0  stm32f4xx_pwr.o(i.PWR_BackupAccessCmd)
+    i.RCC_AHB1PeriphClockCmd                 0x08003b1c   Section        0  stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd)
+    i.RCC_APB1PeriphClockCmd                 0x08003b94   Section        0  stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd)
+    i.RCC_APB2PeriphClockCmd                 0x08003c08   Section        0  stm32f4xx_rcc.o(i.RCC_APB2PeriphClockCmd)
+    i.RCC_ClearFlag                          0x08003c80   Section        0  stm32f4xx_rcc.o(i.RCC_ClearFlag)
+    i.RCC_GetClocksFreq                      0x08003c94   Section        0  stm32f4xx_rcc.o(i.RCC_GetClocksFreq)
+    i.RCC_GetFlagStatus                      0x08003e5c   Section        0  stm32f4xx_rcc.o(i.RCC_GetFlagStatus)
+    i.REG_CONFIG_CHECKS_ADC1_Check           0x08003f10   Section        0  ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.o(i.REG_CONFIG_CHECKS_ADC1_Check)
+    i.REG_CONFIG_CHECKS_ADC1_Store           0x08003f8c   Section        0  ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.o(i.REG_CONFIG_CHECKS_ADC1_Store)
+    i.REG_CONFIG_CHECKS_GPIO_Check           0x08003fd0   Section        0  ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o(i.REG_CONFIG_CHECKS_GPIO_Check)
+    i.REG_CONFIG_CHECKS_GPIO_Store           0x08004260   Section        0  ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o(i.REG_CONFIG_CHECKS_GPIO_Store)
+    i.REG_CONFIG_CHECKS_UART_Check           0x080043f4   Section        0  ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o(i.REG_CONFIG_CHECKS_UART_Check)
+    i.REG_CONFIG_CHECKS_UART_Store           0x08004540   Section        0  ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o(i.REG_CONFIG_CHECKS_UART_Store)
+    i.REG_CONFIG_TIMER_Check                 0x0800460c   Section        0  ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o(i.REG_CONFIG_TIMER_Check)
+    i.REG_CONFIG_TIMER_Store                 0x080048ac   Section        0  ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o(i.REG_CONFIG_TIMER_Store)
+    i.REPORT_PFC_Init                        0x08004a94   Section        0  ttrd2-04a-t0401a-v001a_pfc_reporting.o(i.REPORT_PFC_Init)
+    i.REPORT_PFC_Update                      0x08004ad4   Section        0  ttrd2-04a-t0401a-v001a_pfc_reporting.o(i.REPORT_PFC_Update)
+    i.RTT_05a_Scheduler_Osc_Test_Update      0x08004b68   Section        0  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_05a_Scheduler_Osc_Test_Update)
+    i.RTT_05b_Scheduler_Osc_Test_Update      0x08004b98   Section        0  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_05b_Scheduler_Osc_Test_Update)
+    i.RTT_06a_MoniTTor_Overrun_Test_Update   0x08004bc0   Section        0  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_06a_MoniTTor_Overrun_Test_Update)
+    i.RTT_06b_MoniTTor_Underrun_Test_Update  0x08004c0c   Section        0  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_06b_MoniTTor_Underrun_Test_Update)
+    i.RTT_07_PredicTTor_Test_Update          0x08004c50   Section        0  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_07_PredicTTor_Test_Update)
+    i.RTT_Startup_04_WDT_Check               0x08004c74   Section        0  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_Startup_04_WDT_Check)
+    i.SCH_Add_Task                           0x08004cf0   Section        0  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Add_Task)
+    i.SCH_Dispatch_Tasks                     0x08004df0   Section        0  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Dispatch_Tasks)
+    i.SCH_Init_Microseconds                  0x08004f94   Section        0  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Init_Microseconds)
+    i.SCH_Set_Interrupt_Priority_Levels      0x08005080   Section        0  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Set_Interrupt_Priority_Levels)
+    i.SCH_Start                              0x080050d8   Section        0  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Start)
+    i.SWITCH_BUTTON1_Get_State               0x080050fc   Section        0  ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Get_State)
+    i.SWITCH_BUTTON1_Init                    0x08005120   Section        0  ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Init)
+    i.SWITCH_BUTTON1_Update                  0x08005168   Section        0  ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Update)
+    i.SetSysClock                            0x08005208   Section        0  system_stm32f4xx.o(i.SetSysClock)
+    SetSysClock                              0x08005209   Thumb Code   216  system_stm32f4xx.o(i.SetSysClock)
+    i.SysTick_Handler                        0x080052f0   Section        0  ttrd2-18a-t0401a-v001a_monittor_i.o(i.SysTick_Handler)
+    i.SystemInit                             0x08005314   Section        0  system_stm32f4xx.o(i.SystemInit)
+    i.TIM2_IRQHandler                        0x0800537c   Section        0  ttrd2-19a-t0401a-v001c_scheduler.o(i.TIM2_IRQHandler)
+    i.TIMEOUT_T3_USEC_Get_Timer_State        0x08005440   Section        0  ttrd2-05a-t0401a-v001a_timeout_t3.o(i.TIMEOUT_T3_USEC_Get_Timer_State)
+    i.TIMEOUT_T3_USEC_Init                   0x08005468   Section        0  ttrd2-05a-t0401a-v001a_timeout_t3.o(i.TIMEOUT_T3_USEC_Init)
+    i.TIMEOUT_T3_USEC_Start                  0x0800549c   Section        0  ttrd2-05a-t0401a-v001a_timeout_t3.o(i.TIMEOUT_T3_USEC_Start)
+    i.TIM_ClearITPendingBit                  0x080054bc   Section        0  stm32f4xx_tim.o(i.TIM_ClearITPendingBit)
+    i.TIM_Cmd                                0x08005584   Section        0  stm32f4xx_tim.o(i.TIM_Cmd)
+    i.TIM_GetCounter                         0x08005670   Section        0  stm32f4xx_tim.o(i.TIM_GetCounter)
+    i.TIM_ITConfig                           0x08005734   Section        0  stm32f4xx_tim.o(i.TIM_ITConfig)
+    i.TIM_SetCounter                         0x08005830   Section        0  stm32f4xx_tim.o(i.TIM_SetCounter)
+    i.TIM_TimeBaseInit                       0x080058f8   Section        0  stm32f4xx_tim.o(i.TIM_TimeBaseInit)
+    i.TIM_TimeBaseStructInit                 0x08005a6c   Section        0  stm32f4xx_tim.o(i.TIM_TimeBaseStructInit)
+    i.UART2_BUF_O_Check_Data_Integrity       0x08005a80   Section        0  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Check_Data_Integrity)
+    i.UART2_BUF_O_Init                       0x08005ad4   Section        0  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Init)
+    i.UART2_BUF_O_Send_All_Data              0x08005bec   Section        0  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Send_All_Data)
+    i.UART2_BUF_O_Update                     0x08005c80   Section        0  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Update)
+    i.UART2_BUF_O_Write_Char_To_Buffer       0x08005c9c   Section        0  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_Char_To_Buffer)
+    i.UART2_BUF_O_Write_Number03_To_Buffer   0x08005cfc   Section        0  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_Number03_To_Buffer)
+    i.UART2_BUF_O_Write_Number04_To_Buffer   0x08005d52   Section        0  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_Number04_To_Buffer)
+    i.UART2_BUF_O_Write_String_To_Buffer     0x08005dc0   Section        0  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_String_To_Buffer)
+    i.USART_ClearFlag                        0x08005dd8   Section        0  stm32f4xx_usart.o(i.USART_ClearFlag)
+    i.USART_Cmd                              0x08005eac   Section        0  stm32f4xx_usart.o(i.USART_Cmd)
+    i.USART_DMACmd                           0x08005f60   Section        0  stm32f4xx_usart.o(i.USART_DMACmd)
+    i.USART_Init                             0x08006028   Section        0  stm32f4xx_usart.o(i.USART_Init)
+    i.WATCHDOG_Get_State                     0x08006254   Section        0  ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Get_State)
+    i.WATCHDOG_Init                          0x08006278   Section        0  ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Init)
+    i.WATCHDOG_Update                        0x080062b8   Section        0  ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Update)
+    i.__ARM_fpclassify                       0x080062cc   Section        0  fpclassify.o(i.__ARM_fpclassify)
+    i._is_digit                              0x080062fc   Section        0  __printf_wp.o(i._is_digit)
+    i.assert_failed                          0x0800630c   Section        0  ttrd2-19a-t0401a-v001a_assert_failed.o(i.assert_failed)
+    i.fix_f                                  0x0800635c   Section        0  nmea_parsing.o(i.fix_f)
+    i.get_struct                             0x08006370   Section        0  gps_sensor.o(i.get_struct)
+    i.lla_f                                  0x080063d8   Section        0  nmea_parsing.o(i.lla_f)
+    i.main                                   0x08006430   Section        0  main.o(i.main)
+    i.nmea_parser_init                       0x08006440   Section        0  nmea_parsing.o(i.nmea_parser_init)
+    i.nmea_sentence_getOutput                0x080064ac   Section        0  nmea_parsing.o(i.nmea_sentence_getOutput)
+    i.nmea_sentence_parsing                  0x080064c0   Section        0  nmea_parsing.o(i.nmea_sentence_parsing)
+    i.root_f                                 0x080064d4   Section        0  nmea_parsing.o(i.root_f)
+    i.satnum_f                               0x0800652c   Section        0  nmea_parsing.o(i.satnum_f)
+    i.str_to_float                           0x08006554   Section        0  common.o(i.str_to_float)
+    i.str_to_float_nl                        0x08006604   Section        0  common.o(i.str_to_float_nl)
+    i.time_f                                 0x08006644   Section        0  nmea_parsing.o(i.time_f)
+    i.uart_hello_Init                        0x08006678   Section        0  apptask_uart_hello.o(i.uart_hello_Init)
+    i.uart_hello_Update                      0x080066e0   Section        0  apptask_uart_hello.o(i.uart_hello_Update)
+    i.xdop_f                                 0x080069d8   Section        0  nmea_parsing.o(i.xdop_f)
+    i.xnode_proccess                         0x08006a14   Section        0  nmea_parsing.o(i.xnode_proccess)
+    locale$$code                             0x08006a8c   Section       44  lc_numeric_c.o(locale$$code)
+    x$fpl$basic                              0x08006ab8   Section       24  basic.o(x$fpl$basic)
+    $v0                                      0x08006ab8   Number         0  basic.o(x$fpl$basic)
+    x$fpl$d2f                                0x08006ad0   Section       98  d2f.o(x$fpl$d2f)
+    $v0                                      0x08006ad0   Number         0  d2f.o(x$fpl$d2f)
+    x$fpl$dadd                               0x08006b34   Section      336  daddsub_clz.o(x$fpl$dadd)
+    $v0                                      0x08006b34   Number         0  daddsub_clz.o(x$fpl$dadd)
+    _dadd1                                   0x08006b45   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
+    x$fpl$ddiv                               0x08006c84   Section      688  ddiv.o(x$fpl$ddiv)
+    $v0                                      0x08006c84   Number         0  ddiv.o(x$fpl$ddiv)
+    ddiv_entry                               0x08006c8b   Thumb Code     0  ddiv.o(x$fpl$ddiv)
+    x$fpl$dflt                               0x08006f34   Section       46  dflt_clz.o(x$fpl$dflt)
+    $v0                                      0x08006f34   Number         0  dflt_clz.o(x$fpl$dflt)
+    x$fpl$dnaninf                            0x08006f62   Section      156  dnaninf.o(x$fpl$dnaninf)
+    $v0                                      0x08006f62   Number         0  dnaninf.o(x$fpl$dnaninf)
+    x$fpl$dretinf                            0x08006ffe   Section       12  dretinf.o(x$fpl$dretinf)
+    $v0                                      0x08006ffe   Number         0  dretinf.o(x$fpl$dretinf)
+    x$fpl$dsub                               0x0800700c   Section      468  daddsub_clz.o(x$fpl$dsub)
+    $v0                                      0x0800700c   Number         0  daddsub_clz.o(x$fpl$dsub)
+    _dsub1                                   0x0800701d   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
+    x$fpl$f2d                                0x080071e0   Section       86  f2d.o(x$fpl$f2d)
+    $v0                                      0x080071e0   Number         0  f2d.o(x$fpl$f2d)
+    x$fpl$fnaninf                            0x08007236   Section      140  fnaninf.o(x$fpl$fnaninf)
+    $v0                                      0x08007236   Number         0  fnaninf.o(x$fpl$fnaninf)
+    x$fpl$fpinit                             0x080072c2   Section       10  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x080072c2   Number         0  fpinit.o(x$fpl$fpinit)
+    x$fpl$fretinf                            0x080072cc   Section       10  fretinf.o(x$fpl$fretinf)
+    $v0                                      0x080072cc   Number         0  fretinf.o(x$fpl$fretinf)
+    x$fpl$printf1                            0x080072d6   Section        4  printf1.o(x$fpl$printf1)
+    $v0                                      0x080072d6   Number         0  printf1.o(x$fpl$printf1)
+    x$fpl$usenofp                            0x080072da   Section        0  usenofp.o(x$fpl$usenofp)
+    .constdata                               0x080072dc   Section      148  bigflt0.o(.constdata)
+    tenpwrs_x                                0x080072dc   Data          60  bigflt0.o(.constdata)
+    tenpwrs_i                                0x08007318   Data          64  bigflt0.o(.constdata)
+    .conststring                             0x08007370   Section       14  nmea_parsing.o(.conststring)
+    locale$$data                             0x080073a0   Section       28  lc_numeric_c.o(locale$$data)
+    __lcnum_c_name                           0x080073a4   Data           2  lc_numeric_c.o(locale$$data)
+    __lcnum_c_start                          0x080073ac   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_point                          0x080073b8   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_thousands                      0x080073ba   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_grouping                       0x080073bb   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_end                            0x080073bc   Data           0  lc_numeric_c.o(locale$$data)
     .data                                    0x20000000   Section       16  ttrd2-05a-t0401a-v001a_adc_task.o(.data)
     ADC_ref_v_g                              0x20000000   Data           4  ttrd2-05a-t0401a-v001a_adc_task.o(.data)
     ADC_ref_v_ig                             0x20000004   Data           4  ttrd2-05a-t0401a-v001a_adc_task.o(.data)
@@ -3125,27 +3130,42 @@ Image Symbol Table
     Tick_count_ig                            0x20000404   Data           4  ttrd2-19a-t0401a-v001c_scheduler.o(.data)
     last_run_task_id                         0x20000408   Data           4  ttrd2-19a-t0401a-v001c_scheduler.o(.data)
     abs_tick_count                           0x2000040c   Data           4  ttrd2-19a-t0401a-v001c_scheduler.o(.data)
-    .data                                    0x20000410   Section      302  gps_sensor.o(.data)
+    .data                                    0x20000410   Section        8  gps_sensor.o(.data)
     dma_streamx_g                            0x20000410   Data           4  gps_sensor.o(.data)
     nmea_pointer_g                           0x20000414   Data           1  gps_sensor.o(.data)
-    buffer_start_index                       0x2000053c   Data           2  gps_sensor.o(.data)
-    .bss                                     0x20000540   Section     1000  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(.bss)
-    Tx_buffer_g                              0x20000540   Data         500  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(.bss)
-    Tx_buffer_ig                             0x20000734   Data         500  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(.bss)
-    .bss                                     0x20000928   Section       96  apptask_uart_hello.o(.bss)
-    .bss                                     0x20000988   Section      280  ttrd2-19a-t0401a-v001c_scheduler.o(.bss)
-    SCH_tasks_g                              0x20000988   Data         140  ttrd2-19a-t0401a-v001c_scheduler.o(.bss)
-    SCH_tasks_ig                             0x20000a14   Data         140  ttrd2-19a-t0401a-v001c_scheduler.o(.bss)
-    .bss                                     0x20000aa0   Section     2552  gps_sensor.o(.bss)
-    Rx_buffer_g                              0x20000aa0   Data         512  gps_sensor.o(.bss)
-    gps_sensor_data                          0x20000ca0   Data         120  gps_sensor.o(.bss)
-    nmea_sentences_g                         0x20000d18   Data        1920  gps_sensor.o(.bss)
-    .bss                                     0x20001498   Section       96  libspace.o(.bss)
-    HEAP                                     0x200014f8   Section      512  startup_stm32f446xx.o(HEAP)
-    Heap_Mem                                 0x200014f8   Data         512  startup_stm32f446xx.o(HEAP)
-    STACK                                    0x200016f8   Section     1024  startup_stm32f446xx.o(STACK)
-    Stack_Mem                                0x200016f8   Data        1024  startup_stm32f446xx.o(STACK)
-    __initial_sp                             0x20001af8   Data           0  startup_stm32f446xx.o(STACK)
+    buffer_start_index                       0x20000416   Data           2  gps_sensor.o(.data)
+    .data                                    0x20000418   Section      276  nmea_parsing.o(.data)
+    tr_altitude                              0x20000418   Data          24  nmea_parsing.o(.data)
+    tr_satnum                                0x20000430   Data          24  nmea_parsing.o(.data)
+    tr_fix                                   0x20000448   Data          24  nmea_parsing.o(.data)
+    tr_longitude                             0x20000460   Data          24  nmea_parsing.o(.data)
+    tr_latitude                              0x20000478   Data          24  nmea_parsing.o(.data)
+    tr_time                                  0x20000490   Data          24  nmea_parsing.o(.data)
+    tr_gpgga                                 0x200004a8   Data          24  nmea_parsing.o(.data)
+    tr_vdop                                  0x200004c0   Data          24  nmea_parsing.o(.data)
+    tr_hdop                                  0x200004d8   Data          24  nmea_parsing.o(.data)
+    tr_pdop                                  0x200004f0   Data          24  nmea_parsing.o(.data)
+    tr_gpgsa                                 0x20000508   Data          24  nmea_parsing.o(.data)
+    tr_root                                  0x20000520   Data          12  nmea_parsing.o(.data)
+    .bss                                     0x2000052c   Section     1000  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(.bss)
+    Tx_buffer_g                              0x2000052c   Data         500  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(.bss)
+    Tx_buffer_ig                             0x20000720   Data         500  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(.bss)
+    .bss                                     0x20000914   Section       96  apptask_uart_hello.o(.bss)
+    .bss                                     0x20000974   Section      280  ttrd2-19a-t0401a-v001c_scheduler.o(.bss)
+    SCH_tasks_g                              0x20000974   Data         140  ttrd2-19a-t0401a-v001c_scheduler.o(.bss)
+    SCH_tasks_ig                             0x20000a00   Data         140  ttrd2-19a-t0401a-v001c_scheduler.o(.bss)
+    .bss                                     0x20000a90   Section     2552  gps_sensor.o(.bss)
+    Rx_buffer_g                              0x20000a90   Data         512  gps_sensor.o(.bss)
+    gps_sensor_data                          0x20000c90   Data         120  gps_sensor.o(.bss)
+    nmea_sentences_g                         0x20000d08   Data        1920  gps_sensor.o(.bss)
+    .bss                                     0x20001488   Section       96  nmea_parsing.o(.bss)
+    parser_output                            0x20001488   Data          96  nmea_parsing.o(.bss)
+    .bss                                     0x200014e8   Section       96  libspace.o(.bss)
+    HEAP                                     0x20001548   Section      512  startup_stm32f446xx.o(HEAP)
+    Heap_Mem                                 0x20001548   Data         512  startup_stm32f446xx.o(HEAP)
+    STACK                                    0x20001748   Section     1024  startup_stm32f446xx.o(STACK)
+    Stack_Mem                                0x20001748   Data        1024  startup_stm32f446xx.o(STACK)
+    __initial_sp                             0x20001b48   Data           0  startup_stm32f446xx.o(STACK)
 
     Global Symbols
 
@@ -3405,153 +3425,142 @@ Image Symbol Table
     GPIO_ResetBits                           0x0800275d   Thumb Code   104  stm32f4xx_gpio.o(i.GPIO_ResetBits)
     GPIO_SetBits                             0x08002819   Thumb Code   104  stm32f4xx_gpio.o(i.GPIO_SetBits)
     GPS_Sensor_GetData                       0x080028d5   Thumb Code    84  gps_sensor.o(i.GPS_Sensor_GetData)
-    GPS_Sensor_Init                          0x08002931   Thumb Code   408  gps_sensor.o(i.GPS_Sensor_Init)
-    GPS_Sensor_Update                        0x08002b25   Thumb Code   332  gps_sensor.o(i.GPS_Sensor_Update)
-    HEARTBEAT_SW_Init                        0x08002c85   Thumb Code    48  ttrd2-05a-t0401a-v001a_heartbeat_sw_task.o(i.HEARTBEAT_SW_Init)
-    HEARTBEAT_SW_Update                      0x08002cb9   Thumb Code    88  ttrd2-05a-t0401a-v001a_heartbeat_sw_task.o(i.HEARTBEAT_SW_Update)
-    MONITTORi_Disable                        0x08002d25   Thumb Code    18  ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Disable)
-    MONITTORi_Init                           0x08002d37   Thumb Code     2  ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Init)
-    MONITTORi_Start                          0x08002d39   Thumb Code   226  ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Start)
-    MONITTORi_Stop                           0x08002e41   Thumb Code   126  ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Stop)
-    NVIC_Init                                0x08002ed5   Thumb Code   164  misc.o(i.NVIC_Init)
-    NVIC_PriorityGroupConfig                 0x08002fa5   Thumb Code    54  misc.o(i.NVIC_PriorityGroupConfig)
-    PREDICTTORi_Check_Task_Sequence          0x08003005   Thumb Code   408  ttrd2-19a-t0401a-v001b_predicttor_i.o(i.PREDICTTORi_Check_Task_Sequence)
-    PREDICTTORi_Init                         0x080031cd   Thumb Code    14  ttrd2-19a-t0401a-v001b_predicttor_i.o(i.PREDICTTORi_Init)
-    PROCESSOR_Change_MoSt                    0x080031e9   Thumb Code    34  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Change_MoSt)
-    PROCESSOR_Get_MoSt                       0x080037b1   Thumb Code    28  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Get_MoSt)
-    PROCESSOR_Init                           0x0800383d   Thumb Code    12  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Init)
-    PROCESSOR_Perform_Safe_Shutdown          0x08003849   Thumb Code   108  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Perform_Safe_Shutdown)
-    PROCESSOR_Store_PFC                      0x08003915   Thumb Code    48  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Store_PFC)
-    PROCESSOR_Store_Reqd_MoSt                0x08003949   Thumb Code    52  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Store_Reqd_MoSt)
-    PROCESSOR_TASK_Init                      0x08003981   Thumb Code    22  ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Init)
-    PROCESSOR_TASK_Update                    0x080039f5   Thumb Code   192  ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Update)
-    PWR_BackupAccessCmd                      0x08003ad1   Thumb Code    26  stm32f4xx_pwr.o(i.PWR_BackupAccessCmd)
-    RCC_AHB1PeriphClockCmd                   0x08003b19   Thumb Code    70  stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd)
-    RCC_APB1PeriphClockCmd                   0x08003b91   Thumb Code    70  stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd)
-    RCC_APB2PeriphClockCmd                   0x08003c05   Thumb Code    70  stm32f4xx_rcc.o(i.RCC_APB2PeriphClockCmd)
-    RCC_ClearFlag                            0x08003c7d   Thumb Code    14  stm32f4xx_rcc.o(i.RCC_ClearFlag)
-    RCC_GetClocksFreq                        0x08003c91   Thumb Code   440  stm32f4xx_rcc.o(i.RCC_GetClocksFreq)
-    RCC_GetFlagStatus                        0x08003e59   Thumb Code   134  stm32f4xx_rcc.o(i.RCC_GetFlagStatus)
-    REG_CONFIG_CHECKS_ADC1_Check             0x08003f0d   Thumb Code    98  ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.o(i.REG_CONFIG_CHECKS_ADC1_Check)
-    REG_CONFIG_CHECKS_ADC1_Store             0x08003f89   Thumb Code    42  ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.o(i.REG_CONFIG_CHECKS_ADC1_Store)
-    REG_CONFIG_CHECKS_GPIO_Check             0x08003fcd   Thumb Code   528  ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o(i.REG_CONFIG_CHECKS_GPIO_Check)
-    REG_CONFIG_CHECKS_GPIO_Store             0x0800425d   Thumb Code   276  ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o(i.REG_CONFIG_CHECKS_GPIO_Store)
-    REG_CONFIG_CHECKS_UART_Check             0x080043f1   Thumb Code   272  ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o(i.REG_CONFIG_CHECKS_UART_Check)
-    REG_CONFIG_CHECKS_UART_Store             0x0800453d   Thumb Code   142  ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o(i.REG_CONFIG_CHECKS_UART_Store)
-    REG_CONFIG_TIMER_Check                   0x08004609   Thumb Code   512  ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o(i.REG_CONFIG_TIMER_Check)
-    REG_CONFIG_TIMER_Store                   0x080048a9   Thumb Code   328  ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o(i.REG_CONFIG_TIMER_Store)
-    REPORT_PFC_Init                          0x08004a91   Thumb Code    60  ttrd2-04a-t0401a-v001a_pfc_reporting.o(i.REPORT_PFC_Init)
-    REPORT_PFC_Update                        0x08004ad1   Thumb Code   122  ttrd2-04a-t0401a-v001a_pfc_reporting.o(i.REPORT_PFC_Update)
-    RTT_05a_Scheduler_Osc_Test_Update        0x08004b65   Thumb Code    40  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_05a_Scheduler_Osc_Test_Update)
-    RTT_05b_Scheduler_Osc_Test_Update        0x08004b95   Thumb Code    30  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_05b_Scheduler_Osc_Test_Update)
-    RTT_06a_MoniTTor_Overrun_Test_Update     0x08004bbd   Thumb Code    62  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_06a_MoniTTor_Overrun_Test_Update)
-    RTT_06b_MoniTTor_Underrun_Test_Update    0x08004c09   Thumb Code    60  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_06b_MoniTTor_Underrun_Test_Update)
-    RTT_07_PredicTTor_Test_Update            0x08004c4d   Thumb Code    26  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_07_PredicTTor_Test_Update)
-    RTT_Startup_04_WDT_Check                 0x08004c71   Thumb Code   102  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_Startup_04_WDT_Check)
-    SCH_Add_Task                             0x08004ced   Thumb Code   246  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Add_Task)
-    SCH_Dispatch_Tasks                       0x08004ded   Thumb Code   394  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Dispatch_Tasks)
-    SCH_Init_Microseconds                    0x08004f91   Thumb Code   218  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Init_Microseconds)
-    SCH_Set_Interrupt_Priority_Levels        0x0800507d   Thumb Code    78  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Set_Interrupt_Priority_Levels)
-    SCH_Start                                0x080050d5   Thumb Code    34  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Start)
-    SWITCH_BUTTON1_Get_State                 0x080050f9   Thumb Code    28  ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Get_State)
-    SWITCH_BUTTON1_Init                      0x0800511d   Thumb Code    56  ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Init)
-    SWITCH_BUTTON1_Update                    0x08005165   Thumb Code   128  ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Update)
-    SysTick_Handler                          0x080052ed   Thumb Code    36  ttrd2-18a-t0401a-v001a_monittor_i.o(i.SysTick_Handler)
-    SystemInit                               0x08005311   Thumb Code    88  system_stm32f4xx.o(i.SystemInit)
-    TIM2_IRQHandler                          0x08005379   Thumb Code   148  ttrd2-19a-t0401a-v001c_scheduler.o(i.TIM2_IRQHandler)
-    TIMEOUT_T3_USEC_Get_Timer_State          0x0800543d   Thumb Code    30  ttrd2-05a-t0401a-v001a_timeout_t3.o(i.TIMEOUT_T3_USEC_Get_Timer_State)
-    TIMEOUT_T3_USEC_Init                     0x08005465   Thumb Code    48  ttrd2-05a-t0401a-v001a_timeout_t3.o(i.TIMEOUT_T3_USEC_Init)
-    TIMEOUT_T3_USEC_Start                    0x08005499   Thumb Code    26  ttrd2-05a-t0401a-v001a_timeout_t3.o(i.TIMEOUT_T3_USEC_Start)
-    TIM_ClearITPendingBit                    0x080054b9   Thumb Code   108  stm32f4xx_tim.o(i.TIM_ClearITPendingBit)
-    TIM_Cmd                                  0x08005581   Thumb Code   144  stm32f4xx_tim.o(i.TIM_Cmd)
-    TIM_GetCounter                           0x0800566d   Thumb Code   104  stm32f4xx_tim.o(i.TIM_GetCounter)
-    TIM_ITConfig                             0x08005731   Thumb Code   160  stm32f4xx_tim.o(i.TIM_ITConfig)
-    TIM_SetCounter                           0x0800582d   Thumb Code   106  stm32f4xx_tim.o(i.TIM_SetCounter)
-    TIM_TimeBaseInit                         0x080058f5   Thumb Code   278  stm32f4xx_tim.o(i.TIM_TimeBaseInit)
-    TIM_TimeBaseStructInit                   0x08005a69   Thumb Code    18  stm32f4xx_tim.o(i.TIM_TimeBaseStructInit)
-    UART2_BUF_O_Check_Data_Integrity         0x08005a7d   Thumb Code    64  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Check_Data_Integrity)
-    UART2_BUF_O_Init                         0x08005ad1   Thumb Code   248  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Init)
-    UART2_BUF_O_Send_All_Data                0x08005be9   Thumb Code   120  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Send_All_Data)
-    UART2_BUF_O_Update                       0x08005c7d   Thumb Code    18  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Update)
-    UART2_BUF_O_Write_Char_To_Buffer         0x08005c99   Thumb Code    72  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_Char_To_Buffer)
-    UART2_BUF_O_Write_Number03_To_Buffer     0x08005cf9   Thumb Code    86  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_Number03_To_Buffer)
-    UART2_BUF_O_Write_Number04_To_Buffer     0x08005d4f   Thumb Code   110  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_Number04_To_Buffer)
-    UART2_BUF_O_Write_String_To_Buffer       0x08005dbd   Thumb Code    24  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_String_To_Buffer)
-    USART_ClearFlag                          0x08005dd5   Thumb Code   140  stm32f4xx_usart.o(i.USART_ClearFlag)
-    USART_Cmd                                0x08005ea9   Thumb Code   108  stm32f4xx_usart.o(i.USART_Cmd)
-    USART_DMACmd                             0x08005f5d   Thumb Code   126  stm32f4xx_usart.o(i.USART_DMACmd)
-    USART_Init                               0x08006025   Thumb Code   480  stm32f4xx_usart.o(i.USART_Init)
-    WATCHDOG_Get_State                       0x08006251   Thumb Code    22  ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Get_State)
-    WATCHDOG_Init                            0x08006275   Thumb Code    52  ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Init)
-    WATCHDOG_Update                          0x080062b5   Thumb Code    12  ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Update)
-    __ARM_fpclassify                         0x080062c9   Thumb Code    48  fpclassify.o(i.__ARM_fpclassify)
-    _is_digit                                0x080062f9   Thumb Code    14  __printf_wp.o(i._is_digit)
-    assert_failed                            0x08006309   Thumb Code    48  ttrd2-19a-t0401a-v001a_assert_failed.o(i.assert_failed)
-    fix_f                                    0x08006359   Thumb Code    18  gps_sensor.o(i.fix_f)
-    get_struct                               0x0800636d   Thumb Code    16  gps_sensor.o(i.get_struct)
-    lla_f                                    0x08006381   Thumb Code    88  gps_sensor.o(i.lla_f)
-    main                                     0x080063d9   Thumb Code    16  main.o(i.main)
-    root_f                                   0x080063e9   Thumb Code    82  gps_sensor.o(i.root_f)
-    satnum_f                                 0x08006441   Thumb Code    38  gps_sensor.o(i.satnum_f)
-    sentence_parsing                         0x08006469   Thumb Code    20  gps_sensor.o(i.sentence_parsing)
-    str_to_float                             0x08006481   Thumb Code   168  common.o(i.str_to_float)
-    str_to_float_nl                          0x08006531   Thumb Code    64  common.o(i.str_to_float_nl)
-    time_f                                   0x08006571   Thumb Code    52  gps_sensor.o(i.time_f)
-    uart_hello_Init                          0x080065a5   Thumb Code    74  apptask_uart_hello.o(i.uart_hello_Init)
-    uart_hello_Update                        0x0800660d   Thumb Code   634  apptask_uart_hello.o(i.uart_hello_Update)
-    update_node_func                         0x08006905   Thumb Code    48  gps_sensor.o(i.update_node_func)
-    xdop_f                                   0x0800696d   Thumb Code    60  gps_sensor.o(i.xdop_f)
-    xnode_proccess                           0x080069a9   Thumb Code   118  gps_sensor.o(i.xnode_proccess)
-    _get_lc_numeric                          0x08006a21   Thumb Code    44  lc_numeric_c.o(locale$$code)
-    __aeabi_dneg                             0x08006a4d   Thumb Code     0  basic.o(x$fpl$basic)
-    _dneg                                    0x08006a4d   Thumb Code     6  basic.o(x$fpl$basic)
-    __aeabi_fneg                             0x08006a53   Thumb Code     0  basic.o(x$fpl$basic)
-    _fneg                                    0x08006a53   Thumb Code     6  basic.o(x$fpl$basic)
-    _dabs                                    0x08006a59   Thumb Code     6  basic.o(x$fpl$basic)
-    _fabs                                    0x08006a5f   Thumb Code     6  basic.o(x$fpl$basic)
-    __aeabi_d2f                              0x08006a65   Thumb Code     0  d2f.o(x$fpl$d2f)
-    _d2f                                     0x08006a65   Thumb Code    98  d2f.o(x$fpl$d2f)
-    __aeabi_dadd                             0x08006ac9   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
-    _dadd                                    0x08006ac9   Thumb Code   332  daddsub_clz.o(x$fpl$dadd)
-    __aeabi_ddiv                             0x08006c19   Thumb Code     0  ddiv.o(x$fpl$ddiv)
-    _ddiv                                    0x08006c19   Thumb Code   552  ddiv.o(x$fpl$ddiv)
-    __aeabi_i2d                              0x08006ec9   Thumb Code     0  dflt_clz.o(x$fpl$dflt)
-    _dflt                                    0x08006ec9   Thumb Code    46  dflt_clz.o(x$fpl$dflt)
-    __fpl_dnaninf                            0x08006ef7   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
-    __fpl_dretinf                            0x08006f93   Thumb Code    12  dretinf.o(x$fpl$dretinf)
-    __aeabi_dsub                             0x08006fa1   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
-    _dsub                                    0x08006fa1   Thumb Code   464  daddsub_clz.o(x$fpl$dsub)
-    __aeabi_f2d                              0x08007175   Thumb Code     0  f2d.o(x$fpl$f2d)
-    _f2d                                     0x08007175   Thumb Code    86  f2d.o(x$fpl$f2d)
-    __fpl_fnaninf                            0x080071cb   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
-    _fp_init                                 0x08007257   Thumb Code    10  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x0800725f   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x0800725f   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fpl_fretinf                            0x08007261   Thumb Code    10  fretinf.o(x$fpl$fretinf)
-    _printf_fp_dec                           0x0800726b   Thumb Code     4  printf1.o(x$fpl$printf1)
-    __I$use$fp                               0x0800726e   Number         0  usenofp.o(x$fpl$usenofp)
-    Region$$Table$$Base                      0x08007314   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08007334   Number         0  anon$$obj.o(Region$$Table)
+    GPS_Sensor_Init                          0x08002931   Thumb Code   412  gps_sensor.o(i.GPS_Sensor_Init)
+    GPS_Sensor_Update                        0x08002b29   Thumb Code   332  gps_sensor.o(i.GPS_Sensor_Update)
+    HEARTBEAT_SW_Init                        0x08002c89   Thumb Code    48  ttrd2-05a-t0401a-v001a_heartbeat_sw_task.o(i.HEARTBEAT_SW_Init)
+    HEARTBEAT_SW_Update                      0x08002cbd   Thumb Code    88  ttrd2-05a-t0401a-v001a_heartbeat_sw_task.o(i.HEARTBEAT_SW_Update)
+    MONITTORi_Disable                        0x08002d29   Thumb Code    18  ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Disable)
+    MONITTORi_Init                           0x08002d3b   Thumb Code     2  ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Init)
+    MONITTORi_Start                          0x08002d3d   Thumb Code   226  ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Start)
+    MONITTORi_Stop                           0x08002e45   Thumb Code   126  ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Stop)
+    NVIC_Init                                0x08002ed9   Thumb Code   164  misc.o(i.NVIC_Init)
+    NVIC_PriorityGroupConfig                 0x08002fa9   Thumb Code    54  misc.o(i.NVIC_PriorityGroupConfig)
+    PREDICTTORi_Check_Task_Sequence          0x08003009   Thumb Code   408  ttrd2-19a-t0401a-v001b_predicttor_i.o(i.PREDICTTORi_Check_Task_Sequence)
+    PREDICTTORi_Init                         0x080031d1   Thumb Code    14  ttrd2-19a-t0401a-v001b_predicttor_i.o(i.PREDICTTORi_Init)
+    PROCESSOR_Change_MoSt                    0x080031ed   Thumb Code    34  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Change_MoSt)
+    PROCESSOR_Get_MoSt                       0x080037b5   Thumb Code    28  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Get_MoSt)
+    PROCESSOR_Init                           0x08003841   Thumb Code    12  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Init)
+    PROCESSOR_Perform_Safe_Shutdown          0x0800384d   Thumb Code   108  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Perform_Safe_Shutdown)
+    PROCESSOR_Store_PFC                      0x08003919   Thumb Code    48  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Store_PFC)
+    PROCESSOR_Store_Reqd_MoSt                0x0800394d   Thumb Code    52  ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Store_Reqd_MoSt)
+    PROCESSOR_TASK_Init                      0x08003985   Thumb Code    22  ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Init)
+    PROCESSOR_TASK_Update                    0x080039f9   Thumb Code   192  ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Update)
+    PWR_BackupAccessCmd                      0x08003ad5   Thumb Code    26  stm32f4xx_pwr.o(i.PWR_BackupAccessCmd)
+    RCC_AHB1PeriphClockCmd                   0x08003b1d   Thumb Code    70  stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd)
+    RCC_APB1PeriphClockCmd                   0x08003b95   Thumb Code    70  stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd)
+    RCC_APB2PeriphClockCmd                   0x08003c09   Thumb Code    70  stm32f4xx_rcc.o(i.RCC_APB2PeriphClockCmd)
+    RCC_ClearFlag                            0x08003c81   Thumb Code    14  stm32f4xx_rcc.o(i.RCC_ClearFlag)
+    RCC_GetClocksFreq                        0x08003c95   Thumb Code   440  stm32f4xx_rcc.o(i.RCC_GetClocksFreq)
+    RCC_GetFlagStatus                        0x08003e5d   Thumb Code   134  stm32f4xx_rcc.o(i.RCC_GetFlagStatus)
+    REG_CONFIG_CHECKS_ADC1_Check             0x08003f11   Thumb Code    98  ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.o(i.REG_CONFIG_CHECKS_ADC1_Check)
+    REG_CONFIG_CHECKS_ADC1_Store             0x08003f8d   Thumb Code    42  ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.o(i.REG_CONFIG_CHECKS_ADC1_Store)
+    REG_CONFIG_CHECKS_GPIO_Check             0x08003fd1   Thumb Code   528  ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o(i.REG_CONFIG_CHECKS_GPIO_Check)
+    REG_CONFIG_CHECKS_GPIO_Store             0x08004261   Thumb Code   276  ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o(i.REG_CONFIG_CHECKS_GPIO_Store)
+    REG_CONFIG_CHECKS_UART_Check             0x080043f5   Thumb Code   272  ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o(i.REG_CONFIG_CHECKS_UART_Check)
+    REG_CONFIG_CHECKS_UART_Store             0x08004541   Thumb Code   142  ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o(i.REG_CONFIG_CHECKS_UART_Store)
+    REG_CONFIG_TIMER_Check                   0x0800460d   Thumb Code   512  ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o(i.REG_CONFIG_TIMER_Check)
+    REG_CONFIG_TIMER_Store                   0x080048ad   Thumb Code   328  ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o(i.REG_CONFIG_TIMER_Store)
+    REPORT_PFC_Init                          0x08004a95   Thumb Code    60  ttrd2-04a-t0401a-v001a_pfc_reporting.o(i.REPORT_PFC_Init)
+    REPORT_PFC_Update                        0x08004ad5   Thumb Code   122  ttrd2-04a-t0401a-v001a_pfc_reporting.o(i.REPORT_PFC_Update)
+    RTT_05a_Scheduler_Osc_Test_Update        0x08004b69   Thumb Code    40  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_05a_Scheduler_Osc_Test_Update)
+    RTT_05b_Scheduler_Osc_Test_Update        0x08004b99   Thumb Code    30  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_05b_Scheduler_Osc_Test_Update)
+    RTT_06a_MoniTTor_Overrun_Test_Update     0x08004bc1   Thumb Code    62  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_06a_MoniTTor_Overrun_Test_Update)
+    RTT_06b_MoniTTor_Underrun_Test_Update    0x08004c0d   Thumb Code    60  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_06b_MoniTTor_Underrun_Test_Update)
+    RTT_07_PredicTTor_Test_Update            0x08004c51   Thumb Code    26  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_07_PredicTTor_Test_Update)
+    RTT_Startup_04_WDT_Check                 0x08004c75   Thumb Code   102  ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_Startup_04_WDT_Check)
+    SCH_Add_Task                             0x08004cf1   Thumb Code   246  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Add_Task)
+    SCH_Dispatch_Tasks                       0x08004df1   Thumb Code   394  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Dispatch_Tasks)
+    SCH_Init_Microseconds                    0x08004f95   Thumb Code   218  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Init_Microseconds)
+    SCH_Set_Interrupt_Priority_Levels        0x08005081   Thumb Code    78  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Set_Interrupt_Priority_Levels)
+    SCH_Start                                0x080050d9   Thumb Code    34  ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Start)
+    SWITCH_BUTTON1_Get_State                 0x080050fd   Thumb Code    28  ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Get_State)
+    SWITCH_BUTTON1_Init                      0x08005121   Thumb Code    56  ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Init)
+    SWITCH_BUTTON1_Update                    0x08005169   Thumb Code   128  ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Update)
+    SysTick_Handler                          0x080052f1   Thumb Code    36  ttrd2-18a-t0401a-v001a_monittor_i.o(i.SysTick_Handler)
+    SystemInit                               0x08005315   Thumb Code    88  system_stm32f4xx.o(i.SystemInit)
+    TIM2_IRQHandler                          0x0800537d   Thumb Code   148  ttrd2-19a-t0401a-v001c_scheduler.o(i.TIM2_IRQHandler)
+    TIMEOUT_T3_USEC_Get_Timer_State          0x08005441   Thumb Code    30  ttrd2-05a-t0401a-v001a_timeout_t3.o(i.TIMEOUT_T3_USEC_Get_Timer_State)
+    TIMEOUT_T3_USEC_Init                     0x08005469   Thumb Code    48  ttrd2-05a-t0401a-v001a_timeout_t3.o(i.TIMEOUT_T3_USEC_Init)
+    TIMEOUT_T3_USEC_Start                    0x0800549d   Thumb Code    26  ttrd2-05a-t0401a-v001a_timeout_t3.o(i.TIMEOUT_T3_USEC_Start)
+    TIM_ClearITPendingBit                    0x080054bd   Thumb Code   108  stm32f4xx_tim.o(i.TIM_ClearITPendingBit)
+    TIM_Cmd                                  0x08005585   Thumb Code   144  stm32f4xx_tim.o(i.TIM_Cmd)
+    TIM_GetCounter                           0x08005671   Thumb Code   104  stm32f4xx_tim.o(i.TIM_GetCounter)
+    TIM_ITConfig                             0x08005735   Thumb Code   160  stm32f4xx_tim.o(i.TIM_ITConfig)
+    TIM_SetCounter                           0x08005831   Thumb Code   106  stm32f4xx_tim.o(i.TIM_SetCounter)
+    TIM_TimeBaseInit                         0x080058f9   Thumb Code   278  stm32f4xx_tim.o(i.TIM_TimeBaseInit)
+    TIM_TimeBaseStructInit                   0x08005a6d   Thumb Code    18  stm32f4xx_tim.o(i.TIM_TimeBaseStructInit)
+    UART2_BUF_O_Check_Data_Integrity         0x08005a81   Thumb Code    64  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Check_Data_Integrity)
+    UART2_BUF_O_Init                         0x08005ad5   Thumb Code   248  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Init)
+    UART2_BUF_O_Send_All_Data                0x08005bed   Thumb Code   120  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Send_All_Data)
+    UART2_BUF_O_Update                       0x08005c81   Thumb Code    18  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Update)
+    UART2_BUF_O_Write_Char_To_Buffer         0x08005c9d   Thumb Code    72  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_Char_To_Buffer)
+    UART2_BUF_O_Write_Number03_To_Buffer     0x08005cfd   Thumb Code    86  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_Number03_To_Buffer)
+    UART2_BUF_O_Write_Number04_To_Buffer     0x08005d53   Thumb Code   110  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_Number04_To_Buffer)
+    UART2_BUF_O_Write_String_To_Buffer       0x08005dc1   Thumb Code    24  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_String_To_Buffer)
+    USART_ClearFlag                          0x08005dd9   Thumb Code   140  stm32f4xx_usart.o(i.USART_ClearFlag)
+    USART_Cmd                                0x08005ead   Thumb Code   108  stm32f4xx_usart.o(i.USART_Cmd)
+    USART_DMACmd                             0x08005f61   Thumb Code   126  stm32f4xx_usart.o(i.USART_DMACmd)
+    USART_Init                               0x08006029   Thumb Code   480  stm32f4xx_usart.o(i.USART_Init)
+    WATCHDOG_Get_State                       0x08006255   Thumb Code    22  ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Get_State)
+    WATCHDOG_Init                            0x08006279   Thumb Code    52  ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Init)
+    WATCHDOG_Update                          0x080062b9   Thumb Code    12  ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Update)
+    __ARM_fpclassify                         0x080062cd   Thumb Code    48  fpclassify.o(i.__ARM_fpclassify)
+    _is_digit                                0x080062fd   Thumb Code    14  __printf_wp.o(i._is_digit)
+    assert_failed                            0x0800630d   Thumb Code    48  ttrd2-19a-t0401a-v001a_assert_failed.o(i.assert_failed)
+    fix_f                                    0x0800635d   Thumb Code    18  nmea_parsing.o(i.fix_f)
+    get_struct                               0x08006371   Thumb Code   100  gps_sensor.o(i.get_struct)
+    lla_f                                    0x080063d9   Thumb Code    88  nmea_parsing.o(i.lla_f)
+    main                                     0x08006431   Thumb Code    16  main.o(i.main)
+    nmea_parser_init                         0x08006441   Thumb Code    50  nmea_parsing.o(i.nmea_parser_init)
+    nmea_sentence_getOutput                  0x080064ad   Thumb Code    16  nmea_parsing.o(i.nmea_sentence_getOutput)
+    nmea_sentence_parsing                    0x080064c1   Thumb Code    16  nmea_parsing.o(i.nmea_sentence_parsing)
+    root_f                                   0x080064d5   Thumb Code    82  nmea_parsing.o(i.root_f)
+    satnum_f                                 0x0800652d   Thumb Code    38  nmea_parsing.o(i.satnum_f)
+    str_to_float                             0x08006555   Thumb Code   168  common.o(i.str_to_float)
+    str_to_float_nl                          0x08006605   Thumb Code    64  common.o(i.str_to_float_nl)
+    time_f                                   0x08006645   Thumb Code    52  nmea_parsing.o(i.time_f)
+    uart_hello_Init                          0x08006679   Thumb Code    74  apptask_uart_hello.o(i.uart_hello_Init)
+    uart_hello_Update                        0x080066e1   Thumb Code   634  apptask_uart_hello.o(i.uart_hello_Update)
+    xdop_f                                   0x080069d9   Thumb Code    60  nmea_parsing.o(i.xdop_f)
+    xnode_proccess                           0x08006a15   Thumb Code   118  nmea_parsing.o(i.xnode_proccess)
+    _get_lc_numeric                          0x08006a8d   Thumb Code    44  lc_numeric_c.o(locale$$code)
+    __aeabi_dneg                             0x08006ab9   Thumb Code     0  basic.o(x$fpl$basic)
+    _dneg                                    0x08006ab9   Thumb Code     6  basic.o(x$fpl$basic)
+    __aeabi_fneg                             0x08006abf   Thumb Code     0  basic.o(x$fpl$basic)
+    _fneg                                    0x08006abf   Thumb Code     6  basic.o(x$fpl$basic)
+    _dabs                                    0x08006ac5   Thumb Code     6  basic.o(x$fpl$basic)
+    _fabs                                    0x08006acb   Thumb Code     6  basic.o(x$fpl$basic)
+    __aeabi_d2f                              0x08006ad1   Thumb Code     0  d2f.o(x$fpl$d2f)
+    _d2f                                     0x08006ad1   Thumb Code    98  d2f.o(x$fpl$d2f)
+    __aeabi_dadd                             0x08006b35   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
+    _dadd                                    0x08006b35   Thumb Code   332  daddsub_clz.o(x$fpl$dadd)
+    __aeabi_ddiv                             0x08006c85   Thumb Code     0  ddiv.o(x$fpl$ddiv)
+    _ddiv                                    0x08006c85   Thumb Code   552  ddiv.o(x$fpl$ddiv)
+    __aeabi_i2d                              0x08006f35   Thumb Code     0  dflt_clz.o(x$fpl$dflt)
+    _dflt                                    0x08006f35   Thumb Code    46  dflt_clz.o(x$fpl$dflt)
+    __fpl_dnaninf                            0x08006f63   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
+    __fpl_dretinf                            0x08006fff   Thumb Code    12  dretinf.o(x$fpl$dretinf)
+    __aeabi_dsub                             0x0800700d   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
+    _dsub                                    0x0800700d   Thumb Code   464  daddsub_clz.o(x$fpl$dsub)
+    __aeabi_f2d                              0x080071e1   Thumb Code     0  f2d.o(x$fpl$f2d)
+    _f2d                                     0x080071e1   Thumb Code    86  f2d.o(x$fpl$f2d)
+    __fpl_fnaninf                            0x08007237   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
+    _fp_init                                 0x080072c3   Thumb Code    10  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x080072cb   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x080072cb   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fpl_fretinf                            0x080072cd   Thumb Code    10  fretinf.o(x$fpl$fretinf)
+    _printf_fp_dec                           0x080072d7   Thumb Code     4  printf1.o(x$fpl$printf1)
+    __I$use$fp                               0x080072da   Number         0  usenofp.o(x$fpl$usenofp)
+    Region$$Table$$Base                      0x08007380   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080073a0   Number         0  anon$$obj.o(Region$$Table)
     Watchdog_running_g                       0x20000018   Data           4  ttrd2-05a-t0401a-v001a_iwdt_task.o(.data)
     Watchdog_running_ig                      0x2000001c   Data           4  ttrd2-05a-t0401a-v001a_iwdt_task.o(.data)
     SystemCoreClock                          0x20000180   Data           4  system_stm32f4xx.o(.data)
     AHBPrescTable                            0x20000184   Data          16  system_stm32f4xx.o(.data)
     TICK_LIST_NORMAL                         0x200001dc   Data         508  ttrd2-19a-t0401a-v001b_predicttor_i.o(.data)
-    tr_altitude                              0x20000418   Data          24  gps_sensor.o(.data)
-    tr_satnum                                0x20000430   Data          24  gps_sensor.o(.data)
-    tr_fix                                   0x20000448   Data          24  gps_sensor.o(.data)
-    tr_longitude                             0x20000460   Data          24  gps_sensor.o(.data)
-    tr_latitude                              0x20000478   Data          24  gps_sensor.o(.data)
-    tr_time                                  0x20000490   Data          24  gps_sensor.o(.data)
-    tr_gpgga                                 0x200004a8   Data          24  gps_sensor.o(.data)
-    tr_vdop                                  0x200004c0   Data          24  gps_sensor.o(.data)
-    tr_hdop                                  0x200004d8   Data          24  gps_sensor.o(.data)
-    tr_pdop                                  0x200004f0   Data          24  gps_sensor.o(.data)
-    tr_gpgsa                                 0x20000508   Data          24  gps_sensor.o(.data)
-    tr_root                                  0x20000520   Data          28  gps_sensor.o(.data)
-    buf                                      0x20000928   Data          96  apptask_uart_hello.o(.bss)
-    __libspace_start                         0x20001498   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x200014f8   Data           0  libspace.o(.bss)
+    buf                                      0x20000914   Data          96  apptask_uart_hello.o(.bss)
+    __libspace_start                         0x200014e8   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x20001548   Data           0  libspace.o(.bss)
 
 
 
@@ -3561,102 +3570,102 @@ Memory Map of the image
 
   Image Entry point : 0x080001c5
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00007890, Max: 0x00080000, ABSOLUTE, COMPRESSED[0x00007418])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000078e8, Max: 0x00080000, ABSOLUTE, COMPRESSED[0x00007480])
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00007350, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000073bc, Max: 0x00080000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x08000000   0x000001c4   Data   RO         6656    RESET               startup_stm32f446xx.o
-    0x080001c4   0x080001c4   0x00000008   Code   RO         7748  * !!!main             c_w.l(__main.o)
-    0x080001cc   0x080001cc   0x00000034   Code   RO         8010    !!!scatter          c_w.l(__scatter.o)
-    0x08000200   0x08000200   0x0000005a   Code   RO         8008    !!dczerorl2         c_w.l(__dczerorl2.o)
+    0x080001c4   0x080001c4   0x00000008   Code   RO         7768  * !!!main             c_w.l(__main.o)
+    0x080001cc   0x080001cc   0x00000034   Code   RO         8030    !!!scatter          c_w.l(__scatter.o)
+    0x08000200   0x08000200   0x0000005a   Code   RO         8028    !!dczerorl2         c_w.l(__dczerorl2.o)
     0x0800025a   0x0800025a   0x00000002   PAD
-    0x0800025c   0x0800025c   0x0000001c   Code   RO         8012    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x08000278   0x08000278   0x00000000   Code   RO         7741    .ARM.Collect$$_printf_percent$$00000000  c_w.l(_printf_percent.o)
-    0x08000278   0x08000278   0x00000006   Code   RO         7740    .ARM.Collect$$_printf_percent$$00000003  c_w.l(_printf_f.o)
-    0x0800027e   0x0800027e   0x00000006   Code   RO         7739    .ARM.Collect$$_printf_percent$$00000009  c_w.l(_printf_d.o)
-    0x08000284   0x08000284   0x00000004   Code   RO         7791    .ARM.Collect$$_printf_percent$$00000017  c_w.l(_printf_percent_end.o)
-    0x08000288   0x08000288   0x00000002   Code   RO         7877    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x0800028a   0x0800028a   0x00000004   Code   RO         7878    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
-    0x0800028e   0x0800028e   0x00000000   Code   RO         7881    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x0800028e   0x0800028e   0x00000000   Code   RO         7884    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
-    0x0800028e   0x0800028e   0x00000000   Code   RO         7886    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x0800028e   0x0800028e   0x00000000   Code   RO         7888    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x0800028e   0x0800028e   0x00000006   Code   RO         7889    .ARM.Collect$$libinit$$0000000F  c_w.l(libinit2.o)
-    0x08000294   0x08000294   0x00000000   Code   RO         7891    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x08000294   0x08000294   0x00000000   Code   RO         7893    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x08000294   0x08000294   0x00000000   Code   RO         7895    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x08000294   0x08000294   0x0000000a   Code   RO         7896    .ARM.Collect$$libinit$$00000016  c_w.l(libinit2.o)
-    0x0800029e   0x0800029e   0x00000000   Code   RO         7897    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x0800029e   0x0800029e   0x00000000   Code   RO         7899    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x0800029e   0x0800029e   0x00000000   Code   RO         7901    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x0800029e   0x0800029e   0x00000000   Code   RO         7903    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x0800029e   0x0800029e   0x00000000   Code   RO         7905    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x0800029e   0x0800029e   0x00000000   Code   RO         7907    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x0800029e   0x0800029e   0x00000000   Code   RO         7909    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x0800029e   0x0800029e   0x00000000   Code   RO         7911    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x0800029e   0x0800029e   0x00000000   Code   RO         7915    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
-    0x0800029e   0x0800029e   0x00000000   Code   RO         7917    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x0800029e   0x0800029e   0x00000000   Code   RO         7919    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x0800029e   0x0800029e   0x00000000   Code   RO         7921    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x0800029e   0x0800029e   0x00000002   Code   RO         7922    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
-    0x080002a0   0x080002a0   0x00000002   Code   RO         7954    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x080002a2   0x080002a2   0x00000000   Code   RO         7965    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x080002a2   0x080002a2   0x00000000   Code   RO         7967    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x080002a2   0x080002a2   0x00000000   Code   RO         7969    .ARM.Collect$$libshutdown$$00000006  c_w.l(libshutdown2.o)
-    0x080002a2   0x080002a2   0x00000000   Code   RO         7972    .ARM.Collect$$libshutdown$$00000009  c_w.l(libshutdown2.o)
-    0x080002a2   0x080002a2   0x00000000   Code   RO         7975    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x080002a2   0x080002a2   0x00000000   Code   RO         7977    .ARM.Collect$$libshutdown$$0000000E  c_w.l(libshutdown2.o)
-    0x080002a2   0x080002a2   0x00000000   Code   RO         7980    .ARM.Collect$$libshutdown$$00000011  c_w.l(libshutdown2.o)
-    0x080002a2   0x080002a2   0x00000002   Code   RO         7981    .ARM.Collect$$libshutdown$$00000012  c_w.l(libshutdown2.o)
-    0x080002a4   0x080002a4   0x00000000   Code   RO         7782    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x080002a4   0x080002a4   0x00000000   Code   RO         7804    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x080002a4   0x080002a4   0x00000006   Code   RO         7816    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x080002aa   0x080002aa   0x00000000   Code   RO         7806    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x080002aa   0x080002aa   0x00000004   Code   RO         7807    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x080002ae   0x080002ae   0x00000000   Code   RO         7809    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x080002ae   0x080002ae   0x00000008   Code   RO         7810    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x080002b6   0x080002b6   0x00000002   Code   RO         7925    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x080002b8   0x080002b8   0x00000000   Code   RO         7932    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x080002b8   0x080002b8   0x00000004   Code   RO         7933    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x080002bc   0x080002bc   0x00000006   Code   RO         7934    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x0800025c   0x0800025c   0x0000001c   Code   RO         8032    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x08000278   0x08000278   0x00000000   Code   RO         7761    .ARM.Collect$$_printf_percent$$00000000  c_w.l(_printf_percent.o)
+    0x08000278   0x08000278   0x00000006   Code   RO         7760    .ARM.Collect$$_printf_percent$$00000003  c_w.l(_printf_f.o)
+    0x0800027e   0x0800027e   0x00000006   Code   RO         7759    .ARM.Collect$$_printf_percent$$00000009  c_w.l(_printf_d.o)
+    0x08000284   0x08000284   0x00000004   Code   RO         7811    .ARM.Collect$$_printf_percent$$00000017  c_w.l(_printf_percent_end.o)
+    0x08000288   0x08000288   0x00000002   Code   RO         7897    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x0800028a   0x0800028a   0x00000004   Code   RO         7898    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
+    0x0800028e   0x0800028e   0x00000000   Code   RO         7901    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x0800028e   0x0800028e   0x00000000   Code   RO         7904    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x0800028e   0x0800028e   0x00000000   Code   RO         7906    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x0800028e   0x0800028e   0x00000000   Code   RO         7908    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x0800028e   0x0800028e   0x00000006   Code   RO         7909    .ARM.Collect$$libinit$$0000000F  c_w.l(libinit2.o)
+    0x08000294   0x08000294   0x00000000   Code   RO         7911    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x08000294   0x08000294   0x00000000   Code   RO         7913    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x08000294   0x08000294   0x00000000   Code   RO         7915    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x08000294   0x08000294   0x0000000a   Code   RO         7916    .ARM.Collect$$libinit$$00000016  c_w.l(libinit2.o)
+    0x0800029e   0x0800029e   0x00000000   Code   RO         7917    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x0800029e   0x0800029e   0x00000000   Code   RO         7919    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x0800029e   0x0800029e   0x00000000   Code   RO         7921    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x0800029e   0x0800029e   0x00000000   Code   RO         7923    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x0800029e   0x0800029e   0x00000000   Code   RO         7925    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x0800029e   0x0800029e   0x00000000   Code   RO         7927    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x0800029e   0x0800029e   0x00000000   Code   RO         7929    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x0800029e   0x0800029e   0x00000000   Code   RO         7931    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x0800029e   0x0800029e   0x00000000   Code   RO         7935    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x0800029e   0x0800029e   0x00000000   Code   RO         7937    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x0800029e   0x0800029e   0x00000000   Code   RO         7939    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x0800029e   0x0800029e   0x00000000   Code   RO         7941    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x0800029e   0x0800029e   0x00000002   Code   RO         7942    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
+    0x080002a0   0x080002a0   0x00000002   Code   RO         7974    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x080002a2   0x080002a2   0x00000000   Code   RO         7985    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x080002a2   0x080002a2   0x00000000   Code   RO         7987    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x080002a2   0x080002a2   0x00000000   Code   RO         7989    .ARM.Collect$$libshutdown$$00000006  c_w.l(libshutdown2.o)
+    0x080002a2   0x080002a2   0x00000000   Code   RO         7992    .ARM.Collect$$libshutdown$$00000009  c_w.l(libshutdown2.o)
+    0x080002a2   0x080002a2   0x00000000   Code   RO         7995    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x080002a2   0x080002a2   0x00000000   Code   RO         7997    .ARM.Collect$$libshutdown$$0000000E  c_w.l(libshutdown2.o)
+    0x080002a2   0x080002a2   0x00000000   Code   RO         8000    .ARM.Collect$$libshutdown$$00000011  c_w.l(libshutdown2.o)
+    0x080002a2   0x080002a2   0x00000002   Code   RO         8001    .ARM.Collect$$libshutdown$$00000012  c_w.l(libshutdown2.o)
+    0x080002a4   0x080002a4   0x00000000   Code   RO         7802    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x080002a4   0x080002a4   0x00000000   Code   RO         7824    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x080002a4   0x080002a4   0x00000006   Code   RO         7836    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x080002aa   0x080002aa   0x00000000   Code   RO         7826    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x080002aa   0x080002aa   0x00000004   Code   RO         7827    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x080002ae   0x080002ae   0x00000000   Code   RO         7829    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x080002ae   0x080002ae   0x00000008   Code   RO         7830    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x080002b6   0x080002b6   0x00000002   Code   RO         7945    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x080002b8   0x080002b8   0x00000000   Code   RO         7952    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x080002b8   0x080002b8   0x00000004   Code   RO         7953    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x080002bc   0x080002bc   0x00000006   Code   RO         7954    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x080002c2   0x080002c2   0x00000002   PAD
     0x080002c4   0x080002c4   0x00000040   Code   RO         6657    .text               startup_stm32f446xx.o
-    0x08000304   0x08000304   0x00000028   Code   RO         7711    .text               c_w.l(noretval__2sprintf.o)
-    0x0800032c   0x0800032c   0x0000004e   Code   RO         7715    .text               c_w.l(_printf_pad.o)
+    0x08000304   0x08000304   0x00000028   Code   RO         7731    .text               c_w.l(noretval__2sprintf.o)
+    0x0800032c   0x0800032c   0x0000004e   Code   RO         7735    .text               c_w.l(_printf_pad.o)
     0x0800037a   0x0800037a   0x00000002   PAD
-    0x0800037c   0x0800037c   0x00000078   Code   RO         7717    .text               c_w.l(_printf_dec.o)
-    0x080003f4   0x080003f4   0x0000010e   Code   RO         7727    .text               c_w.l(__printf_wp.o)
-    0x08000502   0x08000502   0x00000064   Code   RO         7742    .text               c_w.l(rt_memcpy_w.o)
-    0x08000566   0x08000566   0x0000004e   Code   RO         7744    .text               c_w.l(rt_memclr_w.o)
-    0x080005b4   0x080005b4   0x00000006   Code   RO         7746    .text               c_w.l(heapauxi.o)
-    0x080005ba   0x080005ba   0x000000b2   Code   RO         7783    .text               c_w.l(_printf_intcommon.o)
-    0x0800066c   0x0800066c   0x0000041e   Code   RO         7785    .text               c_w.l(_printf_fp_dec.o)
+    0x0800037c   0x0800037c   0x00000078   Code   RO         7737    .text               c_w.l(_printf_dec.o)
+    0x080003f4   0x080003f4   0x0000010e   Code   RO         7747    .text               c_w.l(__printf_wp.o)
+    0x08000502   0x08000502   0x00000064   Code   RO         7762    .text               c_w.l(rt_memcpy_w.o)
+    0x08000566   0x08000566   0x0000004e   Code   RO         7764    .text               c_w.l(rt_memclr_w.o)
+    0x080005b4   0x080005b4   0x00000006   Code   RO         7766    .text               c_w.l(heapauxi.o)
+    0x080005ba   0x080005ba   0x000000b2   Code   RO         7803    .text               c_w.l(_printf_intcommon.o)
+    0x0800066c   0x0800066c   0x0000041e   Code   RO         7805    .text               c_w.l(_printf_fp_dec.o)
     0x08000a8a   0x08000a8a   0x00000002   PAD
-    0x08000a8c   0x08000a8c   0x00000030   Code   RO         7787    .text               c_w.l(_printf_char_common.o)
-    0x08000abc   0x08000abc   0x0000000a   Code   RO         7789    .text               c_w.l(_sputc.o)
+    0x08000a8c   0x08000a8c   0x00000030   Code   RO         7807    .text               c_w.l(_printf_char_common.o)
+    0x08000abc   0x08000abc   0x0000000a   Code   RO         7809    .text               c_w.l(_sputc.o)
     0x08000ac6   0x08000ac6   0x00000002   PAD
-    0x08000ac8   0x08000ac8   0x00000008   Code   RO         7821    .text               c_w.l(rt_locale_intlibspace.o)
-    0x08000ad0   0x08000ad0   0x0000008a   Code   RO         7823    .text               c_w.l(lludiv10.o)
+    0x08000ac8   0x08000ac8   0x00000008   Code   RO         7841    .text               c_w.l(rt_locale_intlibspace.o)
+    0x08000ad0   0x08000ad0   0x0000008a   Code   RO         7843    .text               c_w.l(lludiv10.o)
     0x08000b5a   0x08000b5a   0x00000002   PAD
-    0x08000b5c   0x08000b5c   0x00000080   Code   RO         7825    .text               c_w.l(_printf_fp_infnan.o)
-    0x08000bdc   0x08000bdc   0x000000e4   Code   RO         7829    .text               c_w.l(bigflt0.o)
-    0x08000cc0   0x08000cc0   0x00000008   Code   RO         7863    .text               c_w.l(libspace.o)
-    0x08000cc8   0x08000cc8   0x0000004a   Code   RO         7866    .text               c_w.l(sys_stackheap_outer.o)
-    0x08000d12   0x08000d12   0x00000012   Code   RO         7868    .text               c_w.l(exit.o)
-    0x08000d24   0x08000d24   0x00000080   Code   RO         7870    .text               c_w.l(strcmpv7m.o)
-    0x08000da4   0x08000da4   0x0000000c   Code   RO         7944    .text               c_w.l(sys_exit.o)
-    0x08000db0   0x08000db0   0x00000002   Code   RO         7955    .text               c_w.l(use_no_semi.o)
-    0x08000db2   0x08000db2   0x00000000   Code   RO         7957    .text               c_w.l(indicate_semi.o)
-    0x08000db2   0x08000db2   0x0000003e   Code   RO         7832    CL$$btod_d2e        c_w.l(btod.o)
-    0x08000df0   0x08000df0   0x00000046   Code   RO         7834    CL$$btod_d2e_denorm_low  c_w.l(btod.o)
-    0x08000e36   0x08000e36   0x00000060   Code   RO         7833    CL$$btod_d2e_norm_op1  c_w.l(btod.o)
-    0x08000e96   0x08000e96   0x00000338   Code   RO         7842    CL$$btod_div_common  c_w.l(btod.o)
-    0x080011ce   0x080011ce   0x000000dc   Code   RO         7839    CL$$btod_e2e        c_w.l(btod.o)
-    0x080012aa   0x080012aa   0x0000002a   Code   RO         7836    CL$$btod_ediv       c_w.l(btod.o)
-    0x080012d4   0x080012d4   0x0000002a   Code   RO         7835    CL$$btod_emul       c_w.l(btod.o)
-    0x080012fe   0x080012fe   0x00000244   Code   RO         7841    CL$$btod_mult_common  c_w.l(btod.o)
+    0x08000b5c   0x08000b5c   0x00000080   Code   RO         7845    .text               c_w.l(_printf_fp_infnan.o)
+    0x08000bdc   0x08000bdc   0x000000e4   Code   RO         7849    .text               c_w.l(bigflt0.o)
+    0x08000cc0   0x08000cc0   0x00000008   Code   RO         7883    .text               c_w.l(libspace.o)
+    0x08000cc8   0x08000cc8   0x0000004a   Code   RO         7886    .text               c_w.l(sys_stackheap_outer.o)
+    0x08000d12   0x08000d12   0x00000012   Code   RO         7888    .text               c_w.l(exit.o)
+    0x08000d24   0x08000d24   0x00000080   Code   RO         7890    .text               c_w.l(strcmpv7m.o)
+    0x08000da4   0x08000da4   0x0000000c   Code   RO         7964    .text               c_w.l(sys_exit.o)
+    0x08000db0   0x08000db0   0x00000002   Code   RO         7975    .text               c_w.l(use_no_semi.o)
+    0x08000db2   0x08000db2   0x00000000   Code   RO         7977    .text               c_w.l(indicate_semi.o)
+    0x08000db2   0x08000db2   0x0000003e   Code   RO         7852    CL$$btod_d2e        c_w.l(btod.o)
+    0x08000df0   0x08000df0   0x00000046   Code   RO         7854    CL$$btod_d2e_denorm_low  c_w.l(btod.o)
+    0x08000e36   0x08000e36   0x00000060   Code   RO         7853    CL$$btod_d2e_norm_op1  c_w.l(btod.o)
+    0x08000e96   0x08000e96   0x00000338   Code   RO         7862    CL$$btod_div_common  c_w.l(btod.o)
+    0x080011ce   0x080011ce   0x000000dc   Code   RO         7859    CL$$btod_e2e        c_w.l(btod.o)
+    0x080012aa   0x080012aa   0x0000002a   Code   RO         7856    CL$$btod_ediv       c_w.l(btod.o)
+    0x080012d4   0x080012d4   0x0000002a   Code   RO         7855    CL$$btod_emul       c_w.l(btod.o)
+    0x080012fe   0x080012fe   0x00000244   Code   RO         7861    CL$$btod_mult_common  c_w.l(btod.o)
     0x08001542   0x08001542   0x00000002   PAD
     0x08001544   0x08001544   0x00000054   Code   RO          271    i.ADC1_Get_Temperature_Celsius  ttrd2-05a-t0401a-v001a_adc_task.o
     0x08001598   0x08001598   0x000000b8   Code   RO          272    i.ADC1_Init         ttrd2-05a-t0401a-v001a_adc_task.o
@@ -3681,143 +3690,144 @@ Memory Map of the image
     0x0800275c   0x0800275c   0x000000bc   Code   RO         2868    i.GPIO_ResetBits    stm32f4xx_gpio.o
     0x08002818   0x08002818   0x000000bc   Code   RO         2869    i.GPIO_SetBits      stm32f4xx_gpio.o
     0x080028d4   0x080028d4   0x0000005c   Code   RO         7475    i.GPS_Sensor_GetData  gps_sensor.o
-    0x08002930   0x08002930   0x000001f4   Code   RO         7476    i.GPS_Sensor_Init   gps_sensor.o
-    0x08002b24   0x08002b24   0x00000160   Code   RO         7477    i.GPS_Sensor_Update  gps_sensor.o
-    0x08002c84   0x08002c84   0x00000034   Code   RO          408    i.HEARTBEAT_SW_Init  ttrd2-05a-t0401a-v001a_heartbeat_sw_task.o
-    0x08002cb8   0x08002cb8   0x0000006c   Code   RO          409    i.HEARTBEAT_SW_Update  ttrd2-05a-t0401a-v001a_heartbeat_sw_task.o
-    0x08002d24   0x08002d24   0x00000012   Code   RO         6965    i.MONITTORi_Disable  ttrd2-18a-t0401a-v001a_monittor_i.o
-    0x08002d36   0x08002d36   0x00000002   Code   RO         6966    i.MONITTORi_Init    ttrd2-18a-t0401a-v001a_monittor_i.o
-    0x08002d38   0x08002d38   0x00000108   Code   RO         6967    i.MONITTORi_Start   ttrd2-18a-t0401a-v001a_monittor_i.o
-    0x08002e40   0x08002e40   0x00000094   Code   RO         6968    i.MONITTORi_Stop    ttrd2-18a-t0401a-v001a_monittor_i.o
-    0x08002ed4   0x08002ed4   0x000000d0   Code   RO          700    i.NVIC_Init         misc.o
-    0x08002fa4   0x08002fa4   0x00000060   Code   RO          701    i.NVIC_PriorityGroupConfig  misc.o
-    0x08003004   0x08003004   0x000001c8   Code   RO         7112    i.PREDICTTORi_Check_Task_Sequence  ttrd2-19a-t0401a-v001b_predicttor_i.o
-    0x080031cc   0x080031cc   0x0000001c   Code   RO         7113    i.PREDICTTORi_Init  ttrd2-19a-t0401a-v001b_predicttor_i.o
-    0x080031e8   0x080031e8   0x0000002c   Code   RO         6795    i.PROCESSOR_Change_MoSt  ttrd2-19a-t0401a-v001b_processor.o
-    0x08003214   0x08003214   0x0000059c   Code   RO         6796    i.PROCESSOR_Configure_Reqd_MoSt  ttrd2-19a-t0401a-v001b_processor.o
-    0x080037b0   0x080037b0   0x00000024   Code   RO         6797    i.PROCESSOR_Get_MoSt  ttrd2-19a-t0401a-v001b_processor.o
-    0x080037d4   0x080037d4   0x00000068   Code   RO         6798    i.PROCESSOR_Identify_Reqd_MoSt  ttrd2-19a-t0401a-v001b_processor.o
-    0x0800383c   0x0800383c   0x0000000c   Code   RO         6799    i.PROCESSOR_Init    ttrd2-19a-t0401a-v001b_processor.o
-    0x08003848   0x08003848   0x00000078   Code   RO         6800    i.PROCESSOR_Perform_Safe_Shutdown  ttrd2-19a-t0401a-v001b_processor.o
-    0x080038c0   0x080038c0   0x00000020   Code   RO         6801    i.PROCESSOR_Retrieve_PFC  ttrd2-19a-t0401a-v001b_processor.o
-    0x080038e0   0x080038e0   0x00000020   Code   RO         6802    i.PROCESSOR_Retrieve_Reqd_MoSt  ttrd2-19a-t0401a-v001b_processor.o
-    0x08003900   0x08003900   0x00000014   Code   RO         6803    i.PROCESSOR_Set_MoSt  ttrd2-19a-t0401a-v001b_processor.o
-    0x08003914   0x08003914   0x00000034   Code   RO         6804    i.PROCESSOR_Store_PFC  ttrd2-19a-t0401a-v001b_processor.o
-    0x08003948   0x08003948   0x00000038   Code   RO         6805    i.PROCESSOR_Store_Reqd_MoSt  ttrd2-19a-t0401a-v001b_processor.o
-    0x08003980   0x08003980   0x00000020   Code   RO          609    i.PROCESSOR_TASK_Init  ttrd2-19a-t0401a-v001b_processor_task.o
-    0x080039a0   0x080039a0   0x00000020   Code   RO          610    i.PROCESSOR_TASK_Retrieve_State  ttrd2-19a-t0401a-v001b_processor_task.o
-    0x080039c0   0x080039c0   0x00000034   Code   RO          611    i.PROCESSOR_TASK_Store_State  ttrd2-19a-t0401a-v001b_processor_task.o
-    0x080039f4   0x080039f4   0x000000dc   Code   RO          612    i.PROCESSOR_TASK_Update  ttrd2-19a-t0401a-v001b_processor_task.o
-    0x08003ad0   0x08003ad0   0x00000048   Code   RO         3655    i.PWR_BackupAccessCmd  stm32f4xx_pwr.o
-    0x08003b18   0x08003b18   0x00000078   Code   RO         3990    i.RCC_AHB1PeriphClockCmd  stm32f4xx_rcc.o
-    0x08003b90   0x08003b90   0x00000074   Code   RO         3999    i.RCC_APB1PeriphClockCmd  stm32f4xx_rcc.o
-    0x08003c04   0x08003c04   0x00000078   Code   RO         4002    i.RCC_APB2PeriphClockCmd  stm32f4xx_rcc.o
-    0x08003c7c   0x08003c7c   0x00000014   Code   RO         4008    i.RCC_ClearFlag     stm32f4xx_rcc.o
-    0x08003c90   0x08003c90   0x000001c8   Code   RO         4013    i.RCC_GetClocksFreq  stm32f4xx_rcc.o
-    0x08003e58   0x08003e58   0x000000b4   Code   RO         4014    i.RCC_GetFlagStatus  stm32f4xx_rcc.o
-    0x08003f0c   0x08003f0c   0x0000007c   Code   RO         6273    i.REG_CONFIG_CHECKS_ADC1_Check  ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.o
-    0x08003f88   0x08003f88   0x00000044   Code   RO         6274    i.REG_CONFIG_CHECKS_ADC1_Store  ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.o
-    0x08003fcc   0x08003fcc   0x00000290   Code   RO         6399    i.REG_CONFIG_CHECKS_GPIO_Check  ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o
-    0x0800425c   0x0800425c   0x00000194   Code   RO         6400    i.REG_CONFIG_CHECKS_GPIO_Store  ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o
-    0x080043f0   0x080043f0   0x0000014c   Code   RO         6463    i.REG_CONFIG_CHECKS_UART_Check  ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o
-    0x0800453c   0x0800453c   0x000000cc   Code   RO         6464    i.REG_CONFIG_CHECKS_UART_Store  ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o
-    0x08004608   0x08004608   0x000002a0   Code   RO         6431    i.REG_CONFIG_TIMER_Check  ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o
-    0x080048a8   0x080048a8   0x000001e8   Code   RO         6432    i.REG_CONFIG_TIMER_Store  ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o
-    0x08004a90   0x08004a90   0x00000040   Code   RO         6664    i.REPORT_PFC_Init   ttrd2-04a-t0401a-v001a_pfc_reporting.o
-    0x08004ad0   0x08004ad0   0x00000094   Code   RO         6665    i.REPORT_PFC_Update  ttrd2-04a-t0401a-v001a_pfc_reporting.o
-    0x08004b64   0x08004b64   0x00000030   Code   RO         6907    i.RTT_05a_Scheduler_Osc_Test_Update  ttrd2-19a-t0401a-v001b_run_time_tests.o
-    0x08004b94   0x08004b94   0x00000028   Code   RO         6908    i.RTT_05b_Scheduler_Osc_Test_Update  ttrd2-19a-t0401a-v001b_run_time_tests.o
-    0x08004bbc   0x08004bbc   0x0000004c   Code   RO         6909    i.RTT_06a_MoniTTor_Overrun_Test_Update  ttrd2-19a-t0401a-v001b_run_time_tests.o
-    0x08004c08   0x08004c08   0x00000044   Code   RO         6910    i.RTT_06b_MoniTTor_Underrun_Test_Update  ttrd2-19a-t0401a-v001b_run_time_tests.o
-    0x08004c4c   0x08004c4c   0x00000024   Code   RO         6911    i.RTT_07_PredicTTor_Test_Update  ttrd2-19a-t0401a-v001b_run_time_tests.o
-    0x08004c70   0x08004c70   0x0000007c   Code   RO         6912    i.RTT_Startup_04_WDT_Check  ttrd2-19a-t0401a-v001b_run_time_tests.o
-    0x08004cec   0x08004cec   0x00000100   Code   RO         7152    i.SCH_Add_Task      ttrd2-19a-t0401a-v001c_scheduler.o
-    0x08004dec   0x08004dec   0x000001a4   Code   RO         7153    i.SCH_Dispatch_Tasks  ttrd2-19a-t0401a-v001c_scheduler.o
-    0x08004f90   0x08004f90   0x000000ec   Code   RO         7154    i.SCH_Init_Microseconds  ttrd2-19a-t0401a-v001c_scheduler.o
-    0x0800507c   0x0800507c   0x00000058   Code   RO         7155    i.SCH_Set_Interrupt_Priority_Levels  ttrd2-19a-t0401a-v001c_scheduler.o
-    0x080050d4   0x080050d4   0x00000022   Code   RO         7156    i.SCH_Start         ttrd2-19a-t0401a-v001c_scheduler.o
-    0x080050f6   0x080050f6   0x00000002   PAD
-    0x080050f8   0x080050f8   0x00000024   Code   RO          487    i.SWITCH_BUTTON1_Get_State  ttrd2-05a-t0401a-v001a_switch_task.o
-    0x0800511c   0x0800511c   0x00000048   Code   RO          488    i.SWITCH_BUTTON1_Init  ttrd2-05a-t0401a-v001a_switch_task.o
-    0x08005164   0x08005164   0x000000a0   Code   RO          489    i.SWITCH_BUTTON1_Update  ttrd2-05a-t0401a-v001a_switch_task.o
-    0x08005204   0x08005204   0x000000e8   Code   RO         6495    i.SetSysClock       system_stm32f4xx.o
-    0x080052ec   0x080052ec   0x00000024   Code   RO         6969    i.SysTick_Handler   ttrd2-18a-t0401a-v001a_monittor_i.o
-    0x08005310   0x08005310   0x00000068   Code   RO         6497    i.SystemInit        system_stm32f4xx.o
-    0x08005378   0x08005378   0x000000c4   Code   RO         7157    i.TIM2_IRQHandler   ttrd2-19a-t0401a-v001c_scheduler.o
-    0x0800543c   0x0800543c   0x00000028   Code   RO          141    i.TIMEOUT_T3_USEC_Get_Timer_State  ttrd2-05a-t0401a-v001a_timeout_t3.o
-    0x08005464   0x08005464   0x00000034   Code   RO          142    i.TIMEOUT_T3_USEC_Init  ttrd2-05a-t0401a-v001a_timeout_t3.o
-    0x08005498   0x08005498   0x00000020   Code   RO          143    i.TIMEOUT_T3_USEC_Start  ttrd2-05a-t0401a-v001a_timeout_t3.o
-    0x080054b8   0x080054b8   0x000000c8   Code   RO         5460    i.TIM_ClearITPendingBit  stm32f4xx_tim.o
-    0x08005580   0x08005580   0x000000ec   Code   RO         5465    i.TIM_Cmd           stm32f4xx_tim.o
-    0x0800566c   0x0800566c   0x000000c4   Code   RO         5484    i.TIM_GetCounter    stm32f4xx_tim.o
-    0x08005730   0x08005730   0x000000fc   Code   RO         5490    i.TIM_ITConfig      stm32f4xx_tim.o
-    0x0800582c   0x0800582c   0x000000c8   Code   RO         5531    i.TIM_SetCounter    stm32f4xx_tim.o
-    0x080058f4   0x080058f4   0x00000174   Code   RO         5537    i.TIM_TimeBaseInit  stm32f4xx_tim.o
-    0x08005a68   0x08005a68   0x00000012   Code   RO         5538    i.TIM_TimeBaseStructInit  stm32f4xx_tim.o
-    0x08005a7a   0x08005a7a   0x00000002   PAD
-    0x08005a7c   0x08005a7c   0x00000054   Code   RO          525    i.UART2_BUF_O_Check_Data_Integrity  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
-    0x08005ad0   0x08005ad0   0x00000118   Code   RO          526    i.UART2_BUF_O_Init  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
-    0x08005be8   0x08005be8   0x00000094   Code   RO          527    i.UART2_BUF_O_Send_All_Data  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
-    0x08005c7c   0x08005c7c   0x0000001c   Code   RO          528    i.UART2_BUF_O_Update  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
-    0x08005c98   0x08005c98   0x00000060   Code   RO          529    i.UART2_BUF_O_Write_Char_To_Buffer  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
-    0x08005cf8   0x08005cf8   0x00000056   Code   RO          531    i.UART2_BUF_O_Write_Number03_To_Buffer  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
-    0x08005d4e   0x08005d4e   0x0000006e   Code   RO          532    i.UART2_BUF_O_Write_Number04_To_Buffer  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
-    0x08005dbc   0x08005dbc   0x00000018   Code   RO          534    i.UART2_BUF_O_Write_String_To_Buffer  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
-    0x08005dd4   0x08005dd4   0x000000d4   Code   RO         6015    i.USART_ClearFlag   stm32f4xx_usart.o
-    0x08005ea8   0x08005ea8   0x000000b4   Code   RO         6019    i.USART_Cmd         stm32f4xx_usart.o
-    0x08005f5c   0x08005f5c   0x000000c8   Code   RO         6020    i.USART_DMACmd      stm32f4xx_usart.o
-    0x08006024   0x08006024   0x0000022c   Code   RO         6026    i.USART_Init        stm32f4xx_usart.o
-    0x08006250   0x08006250   0x00000024   Code   RO          445    i.WATCHDOG_Get_State  ttrd2-05a-t0401a-v001a_iwdt_task.o
-    0x08006274   0x08006274   0x00000040   Code   RO          446    i.WATCHDOG_Init     ttrd2-05a-t0401a-v001a_iwdt_task.o
-    0x080062b4   0x080062b4   0x00000014   Code   RO          447    i.WATCHDOG_Update   ttrd2-05a-t0401a-v001a_iwdt_task.o
-    0x080062c8   0x080062c8   0x00000030   Code   RO         7861    i.__ARM_fpclassify  m_wm.l(fpclassify.o)
-    0x080062f8   0x080062f8   0x0000000e   Code   RO         7729    i._is_digit         c_w.l(__printf_wp.o)
-    0x08006306   0x08006306   0x00000002   PAD
-    0x08006308   0x08006308   0x00000050   Code   RO         6536    i.assert_failed     ttrd2-19a-t0401a-v001a_assert_failed.o
-    0x08006358   0x08006358   0x00000012   Code   RO         7478    i.fix_f             gps_sensor.o
-    0x0800636a   0x0800636a   0x00000002   PAD
-    0x0800636c   0x0800636c   0x00000014   Code   RO         7479    i.get_struct        gps_sensor.o
-    0x08006380   0x08006380   0x00000058   Code   RO         7480    i.lla_f             gps_sensor.o
-    0x080063d8   0x080063d8   0x00000010   Code   RO            4    i.main              main.o
-    0x080063e8   0x080063e8   0x00000058   Code   RO         7481    i.root_f            gps_sensor.o
-    0x08006440   0x08006440   0x00000026   Code   RO         7482    i.satnum_f          gps_sensor.o
-    0x08006466   0x08006466   0x00000002   PAD
-    0x08006468   0x08006468   0x00000018   Code   RO         7483    i.sentence_parsing  gps_sensor.o
-    0x08006480   0x08006480   0x000000b0   Code   RO         7686    i.str_to_float      common.o
-    0x08006530   0x08006530   0x00000040   Code   RO         7687    i.str_to_float_nl   common.o
-    0x08006570   0x08006570   0x00000034   Code   RO         7484    i.time_f            gps_sensor.o
-    0x080065a4   0x080065a4   0x00000068   Code   RO          657    i.uart_hello_Init   apptask_uart_hello.o
-    0x0800660c   0x0800660c   0x000002f8   Code   RO          658    i.uart_hello_Update  apptask_uart_hello.o
-    0x08006904   0x08006904   0x00000068   Code   RO         7485    i.update_node_func  gps_sensor.o
-    0x0800696c   0x0800696c   0x0000003c   Code   RO         7486    i.xdop_f            gps_sensor.o
-    0x080069a8   0x080069a8   0x00000076   Code   RO         7487    i.xnode_proccess    gps_sensor.o
-    0x08006a1e   0x08006a1e   0x00000002   PAD
-    0x08006a20   0x08006a20   0x0000002c   Code   RO         7855    locale$$code        c_w.l(lc_numeric_c.o)
-    0x08006a4c   0x08006a4c   0x00000018   Code   RO         7750    x$fpl$basic         fz_wm.l(basic.o)
-    0x08006a64   0x08006a64   0x00000062   Code   RO         7752    x$fpl$d2f           fz_wm.l(d2f.o)
-    0x08006ac6   0x08006ac6   0x00000002   PAD
-    0x08006ac8   0x08006ac8   0x00000150   Code   RO         7754    x$fpl$dadd          fz_wm.l(daddsub_clz.o)
-    0x08006c18   0x08006c18   0x000002b0   Code   RO         7761    x$fpl$ddiv          fz_wm.l(ddiv.o)
-    0x08006ec8   0x08006ec8   0x0000002e   Code   RO         7765    x$fpl$dflt          fz_wm.l(dflt_clz.o)
-    0x08006ef6   0x08006ef6   0x0000009c   Code   RO         7792    x$fpl$dnaninf       fz_wm.l(dnaninf.o)
-    0x08006f92   0x08006f92   0x0000000c   Code   RO         7794    x$fpl$dretinf       fz_wm.l(dretinf.o)
-    0x08006f9e   0x08006f9e   0x00000002   PAD
-    0x08006fa0   0x08006fa0   0x000001d4   Code   RO         7756    x$fpl$dsub          fz_wm.l(daddsub_clz.o)
-    0x08007174   0x08007174   0x00000056   Code   RO         7772    x$fpl$f2d           fz_wm.l(f2d.o)
-    0x080071ca   0x080071ca   0x0000008c   Code   RO         7798    x$fpl$fnaninf       fz_wm.l(fnaninf.o)
-    0x08007256   0x08007256   0x0000000a   Code   RO         7929    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x08007260   0x08007260   0x0000000a   Code   RO         7800    x$fpl$fretinf       fz_wm.l(fretinf.o)
-    0x0800726a   0x0800726a   0x00000004   Code   RO         7774    x$fpl$printf1       fz_wm.l(printf1.o)
-    0x0800726e   0x0800726e   0x00000000   Code   RO         7802    x$fpl$usenofp       fz_wm.l(usenofp.o)
-    0x0800726e   0x0800726e   0x00000002   PAD
-    0x08007270   0x08007270   0x00000094   Data   RO         7830    .constdata          c_w.l(bigflt0.o)
-    0x08007304   0x08007304   0x0000000e   Data   RO         7489    .conststring        gps_sensor.o
-    0x08007312   0x08007312   0x00000002   PAD
-    0x08007314   0x08007314   0x00000020   Data   RO         8006    Region$$Table       anon$$obj.o
-    0x08007334   0x08007334   0x0000001c   Data   RO         7854    locale$$data        c_w.l(lc_numeric_c.o)
+    0x08002930   0x08002930   0x000001f8   Code   RO         7476    i.GPS_Sensor_Init   gps_sensor.o
+    0x08002b28   0x08002b28   0x00000160   Code   RO         7477    i.GPS_Sensor_Update  gps_sensor.o
+    0x08002c88   0x08002c88   0x00000034   Code   RO          408    i.HEARTBEAT_SW_Init  ttrd2-05a-t0401a-v001a_heartbeat_sw_task.o
+    0x08002cbc   0x08002cbc   0x0000006c   Code   RO          409    i.HEARTBEAT_SW_Update  ttrd2-05a-t0401a-v001a_heartbeat_sw_task.o
+    0x08002d28   0x08002d28   0x00000012   Code   RO         6965    i.MONITTORi_Disable  ttrd2-18a-t0401a-v001a_monittor_i.o
+    0x08002d3a   0x08002d3a   0x00000002   Code   RO         6966    i.MONITTORi_Init    ttrd2-18a-t0401a-v001a_monittor_i.o
+    0x08002d3c   0x08002d3c   0x00000108   Code   RO         6967    i.MONITTORi_Start   ttrd2-18a-t0401a-v001a_monittor_i.o
+    0x08002e44   0x08002e44   0x00000094   Code   RO         6968    i.MONITTORi_Stop    ttrd2-18a-t0401a-v001a_monittor_i.o
+    0x08002ed8   0x08002ed8   0x000000d0   Code   RO          700    i.NVIC_Init         misc.o
+    0x08002fa8   0x08002fa8   0x00000060   Code   RO          701    i.NVIC_PriorityGroupConfig  misc.o
+    0x08003008   0x08003008   0x000001c8   Code   RO         7112    i.PREDICTTORi_Check_Task_Sequence  ttrd2-19a-t0401a-v001b_predicttor_i.o
+    0x080031d0   0x080031d0   0x0000001c   Code   RO         7113    i.PREDICTTORi_Init  ttrd2-19a-t0401a-v001b_predicttor_i.o
+    0x080031ec   0x080031ec   0x0000002c   Code   RO         6795    i.PROCESSOR_Change_MoSt  ttrd2-19a-t0401a-v001b_processor.o
+    0x08003218   0x08003218   0x0000059c   Code   RO         6796    i.PROCESSOR_Configure_Reqd_MoSt  ttrd2-19a-t0401a-v001b_processor.o
+    0x080037b4   0x080037b4   0x00000024   Code   RO         6797    i.PROCESSOR_Get_MoSt  ttrd2-19a-t0401a-v001b_processor.o
+    0x080037d8   0x080037d8   0x00000068   Code   RO         6798    i.PROCESSOR_Identify_Reqd_MoSt  ttrd2-19a-t0401a-v001b_processor.o
+    0x08003840   0x08003840   0x0000000c   Code   RO         6799    i.PROCESSOR_Init    ttrd2-19a-t0401a-v001b_processor.o
+    0x0800384c   0x0800384c   0x00000078   Code   RO         6800    i.PROCESSOR_Perform_Safe_Shutdown  ttrd2-19a-t0401a-v001b_processor.o
+    0x080038c4   0x080038c4   0x00000020   Code   RO         6801    i.PROCESSOR_Retrieve_PFC  ttrd2-19a-t0401a-v001b_processor.o
+    0x080038e4   0x080038e4   0x00000020   Code   RO         6802    i.PROCESSOR_Retrieve_Reqd_MoSt  ttrd2-19a-t0401a-v001b_processor.o
+    0x08003904   0x08003904   0x00000014   Code   RO         6803    i.PROCESSOR_Set_MoSt  ttrd2-19a-t0401a-v001b_processor.o
+    0x08003918   0x08003918   0x00000034   Code   RO         6804    i.PROCESSOR_Store_PFC  ttrd2-19a-t0401a-v001b_processor.o
+    0x0800394c   0x0800394c   0x00000038   Code   RO         6805    i.PROCESSOR_Store_Reqd_MoSt  ttrd2-19a-t0401a-v001b_processor.o
+    0x08003984   0x08003984   0x00000020   Code   RO          609    i.PROCESSOR_TASK_Init  ttrd2-19a-t0401a-v001b_processor_task.o
+    0x080039a4   0x080039a4   0x00000020   Code   RO          610    i.PROCESSOR_TASK_Retrieve_State  ttrd2-19a-t0401a-v001b_processor_task.o
+    0x080039c4   0x080039c4   0x00000034   Code   RO          611    i.PROCESSOR_TASK_Store_State  ttrd2-19a-t0401a-v001b_processor_task.o
+    0x080039f8   0x080039f8   0x000000dc   Code   RO          612    i.PROCESSOR_TASK_Update  ttrd2-19a-t0401a-v001b_processor_task.o
+    0x08003ad4   0x08003ad4   0x00000048   Code   RO         3655    i.PWR_BackupAccessCmd  stm32f4xx_pwr.o
+    0x08003b1c   0x08003b1c   0x00000078   Code   RO         3990    i.RCC_AHB1PeriphClockCmd  stm32f4xx_rcc.o
+    0x08003b94   0x08003b94   0x00000074   Code   RO         3999    i.RCC_APB1PeriphClockCmd  stm32f4xx_rcc.o
+    0x08003c08   0x08003c08   0x00000078   Code   RO         4002    i.RCC_APB2PeriphClockCmd  stm32f4xx_rcc.o
+    0x08003c80   0x08003c80   0x00000014   Code   RO         4008    i.RCC_ClearFlag     stm32f4xx_rcc.o
+    0x08003c94   0x08003c94   0x000001c8   Code   RO         4013    i.RCC_GetClocksFreq  stm32f4xx_rcc.o
+    0x08003e5c   0x08003e5c   0x000000b4   Code   RO         4014    i.RCC_GetFlagStatus  stm32f4xx_rcc.o
+    0x08003f10   0x08003f10   0x0000007c   Code   RO         6273    i.REG_CONFIG_CHECKS_ADC1_Check  ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.o
+    0x08003f8c   0x08003f8c   0x00000044   Code   RO         6274    i.REG_CONFIG_CHECKS_ADC1_Store  ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.o
+    0x08003fd0   0x08003fd0   0x00000290   Code   RO         6399    i.REG_CONFIG_CHECKS_GPIO_Check  ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o
+    0x08004260   0x08004260   0x00000194   Code   RO         6400    i.REG_CONFIG_CHECKS_GPIO_Store  ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o
+    0x080043f4   0x080043f4   0x0000014c   Code   RO         6463    i.REG_CONFIG_CHECKS_UART_Check  ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o
+    0x08004540   0x08004540   0x000000cc   Code   RO         6464    i.REG_CONFIG_CHECKS_UART_Store  ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o
+    0x0800460c   0x0800460c   0x000002a0   Code   RO         6431    i.REG_CONFIG_TIMER_Check  ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o
+    0x080048ac   0x080048ac   0x000001e8   Code   RO         6432    i.REG_CONFIG_TIMER_Store  ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o
+    0x08004a94   0x08004a94   0x00000040   Code   RO         6664    i.REPORT_PFC_Init   ttrd2-04a-t0401a-v001a_pfc_reporting.o
+    0x08004ad4   0x08004ad4   0x00000094   Code   RO         6665    i.REPORT_PFC_Update  ttrd2-04a-t0401a-v001a_pfc_reporting.o
+    0x08004b68   0x08004b68   0x00000030   Code   RO         6907    i.RTT_05a_Scheduler_Osc_Test_Update  ttrd2-19a-t0401a-v001b_run_time_tests.o
+    0x08004b98   0x08004b98   0x00000028   Code   RO         6908    i.RTT_05b_Scheduler_Osc_Test_Update  ttrd2-19a-t0401a-v001b_run_time_tests.o
+    0x08004bc0   0x08004bc0   0x0000004c   Code   RO         6909    i.RTT_06a_MoniTTor_Overrun_Test_Update  ttrd2-19a-t0401a-v001b_run_time_tests.o
+    0x08004c0c   0x08004c0c   0x00000044   Code   RO         6910    i.RTT_06b_MoniTTor_Underrun_Test_Update  ttrd2-19a-t0401a-v001b_run_time_tests.o
+    0x08004c50   0x08004c50   0x00000024   Code   RO         6911    i.RTT_07_PredicTTor_Test_Update  ttrd2-19a-t0401a-v001b_run_time_tests.o
+    0x08004c74   0x08004c74   0x0000007c   Code   RO         6912    i.RTT_Startup_04_WDT_Check  ttrd2-19a-t0401a-v001b_run_time_tests.o
+    0x08004cf0   0x08004cf0   0x00000100   Code   RO         7152    i.SCH_Add_Task      ttrd2-19a-t0401a-v001c_scheduler.o
+    0x08004df0   0x08004df0   0x000001a4   Code   RO         7153    i.SCH_Dispatch_Tasks  ttrd2-19a-t0401a-v001c_scheduler.o
+    0x08004f94   0x08004f94   0x000000ec   Code   RO         7154    i.SCH_Init_Microseconds  ttrd2-19a-t0401a-v001c_scheduler.o
+    0x08005080   0x08005080   0x00000058   Code   RO         7155    i.SCH_Set_Interrupt_Priority_Levels  ttrd2-19a-t0401a-v001c_scheduler.o
+    0x080050d8   0x080050d8   0x00000022   Code   RO         7156    i.SCH_Start         ttrd2-19a-t0401a-v001c_scheduler.o
+    0x080050fa   0x080050fa   0x00000002   PAD
+    0x080050fc   0x080050fc   0x00000024   Code   RO          487    i.SWITCH_BUTTON1_Get_State  ttrd2-05a-t0401a-v001a_switch_task.o
+    0x08005120   0x08005120   0x00000048   Code   RO          488    i.SWITCH_BUTTON1_Init  ttrd2-05a-t0401a-v001a_switch_task.o
+    0x08005168   0x08005168   0x000000a0   Code   RO          489    i.SWITCH_BUTTON1_Update  ttrd2-05a-t0401a-v001a_switch_task.o
+    0x08005208   0x08005208   0x000000e8   Code   RO         6495    i.SetSysClock       system_stm32f4xx.o
+    0x080052f0   0x080052f0   0x00000024   Code   RO         6969    i.SysTick_Handler   ttrd2-18a-t0401a-v001a_monittor_i.o
+    0x08005314   0x08005314   0x00000068   Code   RO         6497    i.SystemInit        system_stm32f4xx.o
+    0x0800537c   0x0800537c   0x000000c4   Code   RO         7157    i.TIM2_IRQHandler   ttrd2-19a-t0401a-v001c_scheduler.o
+    0x08005440   0x08005440   0x00000028   Code   RO          141    i.TIMEOUT_T3_USEC_Get_Timer_State  ttrd2-05a-t0401a-v001a_timeout_t3.o
+    0x08005468   0x08005468   0x00000034   Code   RO          142    i.TIMEOUT_T3_USEC_Init  ttrd2-05a-t0401a-v001a_timeout_t3.o
+    0x0800549c   0x0800549c   0x00000020   Code   RO          143    i.TIMEOUT_T3_USEC_Start  ttrd2-05a-t0401a-v001a_timeout_t3.o
+    0x080054bc   0x080054bc   0x000000c8   Code   RO         5460    i.TIM_ClearITPendingBit  stm32f4xx_tim.o
+    0x08005584   0x08005584   0x000000ec   Code   RO         5465    i.TIM_Cmd           stm32f4xx_tim.o
+    0x08005670   0x08005670   0x000000c4   Code   RO         5484    i.TIM_GetCounter    stm32f4xx_tim.o
+    0x08005734   0x08005734   0x000000fc   Code   RO         5490    i.TIM_ITConfig      stm32f4xx_tim.o
+    0x08005830   0x08005830   0x000000c8   Code   RO         5531    i.TIM_SetCounter    stm32f4xx_tim.o
+    0x080058f8   0x080058f8   0x00000174   Code   RO         5537    i.TIM_TimeBaseInit  stm32f4xx_tim.o
+    0x08005a6c   0x08005a6c   0x00000012   Code   RO         5538    i.TIM_TimeBaseStructInit  stm32f4xx_tim.o
+    0x08005a7e   0x08005a7e   0x00000002   PAD
+    0x08005a80   0x08005a80   0x00000054   Code   RO          525    i.UART2_BUF_O_Check_Data_Integrity  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
+    0x08005ad4   0x08005ad4   0x00000118   Code   RO          526    i.UART2_BUF_O_Init  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
+    0x08005bec   0x08005bec   0x00000094   Code   RO          527    i.UART2_BUF_O_Send_All_Data  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
+    0x08005c80   0x08005c80   0x0000001c   Code   RO          528    i.UART2_BUF_O_Update  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
+    0x08005c9c   0x08005c9c   0x00000060   Code   RO          529    i.UART2_BUF_O_Write_Char_To_Buffer  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
+    0x08005cfc   0x08005cfc   0x00000056   Code   RO          531    i.UART2_BUF_O_Write_Number03_To_Buffer  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
+    0x08005d52   0x08005d52   0x0000006e   Code   RO          532    i.UART2_BUF_O_Write_Number04_To_Buffer  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
+    0x08005dc0   0x08005dc0   0x00000018   Code   RO          534    i.UART2_BUF_O_Write_String_To_Buffer  ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
+    0x08005dd8   0x08005dd8   0x000000d4   Code   RO         6015    i.USART_ClearFlag   stm32f4xx_usart.o
+    0x08005eac   0x08005eac   0x000000b4   Code   RO         6019    i.USART_Cmd         stm32f4xx_usart.o
+    0x08005f60   0x08005f60   0x000000c8   Code   RO         6020    i.USART_DMACmd      stm32f4xx_usart.o
+    0x08006028   0x08006028   0x0000022c   Code   RO         6026    i.USART_Init        stm32f4xx_usart.o
+    0x08006254   0x08006254   0x00000024   Code   RO          445    i.WATCHDOG_Get_State  ttrd2-05a-t0401a-v001a_iwdt_task.o
+    0x08006278   0x08006278   0x00000040   Code   RO          446    i.WATCHDOG_Init     ttrd2-05a-t0401a-v001a_iwdt_task.o
+    0x080062b8   0x080062b8   0x00000014   Code   RO          447    i.WATCHDOG_Update   ttrd2-05a-t0401a-v001a_iwdt_task.o
+    0x080062cc   0x080062cc   0x00000030   Code   RO         7881    i.__ARM_fpclassify  m_wm.l(fpclassify.o)
+    0x080062fc   0x080062fc   0x0000000e   Code   RO         7749    i._is_digit         c_w.l(__printf_wp.o)
+    0x0800630a   0x0800630a   0x00000002   PAD
+    0x0800630c   0x0800630c   0x00000050   Code   RO         6536    i.assert_failed     ttrd2-19a-t0401a-v001a_assert_failed.o
+    0x0800635c   0x0800635c   0x00000012   Code   RO         7651    i.fix_f             nmea_parsing.o
+    0x0800636e   0x0800636e   0x00000002   PAD
+    0x08006370   0x08006370   0x00000068   Code   RO         7478    i.get_struct        gps_sensor.o
+    0x080063d8   0x080063d8   0x00000058   Code   RO         7652    i.lla_f             nmea_parsing.o
+    0x08006430   0x08006430   0x00000010   Code   RO            4    i.main              main.o
+    0x08006440   0x08006440   0x0000006c   Code   RO         7653    i.nmea_parser_init  nmea_parsing.o
+    0x080064ac   0x080064ac   0x00000014   Code   RO         7654    i.nmea_sentence_getOutput  nmea_parsing.o
+    0x080064c0   0x080064c0   0x00000014   Code   RO         7655    i.nmea_sentence_parsing  nmea_parsing.o
+    0x080064d4   0x080064d4   0x00000058   Code   RO         7656    i.root_f            nmea_parsing.o
+    0x0800652c   0x0800652c   0x00000026   Code   RO         7657    i.satnum_f          nmea_parsing.o
+    0x08006552   0x08006552   0x00000002   PAD
+    0x08006554   0x08006554   0x000000b0   Code   RO         7630    i.str_to_float      common.o
+    0x08006604   0x08006604   0x00000040   Code   RO         7631    i.str_to_float_nl   common.o
+    0x08006644   0x08006644   0x00000034   Code   RO         7658    i.time_f            nmea_parsing.o
+    0x08006678   0x08006678   0x00000068   Code   RO          657    i.uart_hello_Init   apptask_uart_hello.o
+    0x080066e0   0x080066e0   0x000002f8   Code   RO          658    i.uart_hello_Update  apptask_uart_hello.o
+    0x080069d8   0x080069d8   0x0000003c   Code   RO         7659    i.xdop_f            nmea_parsing.o
+    0x08006a14   0x08006a14   0x00000076   Code   RO         7660    i.xnode_proccess    nmea_parsing.o
+    0x08006a8a   0x08006a8a   0x00000002   PAD
+    0x08006a8c   0x08006a8c   0x0000002c   Code   RO         7875    locale$$code        c_w.l(lc_numeric_c.o)
+    0x08006ab8   0x08006ab8   0x00000018   Code   RO         7770    x$fpl$basic         fz_wm.l(basic.o)
+    0x08006ad0   0x08006ad0   0x00000062   Code   RO         7772    x$fpl$d2f           fz_wm.l(d2f.o)
+    0x08006b32   0x08006b32   0x00000002   PAD
+    0x08006b34   0x08006b34   0x00000150   Code   RO         7774    x$fpl$dadd          fz_wm.l(daddsub_clz.o)
+    0x08006c84   0x08006c84   0x000002b0   Code   RO         7781    x$fpl$ddiv          fz_wm.l(ddiv.o)
+    0x08006f34   0x08006f34   0x0000002e   Code   RO         7785    x$fpl$dflt          fz_wm.l(dflt_clz.o)
+    0x08006f62   0x08006f62   0x0000009c   Code   RO         7812    x$fpl$dnaninf       fz_wm.l(dnaninf.o)
+    0x08006ffe   0x08006ffe   0x0000000c   Code   RO         7814    x$fpl$dretinf       fz_wm.l(dretinf.o)
+    0x0800700a   0x0800700a   0x00000002   PAD
+    0x0800700c   0x0800700c   0x000001d4   Code   RO         7776    x$fpl$dsub          fz_wm.l(daddsub_clz.o)
+    0x080071e0   0x080071e0   0x00000056   Code   RO         7792    x$fpl$f2d           fz_wm.l(f2d.o)
+    0x08007236   0x08007236   0x0000008c   Code   RO         7818    x$fpl$fnaninf       fz_wm.l(fnaninf.o)
+    0x080072c2   0x080072c2   0x0000000a   Code   RO         7949    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x080072cc   0x080072cc   0x0000000a   Code   RO         7820    x$fpl$fretinf       fz_wm.l(fretinf.o)
+    0x080072d6   0x080072d6   0x00000004   Code   RO         7794    x$fpl$printf1       fz_wm.l(printf1.o)
+    0x080072da   0x080072da   0x00000000   Code   RO         7822    x$fpl$usenofp       fz_wm.l(usenofp.o)
+    0x080072da   0x080072da   0x00000002   PAD
+    0x080072dc   0x080072dc   0x00000094   Data   RO         7850    .constdata          c_w.l(bigflt0.o)
+    0x08007370   0x08007370   0x0000000e   Data   RO         7662    .conststring        nmea_parsing.o
+    0x0800737e   0x0800737e   0x00000002   PAD
+    0x08007380   0x08007380   0x00000020   Data   RO         8026    Region$$Table       anon$$obj.o
+    0x080073a0   0x080073a0   0x0000001c   Data   RO         7874    locale$$data        c_w.l(lc_numeric_c.o)
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08007350, Size: 0x00001af8, Max: 0x00020000, ABSOLUTE, COMPRESSED[0x000000c8])
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080073bc, Size: 0x00001b48, Max: 0x00020000, ABSOLUTE, COMPRESSED[0x000000c4])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -3840,15 +3850,17 @@ Memory Map of the image
     0x200001cc   COMPRESSED   0x00000010   Data   RW         6970    .data               ttrd2-18a-t0401a-v001a_monittor_i.o
     0x200001dc   COMPRESSED   0x00000224   Data   RW         7114    .data               ttrd2-19a-t0401a-v001b_predicttor_i.o
     0x20000400   COMPRESSED   0x00000010   Data   RW         7159    .data               ttrd2-19a-t0401a-v001c_scheduler.o
-    0x20000410   COMPRESSED   0x0000012e   Data   RW         7490    .data               gps_sensor.o
-    0x2000053e   COMPRESSED   0x00000002   PAD
-    0x20000540        -       0x000003e8   Zero   RW          535    .bss                ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
-    0x20000928        -       0x00000060   Zero   RW          659    .bss                apptask_uart_hello.o
-    0x20000988        -       0x00000118   Zero   RW         7158    .bss                ttrd2-19a-t0401a-v001c_scheduler.o
-    0x20000aa0        -       0x000009f8   Zero   RW         7488    .bss                gps_sensor.o
-    0x20001498        -       0x00000060   Zero   RW         7864    .bss                c_w.l(libspace.o)
-    0x200014f8        -       0x00000200   Zero   RW         6655    HEAP                startup_stm32f446xx.o
-    0x200016f8        -       0x00000400   Zero   RW         6654    STACK               startup_stm32f446xx.o
+    0x20000410   COMPRESSED   0x00000008   Data   RW         7480    .data               gps_sensor.o
+    0x20000418   COMPRESSED   0x00000114   Data   RW         7663    .data               nmea_parsing.o
+    0x2000052c        -       0x000003e8   Zero   RW          535    .bss                ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o
+    0x20000914        -       0x00000060   Zero   RW          659    .bss                apptask_uart_hello.o
+    0x20000974        -       0x00000118   Zero   RW         7158    .bss                ttrd2-19a-t0401a-v001c_scheduler.o
+    0x20000a8c   COMPRESSED   0x00000004   PAD
+    0x20000a90        -       0x000009f8   Zero   RW         7479    .bss                gps_sensor.o
+    0x20001488        -       0x00000060   Zero   RW         7661    .bss                nmea_parsing.o
+    0x200014e8        -       0x00000060   Zero   RW         7884    .bss                c_w.l(libspace.o)
+    0x20001548        -       0x00000200   Zero   RW         6655    HEAP                startup_stm32f446xx.o
+    0x20001748        -       0x00000400   Zero   RW         6654    STACK               startup_stm32f446xx.o
 
 
 ==============================================================================
@@ -3860,10 +3872,11 @@ Image component sizes
 
        864        156          0          0         96       2888   apptask_uart_hello.o
        240          8          0          0          0       2648   common.o
-      1554        190         14        302       2552      17815   gps_sensor.o
+      1052        124          0          8       2552      11716   gps_sensor.o
          0          0          0          0          0     264084   imu_sensor.o
         16          0          0          0          0       5011   main.o
        304         86          0          0          0     331347   misc.o
+       610         72         14        276         96       8752   nmea_parsing.o
         64         26        452          0       1536        852   startup_stm32f446xx.o
       1916        426          0          0          0       8097   stm32f4xx_adc.o
       1140        154          0          0          0       3494   stm32f4xx_dma.o
@@ -3893,9 +3906,9 @@ Image component sizes
       1230        112          0         16        280      31825   ttrd2-19a-t0401a-v001c_scheduler.o
 
     ----------------------------------------------------------------------
-     21724       4670        500       1344       5464    1889741   Object Totals
+     21832       4676        500       1324       5564    1892394   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        10          0          2          5          0          0   (incl. Padding)
+        10          0          2          3          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -3979,15 +3992,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     28844       5048        676       1344       5560    1879665   Grand Totals
-     28844       5048        676        200       5560    1879665   ELF Image Totals (compressed)
-     28844       5048        676        200          0          0   ROM Totals
+     28952       5054        676       1324       5660    1882218   Grand Totals
+     28952       5054        676        196       5660    1882218   ELF Image Totals (compressed)
+     28952       5054        676        196          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                29520 (  28.83kB)
-    Total RW  Size (RW Data + ZI Data)              6904 (   6.74kB)
-    Total ROM Size (Code + RO Data + RW Data)      29720 (  29.02kB)
+    Total RO  Size (Code + RO Data)                29628 (  28.93kB)
+    Total RW  Size (RW Data + ZI Data)              6984 (   6.82kB)
+    Total ROM Size (Code + RO Data + RW Data)      29824 (  29.13kB)
 
 ==============================================================================
 

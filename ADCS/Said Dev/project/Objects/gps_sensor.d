@@ -29,4 +29,4 @@
 .\objects\gps_sensor.o: ..\source\hsi_library\../hsi_library/stm32f4xx_usart.h
 .\objects\gps_sensor.o: ..\source\hsi_library\../hsi_library/stm32f4xx_wwdg.h
 .\objects\gps_sensor.o: ..\source\hsi_library\../hsi_library/misc.h
-.\objects\gps_sensor.o: ..\source\adcs\adcs_sensors\../services_utilities/common.h
+.\objects\gps_sensor.o: ..\source\adcs\adcs_sensors\../services_utilities/nmea_parsing.h
