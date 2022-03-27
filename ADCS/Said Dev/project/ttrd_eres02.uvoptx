@@ -145,30 +145,30 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>(105=-1,-1,-1,-1,0)</Name>
+          <Name>(105=349,290,1028,648,0)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
       <Breakpoint>
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>244</LineNumber>
+          <LineNumber>108</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134229374</Address>
+          <Address>134243210</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\source\adcs\adcs_sensors\mgn_sensor.c</Filename>
+          <Filename>..\source\adcs\adcs_sensors\gps_sensor.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\TTRD_ERES2\../source/adcs/adcs_sensors/mgn_sensor.c\244</Expression>
+          <Expression>\\TTRD_ERES2\../source/adcs/adcs_sensors/gps_sensor.c\108</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>245</LineNumber>
+          <LineNumber>17</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -177,7 +177,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\source\adcs\adcs_sensors\mgn_sensor.c</Filename>
+          <Filename>..\source\adcs\adcs_sensors\gps_sensor.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
@@ -188,7 +188,57 @@
           <WinNumber>1</WinNumber>
           <ItemText>system_mode_g</ItemText>
         </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>nmea_pointer_g</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Wait_idx_g</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Tx_buffer_g</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Tx_buffer2_g</ItemText>
+        </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>buffer_select_g</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>SP</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>gps_sensor_data</ItemText>
+        </Ww>
       </WatchWindow1>
+      <WatchWindow2>
+        <Ww>
+          <count>0</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>Task_id</ItemText>
+        </Ww>
+      </WatchWindow2>
+      <MemoryWindow1>
+        <Mm>
+          <WinNumber>1</WinNumber>
+          <SubType>0</SubType>
+          <ItemText>tr_gpgsa.pStr+10</ItemText>
+          <AccSizeX>0</AccSizeX>
+        </Mm>
+      </MemoryWindow1>
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>
@@ -233,8 +283,20 @@
       <pMultCmdsp></pMultCmdsp>
       <SystemViewers>
         <Entry>
+          <Name>OS Support\System and Thread Viewer</Name>
+          <WinId>35902</WinId>
+        </Entry>
+        <Entry>
+          <Name>System Viewer\DMA1</Name>
+          <WinId>35904</WinId>
+        </Entry>
+        <Entry>
           <Name>System Viewer\I2C1</Name>
           <WinId>35905</WinId>
+        </Entry>
+        <Entry>
+          <Name>System Viewer\USART2</Name>
+          <WinId>35903</WinId>
         </Entry>
       </SystemViewers>
       <DebugDescription>
@@ -257,7 +319,7 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>1</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\source\main\main.c</PathWithFileName>
@@ -1009,7 +1071,7 @@
 
   <Group>
     <GroupName>hsi_reg_config_checks</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1473,6 +1535,18 @@
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>96</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\source\adcs\adcs_sensors\gps_sensor.c</PathWithFileName>
+      <FilenameWithoutPath>gps_sensor.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
   </Group>
 
   <Group>
@@ -1483,7 +1557,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>96</FileNumber>
+      <FileNumber>97</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1495,7 +1569,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>97</FileNumber>
+      <FileNumber>98</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1507,7 +1581,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>98</FileNumber>
+      <FileNumber>99</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1519,7 +1593,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>99</FileNumber>
+      <FileNumber>100</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1531,7 +1605,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>100</FileNumber>
+      <FileNumber>101</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1543,7 +1617,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>101</FileNumber>
+      <FileNumber>102</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1555,7 +1629,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>102</FileNumber>
+      <FileNumber>103</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1567,13 +1641,49 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>103</FileNumber>
+      <FileNumber>104</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\source\adcs\services_utilities\flash.c</PathWithFileName>
       <FilenameWithoutPath>flash.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>105</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\source\adcs\services_utilities\common.c</PathWithFileName>
+      <FilenameWithoutPath>common.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>106</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\source\adcs\services_utilities\nmea_parsing.h</PathWithFileName>
+      <FilenameWithoutPath>nmea_parsing.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>107</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\source\adcs\services_utilities\nmea_parsing.c</PathWithFileName>
+      <FilenameWithoutPath>nmea_parsing.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1587,7 +1697,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>104</FileNumber>
+      <FileNumber>108</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1599,7 +1709,7 @@
     </File>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>105</FileNumber>
+      <FileNumber>109</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1611,7 +1721,7 @@
     </File>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>106</FileNumber>
+      <FileNumber>110</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1631,7 +1741,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>107</FileNumber>
+      <FileNumber>111</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1643,7 +1753,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>108</FileNumber>
+      <FileNumber>112</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1655,7 +1765,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>109</FileNumber>
+      <FileNumber>113</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1667,7 +1777,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>110</FileNumber>
+      <FileNumber>114</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1679,7 +1789,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>111</FileNumber>
+      <FileNumber>115</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>

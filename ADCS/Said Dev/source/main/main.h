@@ -182,6 +182,11 @@
 // Switch appears to be stuck 'on'
 #define PFC_SWITCH_STUCK                                       ((uint8_t) 90)
 
+// UART2 errors
+#define UART2_DMA_START_FAILED                                ((uint8_t) 100)
+#define UART2_DMA_FREE_FAILED                                 ((uint8_t) 101)
+#define UART2_TX_FINISH_FAILED                                 ((uint8_t) 101)
+
 // PFC stored prior to planned mode change
 #define PFC_NO_FAULT                                          ((uint8_t) 240)
 

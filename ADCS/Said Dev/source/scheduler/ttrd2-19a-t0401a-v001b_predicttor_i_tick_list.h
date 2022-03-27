@@ -46,7 +46,7 @@ This code is copyright (c) 2014-2017 SafeTTy Systems Ltd.
 
 // The tick lists for each mode
 // (No tick list for Fail Safe mode)
-#define LENGTH_OF_TICK_LIST_TASKS_NORMAL 506
+#define LENGTH_OF_TICK_LIST_TASKS_NORMAL 508
 
 // Length of "Task Sequence Initialisation Period"
 // See 'ERES2' (Chapter 19) for details.
@@ -96,7 +96,7 @@ uint8_t TICK_LIST_NORMAL[LENGTH_OF_TICK_LIST_TASKS_NORMAL] =
 0,2,5,                                  // Tick : 0000000048
 0,5,                                    // Tick : 0000000049
 0,2,5,                                  // Tick : 0000000050
-0,5,                                    // Tick : 0000000051
+0,5,6,                                    // Tick : 0000000051
 0,2,5,                                  // Tick : 0000000052
 0,5,                                    // Tick : 0000000053
 0,2,5,                                  // Tick : 0000000054
@@ -145,8 +145,8 @@ uint8_t TICK_LIST_NORMAL[LENGTH_OF_TICK_LIST_TASKS_NORMAL] =
 0,5,                                    // Tick : 0000000097
 0,2,5,                                  // Tick : 0000000098
 0,5,                                    // Tick : 0000000099
-0,2,3,5,6,                                // Tick : 0000000100
-0,5,                                    // Tick : 0000000101
+0,2,3,5,                                // Tick : 0000000100
+0,5,6,                                    // Tick : 0000000101
 0,2,5,                                  // Tick : 0000000102
 0,5,                                    // Tick : 0000000103
 0,2,5,                                  // Tick : 0000000104
@@ -196,7 +196,7 @@ uint8_t TICK_LIST_NORMAL[LENGTH_OF_TICK_LIST_TASKS_NORMAL] =
 0,2,5,                                  // Tick : 0000000148
 0,5,                                    // Tick : 0000000149
 0,2,5,                                  // Tick : 0000000150
-0,5,                                    // Tick : 0000000151
+0,5,6,                                    // Tick : 0000000151
 0,2,5,                                  // Tick : 0000000152
 0,5,                                    // Tick : 0000000153
 0,2,5,                                  // Tick : 0000000154
@@ -245,8 +245,8 @@ uint8_t TICK_LIST_NORMAL[LENGTH_OF_TICK_LIST_TASKS_NORMAL] =
 0,5,                                    // Tick : 0000000197
 0,2,5,                                  // Tick : 0000000198
 0,5,                                    // Tick : 0000000199
-0,1,2,3,4,5,6,                            // Tick : 0000000200
-0,5,                                    // Tick : 0000000201
+0,1,2,3,4,5,                            // Tick : 0000000200
+0,5,6,                                    // Tick : 0000000201
 0,2,5,                                  // Tick : 0000000202
 0,5,                                    // Tick : 0000000203
 0,2,5,                                  // Tick : 0000000204

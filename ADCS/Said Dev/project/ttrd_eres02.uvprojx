@@ -906,6 +906,11 @@
               <FileType>1</FileType>
               <FilePath>..\source\adcs\adcs_sensors\mgn_sensor.c</FilePath>
             </File>
+            <File>
+              <FileName>gps_sensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\adcs_sensors\gps_sensor.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -950,6 +955,21 @@
               <FileName>flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\adcs\services_utilities\flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\services_utilities\common.c</FilePath>
+            </File>
+            <File>
+              <FileName>nmea_parsing.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\adcs\services_utilities\nmea_parsing.h</FilePath>
+            </File>
+            <File>
+              <FileName>nmea_parsing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\services_utilities\nmea_parsing.c</FilePath>
             </File>
           </Files>
         </Group>

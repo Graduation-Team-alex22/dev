@@ -51,6 +51,7 @@
 // Supports checks of register integrity
 #include "../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h"
 
+
 // ------ Private constants --------------------------------------------------
 
 // The transmit buffer length
@@ -61,21 +62,18 @@
 static char Tx_buffer_g[TX_BUFFER_SIZE_BYTES];
 static char Tx_buffer_ig[TX_BUFFER_SIZE_BYTES];  // Inverted copy
 
-// Index of data in the buffer that has been sent (with copy)
-static uint32_t Sent_idx_g  = 0;  
-static uint32_t Sent_idx_ig = ~0;  
+//static char Tx_buffer2_g[TX_BUFFER_SIZE_BYTES];
+static char* Tx_buffer2_g = (char*)0x2001C000;
 
 // Index of data in the buffer that has not yet been sent (with inv. copy)
 static uint32_t Wait_idx_g  = 0;  
 static uint32_t Wait_idx_ig = ~0; 
 
-// Timeout values (used when characters are transmitted)
-static uint32_t Timeout_us_g;
-static uint32_t Timeout_us_ig;
+
+// buffer select to switch between the two buffers
+static uint8_t buffer_select_g = 1;
 
 // ------ Private function prototypes ----------------------------------------
-
-void UART2_BUF_O_Send_Char(const char);
 void UART2_BUF_O_Check_Data_Integrity(void);
 
 /*----------------------------------------------------------------------------*-
@@ -111,15 +109,23 @@ void UART2_BUF_O_Check_Data_Integrity(void);
 -*----------------------------------------------------------------------------*/
 void UART2_BUF_O_Init(uint32_t BAUD_RATE)
    {
+		
+	// Set up timeout mechanism 
+	TIMEOUT_T3_USEC_Init();
+
    GPIO_InitTypeDef GPIO_InitStructure;
    USART_InitTypeDef USART_InitStructure;
-
+   DMA_InitTypeDef  DMA_InitStructure;
+		 
    // USART2 clock enable 
    RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
 
    // GPIOA clock enable 
    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
-
+		 
+   /* Enable the DMA clock */
+   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA1, ENABLE);
+		 
    // GPIO config
    GPIO_InitStructure.GPIO_Pin   = UART2_TX_PIN; 
    GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF;
@@ -145,27 +151,47 @@ void UART2_BUF_O_Init(uint32_t BAUD_RATE)
    USART_InitStructure.USART_Mode = USART_Mode_Tx;
    USART_Init(USART2, &USART_InitStructure);
 
-   // Enable UART2
-   USART_Cmd(USART2, ENABLE);
-   
-   // Set up timeout mechanism
-   TIMEOUT_T3_USEC_Init();
+	/* Configure DMA Initialization Structure */
+  DMA_InitStructure.DMA_BufferSize = TX_BUFFER_SIZE_BYTES+1 ;
+  DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Disable ;
+  DMA_InitStructure.DMA_FIFOThreshold = DMA_FIFOThreshold_1QuarterFull ;
+  DMA_InitStructure.DMA_MemoryBurst = DMA_MemoryBurst_Single ;
+  DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
+  DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
+  DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;
+  DMA_InitStructure.DMA_PeripheralBaseAddr =(uint32_t) (&(USART2->DR)) ;
+  DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
+  DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
+  DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+  DMA_InitStructure.DMA_Priority = DMA_Priority_High;
 
-   // Time taken to send one character at given baud rate (microseconds)
-   // We add 10 usec leeway
-   Timeout_us_g = (10000000 / BAUD_RATE) + 10;
-   Timeout_us_ig = ~Timeout_us_g;
+	/* Configure TX DMA */
+  DMA_InitStructure.DMA_Channel = DMA_Channel_4 ;
+  DMA_InitStructure.DMA_DIR = DMA_DIR_MemoryToPeripheral ;
+  DMA_InitStructure.DMA_Memory0BaseAddr =(uint32_t)Tx_buffer_g ;
+  DMA_Init(DMA1_Stream6,&DMA_InitStructure);
 
-   // Configure buffer
-   for (uint32_t i = 0; i < TX_BUFFER_SIZE_BYTES; i++)
-      {
-      Tx_buffer_g[i] = 'X';
-      Tx_buffer_ig[i] = (char) ~'X'; 
-      }
+	// Enable UART2
+	USART_Cmd(USART2, ENABLE);
 
-   // Store the UART register configuration
-   REG_CONFIG_CHECKS_UART_Store(USART2);
-   }
+	// Enable USART DMA TX Requsts 
+	USART_DMACmd(USART2, USART_DMAReq_Tx, ENABLE);
+
+
+	// Configure buffer
+	for (uint32_t i = 0; i < TX_BUFFER_SIZE_BYTES; i++)
+		{
+		Tx_buffer_g[i] = 'X';
+		Tx_buffer2_g[i] = 'G';
+		Tx_buffer_ig[i] = (char) ~'X'; 
+		}
+
+	Wait_idx_g = 0;
+	Wait_idx_ig = ~0;
+		
+	// Store the UART register configuration
+	REG_CONFIG_CHECKS_UART_Store(USART2);
+}
 
 /*----------------------------------------------------------------------------*-
 
@@ -209,32 +235,16 @@ void UART2_BUF_O_Init(uint32_t BAUD_RATE)
 
 -*----------------------------------------------------------------------------*/
 uint32_t UART2_BUF_O_Update(void)
-   {
-   uint32_t Return_value = RETURN_NORMAL_STATE;
-
-   // Check data integrity
-   UART2_BUF_O_Check_Data_Integrity();
-
-   // Are there any data ready to send?
-   if (Sent_idx_g < Wait_idx_g)
-      {
-      UART2_BUF_O_Send_Char(Tx_buffer_g[Sent_idx_g]);     
-
-      Sent_idx_g++;
-      }
-   else
-      {
-      // No data to send - just reset the buffer index
-      Wait_idx_g = 0;
-      Sent_idx_g = 0;
-      }
-
-   // Update the copies
-   Wait_idx_ig = ~Wait_idx_g;
-   Sent_idx_ig = ~Sent_idx_g;
-
-   return Return_value;
-   }
+{
+	uint32_t Return_value = RETURN_NORMAL_STATE;
+	
+	if(Wait_idx_g > 0)
+	{
+		UART2_BUF_O_Send_All_Data();
+	}  
+	
+	return Return_value;
+}
 
 /*----------------------------------------------------------------------------*-
 
@@ -272,24 +282,55 @@ uint32_t UART2_BUF_O_Update(void)
 
 -*----------------------------------------------------------------------------*/
 void UART2_BUF_O_Send_All_Data(void)
-   {
-   // Check data integrity
-   UART2_BUF_O_Check_Data_Integrity();
+{
+	uint32_t T3;
+	
+	// wait until the previous transfer is done
+	if(DMA1_Stream6->NDTR == 0 || DMA1_Stream6->NDTR == TX_BUFFER_SIZE_BYTES+1)
+	{
+		// Check data integrity
+		UART2_BUF_O_Check_Data_Integrity();
+		
+		// set the dma transfer data length
+		DMA1_Stream6->NDTR = Wait_idx_g;
+		// set memory base address to one of two buffers
+		if( buffer_select_g == 1 )
+		{
+			DMA1_Stream6->M0AR = (uint32_t)Tx_buffer_g ;
+			buffer_select_g = 2;
+		}
+		else
+		{
+			DMA1_Stream6->M0AR = (uint32_t)Tx_buffer2_g ;
+			buffer_select_g = 1;
+		}
 
-   while (Sent_idx_g < Wait_idx_g)
-      {
-      UART2_BUF_O_Send_Char(Tx_buffer_g[Sent_idx_g]);
+		// Clear DMA Stream Flags
+		DMA1->HIFCR |= (0x3D << 16);
 
-      Sent_idx_g++;
-      Sent_idx_ig = ~Sent_idx_g;
-      }
+		/*
+		// wait until USART transmission is complete
+		TIMEOUT_T3_USEC_Start();
+		while(( USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET )
+				 && (data_sent == 1) 
+				 && (COUNTING == (T3 = TIMEOUT_T3_USEC_Get_Timer_State(100))));
+		*/
 
-   // Reset the indices
-   Sent_idx_g = 0;
-   Sent_idx_ig = ~0;
-   Wait_idx_g = 0;
-   Wait_idx_ig = ~0;
-   }
+		// Clear USART Transfer Complete Flags
+		USART_ClearFlag(USART2,USART_FLAG_TC);  
+
+		// Enable DMA USART TX Stream 
+		DMA_Cmd(DMA1_Stream6,ENABLE);
+
+		// wait until it's enabled
+		// while( DMA_GetCmdStatus(DMA1_Stream6) == DISABLE );
+
+		// Reset the indices
+		Wait_idx_g = 0;
+		Wait_idx_ig = ~0;
+	}
+	
+}
 
 
 /*----------------------------------------------------------------------------*-
@@ -367,8 +408,16 @@ void UART2_BUF_O_Write_Char_To_Buffer(const char CHARACTER)
    // Write to the buffer *only* if there is space
    if (Wait_idx_g < TX_BUFFER_SIZE_BYTES)
       {
-      Tx_buffer_g[Wait_idx_g] = CHARACTER;
-      Tx_buffer_ig[Wait_idx_g] = (char) ~CHARACTER;
+				if( buffer_select_g == 1 )
+				{
+					Tx_buffer_g[Wait_idx_g] = CHARACTER;
+					Tx_buffer_ig[Wait_idx_g] = (char) ~CHARACTER;
+				}
+				else
+				{
+					Tx_buffer2_g[Wait_idx_g] = CHARACTER;
+				}
+      
       Wait_idx_g++;     
       }
    else
@@ -576,46 +625,6 @@ void UART2_BUF_O_Write_Number02_To_Buffer(const uint32_t DATA)
    UART2_BUF_O_Write_String_To_Buffer(Digit);
    }
 
-/*----------------------------------------------------------------------------*-
-   
-  UART2_BUF_O_Send_Char()
-
-  Uses on-chip UART0 hardware to send a single character.
-
-  PARAMETERS:
-     CHARACTER : The data to be sent.
-
-  LONG-TERM DATA:
-     Timeout_us_g (R)
-
-  MCU HARDWARE:
-     UART2.
-
-  PRE-CONDITION CHECKS:
-     UART2_BUF_O_Check_Data_Integrity() is called.
-
-  POST-CONDITION CHECKS:
-     None.
-
-  ERROR DETECTION / ERROR HANDLING:
-     None.
-
-  RETURN VALUE:
-     None.
-
--*----------------------------------------------------------------------------*/
-void UART2_BUF_O_Send_Char(const char CHARACTER)
-   {
-   // Check data integrity
-   UART2_BUF_O_Check_Data_Integrity();
-
-   // We use a baudrate-dependent timeout (based on T3)
-   TIMEOUT_T3_USEC_Start();
-   while((USART_GetFlagStatus(USART2, USART_FLAG_TXE) == 0) &&
-         (COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(Timeout_us_g)));
-
-   USART_SendData(USART2, CHARACTER);
-   }
 
 /*----------------------------------------------------------------------------*-
 
@@ -657,27 +666,14 @@ void UART2_BUF_O_Check_Data_Integrity(void)
    {
    // Check the UART register configuration
    REG_CONFIG_CHECKS_UART_Check(USART2);
-
-   // Check integrity of 'sent' index
-   if ((Sent_idx_g != (~Sent_idx_ig)))
-      {
-      // Data have been corrupted: Treat here as Fatal Platform Failure
-      PROCESSOR_Perform_Safe_Shutdown(PFC_LONG_TERM_DATA_CORRUPTION);  
-      }      
+      
 
    // Check integrity of 'waiting' index
    if ((Wait_idx_g != (~Wait_idx_ig)))
       {
       // Data have been corrupted: Treat here as Fatal Platform Failure
       PROCESSOR_Perform_Safe_Shutdown(PFC_LONG_TERM_DATA_CORRUPTION);
-      }      
-
-   // Check integrity of timeout value
-   if ((Timeout_us_g != (~Timeout_us_ig)))
-      {
-      // Data have been corrupted: Treat here as Fatal Platform Failure
-      PROCESSOR_Perform_Safe_Shutdown(PFC_LONG_TERM_DATA_CORRUPTION);
-      }      
+      }     
 
    // Check integrity of data in Tx buffer
    for (uint32_t i = 0; i < TX_BUFFER_SIZE_BYTES; i++)  

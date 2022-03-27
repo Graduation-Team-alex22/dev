@@ -54,6 +54,8 @@
 // PredicTTor header
 #include "ttrd2-19a-t0401a-v001b_predicttor_i.h"
 
+#include "../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h"
+
 // ------ Private Duplicated Variables ('File Global') -----------------------
 
 // The array of tasks
@@ -65,6 +67,9 @@ static sTask_t SCH_tasks_ig[SCH_MAX_TASKS];  // Inverted copy
 static uint32_t Tick_count_g = 0;
 static uint32_t Tick_count_ig = ~0;           // Inverted copy
 
+// to mark last running task
+static uint32_t last_run_task_id = 20;
+static uint32_t abs_tick_count = 0;
 
 // ------ Private function prototypes ----------------------------------------
 
@@ -268,9 +273,20 @@ void TIM2_IRQHandler(void)
       {
       // One or more tasks has taken too long to complete
       // We treat this as a Fatal Platform Failure 
+			UART2_BUF_O_Write_String_To_Buffer("LAST RUN: ");
+			UART2_BUF_O_Write_Number03_To_Buffer(last_run_task_id);
+			UART2_BUF_O_Write_String_To_Buffer("\n");
+			UART2_BUF_O_Write_String_To_Buffer("ABS_TC: ");
+			UART2_BUF_O_Write_Number04_To_Buffer(abs_tick_count);
+			UART2_BUF_O_Write_String_To_Buffer("\n");
+			UART2_BUF_O_Send_All_Data();
+			TIMEOUT_T3_USEC_Init();
+		  TIMEOUT_T3_USEC_Start();
+		  while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
       PROCESSOR_Perform_Safe_Shutdown(PFC_SCH_TICK_COUNT);
       }
 
+			abs_tick_count++;
    // Update inverted copy
    Tick_count_ig = ~Tick_count_g;
    } 
@@ -355,10 +371,12 @@ void SCH_Dispatch_Tasks(void)
                               SCH_tasks_g[Task_id].WCET,
                               SCH_tasks_g[Task_id].BCET,
                               2);  // 2 usec leeway
-
+               
+							 last_run_task_id = Task_id;
                Status = (*SCH_tasks_g[Task_id].pTask)();  // Run the task
-
-               // Stop the MoniTTor: 
+               
+               
+							 // Stop the MoniTTor: 
                // triggers a mode change in the event of a BCET fault.
                MONITTORi_Stop();
 
