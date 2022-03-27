@@ -7,6 +7,41 @@
 #ifndef _EPS_POWER_MODULE_H_
 #define _EPS_POWER_MODULE_H_
 //////
+/** 
+  * @brief  HAL Lock structures definition  
+  */
+typedef enum 
+{
+  HAL_UNLOCKED = 0x00,
+  HAL_LOCKED   = 0x01  
+} HAL_LockTypeDef;
+typedef struct
+{
+  uint32_t Prescaler;         /*!< Specifies the prescaler value used to divide the TIM clock.
+                                   This parameter can be a number between Min_Data = 0x0000 and Max_Data = 0xFFFF */
+
+  uint32_t CounterMode;       /*!< Specifies the counter mode.
+                                   This parameter can be a value of @ref TIM_Counter_Mode */
+
+  uint32_t Period;            /*!< Specifies the period value to be loaded into the active
+                                   Auto-Reload Register at the next update event.
+                                   This parameter can be a number between Min_Data = 0x0000 and Max_Data = 0xFFFF.  */
+
+  uint32_t ClockDivision;     /*!< Specifies the clock division.
+                                   This parameter can be a value of @ref TIM_ClockDivision */
+
+} TIM_Base_InitTypeDef;
+
+typedef enum
+{
+  HAL_TIM_ACTIVE_CHANNEL_1        = 0x01,    /*!< The active channel is 1     */
+  HAL_TIM_ACTIVE_CHANNEL_2        = 0x02,    /*!< The active channel is 2     */
+  HAL_TIM_ACTIVE_CHANNEL_3        = 0x04,    /*!< The active channel is 3     */
+  HAL_TIM_ACTIVE_CHANNEL_4        = 0x08,    /*!< The active channel is 4     */
+  HAL_TIM_ACTIVE_CHANNEL_CLEARED  = 0x00     /*!< All active channels cleared */
+}HAL_TIM_ActiveChannel;
+
+
 //typedef struct
 //{
 //  __IO uint32_t CR1;          /*!< TIM control register 1,              Address offset: 0x00 */
@@ -32,16 +67,16 @@
 //  __IO uint32_t OR;           /*!< TIM option register,                 Address offset: 0x50 */
 //} TIM_TypeDef;
 
-//typedef struct
-//{
-//  TIM_TypeDef              *Instance;     /*!< Register base address             */
-//  TIM_Base_InitTypeDef     Init;          /*!< TIM Time Base required parameters */
-//  HAL_TIM_ActiveChannel    Channel;       /*!< Active channel                    */
-//  DMA_HandleTypeDef        *hdma[7];      /*!< DMA Handlers array
-//                                             This array is accessed by a @ref TIM_DMA_Handle_index */
-//  HAL_LockTypeDef          Lock;          /*!< Locking object                    */
-//  __IO HAL_TIM_StateTypeDef   State;      /*!< TIM operation state               */
-//}TIM_HandleTypeDef;
+typedef struct
+{
+  TIM_TypeDef              *Instance;     /*!< Register base address             */
+  TIM_TimeBaseInitTypeDef    Init;          /*!< TIM Time Base required parameters */
+  HAL_TIM_ActiveChannel    Channel;       /*!< Active channel                    */
+  //DMA_HandleTypeDef        *hdma[7];      /*!< DMA Handlers array
+                                            // This array is accessed by a @ref TIM_DMA_Handle_index */
+  HAL_LockTypeDef             Lock;          /*!< Locking object                    */
+  __IO HAL_TIM_StateTypeDef   State;        /*!< TIM operation state               */
+}TIM_HandleTypeDef;
 
 
 
