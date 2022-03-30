@@ -3,10 +3,10 @@
 #include "stdio.h"
 
 //#define 	TEST_TIME
-//#define			TEST_IMU
-//#define			TEST_MGN
+#define			TEST_IMU
+#define			TEST_MGN
 //#define			I2C_SCANNER
-#define    TEST_GPS
+//#define    TEST_GPS
 
 #ifdef TEST_IMU
 	#include "../adcs/adcs_sensors/imu_sensor.h"
@@ -96,7 +96,7 @@ void uart_hello_Init(void){
 #ifdef TEST_MGN
 	/******* initializing I2C1 peripheral: SCL @ PB8, SDA @ PB9 *******/
 	// GPIO Init
-	GPIO_InitTypeDef GPIO_InitStruct;
+	//GPIO_InitTypeDef GPIO_InitStruct;
 	
 	// GPIOB clock enable 
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
@@ -114,7 +114,7 @@ void uart_hello_Init(void){
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource9, GPIO_AF_I2C1);
 	
 	// I2C1 Init
-	I2C_InitTypeDef I2C_InitStruct;
+	//I2C_InitTypeDef I2C_InitStruct;
 	
 	// I2C1 clock enable 
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1, ENABLE);
@@ -139,10 +139,10 @@ void uart_hello_Init(void){
 	mgn_init.output_rate = MGN_OUTPUT_RATE_10;
 	mgn_init.range = MGN_RANGE_2;
 	
-	uint8_t error_code = MGN_Sensor_Init(I2C1, &mgn_init);
+	uint8_t error_coden = MGN_Sensor_Init(I2C1, &mgn_init);
 	if(error_code)
 	{
-		PROCESSOR_Perform_Safe_Shutdown(error_code);
+		PROCESSOR_Perform_Safe_Shutdown(error_coden);
 	}
 	
 #endif
@@ -245,20 +245,20 @@ uint32_t uart_hello_Update(void){
 #endif
 
 #ifdef TEST_MGN
-	uint8_t error_code = MGN_Sensor_Update();
+	uint8_t error_codeg = MGN_Sensor_Update();
 	if(error_code)
 	{
-		PROCESSOR_Perform_Safe_Shutdown(error_code);
+		PROCESSOR_Perform_Safe_Shutdown(error_codeg);
 	}
 	
-	mgn_sensor_t t = MGN_Sensor_GetData();
+	mgn_sensor_t tg = MGN_Sensor_GetData();
 	/*
 	sprintf(buf, "X: %+.4f  Y: %+.4f  Z:%+.4f\n  %6d   %6d   %6d \n",
 								t.mag[0], t.mag[1], t.mag[2], t.raw[0], t.raw[1], t.raw[2]);
 	*/
 	
 	sprintf(buf, "X: %+.4f  Y: %+.4f  Z:%+.4f\n",
-								t.mag[0], t.mag[1], t.mag[2]);
+								tg.mag[0], tg.mag[1], tg.mag[2]);
 	
 	UART2_BUF_O_Write_String_To_Buffer(buf);
 	
