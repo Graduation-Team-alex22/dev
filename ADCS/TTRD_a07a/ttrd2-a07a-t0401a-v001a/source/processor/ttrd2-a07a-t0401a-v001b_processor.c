@@ -548,11 +548,15 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          // - and any tasks that perform safety-related IO
          REG_CONFIG_CHECKS_GPIO_Store();
 				 
-				 // App tasks Init
-				 App_Sensor_Imu_Init();
+         // App tasks Init
+         TIMEOUT_T3_USEC_Init();
+         TIMEOUT_T3_USEC_Start();
+         while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(60000));
+         
+         App_Sensor_Imu_Init();
          App_Sensor_Mgn_Init(); 
-				 App_Sensor_Gps_Init();
-				 App_Sensor_Tmp_Init();
+         App_Sensor_Gps_Init();
+         App_Sensor_Tmp_Init();
 
          // Add tasks to schedule.
          // Parameters are:

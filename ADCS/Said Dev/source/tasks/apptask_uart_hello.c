@@ -3,10 +3,10 @@
 #include "stdio.h"
 
 //#define 	TEST_TIME
-#define			TEST_IMU
-#define			TEST_MGN
+//#define			TEST_IMU
+//#define			TEST_MGN
 //#define			I2C_SCANNER
-//#define    TEST_GPS
+#define    TEST_GPS
 
 #ifdef TEST_IMU
 	#include "../adcs/adcs_sensors/imu_sensor.h"

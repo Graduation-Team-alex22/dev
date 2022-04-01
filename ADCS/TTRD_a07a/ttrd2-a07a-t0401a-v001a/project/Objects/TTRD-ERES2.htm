@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\TTRD-ERES2.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\TTRD-ERES2.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Mar 30 03:40:59 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Apr 01 16:49:13 2022
 <BR><P>
 <H3>Maximum Stack Usage =        272 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1759,7 +1759,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_TIMER_Check
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCounter
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
+<BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Read_Channel
 <LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_Mag_Calib
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wait_for_event
@@ -1776,7 +1777,8 @@ Global Symbols
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseStructInit
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Init
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Init
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TMP_Sensor_Init
@@ -1791,7 +1793,8 @@ Global Symbols
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
+<BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Read_Channel
 <LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_Mag_Calib
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wait_for_event
@@ -2316,7 +2319,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[ec]"></a>PROCESSOR_Configure_Reqd_MoSt</STRONG> (Thumb, 740 bytes, Stack size 16 bytes, ttrd2-a07a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt))
+<P><STRONG><a name="[ec]"></a>PROCESSOR_Configure_Reqd_MoSt</STRONG> (Thumb, 764 bytes, Stack size 16 bytes, ttrd2-a07a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = PROCESSOR_Configure_Reqd_MoSt &rArr; App_Sensor_Mgn_Init &rArr; MGN_Sensor_Init &rArr; I2Cx_Is_Device_Connected &rArr; I2Cx_Recv_Bytes &rArr; wait_for_event &rArr; I2C_CheckEvent &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Retrieve_PFC
@@ -2326,11 +2329,14 @@ Local Symbols
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Change_MoSt
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTT_Startup_04_WDT_Check
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Init
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_All_Data
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_GPIO_Store
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WATCHDOG_Init
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Start
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Get_Timer_State
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Init
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Init_Microseconds
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Add_Task

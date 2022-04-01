@@ -1,10 +1,12 @@
 #include "nmea_parsing.h"
-#include "../services_utilities/common.h"
 
 //-- PRIVATE DEFINITIONS -----------------
-#define MAX_ROOT_CHILDS		2
-#define NMEA_SENTENCE_MAX_CHAR 96
+// this number relates to the number of implemented message groups
+// now it's 2 as we implemented GPGGA and GPGSA messages only.
+#define MAX_ROOT_CHILDS		      2
+#define NMEA_SENTENCE_MAX_CHAR   96
 
+// Error codes
 #define ERROR_CODE_FIELD_LENGTH	190
 #define ERROR_CODE_BAD_NODE_RV	191
 
@@ -86,7 +88,7 @@ uint8_t xnode_proccess(node_t* this_node)
 }
 
 //-- PARSER AUXILARY NODE FUNCTIONS ------
-// Root node function
+// Root node function - branches to child parsers
 uint8_t root_f(void* arg){
 	// compare the string to ID "$". if not equal, return
 	if(tr_root.pStr[0] != '$') return 1;
@@ -106,6 +108,7 @@ uint8_t root_f(void* arg){
 	return rv + 2;
 }
 
+// Extracts the number of visible satellites
 uint8_t satnum_f(void* self_node)
 {
 	node_t* this_node = (node_t*)self_node;
@@ -120,6 +123,8 @@ uint8_t satnum_f(void* self_node)
 	return 0;
 }
 
+// Extracts the condition of GPS fix
+// 0 = No fix, 1 = 3D fix , 2 = differential fix
 uint8_t fix_f(void* self_node)
 {
 	node_t* this_node = (node_t*)self_node;
@@ -129,6 +134,7 @@ uint8_t fix_f(void* self_node)
 	return 0;
 }
 
+// Extracts LLA: latitude, longitude and altitude information
 uint8_t lla_f(void* self_node){
 	double lla_value;
 	node_t* this_node = (node_t*)self_node;
@@ -148,6 +154,7 @@ uint8_t lla_f(void* self_node){
 	
 }
 
+// Extracts time information
 uint8_t time_f(void* self_node)
 {
 	float time;

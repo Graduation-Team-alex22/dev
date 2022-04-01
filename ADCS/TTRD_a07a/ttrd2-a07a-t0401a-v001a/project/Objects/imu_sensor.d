@@ -41,3 +41,4 @@
 .\objects\imu_sensor.o: ..\source\hsi_library\../support_functions/../main/../processor/ttrd2-a07a-t0401a-v001b_processor.h
 .\objects\imu_sensor.o: ..\source\hsi_library\../support_functions/../main/../scheduler/ttrd2-a07a-t0401a-v001a_instrumented_scheduler.h
 .\objects\imu_sensor.o: ..\source\hsi_library\../support_functions/../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
+.\objects\imu_sensor.o: ..\source\hsi_library\../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
