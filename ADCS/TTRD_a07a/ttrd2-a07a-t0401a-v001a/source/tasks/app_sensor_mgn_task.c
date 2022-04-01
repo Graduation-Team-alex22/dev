@@ -4,6 +4,44 @@
 
 #include "app_sensor_mgn_task.h" 
 
+/*----------------------------------------------------------------------------*-
+
+  App_Sensor_Mgn_Init()
+
+  Set up magnomter sensor.
+ 
+  The magnometer sensor acts as a digital compass providing magnetic
+  feild reading to the controller.
+
+  Datasheet values: 
+  Power on reset time (Maximum): 350 uS
+  I2C ready time (Maximum) : 200 uS
+  Measurement ready time (Maximum : 50 ms
+  
+  PARAMETERS:
+     None. 
+   
+  LONG-TERM DATA:
+     None.
+
+  MCU HARDWARE:
+     I2C1 peripheral.
+     Port B pin 8 (SCL).
+     Port B pin 9 (SDA).
+
+  PRE-CONDITION CHECKS:
+     None.
+
+  POST-CONDITION CHECKS:
+     None.
+
+  ERROR DETECTION / ERROR HANDLING:
+     None.
+
+  RETURN VALUE:
+     None.
+
+-*----------------------------------------------------------------------------*/
 void App_Sensor_Mgn_Init(void)
 {	
 /******* initializing I2C1 peripheral: SCL @ PB8, SDA @ PB9 *******/
@@ -60,6 +98,43 @@ void App_Sensor_Mgn_Init(void)
    }
 }
 
+
+/*----------------------------------------------------------------------------*-
+
+  App_Sensor_Mgn_Update()
+
+  Update magnomter sensor readings.
+ 
+  The magnometer sensor acts as a digital compass providing magnetic
+  feild reading to the controller.
+
+  Datasheet values: 
+  Power on reset time (Maximum): 350 uS
+
+  PARAMETERS:
+     None. 
+   
+  LONG-TERM DATA:
+     None.
+
+  MCU HARDWARE:
+     I2C1 peripheral.
+     Port B pin 8 (SCL).
+     Port B pin 9 (SDA).
+
+  PRE-CONDITION CHECKS:
+     None.
+
+  POST-CONDITION CHECKS:
+     None.
+
+  ERROR DETECTION / ERROR HANDLING:
+     None.
+
+  RETURN VALUE:
+     None.
+
+-*----------------------------------------------------------------------------*/
 uint32_t App_Sensor_Mgn_Update(void)
 {
 	uint8_t error_code = MGN_Sensor_Update();
@@ -67,17 +142,6 @@ uint32_t App_Sensor_Mgn_Update(void)
 	{
 		PROCESSOR_Perform_Safe_Shutdown(error_code);
 	}
-	/*
-	mgn_sensor_t t = MGN_Sensor_GetData();
-	
-	sprintf(buf, "X: %+.4f  Y: %+.4f  Z:%+.4f\n  %6d   %6d   %6d \n",
-								t.mag[0], t.mag[1], t.mag[2], t.raw[0], t.raw[1], t.raw[2]);
-	
-	
-	sprintf(buf, "X: %+.4f  Y: %+.4f  Z:%+.4f\n",
-								t.mag[0], t.mag[1], t.mag[2]);
-	
-	UART2_BUF_O_Write_String_To_Buffer(buf);
-	*/
+   
 	return RETURN_NORMAL_STATE;
 }

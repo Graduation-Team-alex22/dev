@@ -39,4 +39,5 @@
 .\objects\ttrd2-04a-t0401a-v001a_pfc_reporting.o: ..\source\processor\../main/../processor/ttrd2-a07a-t0401a-v001b_processor.h
 .\objects\ttrd2-04a-t0401a-v001a_pfc_reporting.o: ..\source\processor\../main/../scheduler/ttrd2-a07a-t0401a-v001a_instrumented_scheduler.h
 .\objects\ttrd2-04a-t0401a-v001a_pfc_reporting.o: ..\source\processor\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
+.\objects\ttrd2-04a-t0401a-v001a_pfc_reporting.o: ..\source\processor\../main/project.h
 .\objects\ttrd2-04a-t0401a-v001a_pfc_reporting.o: ..\source\processor\../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h

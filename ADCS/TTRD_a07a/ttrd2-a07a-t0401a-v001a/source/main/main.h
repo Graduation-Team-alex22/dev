@@ -93,6 +93,9 @@
 // Support functions
 #include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
 
+// Project related
+#include "project.h"
+
 /*----------------------------------------------------------------------------*-
    Processor constants
 -*----------------------------------------------------------------------------*/

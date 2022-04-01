@@ -38,3 +38,4 @@
 .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o: ..\source\hsi_reg_config_checks\../main/../processor/ttrd2-a07a-t0401a-v001b_processor.h
 .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o: ..\source\hsi_reg_config_checks\../main/../scheduler/ttrd2-a07a-t0401a-v001a_instrumented_scheduler.h
 .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o: ..\source\hsi_reg_config_checks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
+.\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o: ..\source\hsi_reg_config_checks\../main/project.h

@@ -21,6 +21,8 @@ Date:		2022-03-15
 #define  GPS_BAUDRATE         9600
 #define  GPS_RX_BUFFER_SIZE   ((uint16_t)512)
 
+#define  ERROR_CODE_NMEA_BUFFER_FULL      1
+
 /************ Public structures ************/
 typedef struct {
    double x;
@@ -52,30 +54,29 @@ typedef struct {
    @note    The DMA stream must be already iniialized by the task before using this funcion.
    @note    The DMA channel must be selected by the task before using this funcion.
 
-   @param uartx,             UART Peripheral to be used.
    @param DMA_streamx,       DMA stream to be used.
-   @param DMA_channelx,      DMA channel to be used.
 
    @return error_code,  An error code, Or Zero if no Error.
 
 */
-uint8_t GPS_Sensor_Init(USART_TypeDef * uartx, DMA_Stream_TypeDef * DMA_streamx, uint32_t DMA_channelx);
+uint8_t GPS_Sensor_Init(DMA_Stream_TypeDef * DMA_streamx);
 
 /*
-  GPS_Sensor_Update
-  
-  Receive updated GPS data from the sensor over a specified uart peripheral
-	
-	@note    None
-   
+   GPS_Sensor_Update
+
+   Receive updated GPS data from the sensor over a specified uart peripheral
+
+   @note    None
+
    @param   None
 
-  @return Zero if no Error.
+   @return Zero if no Error.
 
 */
 uint16_t GPS_Sensor_Update(void);
 
-uint8_t GPS_Sensor_GetData(char * buf);
-gps_sensor_t get_struct(void);
+char* GPS_Sensor_get_pBuffer(void);
+
+gps_sensor_t GPS_Sensor_GetData(void);
 
 #endif

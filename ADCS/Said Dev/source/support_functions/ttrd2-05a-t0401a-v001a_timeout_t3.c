@@ -88,8 +88,15 @@ void TIMEOUT_T3_USEC_Init(void)
    TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
 
    // Time base configuration
-   // From 84 MHz T3 clock to 1 MHz
-   TIM_TimeBaseStructure.TIM_Prescaler = 84 - 1;
+#if defined(STM32F401xx)
+   // Time base configuration
+   // From 84 MHz T2 clock to 1 MHz
+   TIM_TimeBaseStructure.TIM_Prescaler = 83 - 1;
+#elif defined(STM32F446xx)
+   // Time base configuration
+   // From 90 MHz T2 clock to 1 MHz
+   TIM_TimeBaseStructure.TIM_Prescaler = 90;
+#endif
 
    // Set maximum timer overflow value in microseconds: 65000 = 65 ms.  
    TIM_TimeBaseStructure.TIM_Period = 65000 - 1;

@@ -44,7 +44,7 @@
 
 // Required system operating frequency (in Hz)
 // Will be checked in the scheduler initialisation file
-#define REQUIRED_SYSTEM_CORE_CLOCK (84000000)
+#define REQUIRED_SYSTEM_CORE_CLOCK (180000000)
 
 // Links to HSI libraries
 #include "../hsi_library/misc.h"

@@ -38,4 +38,5 @@
 .\objects\ttrd2-a07a-t0401a-v001a_measure_t4.o: ..\source\scheduler\../main/../processor/ttrd2-a07a-t0401a-v001b_processor.h
 .\objects\ttrd2-a07a-t0401a-v001a_measure_t4.o: ..\source\scheduler\../main/../scheduler/ttrd2-a07a-t0401a-v001a_instrumented_scheduler.h
 .\objects\ttrd2-a07a-t0401a-v001a_measure_t4.o: ..\source\scheduler\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
+.\objects\ttrd2-a07a-t0401a-v001a_measure_t4.o: ..\source\scheduler\../main/project.h
 .\objects\ttrd2-a07a-t0401a-v001a_measure_t4.o: ..\source\scheduler\../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h

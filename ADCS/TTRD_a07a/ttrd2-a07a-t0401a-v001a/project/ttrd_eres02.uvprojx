@@ -16,7 +16,7 @@
         <TargetCommonOption>
           <Device>STM32F446RETx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F4xx_DFP.2.15.0</PackID>
+          <PackID>Keil.STM32F4xx_DFP.2.16.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x08000000,0x00080000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -668,6 +668,16 @@
               <FileType>5</FileType>
               <FilePath>..\source\main\main.h</FilePath>
             </File>
+            <File>
+              <FileName>project.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\main\project.c</FilePath>
+            </File>
+            <File>
+              <FileName>project.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\main\project.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -774,9 +784,6 @@
               <FilePath>..\source\scheduler\ttrd2-a07a-t0401a-v001a_measure_t5.h</FilePath>
             </File>
           </Files>
-        </Group>
-        <Group>
-          <GroupName>scheduler_comms</GroupName>
         </Group>
         <Group>
           <GroupName>support_functions</GroupName>
