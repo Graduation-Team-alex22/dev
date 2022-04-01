@@ -27,8 +27,7 @@ Date:		2022-03-15
 #define ERROR_CODE_COMM_FAIL							7
 
 /************* PUBLIC MACROS ***************/
-#define NO_WHOIAM													0xFF
-
+#define NO_WHOIAM                               0xFF
 
 /************ Public Interfaces ************/
 /*

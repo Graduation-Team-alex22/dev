@@ -1,5 +1,4 @@
 #include "gps_sensor.h"
-#include "../services_utilities/nmea_parsing.h"
 
 // ------ Private constants --------------------------------------------------
 // NMEA buffer 2d array size
@@ -23,8 +22,8 @@ GPS_Sensor_Init
 @note:
   Application should take care of setting the needed GPIO pins
 
-
 */
+// -- PUBLIC FUNCTIONS' IMPLEMENTATION ---------------------------
 uint8_t GPS_Sensor_Init(USART_TypeDef * uartx, DMA_Stream_TypeDef * DMA_streamx, uint32_t DMA_channelx)
 {	
   assert_param(IS_USART_ALL_PERIPH(uartx));
@@ -90,7 +89,6 @@ uint8_t GPS_Sensor_Init(USART_TypeDef * uartx, DMA_Stream_TypeDef * DMA_streamx,
 	
 	return 0;
 }
-
 
 uint16_t GPS_Sensor_Update(void)
 {
@@ -182,7 +180,6 @@ uint16_t GPS_Sensor_Update(void)
 	// process new sentences in the buffer [Start]
 	
 	
-	
 	// process new sentences in the buffer [End]
 		
 	return nmea_pointer_g;
@@ -194,7 +191,7 @@ uint8_t GPS_Sensor_GetData(char * buf)
   {
 		nmea_pointer_g--;
 		
-		for(int i=0; i < 96; i++)
+		for(int i=0; i < NMEA_SENTENCE_MAX_CHAR; i++)
 		{
 			buf[i] = nmea_sentences_g[nmea_pointer_g][i];
 			if(buf[i] == 0) break;

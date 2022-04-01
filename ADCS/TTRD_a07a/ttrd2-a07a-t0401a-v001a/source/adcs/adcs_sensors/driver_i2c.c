@@ -2,9 +2,9 @@
 
 // -- PRIVATE MACROS ---------------------------------------------
 // waiting time after every stop stop generation - [ unjustified behaviour ]
-#define STOP_GENERATION_WAIT      50    //  in microsecond
-#define	TIMEOUT                   1
-#define OK 				                0     // don't change
+#define STOP_GENERATION_WAIT        50    //  in microsecond
+#define	TIMEOUT                    1
+#define OK                          0     // don't change
 
 
 // -- PUBLIC FUNCTIONS' IMPLEMENTATION ---------------------------

@@ -1,6 +1,6 @@
 .\objects\tmp_sensor.o: ..\source\adcs\adcs_sensors\tmp_sensor.c
-.\objects\tmp_sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tmp_sensor.o: ..\source\adcs\adcs_sensors\tmp_sensor.h
+.\objects\tmp_sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tmp_sensor.o: ..\source\adcs\adcs_sensors\driver_i2c.h
 .\objects\tmp_sensor.o: ..\source\hsi_library\../hsi_library/stm32f4xx_i2c.h
 .\objects\tmp_sensor.o: ..\source\hsi_library\../hsi_library/stm32f4xx.h
