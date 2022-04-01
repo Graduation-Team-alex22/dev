@@ -85,20 +85,20 @@ void REPORT_PFC_Init(void)
    GPIO_InitTypeDef GPIO_InitStruct;
      
    // Enable GPIOA clock 
-   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+   RCC_AHB1PeriphClockCmd(HEARTBEAT_LED_PORT_RCC, ENABLE);
      
    // Configure port pin for the LED
    GPIO_InitStruct.GPIO_Mode  = GPIO_Mode_OUT;
    GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;
    GPIO_InitStruct.GPIO_Speed = GPIO_High_Speed; 
    GPIO_InitStruct.GPIO_PuPd  = GPIO_PuPd_NOPULL;
-   GPIO_InitStruct.GPIO_Pin   = HEARTBEAT_LED_PIN;
+   GPIO_InitStruct.GPIO_Pin   = HEARTBEAT_SafeMode_LED_PIN;
    
    GPIO_Init(HEARTBEAT_LED_PORT, &GPIO_InitStruct); 
    // Set up LED pin (END)
 
    // Set up UART / USB link (BEGIN)
-   UART2_BUF_O_Init(230400);
+   UART2PFC_BUF_O_Init(230400);
    // Set up UART / USB link (END)   
 
    // Set up timer for 'TT00' architecture (BEGIN)
@@ -155,7 +155,6 @@ void REPORT_PFC_Update(uint32_t PFC_CODE)
    UART2_BUF_O_Write_Number03_To_Buffer(PFC_CODE);
    UART2_BUF_O_Write_String_To_Buffer("\n");
    UART2_BUF_O_Send_All_Data();
-
    // Increment counter used for LED reporting
    PFC_counter_s++;
 
@@ -163,7 +162,7 @@ void REPORT_PFC_Update(uint32_t PFC_CODE)
    if (PFC_counter_s < 6)
       {
       PFC_led_state_s = 0;
-      GPIO_ResetBits(HEARTBEAT_LED_PORT, HEARTBEAT_LED_PIN);
+      GPIO_ResetBits(HEARTBEAT_LED_PORT, HEARTBEAT_SafeMode_LED_PIN);
       }
    else
       {
@@ -174,12 +173,12 @@ void REPORT_PFC_Update(uint32_t PFC_CODE)
          if (PFC_led_state_s == 1)
             {
             PFC_led_state_s = 0;
-            GPIO_ResetBits(HEARTBEAT_LED_PORT, HEARTBEAT_LED_PIN);
+            GPIO_ResetBits(HEARTBEAT_LED_PORT, HEARTBEAT_SafeMode_LED_PIN);
             }
          else
             {
             PFC_led_state_s = 1;
-            GPIO_SetBits(HEARTBEAT_LED_PORT, HEARTBEAT_LED_PIN);
+            GPIO_SetBits(HEARTBEAT_LED_PORT, HEARTBEAT_SafeMode_LED_PIN);
             }
          }
       else

@@ -429,31 +429,6 @@
               <FilePath>..\source\support_functions\ax_25.h</FilePath>
             </File>
             <File>
-              <FileName>lfsr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\source\support_functions\lfsr.c</FilePath>
-            </File>
-            <File>
-              <FileName>lfsr.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\support_functions\lfsr.h</FilePath>
-            </File>
-            <File>
-              <FileName>scrambler.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\source\support_functions\scrambler.c</FilePath>
-            </File>
-            <File>
-              <FileName>scrambler.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\support_functions\scrambler.h</FilePath>
-            </File>
-            <File>
-              <FileName>stddef.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\support_functions\stddef.h</FilePath>
-            </File>
-            <File>
               <FileName>cw.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\support_functions\cw.c</FilePath>
@@ -544,9 +519,14 @@
               <FilePath>..\source\support_functions\cc_tx_init.h</FilePath>
             </File>
             <File>
+              <FileName>cc_tx_init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\support_functions\cc_tx_init.c</FilePath>
+            </File>
+            <File>
               <FileName>cc_init.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\source\scheduler\cc_init.h</FilePath>
+              <FilePath>..\source\support_functions\cc_init.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -614,16 +594,6 @@
               <FilePath>..\source\tasks\ttrd2-19a-t0401a-v001b_processor_task.h</FilePath>
             </File>
             <File>
-              <FileName>cc_rx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\source\tasks\cc_rx.c</FilePath>
-            </File>
-            <File>
-              <FileName>cc_rx.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\tasks\cc_rx.h</FilePath>
-            </File>
-            <File>
               <FileName>comms_manager.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\tasks\comms_manager.c</FilePath>
@@ -632,16 +602,6 @@
               <FileName>comms_manager.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\source\tasks\comms_manager.h</FilePath>
-            </File>
-            <File>
-              <FileName>cc_tx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\source\tasks\cc_tx.c</FilePath>
-            </File>
-            <File>
-              <FileName>cc_tx.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\tasks\cc_tx.h</FilePath>
             </File>
             <File>
               <FileName>tx_manager.c</FileName>
@@ -662,6 +622,36 @@
               <FileName>rx_manager.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\source\tasks\rx_manager.h</FilePath>
+            </File>
+            <File>
+              <FileName>TickCounter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\tasks\TickCounter.c</FilePath>
+            </File>
+            <File>
+              <FileName>TickCounter.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\tasks\TickCounter.h</FilePath>
+            </File>
+            <File>
+              <FileName>cc_rx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\tasks\cc_rx.c</FilePath>
+            </File>
+            <File>
+              <FileName>cc_rx.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\tasks\cc_rx.h</FilePath>
+            </File>
+            <File>
+              <FileName>cc_tx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\tasks\cc_tx.c</FilePath>
+            </File>
+            <File>
+              <FileName>cc_tx.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\tasks\cc_tx.h</FilePath>
             </File>
           </Files>
         </Group>

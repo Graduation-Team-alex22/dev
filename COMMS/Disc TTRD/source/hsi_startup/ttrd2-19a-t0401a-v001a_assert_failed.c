@@ -63,7 +63,7 @@ void assert_failed(uint8_t* file, uint32_t line)
    UART2_BUF_O_Write_Number03_To_Buffer(line);
    UART2_BUF_O_Write_String_To_Buffer("\n"); 
    UART2_BUF_O_Send_All_Data();
-
+		 
    PROCESSOR_Perform_Safe_Shutdown(PFC_HSI_LIBRARY);     
    }
 

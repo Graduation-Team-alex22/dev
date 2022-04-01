@@ -262,6 +262,7 @@ void PREDICTTORi_Check_Task_Sequence(const uint32_t TASK_ID)
             // Sequence is correct - update PredicTTor state
             if (++Tick_list_index_s == Length_of_tick_list_s)
                {
+							 
                Tick_list_index_s = 0;
                }
             }

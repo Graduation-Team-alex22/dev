@@ -59,6 +59,11 @@ static uint32_t uart2_cr2_ig;
 static uint32_t uart2_cr3_ig;
 static uint32_t uart2_brr_ig;
 
+static uint32_t uart3_cr1_ig;
+static uint32_t uart3_cr2_ig;
+static uint32_t uart3_cr3_ig;
+static uint32_t uart3_brr_ig;
+
 static uint32_t uart6_cr1_ig;
 static uint32_t uart6_cr2_ig;
 static uint32_t uart6_cr3_ig;
@@ -100,6 +105,7 @@ void REG_CONFIG_CHECKS_UART_Store(USART_TypeDef* pUSARTx)
    // Valid UART? 
    if (((pUSARTx != USART1) &&
         (pUSARTx != USART2) &&
+				(pUSARTx != USART3) &&
         (pUSARTx != USART6)))
       {
       // We treat this as a Fatal Platform Failure
@@ -120,7 +126,14 @@ void REG_CONFIG_CHECKS_UART_Store(USART_TypeDef* pUSARTx)
       uart2_cr3_ig = ~(pUSARTx->CR3);    
       uart2_brr_ig = ~(pUSARTx->BRR);    
       }
-   else
+	 else if(pUSARTx == USART3)
+      {
+      uart3_cr1_ig = ~(pUSARTx->CR1);    
+      uart3_cr2_ig = ~(pUSARTx->CR2);    
+      uart3_cr3_ig = ~(pUSARTx->CR3);    
+      uart3_brr_ig = ~(pUSARTx->BRR);    
+      }
+   else if(pUSARTx == USART6)
       {
       uart6_cr1_ig = ~(pUSARTx->CR1);    
       uart6_cr2_ig = ~(pUSARTx->CR2);    
@@ -176,6 +189,7 @@ void REG_CONFIG_CHECKS_UART_Check(USART_TypeDef* pUSARTx)
    // Valid UART? 
    if (((pUSARTx != USART1) &&
         (pUSARTx != USART2) &&
+				(pUSARTx != USART3) &&
         (pUSARTx != USART6)))
       {
       // We treat this as a Fatal Platform Failure
@@ -220,7 +234,26 @@ void REG_CONFIG_CHECKS_UART_Check(USART_TypeDef* pUSARTx)
          Result = REGISTERS_CHANGED;  
          } 
       }
-   else
+	 else if (pUSARTx == USART3)
+      {
+      if (uart3_cr1_ig != ~(pUSARTx->CR1))
+         {
+         Result = REGISTERS_CHANGED;  
+         }  
+      else if (uart3_cr2_ig != ~(pUSARTx->CR2))
+         {
+         Result = REGISTERS_CHANGED;  
+         } 
+      else if (uart3_cr3_ig != ~(pUSARTx->CR3))
+         {
+         Result = REGISTERS_CHANGED;  
+         } 
+      else if (uart3_brr_ig != ~(pUSARTx->BRR))
+         {
+         Result = REGISTERS_CHANGED;  
+         } 
+      }
+   else if (pUSARTx == USART6)
       {
       if (uart6_cr1_ig != ~(pUSARTx->CR1))
          {

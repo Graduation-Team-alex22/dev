@@ -1,0 +1,574 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.35.0.0
+Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Abdelaziz Maher, none, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.35.0.2
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.35.0.2
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
+Dialog DLL:      TCM.DLL V1.53.0.0
+ 
+<h2>Project:</h2>
+C:\Users\Abdel\OneDrive\Documents\KeilWorkspace\New folder\ttrd2-19a-t0401a-v001c - Released 2017-08-17\project\ttrd_eres02.uvprojx
+Project File Date:  03/30/2022
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'STM32F407VGTx'
+compiling ttrd2-05a-t0401a-v001a_heartbeat_sw_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\ttrd2-05a-t0401a-v001a_heartbeat_sw_task.c: 1 warning, 0 errors
+compiling HK_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\HK_task.c(18): warning:  #1-D: last line of file ends without a newline
+  }
+..\source\tasks\HK_task.c: 2 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_adc_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\ttrd2-05a-t0401a-v001a_adc_task.c: 1 warning, 0 errors
+compiling main.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\main\main.c(62): warning:  #111-D: statement is unreachable
+     return 1;
+..\source\main\main.c: 2 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_timeout_t3.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\support_functions\ttrd2-05a-t0401a-v001a_timeout_t3.c: 1 warning, 0 errors
+compiling ttrd2-19a-t0401a-v001b_processor_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\ttrd2-19a-t0401a-v001b_processor_task.c: 1 warning, 0 errors
+compiling COMMS_WOD_Rep_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\COMMS_WOD_Rep_task.h(16): warning:  #1-D: last line of file ends without a newline
+  -*----------------------------------------------------------------------------*/
+..\source\tasks\COMMS_WOD_Rep_task.c: 2 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_iwdt_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\ttrd2-05a-t0401a-v001a_iwdt_task.c: 1 warning, 0 errors
+compiling SCHEDULE_SERVICES_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\SCHEDULE_SERVICES_task.c(17): warning:  #1-D: last line of file ends without a newline
+  	
+..\source\tasks\SCHEDULE_SERVICES_task.c: 2 warnings, 0 errors
+compiling IDLE_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\IDLE_task.h(16): warning:  #1-D: last line of file ends without a newline
+  -*----------------------------------------------------------------------------*/
+..\source\tasks\IDLE_task.c(6): warning:  #1295-D: Deprecated declaration GPIO_Inits - give arg types
+  static void GPIO_Inits();
+..\source\tasks\IDLE_task.c(64): warning:  #1-D: last line of file ends without a newline
+  }
+..\source\tasks\IDLE_task.c: 4 warnings, 0 errors
+compiling UART_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\UART_task.c(7): warning:  #1295-D: Deprecated declaration GPIO_USART_Tx_Init - give arg types
+  static void GPIO_USART_Tx_Init();
+..\source\tasks\UART_task.c(8): warning:  #1295-D: Deprecated declaration DMA_USART_Rx_Init - give arg types
+  static void DMA_USART_Rx_Init();
+..\source\tasks\UART_task.c(114): warning:  #1-D: last line of file ends without a newline
+  }
+..\source\tasks\UART_task.c(81): warning:  #177-D: function "DMA_USART_Rx_Init"  was declared but never referenced
+  void DMA_USART_Rx_Init()
+..\source\tasks\UART_task.c: 5 warnings, 0 errors
+compiling EPS_Health_Rep_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\EPS_Health_Rep_task.c(17): warning:  #1-D: last line of file ends without a newline
+  }
+..\source\tasks\EPS_Health_Rep_task.c: 2 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_uart2_buff_o_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.c: 1 warning, 0 errors
+compiling ttrd2-05a-t0401a-v001a_switch_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\ttrd2-05a-t0401a-v001a_switch_task.c: 1 warning, 0 errors
+compiling COMMS_Health_Rep_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\COMMS_Health_Rep_task.h(16): warning:  #1-D: last line of file ends without a newline
+  -*----------------------------------------------------------------------------*/
+..\source\tasks\COMMS_Health_Rep_task.c(8): warning:  #1295-D: Deprecated declaration SPI_flash_Init - give arg types
+  static void SPI_flash_Init();
+..\source\tasks\COMMS_Health_Rep_task.c(57): warning:  #1-D: last line of file ends without a newline
+  }
+..\source\tasks\COMMS_Health_Rep_task.c: 4 warnings, 0 errors
+compiling EPS_exHealth_Rep_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\EPS_exHealth_Rep_task.c(17): warning:  #1-D: last line of file ends without a newline
+  }
+..\source\tasks\EPS_exHealth_Rep_task.c: 2 warnings, 0 errors
+compiling misc.c...
+compiling ADCS_exHealth_Rep_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\ADCS_exHealth_Rep_task.c(16): warning:  #1-D: last line of file ends without a newline
+  }
+..\source\tasks\ADCS_exHealth_Rep_task.c: 2 warnings, 0 errors
+compiling COMMS_exHealth_Rep_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\COMMS_exHealth_Rep_task.h(16): warning:  #1-D: last line of file ends without a newline
+  -*----------------------------------------------------------------------------*/
+..\source\tasks\COMMS_exHealth_Rep_task.c(16): warning:  #1-D: last line of file ends without a newline
+  }
+..\source\tasks\COMMS_exHealth_Rep_task.c: 3 warnings, 0 errors
+compiling COMMS_EXT_WOD_Rep_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\COMMS_EXT_WOD_Rep_task.h(16): warning:  #1-D: last line of file ends without a newline
+  -*----------------------------------------------------------------------------*/
+..\source\tasks\COMMS_EXT_WOD_Rep_task.c: 2 warnings, 0 errors
+compiling Mass_Storage_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\Mass_Storage_task.c(24): warning:  #1-D: last line of file ends without a newline
+  }
+..\source\tasks\Mass_Storage_task.c(17): warning:  #550-D: variable "res"  was set but never used
+  	SAT_returnState res;
+..\source\tasks\Mass_Storage_task.c: 3 warnings, 0 errors
+compiling stm32f4xx_cec.c...
+compiling stm32f4xx_crc.c...
+compiling stm32f4xx_cryp_des.c...
+compiling ADC2_task.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\tasks\ADC2_task.h(18): warning:  #1-D: last line of file ends without a newline
+  -*----------------------------------------------------------------------------*/
+..\source\tasks\ADC2_task.c(90): warning:  #1-D: last line of file ends without a newline
+   
+..\source\tasks\ADC2_task.c: 3 warnings, 0 errors
+compiling stm32f4xx_cryp_tdes.c...
+compiling stm32f4xx_cryp.c...
+compiling stm32f4xx_can.c...
+compiling stm32f4xx_adc.c...
+compiling stm32f4xx_cryp_aes.c...
+compiling stm32f4xx_dac.c...
+compiling stm32f4xx_dbgmcu.c...
+compiling stm32f4xx_dfsdm.c...
+compiling stm32f4xx_exti.c...
+compiling stm32f4xx_dsi.c...
+compiling stm32f4xx_flash_ramfunc.c...
+compiling stm32f4xx_fmpi2c.c...
+compiling stm32f4xx_dcmi.c...
+compiling stm32f4xx_hash_sha1.c...
+compiling stm32f4xx_hash.c...
+compiling stm32f4xx_dma2d.c...
+compiling stm32f4xx_hash_md5.c...
+compiling stm32f4xx_flash.c...
+compiling stm32f4xx_dma.c...
+compiling stm32f4xx_gpio.c...
+compiling stm32f4xx_iwdg.c...
+compiling stm32f4xx_lptim.c...
+compiling stm32f4xx_i2c.c...
+compiling stm32f4xx_qspi.c...
+compiling stm32f4xx_pwr.c...
+compiling stm32f4xx_rng.c...
+compiling stm32f4xx_syscfg.c...
+compiling stm32f4xx_spdifrx.c...
+compiling stm32f4xx_ltdc.c...
+compiling stm32f4xx_sdio.c...
+compiling stm32f4xx_sai.c...
+compiling stm32f4xx_spi.c...
+compiling stm32f4xx_rcc.c...
+compiling stm32f4xx_rtc.c...
+assembling startup_stm32f407xx.s...
+compiling stm32f4xx_wwdg.c...
+compiling stm32f4xx_usart.c...
+compiling stm32f4xx_tim.c...
+compiling stm32f4xx_fsmc.c...
+compiling hldlc.c...
+compiling system_stm32f4xx.c...
+compiling housekeeping_service.c...
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.c: 1 warning, 0 errors
+compiling ttrd2-04a-t0401a-v001a_pfc_reporting.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\processor\ttrd2-04a-t0401a-v001a_pfc_reporting.c: 1 warning, 0 errors
+compiling ttrd2-19a-t0401a-v001b_run_time_tests.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\processor\ttrd2-19a-t0401a-v001b_run_time_tests.c: 1 warning, 0 errors
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.c: 1 warning, 0 errors
+compiling ttrd2-19a-t0401a-v001a_assert_failed.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\hsi_startup\ttrd2-19a-t0401a-v001a_assert_failed.c: 1 warning, 0 errors
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.c: 1 warning, 0 errors
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.c: 1 warning, 0 errors
+compiling ttrd2-19a-t0401a-v001b_predicttor_i.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\scheduler\ttrd2-19a-t0401a-v001b_predicttor_i.c: 1 warning, 0 errors
+compiling ttrd2-19a-t0401a-v001b_processor.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\processor\ttrd2-19a-t0401a-v001b_processor.c: 1 warning, 0 errors
+compiling ttrd2-18a-t0401a-v001a_monittor_i.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\scheduler\ttrd2-18a-t0401a-v001a_monittor_i.c: 1 warning, 0 errors
+compiling flash.c...
+..\source\upsat-ecss-services-master\flash.c(18): warning:  #161-D: unrecognized #pragma
+  #pragma location = 0x0800C000
+..\source\upsat-ecss-services-master\flash.c(39): warning:  #223-D: function "memcpy" declared implicitly
+      memcpy(temp_mem, (void *)TRANSMIT_VAR_ADD,
+..\source\upsat-ecss-services-master\flash.c: 2 warnings, 0 errors
+compiling power_ctrl.c...
+..\source\upsat-ecss-services-master\power_ctrl.c(17): warning:  #1-D: last line of file ends without a newline
+  }
+..\source\upsat-ecss-services-master\power_ctrl.c: 1 warning, 0 errors
+compiling pkt_pool.c...
+..\source\upsat-ecss-services-master\pkt_pool.c(90): warning:  #940-D: missing return statement at end of non-void function "is_free_pkt" 
+  }
+..\source\upsat-ecss-services-master\pkt_pool.c: 1 warning, 0 errors
+compiling queue.c...
+compiling ttrd2-19a-t0401a-v001c_scheduler.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\scheduler\ttrd2-19a-t0401a-v001c_scheduler.c: 1 warning, 0 errors
+compiling services.c...
+compiling service_utilities.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\upsat-ecss-services-master\service_utilities.c: 1 warning, 0 errors
+compiling housekeeping.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\upsat-ecss-services-master\uart_hal.h(26): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\source\upsat-ecss-services-master\housekeeping.c(23): warning:  #1295-D: Deprecated declaration wod_log - give arg types
+  extern SAT_returnState wod_log();
+..\source\upsat-ecss-services-master\housekeeping.c(107): warning:  #223-D: function "cnv8_32" declared implicitly
+          cnv8_32(&data[1], &tick);
+..\source\upsat-ecss-services-master\housekeeping.c(119): warning:  #223-D: function "cnv8_32" declared implicitly
+          cnv8_32(&data[1], &tick);
+..\source\upsat-ecss-services-master\housekeeping.c(157): warning:  #223-D: function "cnv32_8" declared implicitly
+          cnv32_8( sys_epoch, &pkt->data[size]);
+..\source\upsat-ecss-services-master\housekeeping.c(173): warning:  #223-D: function "cnv16_8" declared implicitly
+          cnv16_8(assertion_last_line,&pkt->data[size]);
+..\source\upsat-ecss-services-master\housekeeping.c(193): warning:  #223-D: function "cnv32_8" declared implicitly
+          cnv32_8(time_temp, &pkt->data[1]);
+..\source\upsat-ecss-services-master\housekeeping.c(220): warning:  #223-D: function "cnv32_8" declared implicitly
+          cnv32_8( sys_epoch, &pkt->data[size]);
+..\source\upsat-ecss-services-master\housekeeping.c(236): warning:  #223-D: function "cnv16_8" declared implicitly
+          cnv16_8(assertion_last_line,&pkt->data[size]);
+..\source\upsat-ecss-services-master\housekeeping.c: 10 warnings, 0 errors
+compiling verification_service.c...
+compiling upsat.c...
+..\source\upsat-ecss-services-master\upsat.c(16): warning:  #1295-D: Deprecated declaration HAL_sys_GetTick - give arg types
+  extern uint32_t HAL_sys_GetTick();
+..\source\upsat-ecss-services-master\upsat.c(24): warning:  #1295-D: Deprecated declaration UART_DMA_rx_check - give arg types
+  extern void UART_DMA_rx_check();
+..\source\upsat-ecss-services-master\upsat.c(60): warning:  #188-D: enumerated type mixed with another type
+              TC_TM_app_id dest = 0;
+..\source\upsat-ecss-services-master\upsat.c(111): warning:  #188-D: enumerated type mixed with another type
+      crt_pkt(*pkt, EPS_APP_ID, TC, TC_ACK_NO, TC_TEST_SERVICE, TC_CT_PERFORM_TEST, SYSTEM_APP_ID);
+..\source\upsat-ecss-services-master\upsat.c: 4 warnings, 0 errors
+compiling scheduling_service.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\upsat-ecss-services-master\scheduling_service.c(26): warning:  #1295-D: Deprecated declaration scheduling_service_load_schedules - give arg types
+  SAT_returnState scheduling_service_load_schedules();
+..\source\upsat-ecss-services-master\scheduling_service.c(33): warning:  #1295-D: Deprecated declaration find_schedule_pos - give arg types
+  SC_pkt* find_schedule_pos();
+..\source\upsat-ecss-services-master\scheduling_service.c(86): warning:  #546-D: transfer of control bypasses initialization of:
+            variable "sch_rep_d_pkt"  (declared at line 133)
+            variable "sch_rep_s_pkt"  (declared at line 141)
+      switch( tc_tm_packet->ser_subtype){
+      ^
+..\source\upsat-ecss-services-master\scheduling_service.c(295): warning:  #188-D: enumerated type mixed with another type
+      crt_pkt(pkt, SYSTEM_APP_ID, TM, TC_ACK_NO, TC_SCHEDULING_SERVICE, sid, dest_app_id);
+..\source\upsat-ecss-services-master\scheduling_service.c(338): warning:  #111-D: statement is unreachable
+                  break;
+..\source\upsat-ecss-services-master\scheduling_service.c(523): warning:  #111-D: statement is unreachable
+                      break;
+..\source\upsat-ecss-services-master\scheduling_service.c(939): warning:  #174-D: expression has no effect
+      (*sc_pkt).seq_count << 8;
+..\source\upsat-ecss-services-master\scheduling_service.c(981): warning:  #1-D: last line of file ends without a newline
+  }
+..\source\upsat-ecss-services-master\scheduling_service.c: 9 warnings, 0 errors
+compiling time_management_service.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\upsat-ecss-services-master\time_management_service.c(9): warning:  #14-D: extra text after expected end of preprocessing directive
+  #else if (SYSTEM_APP_ID == OBC_APP_ID_)
+..\source\upsat-ecss-services-master\time_management_service.c(75): warning:  #186-D: pointless comparison of unsigned integer with zero
+          if(!(C_ASSERT(pkt->data[3]>= 0)&&C_ASSERT(pkt->data[3] < 100)) == true){ return SATR_ERROR; } /*year0to99*/
+..\source\upsat-ecss-services-master\time_management_service.c(76): warning:  #186-D: pointless comparison of unsigned integer with zero
+          if(!(C_ASSERT(pkt->data[4]>= 0)&&C_ASSERT(pkt->data[4] < 24)) == true) { return SATR_ERROR; } /*hours0to23*/
+..\source\upsat-ecss-services-master\time_management_service.c(77): warning:  #186-D: pointless comparison of unsigned integer with zero
+          if(!(C_ASSERT(pkt->data[5]>= 0)&&C_ASSERT(pkt->data[5] < 60)) == true) { return SATR_ERROR; } /*minutes0to59*/
+..\source\upsat-ecss-services-master\time_management_service.c(78): warning:  #186-D: pointless comparison of unsigned integer with zero
+          if(!(C_ASSERT(pkt->data[6]>= 0)&&C_ASSERT(pkt->data[6] < 60)) == true) { return SATR_ERROR; } /*seconds0to59*/
+..\source\upsat-ecss-services-master\time_management_service.c(114): warning:  #186-D: pointless comparison of unsigned integer with zero
+          if(!(C_ASSERT(pkt->data[4]>= 0) &&C_ASSERT(pkt->data[4] < 24)) == true) { return SATR_ERROR; } /*hours0to23*/
+..\source\upsat-ecss-services-master\time_management_service.c(115): warning:  #186-D: pointless comparison of unsigned integer with zero
+          if(!(C_ASSERT(pkt->data[5]>= 0) &&C_ASSERT(pkt->data[5] < 60)) == true) { return SATR_ERROR; } /*minutes0to59*/
+..\source\upsat-ecss-services-master\time_management_service.c(116): warning:  #186-D: pointless comparison of unsigned integer with zero
+          if(!(C_ASSERT(pkt->data[6]>= 0) &&C_ASSERT(pkt->data[6] < 60)) == true) { return SATR_ERROR; } /*seconds0to59*/
+..\source\upsat-ecss-services-master\time_management_service.c(145): warning:  #188-D: enumerated type mixed with another type
+      crt_pkt(pkt, SYSTEM_APP_ID, TM, TC_ACK_NO, TC_TIME_MANAGEMENT_SERVICE, TM_TIME_REPORT_IN_QB50, dest_id);
+..\source\upsat-ecss-services-master\time_management_service.c(146): warning:  #223-D: function "cnv32_8" declared implicitly
+      cnv32_8(qb_temp_secs, pkt->data);
+..\source\upsat-ecss-services-master\time_management_service.c(222): warning:  #188-D: enumerated type mixed with another type
+      crt_pkt(pkt, dest_app_id, TC, TC_ACK_NO, TC_TIME_MANAGEMENT_SERVICE, sid, SYSTEM_APP_ID);
+..\source\upsat-ecss-services-master\time_management_service.c(231): warning:  #188-D: enumerated type mixed with another type
+      crt_pkt(pkt, SYSTEM_APP_ID, TM, TC_ACK_NO, TC_TIME_MANAGEMENT_SERVICE, sid, dest_app_id);
+..\source\upsat-ecss-services-master\time_management_service.c(245): warning:  #186-D: pointless comparison of unsigned integer with zero
+      if(!C_ASSERT( moment->hour >= 0  && moment->hour <= 24 ) == true) { return SATR_ERROR; }
+..\source\upsat-ecss-services-master\time_management_service.c(246): warning:  #186-D: pointless comparison of unsigned integer with zero
+      if(!C_ASSERT( moment->min  >= 0  && moment->min  <= 60 ) == true) { return SATR_ERROR; }
+..\source\upsat-ecss-services-master\time_management_service.c(247): warning:  #186-D: pointless comparison of unsigned integer with zero
+      if(!C_ASSERT( moment->sec  >= 0  && moment->sec  <= 60 ) == true) { return SATR_ERROR; }
+..\source\upsat-ecss-services-master\time_management_service.c: 16 warnings, 0 errors
+compiling ecss_stats.c...
+..\source\upsat-ecss-services-master\ecss_stats.c(38): warning:  #188-D: enumerated type mixed with another type
+      TC_TM_app_id source = 0;
+..\source\upsat-ecss-services-master\ecss_stats.c(39): warning:  #188-D: enumerated type mixed with another type
+      TC_TM_app_id dest = 0;
+..\source\upsat-ecss-services-master\ecss_stats.c(59): warning:  #188-D: enumerated type mixed with another type
+      TC_TM_app_id source = 0;
+..\source\upsat-ecss-services-master\ecss_stats.c(60): warning:  #188-D: enumerated type mixed with another type
+      TC_TM_app_id dest = 0;
+..\source\upsat-ecss-services-master\ecss_stats.c: 4 warnings, 0 errors
+compiling test_service.c...
+..\source\upsat-ecss-services-master\test_service.h(11): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\source\upsat-ecss-services-master\test_service.c(33): warning:  #188-D: enumerated type mixed with another type
+      crt_pkt(*pkt, SYSTEM_APP_ID, TM, TC_ACK_NO, TC_TEST_SERVICE, TM_CT_REPORT_TEST, dest_id);
+..\source\upsat-ecss-services-master\test_service.c: 2 warnings, 0 errors
+compiling event_reporting_service.c...
+..\source\upsat-ecss-services-master\event_reporting_service.h(14): warning:  #1295-D: Deprecated declaration event_pkt_pool_timeout - give arg types
+  SAT_returnState event_pkt_pool_timeout();
+..\source\upsat-ecss-services-master\event_reporting_service.c(14): warning:  #1295-D: Deprecated declaration HAL_sys_GetTick - give arg types
+  extern uint32_t HAL_sys_GetTick();
+..\source\upsat-ecss-services-master\event_reporting_service.c: 2 warnings, 0 errors
+compiling function_management_service.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\upsat-ecss-services-master\function_management_service.c: 1 warning, 0 errors
+compiling obc.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\upsat-ecss-services-master\obc.c(15): warning:  #1295-D: Deprecated declaration HAL_obc_BKPSRAM_BASE - give arg types
+  extern uint32_t * HAL_obc_BKPSRAM_BASE();
+..\source\upsat-ecss-services-master\obc.c(98): warning:  #223-D: function "queuePush" declared implicitly
+          queuePush(pkt, EPS_APP_ID);
+..\source\upsat-ecss-services-master\obc.c(101): warning:  #223-D: function "queuePush" declared implicitly
+          queuePush(pkt, ADCS_APP_ID);
+..\source\upsat-ecss-services-master\obc.c(104): warning:  #223-D: function "queuePush" declared implicitly
+          queuePush(pkt, COMMS_APP_ID);
+..\source\upsat-ecss-services-master\obc.c(107): warning:  #223-D: function "queuePush" declared implicitly
+          queuePush(pkt, COMMS_APP_ID);
+..\source\upsat-ecss-services-master\obc.c(62): warning:  #550-D: variable "res"  was set but never used
+      SAT_returnState res;
+..\source\upsat-ecss-services-master\obc.c(119): warning:  #223-D: function "HAL_obc_enableBkUpAccess" declared implicitly
+      HAL_obc_enableBkUpAccess();
+..\source\upsat-ecss-services-master\obc.c(122): warning:  #223-D: function "HAL_reset_source" declared implicitly
+      HAL_reset_source(&sys_data.rsrc);
+..\source\upsat-ecss-services-master\obc.c(127): warning:  #223-D: function "event_boot" declared implicitly
+      event_boot(sys_data.rsrc, cnt);
+..\source\upsat-ecss-services-master\obc.c(129): warning:  #223-D: function "HAL_obc_SD_ON" declared implicitly
+      HAL_obc_SD_ON();
+..\source\upsat-ecss-services-master\obc.c: 11 warnings, 0 errors
+compiling mass_storage_service.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\upsat-ecss-services-master\mass_storage_service.c(49): warning:  #188-D: enumerated type mixed with another type
+                                     .last_err = FR_OK } ;
+..\source\upsat-ecss-services-master\mass_storage_service.c(53): warning:  #188-D: enumerated type mixed with another type
+      MS_data.last_err = res;
+..\source\upsat-ecss-services-master\mass_storage_service.c(54): warning:  #188-D: enumerated type mixed with another type
+      MS_data.last_err = l;
+..\source\upsat-ecss-services-master\mass_storage_service.c(94): warning:  #223-D: function "power_control_api" declared implicitly
+          power_control_api(OBC_SD_DEV_ID, P_OFF);
+..\source\upsat-ecss-services-master\mass_storage_service.c(100): warning:  #223-D: function "power_control_api" declared implicitly
+          power_control_api(OBC_SD_DEV_ID, P_ON);
+..\source\upsat-ecss-services-master\mass_storage_service.c(101): warning:  #223-D: function "HAL_sys_delay" declared implicitly
+          HAL_sys_delay(1);
+..\source\upsat-ecss-services-master\mass_storage_service.c(126): warning:  #188-D: enumerated type mixed with another type
+          mode = pkt->data[1];
+..\source\upsat-ecss-services-master\mass_storage_service.c(131): warning:  #223-D: function "sram_hard_delete" declared implicitly
+                  res = sram_hard_delete();
+..\source\upsat-ecss-services-master\mass_storage_service.c(131): warning:  #188-D: enumerated type mixed with another type
+                  res = sram_hard_delete();
+..\source\upsat-ecss-services-master\mass_storage_service.c(214): warning:  #188-D: enumerated type mixed with another type
+      if((res = f_opendir(&dir, (char*)path)) != FR_OK) { MS_ERR(res); }  //add more error checking
+..\source\upsat-ecss-services-master\mass_storage_service.c(220): warning:  #188-D: enumerated type mixed with another type
+              MS_ERR(res); 
+..\source\upsat-ecss-services-master\mass_storage_service.c(229): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+          sprintf(temp_path,"%s/%s", path, (char*)fn);
+..\source\upsat-ecss-services-master\mass_storage_service.c(233): warning:  #188-D: enumerated type mixed with another type
+              MS_ERR(res);
+..\source\upsat-ecss-services-master\mass_storage_service.c(238): warning:  #188-D: enumerated type mixed with another type
+              MS_ERR(res);
+..\source\upsat-ecss-services-master\mass_storage_service.c(274): warning:  #188-D: enumerated type mixed with another type
+      if((res = f_open(&fp, (char*)path, FA_OPEN_EXISTING | FA_READ)) != FR_OK) { MS_ERR(res); } 
+..\source\upsat-ecss-services-master\mass_storage_service.c(280): warning:  #188-D: enumerated type mixed with another type
+      if(res != FR_OK) { MS_ERR(res); } 
+..\source\upsat-ecss-services-master\mass_storage_service.c(281): warning:  #188-D: enumerated type mixed with another type
+      else if(byteswritten == 0) { MS_ERR(res); } 
+..\source\upsat-ecss-services-master\mass_storage_service.c(331): warning:  #188-D: enumerated type mixed with another type
+      if(res != FR_OK) { MS_ERR(res); } 
+..\source\upsat-ecss-services-master\mass_storage_service.c(291): warning:  #177-D: variable "fno"  was declared but never referenced
+      FILINFO fno;
+..\source\upsat-ecss-services-master\mass_storage_service.c(379): warning:  #188-D: enumerated type mixed with another type
+      FRESULT res = 0;
+..\source\upsat-ecss-services-master\mass_storage_service.c(403): warning:  #188-D: enumerated type mixed with another type
+      if((res = f_opendir(&dir, (char*)path)) != FR_OK) { MS_ERR(res); }
+..\source\upsat-ecss-services-master\mass_storage_service.c(406): warning:  #188-D: enumerated type mixed with another type
+          if((res = f_readdir(&dir, &fno)) != FR_OK) { f_closedir(&dir); MS_ERR(res); }  /* Break on error */
+..\source\upsat-ecss-services-master\mass_storage_service.c(426): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+              sprintf(temp_path,"%s/%s", path, (char*)fn);
+..\source\upsat-ecss-services-master\mass_storage_service.c(427): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const TCHAR *"
+              if((res = f_stat(temp_path, &fno)) != FR_OK) {
+..\source\upsat-ecss-services-master\mass_storage_service.c(473): warning:  #223-D: function "HAL_sys_delay" declared implicitly
+              HAL_sys_delay(1);
+..\source\upsat-ecss-services-master\mass_storage_service.c(481): warning:  #223-D: function "HAL_sys_delay" declared implicitly
+          HAL_sys_delay(1);
+..\source\upsat-ecss-services-master\mass_storage_service.c(484): warning:  #188-D: enumerated type mixed with another type
+      if(res != FR_OK)    { MS_ERR(res); }
+..\source\upsat-ecss-services-master\mass_storage_service.c(492): warning:  #188-D: enumerated type mixed with another type
+      FRESULT res = 0;
+..\source\upsat-ecss-services-master\mass_storage_service.c(495): warning:  #188-D: enumerated type mixed with another type
+      if((res = f_mount(&MS_data.Fs, MS_SD_PATH, 0)) != FR_OK) { MS_ERR(res); }
+..\source\upsat-ecss-services-master\mass_storage_service.c(500): warning:  #188-D: enumerated type mixed with another type
+      if((res = mass_storage_dirCheck()) != SATR_OK)         { return res; }
+..\source\upsat-ecss-services-master\mass_storage_service.c(500): warning:  #188-D: enumerated type mixed with another type
+      if((res = mass_storage_dirCheck()) != SATR_OK)         { return res; }
+..\source\upsat-ecss-services-master\mass_storage_service.c(517): warning:  #188-D: enumerated type mixed with another type
+      crt_pkt(*pkt, OBC_APP_ID, TM, TC_ACK_NO, TC_MASS_STORAGE_SERVICE, 0, dest_id); //what dest_id ?
+..\source\upsat-ecss-services-master\mass_storage_service.c(532): warning:  #188-D: enumerated type mixed with another type
+      if(res != FR_OK)    { MS_ERR(res); }    
+..\source\upsat-ecss-services-master\mass_storage_service.c(572): warning:  #223-D: function "power_control_api" declared implicitly
+  					power_control_api(OBC_SD_DEV_ID, P_OFF);
+..\source\upsat-ecss-services-master\mass_storage_service.c(578): warning:  #223-D: function "power_control_api" declared implicitly
+            power_control_api(OBC_SD_DEV_ID, P_ON);
+..\source\upsat-ecss-services-master\mass_storage_service.c(602): warning:  #223-D: function "power_control_api" declared implicitly
+  					power_control_api(OBC_SD_DEV_ID, P_OFF);
+..\source\upsat-ecss-services-master\mass_storage_service.c(608): warning:  #223-D: function "power_control_api" declared implicitly
+            power_control_api(OBC_SD_DEV_ID, P_ON);
+..\source\upsat-ecss-services-master\mass_storage_service.c(617): warning:  #68-D: integer conversion resulted in a change of sign
+  							cond1 =-1;
+..\source\upsat-ecss-services-master\mass_storage_service.c(623): warning:  #68-D: integer conversion resulted in a change of sign
+  							cond1 =-1;
+..\source\upsat-ecss-services-master\mass_storage_service.c(634): warning:  #188-D: enumerated type mixed with another type
+  						MS_ERR(res);
+..\source\upsat-ecss-services-master\mass_storage_service.c(758): warning:  #188-D: enumerated type mixed with another type
+     return 16; 
+..\source\upsat-ecss-services-master\mass_storage_service.c(766): warning:  #188-D: enumerated type mixed with another type
+      if((res = f_stat((char*)MS_WOD_LOG, &fno)) != FR_OK)        { MS_ERR(res); }
+..\source\upsat-ecss-services-master\mass_storage_service.c(767): warning:  #188-D: enumerated type mixed with another type
+      if((res = f_stat((char*)MS_EXT_WOD_LOG, &fno)) != FR_OK)    { MS_ERR(res); }
+..\source\upsat-ecss-services-master\mass_storage_service.c(768): warning:  #188-D: enumerated type mixed with another type
+      if((res = f_stat((char*)MS_EVENT_LOG, &fno)) != FR_OK)      { MS_ERR(res); }
+..\source\upsat-ecss-services-master\mass_storage_service.c(769): warning:  #188-D: enumerated type mixed with another type
+      if((res = f_stat((char*)MS_FOTOS, &fno)) != FR_OK)          { MS_ERR(res); }
+..\source\upsat-ecss-services-master\mass_storage_service.c(770): warning:  #188-D: enumerated type mixed with another type
+      if((res = f_stat((char*)MS_SCHS, &fno)) != FR_OK)           { MS_ERR(res); }
+..\source\upsat-ecss-services-master\mass_storage_service.c(788): warning:  #177-D: variable "fres"  was declared but never referenced
+      FRESULT fres;
+..\source\upsat-ecss-services-master\mass_storage_service.c(853): warning:  #188-D: enumerated type mixed with another type
+                   sid == FOTOS) == true) { return 0; }
+..\source\upsat-ecss-services-master\mass_storage_service.c(854): warning:  #188-D: enumerated type mixed with another type
+      if(!C_ASSERT(to < MS_MAX_FILES) == true)  { return 0; }
+..\source\upsat-ecss-services-master\mass_storage_service.c(866): warning:  #188-D: enumerated type mixed with another type
+          if(!C_ASSERT(to <= files_num) == true)  { return 0; }
+..\source\upsat-ecss-services-master\mass_storage_service.c(962): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const TCHAR *"
+              res = f_stat(f_head, &fno_head);
+..\source\upsat-ecss-services-master\mass_storage_service.c(969): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const TCHAR *"
+              res = f_stat(f_tail, &fno_tail);
+..\source\upsat-ecss-services-master\mass_storage_service.c(910): warning:  #177-D: variable "fno"  was declared but never referenced
+      FILINFO fno;
+..\source\upsat-ecss-services-master\mass_storage_service.c(912): warning:  #177-D: variable "path"  was declared but never referenced
+      uint8_t path[MS_MAX_PATH];
+..\source\upsat-ecss-services-master\mass_storage_service.c(1008): warning:  #550-D: variable "head"  was set but never used
+      uint16_t *head = 0;
+..\source\upsat-ecss-services-master\mass_storage_service.c: 56 warnings, 0 errors
+compiling uart_hal.c...
+..\source\upsat-ecss-services-master\uart_hal.h(26): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\upsat-ecss-services-master\uart_hal.c(128): warning:  #940-D: missing return statement at end of non-void function "hal_kill_uart" 
+  }
+..\source\upsat-ecss-services-master\uart_hal.c(146): warning:  #940-D: missing return statement at end of non-void function "HAL_uart_tx_check" 
+  }
+..\source\upsat-ecss-services-master\uart_hal.c(150): warning:  #177-D: variable "huart"  was declared but never referenced
+      USART_TypeDef *huart;
+..\source\upsat-ecss-services-master\uart_hal.c(180): warning:  #111-D: statement is unreachable
+      return SATR_OK;
+..\source\upsat-ecss-services-master\uart_hal.c(20): warning:  #177-D: variable "uart_timeout"  was declared but never referenced
+  static struct _uart_timeout uart_timeout; 
+..\source\upsat-ecss-services-master\uart_hal.c: 7 warnings, 0 errors
+compiling diskio.c...
+compiling syscall.c...
+compiling obc_hsi.c...
+compiling unicode.c...
+compiling tm_stm32f4_fatfs.c...
+compiling tm_stm32f4_gpio.c...
+compiling fatfs.c...
+..\source\upsat-ecss-services-master\time_management_service.h(55): warning:  #1295-D: Deprecated declaration return_time_QB50 - give arg types
+  uint32_t return_time_QB50();
+..\source\FatFs\fatfs.c: 1 warning, 0 errors
+compiling ff_gen_drv.c...
+compiling sd_diskio.c...
+compiling ff.c...
+compiling fatfs_sd_sdio.c...
+linking...
+Program Size: Code=18416 RO-data=424 RW-data=1128 ZI-data=2912  
+".\Objects\TTRD-ERES2.axf" - 0 Error(s), 184 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.15.0.pack
+                Keil.STM32F4xx_DFP.2.15.0
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+
+<h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:10
+</pre>
+</body>
+</html>

@@ -43,9 +43,9 @@
 
 // Project header
 #include "main.h"
-#include "../tasks/sensors.h"
-#include "../support_functions/sha256.h"
-
+//#include "../support_functions/sha256.h"
+#include "../tasks/rx_manager.h"
+#include "../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h"
 
 /*----------------------------------------------------------------------------*/
 
@@ -56,7 +56,6 @@ int main()
 
    // Start the scheduler
    SCH_Start();
-
    while(1)
       {
       SCH_Dispatch_Tasks();
