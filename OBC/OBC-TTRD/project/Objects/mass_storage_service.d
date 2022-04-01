@@ -1,9 +1,0 @@
-.\objects\mass_storage_service.o: ..\source\upsat-ecss-services-master\services\mass_storage_service.c
-.\objects\mass_storage_service.o: ..\source\upsat-ecss-services-master\services\mass_storage_service.h
-.\objects\mass_storage_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\mass_storage_service.o: ..\source\upsat-ecss-services-master\services\services.h
-.\objects\mass_storage_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\mass_storage_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\mass_storage_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\mass_storage_service.o: ..\source\upsat-ecss-services-master\services\subsystems_ids.h
-.\objects\mass_storage_service.o: ..\source\hsi_startup\system.h
