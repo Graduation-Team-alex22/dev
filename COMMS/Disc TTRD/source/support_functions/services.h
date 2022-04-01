@@ -6,10 +6,16 @@
 	housekeeping.h, queue.h, service_utilities.h, status.h, system.h, test_service.h, verification_service.h, utils.h, 
 	log.h, persistent_mem.h, packet_pool.h, power_ctrl.h
 */
-
 // Processor Header
 #include "../main/main.h"
+//////////////////////////////////////////////// STRING ////////////////////////////////////
 
+size_t	 strnlen (const char *s, size_t maxlen);
+
+//////////////////////////////////////////////// STDBOOL ////////////////////////////////////
+#define bool	_Bool
+#define true	1
+#define false	0
 //////////////////////////////////////////////// SYSTEM ////////////////////////////////////
 #define SYSTEM_APP_ID _COMMS_APP_ID_
 #define POOL_PKT_EXT

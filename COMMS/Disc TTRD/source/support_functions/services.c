@@ -1,5 +1,13 @@
 #include "../main/main.h"
-
+////////////////////////////////////////////////// STRING //////////////////////////////////////////////////////////
+size_t	 strnlen (const char *s, size_t maxlen)
+{
+	//strlen (s) < maxlen ? strlen (s) : maxlen ;
+	if(strlen (s) < maxlen)
+		return(strlen (s));
+	else
+		return(maxlen);
+}
 
 
 

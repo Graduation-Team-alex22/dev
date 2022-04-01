@@ -27,20 +27,274 @@ Project File Date:  03/29/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil\ARM\ARMCC\Bin'
 Build target 'STM32F407VG'
-compiling cc_tx.c...
-..\source\tasks\../main/../support_functions/services.h(447): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+compiling services.c...
+..\source\support_functions\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
   void stats_dropped_hldlc();
-..\source\tasks\../main/../support_functions/services.h(449): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+..\source\support_functions\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
   void stats_dropped_upack();
-..\source\tasks\../main/../support_functions/services.h(456): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+..\source\support_functions\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
   uint32_t flash_INIT();
-..\source\tasks\../main/../support_functions/services.h(875): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+..\source\support_functions\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
   comms_persistent_mem_init();
-..\source\tasks\../main/../support_functions/services.h(902): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+..\source\support_functions\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
   SAT_returnState pkt_pool_INIT();
-..\source\tasks\../main/../support_functions/services.h(917): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+..\source\support_functions\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
   extern void HAL_comms_SD_ON();
-..\source\tasks\../main/../support_functions/services.h(918): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+..\source\support_functions\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\support_functions\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\support_functions\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\support_functions\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\support_functions\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\support_functions\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\support_functions\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\support_functions\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\support_functions\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\support_functions\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\support_functions\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\support_functions\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\support_functions\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\support_functions\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\support_functions\services.c: 24 warnings, 0 errors
+compiling main.c...
+..\source\main\../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\main\../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\main\../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\main\../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\main\../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\main\../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\main\../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\main\../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\main\../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\main\../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\main\../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\main\../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\main\../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\main\../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\main\../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\main\../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\main\../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\main\../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\main\../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\main\../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\main\../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\main\../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\main\../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\main\../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\main\../tasks/rx_manager.h(14): warning:  #1295-D: Deprecated declaration rx_init - give arg types
+  void rx_init();
+..\source\main\main.c(64): warning:  #111-D: statement is unreachable
+     return 1;
+..\source\main\main.c: 26 warnings, 0 errors
+compiling cc_tx_init.c...
+..\source\support_functions\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\support_functions\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\support_functions\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\support_functions\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\support_functions\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\support_functions\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\support_functions\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\support_functions\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\support_functions\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\support_functions\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\support_functions\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\support_functions\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\support_functions\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\support_functions\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\support_functions\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\support_functions\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\support_functions\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\support_functions\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\support_functions\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\support_functions\cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\support_functions\cc_tx_init.c: 24 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_timeout_t3.c...
+..\source\support_functions\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\support_functions\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\support_functions\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\support_functions\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\support_functions\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\support_functions\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\support_functions\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\support_functions\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\support_functions\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\support_functions\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\support_functions\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\support_functions\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\support_functions\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\support_functions\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\support_functions\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\support_functions\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\support_functions\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\support_functions\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\support_functions\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\support_functions\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\support_functions\ttrd2-05a-t0401a-v001a_timeout_t3.c: 24 warnings, 0 errors
+compiling comms_hal.c...
+..\source\support_functions\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\support_functions\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\support_functions\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\support_functions\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\support_functions\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\support_functions\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\support_functions\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\support_functions\../main/../tasks/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\support_functions\../main/../tasks/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\support_functions\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\support_functions\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\support_functions\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\support_functions\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\support_functions\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\support_functions\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\support_functions\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\support_functions\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\support_functions\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\support_functions\comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\support_functions\comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\support_functions\comms_hal.c: 24 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_adc_task.c...
+..\source\tasks\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\tasks\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\tasks\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\tasks\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\tasks\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\tasks\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
   extern void HAL_comms_SD_OFF();
 ..\source\tasks\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
   SAT_returnState sys_data_INIT();
@@ -76,16 +330,1196 @@ compiling cc_tx.c...
   uint32_t getCurrentTick();
 ..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
   uint32_t getCurrentTick();
-..\source\tasks\cc_tx.c(689): warning:  #177-D: variable "T3"  was declared but never referenced
+..\source\tasks\ttrd2-05a-t0401a-v001a_adc_task.c: 24 warnings, 0 errors
+compiling ax_25.c...
+..\source\support_functions\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\support_functions\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\support_functions\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\support_functions\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\support_functions\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\support_functions\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\support_functions\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\support_functions\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\support_functions\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\support_functions\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\support_functions\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\support_functions\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\support_functions\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\support_functions\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\support_functions\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\support_functions\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\support_functions\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\support_functions\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\support_functions\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\support_functions\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\support_functions\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\support_functions\ax_25.c(370): warning:  #188-D: enumerated type mixed with another type
+    status  = ax25_recv(h, out, &decode_len, tmp_buf, len);
+..\source\support_functions\ax_25.c: 25 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_heartbeat_sw_task.c...
+..\source\tasks\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\tasks\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\tasks\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\tasks\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\tasks\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\tasks\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\tasks\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\tasks\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\tasks\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\tasks\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\tasks\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\tasks\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\tasks\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\tasks\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\tasks\ttrd2-05a-t0401a-v001a_heartbeat_sw_task.c: 24 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_iwdt_task.c...
+..\source\tasks\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\tasks\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\tasks\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\tasks\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\tasks\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\tasks\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\tasks\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\tasks\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\tasks\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\tasks\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\tasks\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\tasks\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\tasks\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\tasks\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\tasks\ttrd2-05a-t0401a-v001a_iwdt_task.c: 24 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_switch_task.c...
+..\source\tasks\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\tasks\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\tasks\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\tasks\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\tasks\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\tasks\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\tasks\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\tasks\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\tasks\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\tasks\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\tasks\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\tasks\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\tasks\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\tasks\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\tasks\ttrd2-05a-t0401a-v001a_switch_task.c: 24 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_uart2_buff_o_task.c...
+..\source\tasks\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\tasks\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\tasks\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\tasks\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\tasks\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\tasks\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\tasks\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\tasks\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\tasks\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\tasks\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\tasks\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\tasks\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\tasks\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\tasks\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\tasks\rx_manager.h(14): warning:  #1295-D: Deprecated declaration rx_init - give arg types
+  void rx_init();
+..\source\tasks\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.c(404): warning:  #177-D: variable "T3"  was declared but never referenced
   	uint32_t T3;
-..\source\tasks\cc_tx.c(18): warning:  #177-D: variable "CC_TX_Tx_buffer2_ig"  was declared but never referenced
+..\source\tasks\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.c(78): warning:  #177-D: variable "UART2_Rx_buffer_ig"  was declared but never referenced
+  static char UART2_Rx_buffer_ig[UART2_RX_BUFFER_SIZE_BYTES];  // Inverted copy
+..\source\tasks\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.c: 27 warnings, 0 errors
+compiling ttrd2-19a-t0401a-v001b_processor_task.c...
+..\source\tasks\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\tasks\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\tasks\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\tasks\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\tasks\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\tasks\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\tasks\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\tasks\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\tasks\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\tasks\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\tasks\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\tasks\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\tasks\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\tasks\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\tasks\../tasks/rx_manager.h(14): warning:  #1295-D: Deprecated declaration rx_init - give arg types
+  void rx_init();
+..\source\tasks\ttrd2-19a-t0401a-v001b_processor_task.c: 25 warnings, 0 errors
+compiling comms_manager.c...
+..\source\tasks\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\tasks\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\tasks\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\tasks\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\tasks\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\tasks\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\tasks\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\tasks\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\tasks\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\tasks\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\tasks\../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\tasks\../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\tasks\../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\tasks\../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\tasks\../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\tasks\comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\tasks\comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\tasks\comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\tasks\comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\tasks\comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\tasks\comms_manager.c: 24 warnings, 0 errors
+compiling tx_manager.c...
+..\source\tasks\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\tasks\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\tasks\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\tasks\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\tasks\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\tasks\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\tasks\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\tasks\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\tasks\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\tasks\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\tasks\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\tasks\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\tasks\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\tasks\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\tasks\tx_manager.c: 24 warnings, 0 errors
+compiling rx_manager.c...
+..\source\tasks\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\tasks\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\tasks\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\tasks\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\tasks\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\tasks\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\tasks\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\tasks\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\tasks\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\tasks\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\tasks\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\tasks\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\tasks\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\tasks\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\tasks\rx_manager.h(14): warning:  #1295-D: Deprecated declaration rx_init - give arg types
+  void rx_init();
+..\source\tasks\rx_manager.c: 25 warnings, 0 errors
+compiling TickCounter.c...
+..\source\tasks\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\tasks\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\tasks\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\tasks\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\tasks\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\tasks\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\tasks\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\tasks\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\tasks\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\tasks\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\tasks\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\tasks\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\tasks\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\tasks\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\tasks\TickCounter.c: 24 warnings, 0 errors
+compiling cc_rx.c...
+..\source\tasks\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\tasks\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\tasks\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\tasks\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\tasks\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\tasks\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\tasks\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\tasks\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\tasks\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\tasks\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\tasks\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\tasks\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\tasks\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\tasks\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\tasks\cc_rx.c(753): warning:  #1-D: last line of file ends without a newline
+  	 
+..\source\tasks\cc_rx.c(18): warning:  #177-D: variable "CC_RX_Rx_buffer_ig"  was declared but never referenced
+  static char CC_RX_Rx_buffer_ig[CC_RX_RX_BUFFER_SIZE_BYTES];  // Inverted copy
+..\source\tasks\cc_rx.c(22): warning:  #550-D: variable "CC_RX_Sent_idx_ig"  was set but never used
+  static uint32_t CC_RX_Sent_idx_ig = ~0;  
+..\source\tasks\cc_rx.c(29): warning:  #177-D: variable "CC_RX_Timeout_us_g"  was declared but never referenced
+  static uint32_t CC_RX_Timeout_us_g;
+..\source\tasks\cc_rx.c(30): warning:  #177-D: variable "CC_RX_Timeout_us_ig"  was declared but never referenced
+  static uint32_t CC_RX_Timeout_us_ig;
+..\source\tasks\cc_rx.c: 29 warnings, 0 errors
+compiling cc_tx.c...
+..\source\tasks\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\tasks\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\tasks\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\tasks\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\tasks\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\tasks\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\tasks\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\tasks\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\tasks\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\tasks\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\tasks\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\tasks\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\tasks\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\tasks\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\tasks\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\tasks\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\tasks\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\tasks\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\tasks\rx_manager.h(14): warning:  #1295-D: Deprecated declaration rx_init - give arg types
+  void rx_init();
+..\source\tasks\cc_tx.c(203): warning:  #223-D: function "CC_RX_update" declared implicitly
+  		CC_RX_update();
+..\source\tasks\cc_tx.c(700): warning:  #177-D: variable "T3"  was declared but never referenced
+  	uint32_t T3;
+..\source\tasks\cc_tx.c(18): warning:  #550-D: variable "CC_TX_Tx_buffer2_ig"  was set but never used
   static char  CC_TX_Tx_buffer2_ig[CC_TX_TX_BUFFER_SIZE_BYTES];  // Inverted copy
 ..\source\tasks\cc_tx.c(21): warning:  #177-D: variable "CC_TX_Rx_buffer_ig"  was declared but never referenced
   static char CC_TX_Rx_buffer_ig[CC_TX_RX_BUFFER_SIZE_BYTES];  // Inverted copy
-..\source\tasks\cc_tx.c: 27 warnings, 0 errors
+..\source\tasks\cc_tx.c: 29 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.c...
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\hsi_reg_config_checks\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\hsi_reg_config_checks\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\hsi_reg_config_checks\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\hsi_reg_config_checks\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\hsi_reg_config_checks\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\hsi_reg_config_checks\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\hsi_reg_config_checks\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.c: 24 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.c...
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\hsi_reg_config_checks\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\hsi_reg_config_checks\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\hsi_reg_config_checks\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\hsi_reg_config_checks\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\hsi_reg_config_checks\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\hsi_reg_config_checks\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\hsi_reg_config_checks\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.c: 24 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.c...
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\hsi_reg_config_checks\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\hsi_reg_config_checks\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\hsi_reg_config_checks\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\hsi_reg_config_checks\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\hsi_reg_config_checks\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\hsi_reg_config_checks\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\hsi_reg_config_checks\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.c: 24 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.c...
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\hsi_reg_config_checks\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\hsi_reg_config_checks\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\hsi_reg_config_checks\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\hsi_reg_config_checks\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\hsi_reg_config_checks\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\hsi_reg_config_checks\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\hsi_reg_config_checks\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\hsi_reg_config_checks\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\hsi_reg_config_checks\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\hsi_reg_config_checks\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.c: 24 warnings, 0 errors
+compiling ttrd2-19a-t0401a-v001a_assert_failed.c...
+..\source\hsi_startup\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\hsi_startup\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\hsi_startup\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\hsi_startup\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\hsi_startup\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\hsi_startup\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\hsi_startup\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\hsi_startup\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\hsi_startup\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\hsi_startup\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\hsi_startup\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\hsi_startup\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\hsi_startup\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\hsi_startup\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\hsi_startup\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\hsi_startup\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\hsi_startup\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\hsi_startup\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\hsi_startup\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\hsi_startup\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\hsi_startup\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\hsi_startup\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\hsi_startup\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\hsi_startup\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\hsi_startup\../tasks/rx_manager.h(14): warning:  #1295-D: Deprecated declaration rx_init - give arg types
+  void rx_init();
+..\source\hsi_startup\ttrd2-19a-t0401a-v001a_assert_failed.c: 25 warnings, 0 errors
+compiling ttrd2-04a-t0401a-v001a_pfc_reporting.c...
+..\source\processor\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\processor\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\processor\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\processor\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\processor\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\processor\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\processor\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\processor\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\processor\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\processor\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\processor\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\processor\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\processor\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\processor\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\processor\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\processor\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\processor\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\processor\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\processor\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\processor\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\processor\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\processor\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\processor\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\processor\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\processor\../tasks/rx_manager.h(14): warning:  #1295-D: Deprecated declaration rx_init - give arg types
+  void rx_init();
+..\source\processor\ttrd2-04a-t0401a-v001a_pfc_reporting.c: 25 warnings, 0 errors
+compiling ttrd2-19a-t0401a-v001b_processor.c...
+..\source\processor\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\processor\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\processor\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\processor\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\processor\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\processor\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\processor\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\processor\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\processor\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\processor\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\processor\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\processor\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\processor\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\processor\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\processor\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\processor\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\processor\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\processor\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\processor\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\processor\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\processor\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\processor\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\processor\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\processor\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\processor\ttrd2-19a-t0401a-v001b_processor.c: 24 warnings, 0 errors
+compiling ttrd2-19a-t0401a-v001b_run_time_tests.c...
+..\source\processor\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\processor\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\processor\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\processor\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\processor\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\processor\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\processor\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\processor\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\processor\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\processor\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\processor\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\processor\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\processor\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\processor\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\processor\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\processor\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\processor\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\processor\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\processor\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\processor\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\processor\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\processor\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\processor\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\processor\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\processor\ttrd2-19a-t0401a-v001b_run_time_tests.c: 24 warnings, 0 errors
+compiling ttrd2-18a-t0401a-v001a_monittor_i.c...
+..\source\scheduler\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\scheduler\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\scheduler\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\scheduler\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\scheduler\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\scheduler\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\scheduler\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\scheduler\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\scheduler\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\scheduler\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\scheduler\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\scheduler\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\scheduler\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\scheduler\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\scheduler\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\scheduler\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\scheduler\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\scheduler\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\scheduler\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\scheduler\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\scheduler\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\scheduler\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\scheduler\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\scheduler\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\scheduler\ttrd2-18a-t0401a-v001a_monittor_i.c: 24 warnings, 0 errors
+compiling ttrd2-19a-t0401a-v001b_predicttor_i.c...
+..\source\scheduler\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\scheduler\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\scheduler\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\scheduler\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\scheduler\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\scheduler\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\scheduler\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\scheduler\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\scheduler\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\scheduler\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\scheduler\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\scheduler\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\scheduler\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\scheduler\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\scheduler\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\scheduler\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\scheduler\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\scheduler\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\scheduler\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\scheduler\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\scheduler\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\scheduler\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\scheduler\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\scheduler\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\scheduler\ttrd2-19a-t0401a-v001b_predicttor_i.c: 24 warnings, 0 errors
+compiling ttrd2-19a-t0401a-v001c_scheduler.c...
+..\source\scheduler\../main/../support_functions/services.h(453): warning:  #1295-D: Deprecated declaration stats_dropped_hldlc - give arg types
+  void stats_dropped_hldlc();
+..\source\scheduler\../main/../support_functions/services.h(455): warning:  #1295-D: Deprecated declaration stats_dropped_upack - give arg types
+  void stats_dropped_upack();
+..\source\scheduler\../main/../support_functions/services.h(462): warning:  #1295-D: Deprecated declaration flash_INIT - give arg types
+  uint32_t flash_INIT();
+..\source\scheduler\../main/../support_functions/services.h(881): warning:  #1295-D: Deprecated declaration comms_persistent_mem_init - give arg types
+  comms_persistent_mem_init();
+..\source\scheduler\../main/../support_functions/services.h(908): warning:  #1295-D: Deprecated declaration pkt_pool_INIT - give arg types
+  SAT_returnState pkt_pool_INIT();
+..\source\scheduler\../main/../support_functions/services.h(923): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  extern void HAL_comms_SD_ON();
+..\source\scheduler\../main/../support_functions/services.h(924): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  extern void HAL_comms_SD_OFF();
+..\source\scheduler\../main/../support_functions/upsat.h(66): warning:  #1295-D: Deprecated declaration sys_data_INIT - give arg types
+  SAT_returnState sys_data_INIT();
+..\source\scheduler\../main/../support_functions/upsat.h(73): warning:  #1295-D: Deprecated declaration sys_refresh - give arg types
+  void sys_refresh();
+..\source\scheduler\../main/../support_functions/comms_hal.h(42): warning:  #1295-D: Deprecated declaration HAL_comms_SD_ON - give arg types
+  void HAL_comms_SD_ON();
+..\source\scheduler\../main/../support_functions/comms_hal.h(44): warning:  #1295-D: Deprecated declaration HAL_comms_SD_OFF - give arg types
+  void HAL_comms_SD_OFF();
+..\source\scheduler\../main/../tasks/../support_functions/cw.h(53): warning:  #1295-D: Deprecated declaration cw_init - give arg types
+  void cw_init ();
+..\source\scheduler\../main/../tasks/../support_functions/cc_rx_init.h(19): warning:  #1295-D: Deprecated declaration rx_manual_calibration - give arg types
+  void rx_manual_calibration ();
+..\source\scheduler\../main/../tasks/../support_functions/cc_rx_init.h(20): warning:  #1295-D: Deprecated declaration rx_register_config - give arg types
+  void rx_register_config ();
+..\source\scheduler\../main/../tasks/../support_functions/cc_rx_init.h(21): warning:  #1295-D: Deprecated declaration rx_temp_sensor_register_config - give arg types
+  void rx_temp_sensor_register_config ();
+..\source\scheduler\../main/../tasks/../support_functions/cc_rx_init.h(32): warning:  #1295-D: Deprecated declaration cc_rx_check_fifo_status - give arg types
+  uint8_t cc_rx_check_fifo_status(); // Checks if the RX FIFO of the CC1120 encountered any error. If yes, the FIFO is flushed and the RX CC1120 is set again in normal RX mode.
+..\source\scheduler\../main/../tasks/comms_manager.h(44): warning:  #1295-D: Deprecated declaration comms_init - give arg types
+  void comms_init();
+..\source\scheduler\../main/../tasks/comms_manager.h(62): warning:  #1295-D: Deprecated declaration send_cw_beacon - give arg types
+  int32_t send_cw_beacon();
+..\source\scheduler\../main/../tasks/comms_manager.h(64): warning:  #1295-D: Deprecated declaration is_tx_enabled - give arg types
+  uint8_t is_tx_enabled(); // Implemented.
+..\source\scheduler\../main/../tasks/comms_manager.h(66): warning:  #1295-D: Deprecated declaration is_cmd_ctrl_enabled - give arg types
+  uint8_t is_cmd_ctrl_enabled(); // Implemented.
+..\source\scheduler\../main/../tasks/comms_manager.h(72): warning:  #1295-D: Deprecated declaration check_timeouts - give arg types
+  SAT_returnState check_timeouts();
+..\source\scheduler\../main/../tasks/TickCounter.h(4): warning:  #1295-D: Deprecated declaration updateCurrentTick - give arg types
+  void updateCurrentTick();
+..\source\scheduler\../main/../tasks/TickCounter.h(6): warning:  #1-D: last line of file ends without a newline
+  uint32_t getCurrentTick();
+..\source\scheduler\../main/../tasks/TickCounter.h(6): warning:  #1295-D: Deprecated declaration getCurrentTick - give arg types
+  uint32_t getCurrentTick();
+..\source\scheduler\ttrd2-19a-t0401a-v001c_scheduler.c: 24 warnings, 0 errors
 linking...
-Program Size: Code=23428 RO-data=436 RW-data=1396 ZI-data=36884  
-".\Objects\TTRD-ERES2.axf" - 0 Error(s), 27 Warning(s).
+Program Size: Code=24772 RO-data=436 RW-data=1396 ZI-data=41220  
+".\Objects\TTRD-ERES2.axf" - 0 Error(s), 716 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -98,7 +1532,7 @@ Package Vendor: Keil
   D:\Keil\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:08
 </pre>
 </body>
 </html>

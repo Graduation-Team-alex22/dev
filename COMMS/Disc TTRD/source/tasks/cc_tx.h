@@ -18,8 +18,8 @@ void CC_TX_BUF_O_Update(void);
 //Setters
 #ifdef CC1101_UART
 /***************** CC_TX ******************************************************/
-#define CC_TX_RX_BUFFER_SIZE_BYTES 4000
-#define CC_TX_TX_BUFFER_SIZE_BYTES 20
+#define CC_TX_RX_BUFFER_SIZE_BYTES 200
+#define CC_TX_TX_BUFFER_SIZE_BYTES 4000
 
 extern uint8_t CC_TX_SP_Flag;
 extern char CC_TX_SP_Command[10];

@@ -567,11 +567,19 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          UART2_BUF_O_Write_String_To_Buffer("NORMAL_M\n");
 					 
 				 CC_RX_init(9600);
-				 CC_RX_BUF_O_Write_String_To_Buffer("\nStarting up the DMA module\n");
-				 CC_RX_BUF_O_Send_All_Data();
+//				 CC_RX_BUF_O_Write_String_To_Buffer("\nStarting up the DMA module\n");
+//				 CC_RX_BUF_O_Send_All_Data();
 					 
 				 CC_TX_init(9600);
-					 
+//				 CC_TX_BUF_O_Write_String_To_Buffer("Starting\n");
+//				 CC_TX_BUF_O_Send_All_Data();
+//					 
+//					 
+//				 CC_TX_BUF_O_Write_String_To_Buffer("UART4\n");
+//				 CC_TX_BUF_O_Send_All_Data();
+//					 
+//				 CC_TX_BUF_O_Write_String_To_Buffer("A great thing\n");
+//				 CC_TX_BUF_O_Send_All_Data();
          // Set up scheduler for 5 ms ticks
          SCH_Init_Microseconds(5000);
 

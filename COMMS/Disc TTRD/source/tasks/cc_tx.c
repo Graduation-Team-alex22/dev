@@ -180,9 +180,16 @@ void CC_TX_BUF_O_Init(uint32_t BAUD_RATE)
 		{
 		CC_TX_Tx_buffer_g[i] = 'X';
 		CC_TX_Tx_buffer2_g[i] = 'G';
+			
 		CC_TX_Tx_buffer_ig[i] = (char) ~'X'; 
+		CC_TX_Tx_buffer2_ig[i] =(char) ~'G';
 		}
-		
+//	for (uint32_t i = 0; i < CC_TX_RX_BUFFER_SIZE_BYTES; i++)
+//		{
+//		CC_TX_Rx_buffer_g[i] = 'K';
+//			
+//		CC_TX_Rx_buffer_ig[i] = (char) ~'K'; 
+//		}
 	// Store the UART register configuration
 	REG_CONFIG_CHECKS_UART_Store(USART3);
 		
@@ -193,6 +200,7 @@ uint32_t CC_TX_update(void)
 	uint32_t Return_value = RETURN_NORMAL_STATE;
 	if(CC_TX_Ready)
 	{
+		CC_RX_update();
 		CC_TX_DMA_CHECK();
 		CC_TX_SET_Parameters();
 		CC_TX_BUF_O_Update();
@@ -242,7 +250,7 @@ uint32_t CC_TX_update(void)
 -*----------------------------------------------------------------------------*/
 void CC_TX_BUF_O_Update(void)
 {
-	//if(CC_TX_Wait_idx_g > 0)
+	if(CC_TX_Wait_idx_g > 0)
 	{  
 		CC_TX_BUF_O_Send_All_Data();
 	}  
@@ -393,6 +401,7 @@ void  	 CC_TX_SET_Parameters(void)
 				{
 					UART2_BUF_O_Write_String_To_Buffer("TX:in AT case\n");
 					CC_TX_BUF_O_Write_String_To_Buffer("AT\n");
+					CC_TX_BUF_O_Send_All_Data();
 				}
 				else
 				{
@@ -486,60 +495,60 @@ void CC_TX_BUF_O_Check_Data_Integrity(void)
  */
 void CC_TX_DMA_CHECK(void)
 {
-	static uint32_t old_pos=0;
-	uint32_t pos=0;
-	//__HAL_DMA_GET_COUNTER(Sucess) IS_DMA_BUFFER_SIZE  IS_DMA_PERIPHERAL_DATA_SIZE  IS_DMA_MEMORY_DATA_SIZE
-	pos = ARRAY_LEN(CC_TX_Rx_buffer_g) - DMA_GetCurrDataCounter(DMA1_Stream1);
-	if (pos>=2*CC_TX_RX_BUFFER_SIZE_BYTES)//CC_TX_RX_BUFFER_SIZE_BYTES
-	 pos=0;  
-	 if (pos != old_pos) 
-		 {                       /* Check change in received data */
-			if (pos > old_pos) 
-				{                    /* Current position is over previous one */
-					/*
-					 * Processing is done in "linear" mode.
-					 *
-					 * Application processing is fast with single data block,
-					 * length is simply calculated by subtracting pointers
-					 *
-					 * [   0   ]
-					 * [   1   ] <- old_pos |------------------------------------|
-					 * [   2   ]            |                                    |
-					 * [   3   ]            | Single block (len = pos - old_pos) |
-					 * [   4   ]            |                                    |
-					 * [   5   ]            |------------------------------------|
-					 * [   6   ] <- pos
-					 * [   7   ]
-					 * [ N - 1 ]
-					 */
-					CC_TX_PROCESS_DATA(&CC_TX_Rx_buffer_g[old_pos], pos - old_pos);
-				} 
-			else 
+static uint32_t old_pos=0;
+uint32_t pos=0;
+//__HAL_DMA_GET_COUNTER(Sucess) IS_DMA_BUFFER_SIZE  IS_DMA_PERIPHERAL_DATA_SIZE  IS_DMA_MEMORY_DATA_SIZE
+pos = ARRAY_LEN(CC_TX_Rx_buffer_g) - DMA_GetCurrDataCounter(CC_TX_DMA_RX_STREAM);
+if (pos>=CC_TX_RX_BUFFER_SIZE_BYTES)//CC_TX_RX_BUFFER_SIZE_BYTES
+ pos=0;  
+ if (pos != old_pos) 
+	 {                       /* Check change in received data */
+	if (pos > old_pos) 
+		{                    /* Current position is over previous one */
+			/*
+			 * Processing is done in "linear" mode.
+			 *
+			 * Application processing is fast with single data block,
+			 * length is simply calculated by subtracting pointers
+			 *
+			 * [   0   ]
+			 * [   1   ] <- old_pos |------------------------------------|
+			 * [   2   ]            |                                    |
+			 * [   3   ]            | Single block (len = pos - old_pos) |
+			 * [   4   ]            |                                    |
+			 * [   5   ]            |------------------------------------|
+			 * [   6   ] <- pos
+			 * [   7   ]
+			 * [ N - 1 ]
+			 */
+			CC_TX_PROCESS_DATA(&CC_TX_Rx_buffer_g[old_pos], pos - old_pos);
+		} 
+	else 
+		{
+			/*
+			 * Processing is done in "overflow" mode..
+			 *
+			 * Application must process data twice,
+			 * since there are 2 linear memory blocks to handle
+			 *
+			 * [   0   ]            |---------------------------------|
+			 * [   1   ]            | Second block (len = pos)        |
+			 * [   2   ]            |---------------------------------|
+			 * [   3   ] <- pos
+			 * [   4   ] <- old_pos |---------------------------------|
+			 * [   5   ]            |                                 |
+			 * [   6   ]            | First block (len = N - old_pos) |
+			 * [   7   ]            |                                 |
+			 * [ N - 1 ]            |---------------------------------|
+			 */
+			CC_TX_PROCESS_DATA(&CC_TX_Rx_buffer_g[old_pos], ARRAY_LEN(CC_TX_Rx_buffer_g) - old_pos);
+			if (pos > 0) 
 				{
-					/*
-					 * Processing is done in "overflow" mode..
-					 *
-					 * Application must process data twice,
-					 * since there are 2 linear memory blocks to handle
-					 *
-					 * [   0   ]            |---------------------------------|
-					 * [   1   ]            | Second block (len = pos)        |
-					 * [   2   ]            |---------------------------------|
-					 * [   3   ] <- pos
-					 * [   4   ] <- old_pos |---------------------------------|
-					 * [   5   ]            |                                 |
-					 * [   6   ]            | First block (len = N - old_pos) |
-					 * [   7   ]            |                                 |
-					 * [ N - 1 ]            |---------------------------------|
-					 */
-					CC_TX_PROCESS_DATA(&CC_TX_Rx_buffer_g[old_pos], ARRAY_LEN(CC_TX_Rx_buffer_g) - old_pos);
-					if (pos > 0) 
-						{
-							CC_TX_PROCESS_DATA(&CC_TX_Rx_buffer_g[0], pos);
-						}
+					CC_TX_PROCESS_DATA(&CC_TX_Rx_buffer_g[0], pos);
 				}
-			old_pos = pos;                          /* Save current position as old for next transfers */
 		}
+		old_pos = pos;                          /* Save current position as old for next transfers */
+	}
 }
 /**
  * \brief           Process received data over UART
@@ -587,10 +596,10 @@ void CC_TX_PROCESS_DATA(const void* data, size_t len)
 void CC_TX_BUF_O_Write_String_To_Buffer(const char* const STR_PTR)
 {
  uint32_t i = 0;
- while (STR_PTR[i] != '\0')
+ while ((STR_PTR[i] != '\0')&&(STR_PTR[i] != '*'))
 	{
-	CC_TX_BUF_O_Write_Char_To_Buffer(STR_PTR[i]);
-	i++;
+		CC_TX_BUF_O_Write_Char_To_Buffer(STR_PTR[i]);
+		i++;
 	}
 }
 /*----------------------------------------------------------------------------*-
@@ -637,6 +646,7 @@ void CC_TX_BUF_O_Write_Char_To_Buffer(const char CHARACTER)
 			else
 			{
 				CC_TX_Tx_buffer2_g[CC_TX_Wait_idx_g] = CHARACTER;
+				CC_TX_Tx_buffer2_ig[CC_TX_Wait_idx_g] = (char) ~CHARACTER;
 			}
 			CC_TX_Wait_idx_g++;     
 		}
@@ -645,6 +655,7 @@ void CC_TX_BUF_O_Write_Char_To_Buffer(const char CHARACTER)
 		// Write buffer is full
 		// No error handling / reporting here (characters may be lost)
 		// Adapt as required to meet the needs of your application
+			UART2_BUF_O_Write_String_To_Buffer("Error inside CC_TX Write buffer is full");
 		}
 
 	// Update the copy
@@ -706,8 +717,8 @@ void CC_TX_BUF_O_Send_All_Data(void)
 			CC_TX_Tx_buffer_select_g = 1;
 		}
 		
-		// Clear DMA Stream Flags
-		DMA1->HIFCR |= (0x3D << 16);
+		// Clear DMA Stream Flags// needs to be changed for every Stream
+		DMA1->HIFCR |= (0x3D);
 		
 		// Clear USART Transfer Complete Flags
 		USART_ClearFlag(CC_TX_UARTX,USART_FLAG_TC);  
