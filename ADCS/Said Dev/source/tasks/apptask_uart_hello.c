@@ -290,7 +290,7 @@ uint32_t uart_hello_Update(void){
 	
 #ifdef TEST_GPS
 
-	char buff[50] = {0};
+	char buff[100] = {0};
 	gps_sensor_t t;
 	
 	uint16_t sn = GPS_Sensor_Update();
