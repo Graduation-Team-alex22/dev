@@ -49,8 +49,7 @@ rx_init()
 }
 
 
-int32_t
-rx_data_continuous (uint8_t *out, size_t len, size_t timeout_ms)
+int32_t rx_data_continuous (uint8_t *out, size_t len, size_t timeout_ms)
 {
   HAL_StatusTypeDef ret;
   uint32_t start_tick;

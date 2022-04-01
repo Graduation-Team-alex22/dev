@@ -47,37 +47,83 @@
 // Processor Header
 #include "../main/main.h"
 
-// Set for Nucleo board
+// Set for Discovery board
+
+/////////////////////////////////////////////////////////////////////////
 
 // Heartbeat LED
+#define HEARTBEAT_LED_PORT_RCC RCC_AHB1Periph_GPIOD
 #define HEARTBEAT_LED_PORT GPIOD
-#define HEARTBEAT_LED_PIN  GPIO_Pin_13
+#define HEARTBEAT_LED_PIN  GPIO_Pin_15
+#define HEARTBEAT_SafeMode_LED_PIN GPIO_Pin_14
+
 
 // Switch interface (Button 1)
-#define BUTTON1_PORT       GPIOA
-#define BUTTON1_PIN        GPIO_Pin_0
+#define BUTTON1_PORT       	GPIOA
+#define BUTTON1_PIN        	GPIO_Pin_0
 
-// UART2 Tx interface
-#define UART2_PORT         GPIOA
-#define UART2_TX_PIN       GPIO_Pin_2
+// UART2 interface
+#define UART2_PORT_RCC		 	RCC_AHB1Periph_GPIOA
+#define UART2_UART_RCC		 	RCC_APB1Periph_USART2
+#define UART2_DMA_RCC		 	 	RCC_AHB1Periph_DMA1
+#define UART2_DMA_RX_STREAM	DMA1_Stream5
+#define UART2_DMA_TX_STREAM	DMA1_Stream6
+#define UART2_DMA_Channel		 DMA_Channel_4
+#define UART2_PORT         	GPIOA
+#define UART2_UARTX         USART2
+#define UART2_TX_PIN       	GPIO_Pin_2
+#define UART2_RX_PIN       	GPIO_Pin_3
+#define UART2_TX_PIN_SOURCE GPIO_PinSource2
+#define UART2_RX_PIN_SOURCE	GPIO_PinSource3
 
+// CC_RX interface 
+#define CC_RX_PORT_RCC		 	 RCC_AHB1Periph_GPIOB
+#define CC_RX_UART_RCC		 	 RCC_APB1Periph_USART3
+#define CC_RX_DMA_RCC		 	 	 RCC_AHB1Periph_DMA1
+#define CC_RX_DMA_RX_STREAM	 DMA1_Stream1
+#define CC_RX_DMA_Channel		 DMA_Channel_4
+#define CC_RX_PORT         	 GPIOB
+#define CC_RX_UARTX          USART3
+#define CC_RX_AF		         GPIO_AF_USART3 
+#define CC_RX_TX_PIN       	 GPIO_Pin_10
+#define CC_RX_RX_PIN       	 GPIO_Pin_11
+#define CC_RX_TX_PIN_SOURCE  GPIO_PinSource10
+#define CC_RX_RX_PIN_SOURCE	 GPIO_PinSource11
+#define CC_RX_SET_PIN			 	 GPIO_Pin_12
 
+// CC_TX interface
+#define CC_TX_PORT_RCC		 	 RCC_AHB1Periph_GPIOC
+#define CC_TX_UART_RCC			 RCC_APB1Periph_UART4
+#define CC_TX_DMA_RCC		 		 RCC_AHB1Periph_DMA1
+#define CC_TX_DMA_RX_STREAM	 DMA1_Stream2
+#define CC_TX_DMA_TX_STREAM	 DMA1_Stream4
+#define CC_TX_DMA_Channel	   DMA_Channel_4
+#define CC_TX_PORT        	 GPIOC
+#define CC_TX_UARTX          UART4 
+#define CC_TX_AF		         GPIO_AF_UART4 
+#define CC_TX_TX_PIN      	 GPIO_Pin_11
+#define CC_TX_RX_PIN      	 GPIO_Pin_10
+#define CC_TX_TX_PIN_SOURCE	 GPIO_PinSource11
+#define CC_TX_RX_PIN_SOURCE	 GPIO_PinSource10
+#define CC_TX_SET_PIN			 	 GPIO_Pin_9
 
 /////////////////////////////////////////// MXCONSTANT ///////////////////////////////////////
-#define PA_CNTRL_Pin GPIO_PIN_5
-#define PA_CNTRL_GPIO_Port GPIOA
-#define RESETN_RX_Pin GPIO_PIN_1
-#define RESETN_RX_GPIO_Port GPIOB
-#define CC_GPIO2_START_END_OF_PACKET_Pin GPIO_PIN_9
-#define CC_GPIO2_START_END_OF_PACKET_GPIO_Port GPIOE
-#define CS_SPI2_RX_Pin GPIO_PIN_15
-#define CS_SPI2_RX_GPIO_Port GPIOE
-#define CC_GPIO0_RXFIFO_THR_Pin GPIO_PIN_12
-#define CC_GPIO0_RXFIFO_THR_GPIO_Port GPIOB
-#define RESETN_TX_Pin GPIO_PIN_10
-#define RESETN_TX_GPIO_Port GPIOA
-#define CS_SPI1_TX_Pin GPIO_PIN_15
-#define CS_SPI1_TX_GPIO_Port GPIOA
+
+//#define PA_CNTRL_Pin GPIO_Pin_5
+//#define PA_CNTRL_GPIO_Port GPIOA
+//#define RESETN_RX_Pin GPIO_Pin_1
+//#define RESETN_RX_GPIO_Port GPIOB
+//#define CC_GPIO2_START_END_OF_PACKET_Pin GPIO_Pin_9
+//#define CC_GPIO2_START_END_OF_PACKET_GPIO_Port GPIOE
+//#define CS_SPI2_RX_Pin GPIO_Pin_15
+//#define CS_SPI2_RX_GPIO_Port GPIOE
+//#define CC_GPIO0_RXFIFO_THR_Pin GPIO_Pin_12
+//#define CC_GPIO0_RXFIFO_THR_GPIO_Port GPIOB
+//#define RESETN_TX_Pin GPIO_Pin_10
+//#define RESETN_TX_GPIO_Port GPIOA
+//#define CS_SPI1_TX_Pin GPIO_Pin_15
+//#define CS_SPI1_TX_GPIO_Port GPIOA
+
 
 #endif
 

@@ -1,5 +1,7 @@
 .\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\ttrd2-19a-t0401a-v001a_assert_failed.c
 .\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/main.h
+.\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: D:\Keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: D:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../hsi_library/misc.h
 .\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../hsi_library/stm32f4xx.h
 .\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../hsi_library/core_cm4.h
@@ -45,11 +47,17 @@
 .\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h
 .\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h
 .\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
-.\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../support_functions/stddef.h
 .\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../support_functions/stats.h
 .\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../support_functions/services.h
 .\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../support_functions/config.h
+.\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../support_functions/comms_hal.h
+.\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../support_functions/upsat.h
 .\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../support_functions/sysview.h
 .\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../tasks/comms_manager.h
-.\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../tasks/../support_functions/upsat.h
+.\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../tasks/../support_functions/cc_tx_init.h
+.\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../tasks/../support_functions/cw.h
+.\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../tasks/../support_functions/cc_rx_init.h
+.\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../tasks/../support_functions/ax_25.h
+.\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../main/../tasks/TickCounter.h
 .\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h
+.\objects\ttrd2-19a-t0401a-v001a_assert_failed.o: ..\source\hsi_startup\../tasks/rx_manager.h

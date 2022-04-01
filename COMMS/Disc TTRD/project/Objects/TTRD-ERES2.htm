@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\TTRD-ERES2.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\TTRD-ERES2.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Tue Feb 22 15:06:02 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Apr 01 16:16:51 2022
 <BR><P>
-<H3>Maximum Stack Usage =        240 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        288 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; PROCESSOR_Init &rArr; PROCESSOR_Configure_Reqd_MoSt &rArr; ADC1_Init &rArr; ADC1_Read_Channel &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+__rt_entry_main &rArr; main &rArr; PROCESSOR_Init &rArr; PROCESSOR_Configure_Reqd_MoSt &rArr; CC_TX_init &rArr; CC_TX_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 <P>
 <H3>
 Functions with no stack information
@@ -27,15 +27,13 @@ Mutually Recursive functions
  <LI><a href="#[9]">DebugMon_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[9]">DebugMon_Handler</a><BR>
  <LI><a href="#[a]">PendSV_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[a]">PendSV_Handler</a><BR>
  <LI><a href="#[1e]">ADC_IRQHandler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[1e]">ADC_IRQHandler</a><BR>
+ <LI><a href="#[ae]">USART_ClearFlag</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[93]">assert_failed</a><BR>
+ <LI><a href="#[a0]">DMA_Cmd</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[93]">assert_failed</a><BR>
+ <LI><a href="#[95]">REG_CONFIG_CHECKS_UART_Check</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[80]">PROCESSOR_Perform_Safe_Shutdown</a><BR>
+ <LI><a href="#[f1]">UART2_BUF_O_Check_Data_Integrity</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[80]">PROCESSOR_Perform_Safe_Shutdown</a><BR>
  <LI><a href="#[93]">assert_failed</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[80]">PROCESSOR_Perform_Safe_Shutdown</a><BR>
- <LI><a href="#[d5]">UART2_BUF_O_Send_Char</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[8e]">TIMEOUT_T3_USEC_Start</a><BR>
- <LI><a href="#[cf]">TIM_GetCounter</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[93]">assert_failed</a><BR>
- <LI><a href="#[c3]">REG_CONFIG_TIMER_Check</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[80]">PROCESSOR_Perform_Safe_Shutdown</a><BR>
- <LI><a href="#[d7]">USART_SendData</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[93]">assert_failed</a><BR>
- <LI><a href="#[d6]">USART_GetFlagStatus</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[93]">assert_failed</a><BR>
- <LI><a href="#[d2]">UART2_BUF_O_Check_Data_Integrity</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[80]">PROCESSOR_Perform_Safe_Shutdown</a><BR>
- <LI><a href="#[c1]">REG_CONFIG_CHECKS_UART_Check</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[80]">PROCESSOR_Perform_Safe_Shutdown</a><BR>
- <LI><a href="#[c2]">REG_CONFIG_CHECKS_UART_Store</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[80]">PROCESSOR_Perform_Safe_Shutdown</a><BR>
+ <LI><a href="#[e1]">REG_CONFIG_TIMER_Check</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[80]">PROCESSOR_Perform_Safe_Shutdown</a><BR>
+ <LI><a href="#[a3]">REG_CONFIG_CHECKS_UART_Store</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[80]">PROCESSOR_Perform_Safe_Shutdown</a><BR>
 </UL>
 <P>
 <H3>
@@ -52,6 +50,7 @@ Function Pointers
  <LI><a href="#[4d]">CAN2_RX1_IRQHandler</a> from startup_stm32f407xx.o(.text) referenced from startup_stm32f407xx.o(RESET)
  <LI><a href="#[4e]">CAN2_SCE_IRQHandler</a> from startup_stm32f407xx.o(.text) referenced from startup_stm32f407xx.o(RESET)
  <LI><a href="#[4b]">CAN2_TX_IRQHandler</a> from startup_stm32f407xx.o(.text) referenced from startup_stm32f407xx.o(RESET)
+ <LI><a href="#[6a]">CC_TX_update</a> from cc_tx.o(i.CC_TX_update) referenced from ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
  <LI><a href="#[5a]">DCMI_IRQHandler</a> from startup_stm32f407xx.o(.text) referenced from startup_stm32f407xx.o(RESET)
  <LI><a href="#[17]">DMA1_Stream0_IRQHandler</a> from startup_stm32f407xx.o(.text) referenced from startup_stm32f407xx.o(RESET)
  <LI><a href="#[18]">DMA1_Stream1_IRQHandler</a> from startup_stm32f407xx.o(.text) referenced from startup_stm32f407xx.o(RESET)
@@ -135,7 +134,6 @@ Function Pointers
  <LI><a href="#[39]">TIM8_TRG_COM_TIM14_IRQHandler</a> from startup_stm32f407xx.o(.text) referenced from startup_stm32f407xx.o(RESET)
  <LI><a href="#[38]">TIM8_UP_TIM13_IRQHandler</a> from startup_stm32f407xx.o(.text) referenced from startup_stm32f407xx.o(RESET)
  <LI><a href="#[69]">UART2_BUF_O_Update</a> from ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Update) referenced from ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
- <LI><a href="#[6a]">UART2_Check_toTransmit</a> from ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_Check_toTransmit) referenced from ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
  <LI><a href="#[40]">UART4_IRQHandler</a> from startup_stm32f407xx.o(.text) referenced from startup_stm32f407xx.o(RESET)
  <LI><a href="#[41]">UART5_IRQHandler</a> from startup_stm32f407xx.o(.text) referenced from startup_stm32f407xx.o(RESET)
  <LI><a href="#[31]">USART1_IRQHandler</a> from startup_stm32f407xx.o(.text) referenced from startup_stm32f407xx.o(RESET)
@@ -152,8 +150,8 @@ Function Pointers
 Global Symbols
 </H3>
 <P><STRONG><a name="[6b]"></a>__main</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, __main.o(!!!main))
-<BR><BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
+<BR><BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
 <P><STRONG><a name="[6c]"></a>__scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter))
@@ -164,15 +162,15 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
 </UL>
 
-<P><STRONG><a name="[da]"></a>__scatterload_rt2_thumb_only</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
+<P><STRONG><a name="[f6]"></a>__scatterload_rt2_thumb_only</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
 
-<P><STRONG><a name="[db]"></a>__scatterload_null</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
+<P><STRONG><a name="[f7]"></a>__scatterload_null</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
 
-<P><STRONG><a name="[dc]"></a>__decompress</STRONG> (Thumb, 90 bytes, Stack size unknown bytes, __dczerorl2.o(!!dczerorl2), UNUSED)
+<P><STRONG><a name="[f8]"></a>__decompress</STRONG> (Thumb, 90 bytes, Stack size unknown bytes, __dczerorl2.o(!!dczerorl2), UNUSED)
 
-<P><STRONG><a name="[dd]"></a>__decompress1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(!!dczerorl2), UNUSED)
+<P><STRONG><a name="[f9]"></a>__decompress1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(!!dczerorl2), UNUSED)
 
-<P><STRONG><a name="[de]"></a>__scatterload_zeroinit</STRONG> (Thumb, 28 bytes, Stack size unknown bytes, __scatter_zi.o(!!handler_zi), UNUSED)
+<P><STRONG><a name="[fa]"></a>__scatterload_zeroinit</STRONG> (Thumb, 28 bytes, Stack size unknown bytes, __scatter_zi.o(!!handler_zi), UNUSED)
 
 <P><STRONG><a name="[74]"></a>__rt_lib_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit.o(.ARM.Collect$$libinit$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_li
@@ -182,72 +180,72 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_init
 </UL>
 
-<P><STRONG><a name="[df]"></a>__rt_lib_init_alloca_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002E))
+<P><STRONG><a name="[fb]"></a>__rt_lib_init_alloca_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002E))
 
-<P><STRONG><a name="[e0]"></a>__rt_lib_init_argv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002C))
+<P><STRONG><a name="[fc]"></a>__rt_lib_init_argv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002C))
 
-<P><STRONG><a name="[e1]"></a>__rt_lib_init_atexit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001B))
+<P><STRONG><a name="[fd]"></a>__rt_lib_init_atexit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001B))
 
-<P><STRONG><a name="[e2]"></a>__rt_lib_init_clock_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000021))
+<P><STRONG><a name="[fe]"></a>__rt_lib_init_clock_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000021))
 
-<P><STRONG><a name="[e3]"></a>__rt_lib_init_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000032))
+<P><STRONG><a name="[ff]"></a>__rt_lib_init_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000032))
 
-<P><STRONG><a name="[e4]"></a>__rt_lib_init_exceptions_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000030))
+<P><STRONG><a name="[100]"></a>__rt_lib_init_exceptions_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000030))
 
-<P><STRONG><a name="[e5]"></a>__rt_lib_init_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001F))
+<P><STRONG><a name="[101]"></a>__rt_lib_init_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001F))
 
-<P><STRONG><a name="[e6]"></a>__rt_lib_init_getenv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000023))
+<P><STRONG><a name="[102]"></a>__rt_lib_init_getenv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000023))
 
-<P><STRONG><a name="[e7]"></a>__rt_lib_init_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000A))
+<P><STRONG><a name="[103]"></a>__rt_lib_init_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000A))
 
-<P><STRONG><a name="[e8]"></a>__rt_lib_init_lc_collate_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000011))
+<P><STRONG><a name="[104]"></a>__rt_lib_init_lc_collate_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000011))
 
-<P><STRONG><a name="[e9]"></a>__rt_lib_init_lc_ctype_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000013))
+<P><STRONG><a name="[105]"></a>__rt_lib_init_lc_ctype_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000013))
 
-<P><STRONG><a name="[ea]"></a>__rt_lib_init_lc_monetary_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000015))
+<P><STRONG><a name="[106]"></a>__rt_lib_init_lc_monetary_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000015))
 
-<P><STRONG><a name="[eb]"></a>__rt_lib_init_lc_numeric_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000017))
+<P><STRONG><a name="[107]"></a>__rt_lib_init_lc_numeric_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000017))
 
-<P><STRONG><a name="[ec]"></a>__rt_lib_init_lc_time_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000019))
+<P><STRONG><a name="[108]"></a>__rt_lib_init_lc_time_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000019))
 
-<P><STRONG><a name="[ed]"></a>__rt_lib_init_preinit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000004))
+<P><STRONG><a name="[109]"></a>__rt_lib_init_preinit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000004))
 
-<P><STRONG><a name="[ee]"></a>__rt_lib_init_rand_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000E))
+<P><STRONG><a name="[10a]"></a>__rt_lib_init_rand_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000E))
 
-<P><STRONG><a name="[ef]"></a>__rt_lib_init_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000033))
+<P><STRONG><a name="[10b]"></a>__rt_lib_init_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000033))
 
-<P><STRONG><a name="[f0]"></a>__rt_lib_init_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001D))
+<P><STRONG><a name="[10c]"></a>__rt_lib_init_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001D))
 
-<P><STRONG><a name="[f1]"></a>__rt_lib_init_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000025))
+<P><STRONG><a name="[10d]"></a>__rt_lib_init_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000025))
 
-<P><STRONG><a name="[f2]"></a>__rt_lib_init_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000C))
+<P><STRONG><a name="[10e]"></a>__rt_lib_init_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000C))
 
 <P><STRONG><a name="[79]"></a>__rt_lib_shutdown</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown.o(.ARM.Collect$$libshutdown$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_ls
 </UL>
 
-<P><STRONG><a name="[f3]"></a>__rt_lib_shutdown_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000004))
+<P><STRONG><a name="[10f]"></a>__rt_lib_shutdown_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000004))
 
-<P><STRONG><a name="[f4]"></a>__rt_lib_shutdown_fini_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000002))
+<P><STRONG><a name="[110]"></a>__rt_lib_shutdown_fini_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000002))
 
-<P><STRONG><a name="[f5]"></a>__rt_lib_shutdown_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000009))
+<P><STRONG><a name="[111]"></a>__rt_lib_shutdown_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000009))
 
-<P><STRONG><a name="[f6]"></a>__rt_lib_shutdown_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000011))
+<P><STRONG><a name="[112]"></a>__rt_lib_shutdown_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000011))
 
-<P><STRONG><a name="[f7]"></a>__rt_lib_shutdown_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000012))
+<P><STRONG><a name="[113]"></a>__rt_lib_shutdown_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000012))
 
-<P><STRONG><a name="[f8]"></a>__rt_lib_shutdown_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
+<P><STRONG><a name="[114]"></a>__rt_lib_shutdown_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
 
-<P><STRONG><a name="[f9]"></a>__rt_lib_shutdown_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000006))
+<P><STRONG><a name="[115]"></a>__rt_lib_shutdown_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000006))
 
-<P><STRONG><a name="[fa]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000E))
+<P><STRONG><a name="[116]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000E))
 
 <P><STRONG><a name="[6d]"></a>__rt_entry</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry.o(.ARM.Collect$$rtentry$$00000000))
-<BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
+<BR><BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
 </UL>
 
-<P><STRONG><a name="[fb]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
+<P><STRONG><a name="[117]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
 
 <P><STRONG><a name="[71]"></a>__rt_entry_sh</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry4.o(.ARM.Collect$$rtentry$$00000004))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
@@ -260,17 +258,17 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init
 </UL>
 
-<P><STRONG><a name="[fc]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
+<P><STRONG><a name="[118]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[75]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; PROCESSOR_Init &rArr; PROCESSOR_Configure_Reqd_MoSt &rArr; ADC1_Init &rArr; ADC1_Read_Channel &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 288 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; PROCESSOR_Init &rArr; PROCESSOR_Configure_Reqd_MoSt &rArr; CC_TX_init &rArr; CC_TX_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 </UL>
 
-<P><STRONG><a name="[fd]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
+<P><STRONG><a name="[119]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
 
 <P><STRONG><a name="[7e]"></a>__rt_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit.o(.ARM.Collect$$rtexit$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -280,7 +278,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_shutdown
 </UL>
 
-<P><STRONG><a name="[fe]"></a>__rt_exit_prels_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000002))
+<P><STRONG><a name="[11a]"></a>__rt_exit_prels_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000002))
 
 <P><STRONG><a name="[7a]"></a>__rt_exit_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
@@ -593,11 +591,11 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[ff]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[11b]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
-<P><STRONG><a name="[100]"></a>__rt_heap_escrow$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[11c]"></a>__rt_heap_escrow$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
-<P><STRONG><a name="[101]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[11d]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
 <P><STRONG><a name="[72]"></a>__user_setup_stackheap</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, sys_stackheap_outer.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
@@ -618,37 +616,38 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[102]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[11e]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[7c]"></a>__user_perproc_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[103]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[11f]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[7b]"></a>_sys_exit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, sys_exit.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_exit
 </UL>
 
-<P><STRONG><a name="[104]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[120]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[105]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[121]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[106]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
+<P><STRONG><a name="[122]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
 
 <P><STRONG><a name="[7f]"></a>ADC1_Get_Temperature_Celsius</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, ttrd2-05a-t0401a-v001a_adc_task.o(i.ADC1_Get_Temperature_Celsius))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = ADC1_Get_Temperature_Celsius &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = ADC1_Get_Temperature_Celsius &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Update
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 
 <P><STRONG><a name="[81]"></a>ADC1_Init</STRONG> (Thumb, 164 bytes, Stack size 48 bytes, ttrd2-05a-t0401a-v001a_adc_task.o(i.ADC1_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = ADC1_Init &rArr; ADC1_Read_Channel &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = ADC1_Init &rArr; ADC1_Read_Channel &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_ADC1_Store
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Init
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_ADC1_Store
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_TempSensorVrefintCmd
@@ -658,24 +657,23 @@ Global Symbols
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_CommonInit
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Cmd
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Read_Channel
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 
 <P><STRONG><a name="[67]"></a>ADC1_Update</STRONG> (Thumb, 148 bytes, Stack size 16 bytes, ttrd2-05a-t0401a-v001a_adc_task.o(i.ADC1_Update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = ADC1_Update &rArr; ADC1_Read_Channel &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = ADC1_Update &rArr; ADC1_Read_Channel &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_ADC1_Check
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Read_Channel
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
 </UL>
 <P><STRONG><a name="[88]"></a>ADC_Cmd</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, stm32f4xx_adc.o(i.ADC_Cmd))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = ADC_Cmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = ADC_Cmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
@@ -683,7 +681,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[85]"></a>ADC_CommonInit</STRONG> (Thumb, 342 bytes, Stack size 16 bytes, stm32f4xx_adc.o(i.ADC_CommonInit))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = ADC_CommonInit &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = ADC_CommonInit &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
@@ -695,7 +693,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[91]"></a>ADC_GetConversionValue</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, stm32f4xx_adc.o(i.ADC_GetConversionValue))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = ADC_GetConversionValue &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = ADC_GetConversionValue &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
@@ -703,7 +701,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8f]"></a>ADC_GetFlagStatus</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, stm32f4xx_adc.o(i.ADC_GetFlagStatus))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = ADC_GetFlagStatus &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = ADC_GetFlagStatus &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
@@ -711,7 +709,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[86]"></a>ADC_Init</STRONG> (Thumb, 402 bytes, Stack size 24 bytes, stm32f4xx_adc.o(i.ADC_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = ADC_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = ADC_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
@@ -719,7 +717,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8c]"></a>ADC_RegularChannelConfig</STRONG> (Thumb, 408 bytes, Stack size 32 bytes, stm32f4xx_adc.o(i.ADC_RegularChannelConfig))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = ADC_RegularChannelConfig &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = ADC_RegularChannelConfig &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
@@ -727,7 +725,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8d]"></a>ADC_SoftwareStartConv</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, stm32f4xx_adc.o(i.ADC_SoftwareStartConv))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = ADC_SoftwareStartConv &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = ADC_SoftwareStartConv &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
@@ -739,326 +737,570 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[87]"></a>ADC_TempSensorVrefintCmd</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, stm32f4xx_adc.o(i.ADC_TempSensorVrefintCmd))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = ADC_TempSensorVrefintCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = ADC_TempSensorVrefintCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Init
 </UL>
 
-<P><STRONG><a name="[94]"></a>GPIO_Init</STRONG> (Thumb, 352 bytes, Stack size 24 bytes, stm32f4xx_gpio.o(i.GPIO_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = GPIO_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[94]"></a>CC_RX_BUF_O_Check_Data_Integrity</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, cc_rx.o(i.CC_RX_BUF_O_Check_Data_Integrity))
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = CC_RX_BUF_O_Check_Data_Integrity &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_UART_Check
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
+</UL>
+<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Send_All_Data
+</UL>
+
+<P><STRONG><a name="[96]"></a>CC_RX_BUF_O_Init</STRONG> (Thumb, 316 bytes, Stack size 96 bytes, cc_rx.o(i.CC_RX_BUF_O_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = CC_RX_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DMACmd
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_UART_Store
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_StructInit
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Init
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetCmdStatus
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+</UL>
+<BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_init
+</UL>
+
+<P><STRONG><a name="[a4]"></a>CC_RX_BUF_O_Send_All_Data</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, cc_rx.o(i.CC_RX_BUF_O_Send_All_Data))
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = CC_RX_BUF_O_Send_All_Data &rArr; CC_RX_BUF_O_Check_Data_Integrity &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Send_Char
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Check_Data_Integrity
+</UL>
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+</UL>
+
+<P><STRONG><a name="[a5]"></a>CC_RX_BUF_O_Send_Char</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, cc_rx.o(i.CC_RX_BUF_O_Send_Char))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = CC_RX_BUF_O_Send_Char &rArr; USART_SendData &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
+</UL>
+<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Send_All_Data
+</UL>
+
+<P><STRONG><a name="[a9]"></a>CC_RX_BUF_O_Write_Char_To_Buffer</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, cc_rx.o(i.CC_RX_BUF_O_Write_Char_To_Buffer))
+<BR><BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Write_String_To_Buffer
+</UL>
+
+<P><STRONG><a name="[a8]"></a>CC_RX_BUF_O_Write_String_To_Buffer</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, cc_rx.o(i.CC_RX_BUF_O_Write_String_To_Buffer))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = CC_RX_BUF_O_Write_String_To_Buffer
+</UL>
+<BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Write_Char_To_Buffer
+</UL>
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+</UL>
+
+<P><STRONG><a name="[aa]"></a>CC_RX_init</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, cc_rx.o(i.CC_RX_init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = CC_RX_init &rArr; CC_RX_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Init
+</UL>
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+</UL>
+
+<P><STRONG><a name="[ab]"></a>CC_TX_BUF_O_Check_Data_Integrity</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, cc_tx.o(i.CC_TX_BUF_O_Check_Data_Integrity))
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = CC_TX_BUF_O_Check_Data_Integrity &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_UART_Check
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
+</UL>
+<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Send_All_Data
+</UL>
+
+<P><STRONG><a name="[ac]"></a>CC_TX_BUF_O_Init</STRONG> (Thumb, 414 bytes, Stack size 160 bytes, cc_tx.o(i.CC_TX_BUF_O_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = CC_TX_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Init
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DMACmd
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_UART_Store
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_StructInit
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Init
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetCmdStatus
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+</UL>
+<BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_init
+</UL>
+
+<P><STRONG><a name="[ad]"></a>CC_TX_BUF_O_Send_All_Data</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, cc_tx.o(i.CC_TX_BUF_O_Send_All_Data))
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = CC_TX_BUF_O_Send_All_Data &rArr; CC_TX_BUF_O_Check_Data_Integrity &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ClearFlag
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Check_Data_Integrity
+</UL>
+<BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Update
+</UL>
+
+<P><STRONG><a name="[af]"></a>CC_TX_BUF_O_Update</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, cc_tx.o(i.CC_TX_BUF_O_Update))
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = CC_TX_BUF_O_Update &rArr; CC_TX_BUF_O_Send_All_Data &rArr; CC_TX_BUF_O_Check_Data_Integrity &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Send_All_Data
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_update
+</UL>
+
+<P><STRONG><a name="[b1]"></a>CC_TX_BUF_O_Write_Char_To_Buffer</STRONG> (Thumb, 70 bytes, Stack size 0 bytes, cc_tx.o(i.CC_TX_BUF_O_Write_Char_To_Buffer))
+<BR><BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Write_String_To_Buffer
+</UL>
+
+<P><STRONG><a name="[b0]"></a>CC_TX_BUF_O_Write_String_To_Buffer</STRONG> (Thumb, 24 bytes, Stack size 12 bytes, cc_tx.o(i.CC_TX_BUF_O_Write_String_To_Buffer))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = CC_TX_BUF_O_Write_String_To_Buffer
+</UL>
+<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Write_Char_To_Buffer
+</UL>
+<BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_SET_Parameters
+</UL>
+
+<P><STRONG><a name="[b9]"></a>CC_TX_Clear_Command</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, cc_tx.o(i.CC_TX_Clear_Command))
+<BR><BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_SET_Parameters
+</UL>
+
+<P><STRONG><a name="[b2]"></a>CC_TX_DMA_CHECK</STRONG> (Thumb, 94 bytes, Stack size 8 bytes, cc_tx.o(i.CC_TX_DMA_CHECK))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = CC_TX_DMA_CHECK &rArr; DMA_GetCurrDataCounter &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetCurrDataCounter
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_PROCESS_DATA
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_update
+</UL>
+
+<P><STRONG><a name="[b4]"></a>CC_TX_PROCESS_DATA</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, cc_tx.o(i.CC_TX_PROCESS_DATA))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = CC_TX_PROCESS_DATA
+</UL>
+<BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_Char_To_Buffer
+</UL>
+<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_DMA_CHECK
+</UL>
+
+<P><STRONG><a name="[b6]"></a>CC_TX_SET_Parameters</STRONG> (Thumb, 898 bytes, Stack size 8 bytes, cc_tx.o(i.CC_TX_SET_Parameters))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = CC_TX_SET_Parameters &rArr; GPIO_SetBits &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_Char_To_Buffer
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_Clear_Command
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Write_String_To_Buffer
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_update
+</UL>
+
+<P><STRONG><a name="[ba]"></a>CC_TX_init</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, cc_tx.o(i.CC_TX_init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = CC_TX_init &rArr; CC_TX_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Init
+</UL>
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+</UL>
+
+<P><STRONG><a name="[6a]"></a>CC_TX_update</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, cc_tx.o(i.CC_TX_update))
+<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = CC_TX_update &rArr; CC_TX_BUF_O_Update &rArr; CC_TX_BUF_O_Send_All_Data &rArr; CC_TX_BUF_O_Check_Data_Integrity &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_SET_Parameters
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_DMA_CHECK
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Update
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
+</UL>
+<P><STRONG><a name="[a0]"></a>DMA_Cmd</STRONG> (Thumb, 182 bytes, Stack size 16 bytes, stm32f4xx_dma.o(i.DMA_Cmd))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16 + In Cycle
+<LI>Call Chain = DMA_Cmd &rArr;  assert_failed (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEARTBEAT_SW_Init
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Init
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Init
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_All_Data
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Send_All_Data
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Init
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Init
 </UL>
 
-<P><STRONG><a name="[95]"></a>GPIO_PinAFConfig</STRONG> (Thumb, 352 bytes, Stack size 24 bytes, stm32f4xx_gpio.o(i.GPIO_PinAFConfig))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = GPIO_PinAFConfig &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[a2]"></a>DMA_GetCmdStatus</STRONG> (Thumb, 160 bytes, Stack size 16 bytes, stm32f4xx_dma.o(i.DMA_GetCmdStatus))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = DMA_GetCmdStatus &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Init
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Init
 </UL>
 
-<P><STRONG><a name="[96]"></a>GPIO_ReadInputDataBit</STRONG> (Thumb, 194 bytes, Stack size 16 bytes, stm32f4xx_gpio.o(i.GPIO_ReadInputDataBit))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = GPIO_ReadInputDataBit &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[b3]"></a>DMA_GetCurrDataCounter</STRONG> (Thumb, 146 bytes, Stack size 8 bytes, stm32f4xx_dma.o(i.DMA_GetCurrDataCounter))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = DMA_GetCurrDataCounter &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_DMA_CHECK
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_DMA_CHECK
+</UL>
+
+<P><STRONG><a name="[9e]"></a>DMA_Init</STRONG> (Thumb, 658 bytes, Stack size 16 bytes, stm32f4xx_dma.o(i.DMA_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = DMA_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
+</UL>
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Init
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Init
+</UL>
+
+<P><STRONG><a name="[9d]"></a>DMA_StructInit</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, stm32f4xx_dma.o(i.DMA_StructInit))
+<BR><BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Init
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Init
+</UL>
+
+<P><STRONG><a name="[9a]"></a>GPIO_Init</STRONG> (Thumb, 352 bytes, Stack size 24 bytes, stm32f4xx_gpio.o(i.GPIO_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = GPIO_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
+</UL>
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2PFC_BUF_O_Init
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Init
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEARTBEAT_SW_Init
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Init
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Init
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Init
+</UL>
+
+<P><STRONG><a name="[99]"></a>GPIO_PinAFConfig</STRONG> (Thumb, 352 bytes, Stack size 24 bytes, stm32f4xx_gpio.o(i.GPIO_PinAFConfig))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = GPIO_PinAFConfig &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
+</UL>
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2PFC_BUF_O_Init
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Init
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Init
+</UL>
+
+<P><STRONG><a name="[bb]"></a>GPIO_ReadInputDataBit</STRONG> (Thumb, 194 bytes, Stack size 16 bytes, stm32f4xx_gpio.o(i.GPIO_ReadInputDataBit))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = GPIO_ReadInputDataBit &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Update
 </UL>
 
-<P><STRONG><a name="[97]"></a>GPIO_ResetBits</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, stm32f4xx_gpio.o(i.GPIO_ResetBits))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = GPIO_ResetBits &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[b7]"></a>GPIO_ResetBits</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, stm32f4xx_gpio.o(i.GPIO_ResetBits))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = GPIO_ResetBits &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEARTBEAT_SW_Update
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Update
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_SET_Parameters
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Update
 </UL>
 
-<P><STRONG><a name="[98]"></a>GPIO_SetBits</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, stm32f4xx_gpio.o(i.GPIO_SetBits))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = GPIO_SetBits &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[9b]"></a>GPIO_SetBits</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, stm32f4xx_gpio.o(i.GPIO_SetBits))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = GPIO_SetBits &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEARTBEAT_SW_Update
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Update
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_SET_Parameters
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Init
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Init
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Update
 </UL>
 
-<P><STRONG><a name="[99]"></a>HEARTBEAT_SW_Init</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, ttrd2-05a-t0401a-v001a_heartbeat_sw_task.o(i.HEARTBEAT_SW_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = HEARTBEAT_SW_Init &rArr; GPIO_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[bc]"></a>HEARTBEAT_SW_Init</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, ttrd2-05a-t0401a-v001a_heartbeat_sw_task.o(i.HEARTBEAT_SW_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = HEARTBEAT_SW_Init &rArr; GPIO_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 
 <P><STRONG><a name="[65]"></a>HEARTBEAT_SW_Update</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_heartbeat_sw_task.o(i.HEARTBEAT_SW_Update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = HEARTBEAT_SW_Update &rArr; SWITCH_BUTTON1_Get_State &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = HEARTBEAT_SW_Update &rArr; SWITCH_BUTTON1_Get_State &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Get_State
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_GPIO_Check
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Get_State
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_GPIO_Check
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
 </UL>
-<P><STRONG><a name="[bd]"></a>MONITTORi_Disable</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Disable))
-<BR><BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
+<P><STRONG><a name="[dd]"></a>MONITTORi_Disable</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Disable))
+<BR><BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
 </UL>
 
-<P><STRONG><a name="[c6]"></a>MONITTORi_Init</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Init))
-<BR><BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Init_Microseconds
+<P><STRONG><a name="[e5]"></a>MONITTORi_Init</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Init))
+<BR><BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Init_Microseconds
 </UL>
 
-<P><STRONG><a name="[9d]"></a>MONITTORi_Start</STRONG> (Thumb, 226 bytes, Stack size 24 bytes, ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Start))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = MONITTORi_Start &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[bf]"></a>MONITTORi_Start</STRONG> (Thumb, 226 bytes, Stack size 24 bytes, ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Start))
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = MONITTORi_Start &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Dispatch_Tasks
+<BR>[Called By]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Dispatch_Tasks
 </UL>
 
-<P><STRONG><a name="[9e]"></a>MONITTORi_Stop</STRONG> (Thumb, 126 bytes, Stack size 8 bytes, ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Stop))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = MONITTORi_Stop &rArr; PROCESSOR_Get_MoSt &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[c0]"></a>MONITTORi_Stop</STRONG> (Thumb, 126 bytes, Stack size 8 bytes, ttrd2-18a-t0401a-v001a_monittor_i.o(i.MONITTORi_Stop))
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = MONITTORi_Stop &rArr; PROCESSOR_Get_MoSt &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Change_MoSt
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Get_MoSt
+<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Change_MoSt
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Get_MoSt
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Dispatch_Tasks
+<BR>[Called By]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Dispatch_Tasks
 </UL>
 
-<P><STRONG><a name="[a3]"></a>NVIC_Init</STRONG> (Thumb, 164 bytes, Stack size 24 bytes, misc.o(i.NVIC_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = NVIC_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[c5]"></a>NVIC_Init</STRONG> (Thumb, 164 bytes, Stack size 24 bytes, misc.o(i.NVIC_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = NVIC_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Set_Interrupt_Priority_Levels
+<BR>[Called By]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Set_Interrupt_Priority_Levels
 </UL>
 
-<P><STRONG><a name="[a4]"></a>NVIC_PriorityGroupConfig</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, misc.o(i.NVIC_PriorityGroupConfig))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = NVIC_PriorityGroupConfig &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[c6]"></a>NVIC_PriorityGroupConfig</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, misc.o(i.NVIC_PriorityGroupConfig))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = NVIC_PriorityGroupConfig &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Set_Interrupt_Priority_Levels
+<BR>[Called By]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Set_Interrupt_Priority_Levels
 </UL>
 
-<P><STRONG><a name="[a5]"></a>PREDICTTORi_Check_Task_Sequence</STRONG> (Thumb, 408 bytes, Stack size 16 bytes, ttrd2-19a-t0401a-v001b_predicttor_i.o(i.PREDICTTORi_Check_Task_Sequence))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = PREDICTTORi_Check_Task_Sequence &rArr; PROCESSOR_Get_MoSt &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[c7]"></a>PREDICTTORi_Check_Task_Sequence</STRONG> (Thumb, 408 bytes, Stack size 16 bytes, ttrd2-19a-t0401a-v001b_predicttor_i.o(i.PREDICTTORi_Check_Task_Sequence))
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = PREDICTTORi_Check_Task_Sequence &rArr; PROCESSOR_Get_MoSt &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Change_MoSt
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Get_MoSt
+<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Change_MoSt
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Get_MoSt
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Dispatch_Tasks
-</UL>
-
-<P><STRONG><a name="[c7]"></a>PREDICTTORi_Init</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_predicttor_i.o(i.PREDICTTORi_Init))
-<BR><BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Init_Microseconds
+<BR>[Called By]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Dispatch_Tasks
 </UL>
 
-<P><STRONG><a name="[a2]"></a>PROCESSOR_Change_MoSt</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Change_MoSt))
-<BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Update
+<P><STRONG><a name="[e6]"></a>PREDICTTORi_Init</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_predicttor_i.o(i.PREDICTTORi_Init))
+<BR><BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Init_Microseconds
+</UL>
+
+<P><STRONG><a name="[c4]"></a>PROCESSOR_Change_MoSt</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Change_MoSt))
+<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Update
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTT_05a_Scheduler_Osc_Test_Update
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PREDICTTORi_Check_Task_Sequence
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PREDICTTORi_Check_Task_Sequence
 <LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Stop
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Stop
 </UL>
 
-<P><STRONG><a name="[9f]"></a>PROCESSOR_Get_MoSt</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Get_MoSt))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = PROCESSOR_Get_MoSt &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[c1]"></a>PROCESSOR_Get_MoSt</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Get_MoSt))
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = PROCESSOR_Get_MoSt &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PREDICTTORi_Check_Task_Sequence
+<BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PREDICTTORi_Check_Task_Sequence
 <LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Stop
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Stop
 </UL>
 
-<P><STRONG><a name="[b7]"></a>PROCESSOR_Init</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = PROCESSOR_Init &rArr; PROCESSOR_Configure_Reqd_MoSt &rArr; ADC1_Init &rArr; ADC1_Read_Channel &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[d8]"></a>PROCESSOR_Init</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 288<LI>Call Chain = PROCESSOR_Init &rArr; PROCESSOR_Configure_Reqd_MoSt &rArr; CC_TX_init &rArr; CC_TX_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Identify_Reqd_MoSt
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Identify_Reqd_MoSt
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[80]"></a>PROCESSOR_Perform_Safe_Shutdown</STRONG> (Thumb, 100 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Perform_Safe_Shutdown))
-<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[80]"></a>PROCESSOR_Perform_Safe_Shutdown</STRONG> (Thumb, 108 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Perform_Safe_Shutdown))
+<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WATCHDOG_Update
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WATCHDOG_Get_State
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Start
+<BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Start
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Get_Timer_State
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Change_MoSt
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Update
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Init
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Change_MoSt
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WATCHDOG_Update
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WATCHDOG_Get_State
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Update
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Get_State
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_GPIO_Check
+<BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_TIMER_Check
+<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Dispatch_Tasks
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Update
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_UART_Store
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_UART_Check
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Check_Data_Integrity
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Update
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Get_State
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_GPIO_Check
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEARTBEAT_SW_Update
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_ADC1_Check
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Update
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Init
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Get_Temperature_Celsius
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Read_Channel
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_TIMER_Check
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Dispatch_Tasks
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Update
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_UART_Store
-<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_UART_Check
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Check_Data_Integrity
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Update
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Init_Microseconds
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Add_Task
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Check_Data_Integrity
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Check_Data_Integrity
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Init_Microseconds
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Add_Task
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTT_07_PredicTTor_Test_Update
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTT_06b_MoniTTor_Underrun_Test_Update
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTT_06a_MoniTTor_Overrun_Test_Update
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTT_05b_Scheduler_Osc_Test_Update
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Get_MoSt
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Get_MoSt
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PREDICTTORi_Check_Task_Sequence
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PREDICTTORi_Check_Task_Sequence
 <LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Stop
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Start
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Stop
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Start
 </UL>
 
-<P><STRONG><a name="[a1]"></a>PROCESSOR_Store_PFC</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Store_PFC))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = PROCESSOR_Store_PFC &rArr; RCC_APB1PeriphClockCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[c3]"></a>PROCESSOR_Store_PFC</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Store_PFC))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = PROCESSOR_Store_PFC &rArr; RCC_APB1PeriphClockCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWR_BackupAccessCmd
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWR_BackupAccessCmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Update
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Update
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTT_05a_Scheduler_Osc_Test_Update
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PREDICTTORi_Check_Task_Sequence
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PREDICTTORi_Check_Task_Sequence
 <LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Stop
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Stop
 </UL>
 
-<P><STRONG><a name="[a0]"></a>PROCESSOR_Store_Reqd_MoSt</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Store_Reqd_MoSt))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = PROCESSOR_Store_Reqd_MoSt &rArr; RCC_APB1PeriphClockCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[c2]"></a>PROCESSOR_Store_Reqd_MoSt</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Store_Reqd_MoSt))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = PROCESSOR_Store_Reqd_MoSt &rArr; RCC_APB1PeriphClockCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWR_BackupAccessCmd
-<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Disable
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWR_BackupAccessCmd
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Disable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Update
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Update
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTT_05a_Scheduler_Osc_Test_Update
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PREDICTTORi_Check_Task_Sequence
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PREDICTTORi_Check_Task_Sequence
 <LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Stop
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Stop
 </UL>
 
-<P><STRONG><a name="[b0]"></a>PROCESSOR_TASK_Init</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Init))
+<P><STRONG><a name="[d1]"></a>PROCESSOR_TASK_Init</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = PROCESSOR_TASK_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Retrieve_State
+<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Retrieve_State
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 
 <P><STRONG><a name="[68]"></a>PROCESSOR_TASK_Update</STRONG> (Thumb, 192 bytes, Stack size 16 bytes, ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = PROCESSOR_TASK_Update &rArr; ADC1_Get_Temperature_Celsius &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = PROCESSOR_TASK_Update &rArr; ADC1_Get_Temperature_Celsius &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
+<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Change_MoSt
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Store_State
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_Number03_To_Buffer
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Get_Temperature_Celsius
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Change_MoSt
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Store_State
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_Number03_To_Buffer
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
 </UL>
-<P><STRONG><a name="[bc]"></a>PWR_BackupAccessCmd</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, stm32f4xx_pwr.o(i.PWR_BackupAccessCmd))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = PWR_BackupAccessCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[dc]"></a>PWR_BackupAccessCmd</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, stm32f4xx_pwr.o(i.PWR_BackupAccessCmd))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = PWR_BackupAccessCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Store_State
+<BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Store_State
 </UL>
 
-<P><STRONG><a name="[9a]"></a>RCC_AHB1PeriphClockCmd</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = RCC_AHB1PeriphClockCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[98]"></a>RCC_AHB1PeriphClockCmd</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = RCC_AHB1PeriphClockCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEARTBEAT_SW_Init
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Init
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Init
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2PFC_BUF_O_Init
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Init
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEARTBEAT_SW_Init
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Init
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Init
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Init
 </UL>
 
-<P><STRONG><a name="[bb]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = RCC_APB1PeriphClockCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[97]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = RCC_APB1PeriphClockCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Init
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Store_State
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Init_Microseconds
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Store_State
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2PFC_BUF_O_Init
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Init
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Init
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Init_Microseconds
 </UL>
 
 <P><STRONG><a name="[84]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, stm32f4xx_rcc.o(i.RCC_APB2PeriphClockCmd))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = RCC_APB2PeriphClockCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = RCC_APB2PeriphClockCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Init
 </UL>
 
-<P><STRONG><a name="[b6]"></a>RCC_ClearFlag</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_ClearFlag))
-<BR><BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Identify_Reqd_MoSt
+<P><STRONG><a name="[d7]"></a>RCC_ClearFlag</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_ClearFlag))
+<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Identify_Reqd_MoSt
 </UL>
 
-<P><STRONG><a name="[d9]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 214 bytes, Stack size 20 bytes, stm32f4xx_rcc.o(i.RCC_GetClocksFreq))
+<P><STRONG><a name="[f4]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 214 bytes, Stack size 20 bytes, stm32f4xx_rcc.o(i.RCC_GetClocksFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = RCC_GetClocksFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 </UL>
 
-<P><STRONG><a name="[b3]"></a>RCC_GetFlagStatus</STRONG> (Thumb, 134 bytes, Stack size 24 bytes, stm32f4xx_rcc.o(i.RCC_GetFlagStatus))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = RCC_GetFlagStatus &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[d4]"></a>RCC_GetFlagStatus</STRONG> (Thumb, 134 bytes, Stack size 24 bytes, stm32f4xx_rcc.o(i.RCC_GetFlagStatus))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = RCC_GetFlagStatus &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Identify_Reqd_MoSt
+<BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Identify_Reqd_MoSt
 </UL>
 
 <P><STRONG><a name="[92]"></a>REG_CONFIG_CHECKS_ADC1_Check</STRONG> (Thumb, 98 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.o(i.REG_CONFIG_CHECKS_ADC1_Check))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = REG_CONFIG_CHECKS_ADC1_Check &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = REG_CONFIG_CHECKS_ADC1_Check &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
@@ -1069,38 +1311,43 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Init
 </UL>
 
-<P><STRONG><a name="[9b]"></a>REG_CONFIG_CHECKS_GPIO_Check</STRONG> (Thumb, 542 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o(i.REG_CONFIG_CHECKS_GPIO_Check))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = REG_CONFIG_CHECKS_GPIO_Check &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[bd]"></a>REG_CONFIG_CHECKS_GPIO_Check</STRONG> (Thumb, 542 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o(i.REG_CONFIG_CHECKS_GPIO_Check))
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = REG_CONFIG_CHECKS_GPIO_Check &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
-<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEARTBEAT_SW_Update
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Update
+<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Update
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEARTBEAT_SW_Update
 </UL>
 
-<P><STRONG><a name="[b1]"></a>REG_CONFIG_CHECKS_GPIO_Store</STRONG> (Thumb, 276 bytes, Stack size 0 bytes, ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o(i.REG_CONFIG_CHECKS_GPIO_Store))
-<BR><BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<P><STRONG><a name="[d2]"></a>REG_CONFIG_CHECKS_GPIO_Store</STRONG> (Thumb, 276 bytes, Stack size 0 bytes, ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o(i.REG_CONFIG_CHECKS_GPIO_Store))
+<BR><BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 
-<P><STRONG><a name="[c1]"></a>REG_CONFIG_CHECKS_UART_Check</STRONG> (Thumb, 272 bytes, Stack size 16 bytes, ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o(i.REG_CONFIG_CHECKS_UART_Check))
+<P><STRONG><a name="[95]"></a>REG_CONFIG_CHECKS_UART_Check</STRONG> (Thumb, 362 bytes, Stack size 16 bytes, ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o(i.REG_CONFIG_CHECKS_UART_Check))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16 + In Cycle
 <LI>Call Chain = REG_CONFIG_CHECKS_UART_Check &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Check_Data_Integrity
+<BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Check_Data_Integrity
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Check_Data_Integrity
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Check_Data_Integrity
 </UL>
 
-<P><STRONG><a name="[c2]"></a>REG_CONFIG_CHECKS_UART_Store</STRONG> (Thumb, 142 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o(i.REG_CONFIG_CHECKS_UART_Store))
+<P><STRONG><a name="[a3]"></a>REG_CONFIG_CHECKS_UART_Store</STRONG> (Thumb, 194 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o(i.REG_CONFIG_CHECKS_UART_Store))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + In Cycle
 <LI>Call Chain = REG_CONFIG_CHECKS_UART_Store &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2PFC_BUF_O_Init
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Init
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Init
 </UL>
 
-<P><STRONG><a name="[c3]"></a>REG_CONFIG_TIMER_Check</STRONG> (Thumb, 512 bytes, Stack size 16 bytes, ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o(i.REG_CONFIG_TIMER_Check))
+<P><STRONG><a name="[e1]"></a>REG_CONFIG_TIMER_Check</STRONG> (Thumb, 512 bytes, Stack size 16 bytes, ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o(i.REG_CONFIG_TIMER_Check))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16 + In Cycle
 <LI>Call Chain = REG_CONFIG_TIMER_Check &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
@@ -1110,46 +1357,46 @@ Global Symbols
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[cc]"></a>REG_CONFIG_TIMER_Store</STRONG> (Thumb, 328 bytes, Stack size 0 bytes, ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o(i.REG_CONFIG_TIMER_Store))
+<P><STRONG><a name="[eb]"></a>REG_CONFIG_TIMER_Store</STRONG> (Thumb, 328 bytes, Stack size 0 bytes, ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o(i.REG_CONFIG_TIMER_Store))
 <BR><BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Start
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Start
+<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Start
 </UL>
 
-<P><STRONG><a name="[b9]"></a>REPORT_PFC_Init</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, ttrd2-04a-t0401a-v001a_pfc_reporting.o(i.REPORT_PFC_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[da]"></a>REPORT_PFC_Init</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, ttrd2-04a-t0401a-v001a_pfc_reporting.o(i.REPORT_PFC_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Init
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Init
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2PFC_BUF_O_Init
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
 
-<P><STRONG><a name="[ba]"></a>REPORT_PFC_Update</STRONG> (Thumb, 126 bytes, Stack size 8 bytes, ttrd2-04a-t0401a-v001a_pfc_reporting.o(i.REPORT_PFC_Update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = REPORT_PFC_Update &rArr; GPIO_SetBits &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[db]"></a>REPORT_PFC_Update</STRONG> (Thumb, 126 bytes, Stack size 8 bytes, ttrd2-04a-t0401a-v001a_pfc_reporting.o(i.REPORT_PFC_Update))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = REPORT_PFC_Update &rArr; GPIO_SetBits &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_Number03_To_Buffer
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_All_Data
+<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_Number03_To_Buffer
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_All_Data
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 </UL>
 <BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
 
 <P><STRONG><a name="[5f]"></a>RTT_05a_Scheduler_Osc_Test_Update</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_05a_Scheduler_Osc_Test_Update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = RTT_05a_Scheduler_Osc_Test_Update &rArr; PROCESSOR_Store_Reqd_MoSt &rArr; RCC_APB1PeriphClockCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = RTT_05a_Scheduler_Osc_Test_Update &rArr; PROCESSOR_Store_Reqd_MoSt &rArr; RCC_APB1PeriphClockCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WATCHDOG_Update
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Change_MoSt
+<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Change_MoSt
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WATCHDOG_Update
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
 </UL>
 <P><STRONG><a name="[60]"></a>RTT_05b_Scheduler_Osc_Test_Update</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_05b_Scheduler_Osc_Test_Update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = RTT_05b_Scheduler_Osc_Test_Update &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = RTT_05b_Scheduler_Osc_Test_Update &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WATCHDOG_Update
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
@@ -1157,390 +1404,454 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
 </UL>
 <P><STRONG><a name="[61]"></a>RTT_06a_MoniTTor_Overrun_Test_Update</STRONG> (Thumb, 62 bytes, Stack size 24 bytes, ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_06a_MoniTTor_Overrun_Test_Update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = RTT_06a_MoniTTor_Overrun_Test_Update &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = RTT_06a_MoniTTor_Overrun_Test_Update &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
 </UL>
 <P><STRONG><a name="[62]"></a>RTT_06b_MoniTTor_Underrun_Test_Update</STRONG> (Thumb, 60 bytes, Stack size 24 bytes, ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_06b_MoniTTor_Underrun_Test_Update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = RTT_06b_MoniTTor_Underrun_Test_Update &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = RTT_06b_MoniTTor_Underrun_Test_Update &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
 </UL>
 <P><STRONG><a name="[63]"></a>RTT_07_PredicTTor_Test_Update</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_07_PredicTTor_Test_Update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = RTT_07_PredicTTor_Test_Update &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = RTT_07_PredicTTor_Test_Update &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
 </UL>
-<P><STRONG><a name="[ac]"></a>RTT_Startup_04_WDT_Check</STRONG> (Thumb, 102 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_Startup_04_WDT_Check))
-<BR><BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<P><STRONG><a name="[cd]"></a>RTT_Startup_04_WDT_Check</STRONG> (Thumb, 102 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_run_time_tests.o(i.RTT_Startup_04_WDT_Check))
+<BR><BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 
-<P><STRONG><a name="[ae]"></a>SCH_Add_Task</STRONG> (Thumb, 246 bytes, Stack size 32 bytes, ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Add_Task))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = SCH_Add_Task &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[cf]"></a>SCH_Add_Task</STRONG> (Thumb, 246 bytes, Stack size 32 bytes, ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Add_Task))
+<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = SCH_Add_Task &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 
-<P><STRONG><a name="[c4]"></a>SCH_Dispatch_Tasks</STRONG> (Thumb, 390 bytes, Stack size 16 bytes, ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Dispatch_Tasks))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = SCH_Dispatch_Tasks &rArr; PREDICTTORi_Check_Task_Sequence &rArr; PROCESSOR_Get_MoSt &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[e3]"></a>SCH_Dispatch_Tasks</STRONG> (Thumb, 390 bytes, Stack size 16 bytes, ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Dispatch_Tasks))
+<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = SCH_Dispatch_Tasks &rArr; PREDICTTORi_Check_Task_Sequence &rArr; PROCESSOR_Get_MoSt &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PREDICTTORi_Check_Task_Sequence
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Stop
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Start
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PREDICTTORi_Check_Task_Sequence
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Stop
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Start
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ad]"></a>SCH_Init_Microseconds</STRONG> (Thumb, 218 bytes, Stack size 24 bytes, ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Init_Microseconds))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = SCH_Init_Microseconds &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[ce]"></a>SCH_Init_Microseconds</STRONG> (Thumb, 218 bytes, Stack size 24 bytes, ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Init_Microseconds))
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = SCH_Init_Microseconds &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Set_Interrupt_Priority_Levels
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PREDICTTORi_Init
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Init
+<BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
+<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Set_Interrupt_Priority_Levels
+<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PREDICTTORi_Init
+<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MONITTORi_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
-</UL>
-
-<P><STRONG><a name="[c8]"></a>SCH_Set_Interrupt_Priority_Levels</STRONG> (Thumb, 78 bytes, Stack size 16 bytes, ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Set_Interrupt_Priority_Levels))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = SCH_Set_Interrupt_Priority_Levels &rArr; NVIC_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
-</UL>
-<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_PriorityGroupConfig
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
-</UL>
-<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Init_Microseconds
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 
-<P><STRONG><a name="[c9]"></a>SCH_Start</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Start))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = SCH_Start &rArr; TIM_Cmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[e7]"></a>SCH_Set_Interrupt_Priority_Levels</STRONG> (Thumb, 78 bytes, Stack size 16 bytes, ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Set_Interrupt_Priority_Levels))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = SCH_Set_Interrupt_Priority_Levels &rArr; NVIC_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_TIMER_Store
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
+<BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_PriorityGroupConfig
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+</UL>
+<BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Init_Microseconds
+</UL>
+
+<P><STRONG><a name="[e8]"></a>SCH_Start</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001c_scheduler.o(i.SCH_Start))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = SCH_Start &rArr; TIM_Cmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_TIMER_Store
+<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9c]"></a>SWITCH_BUTTON1_Get_State</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Get_State))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = SWITCH_BUTTON1_Get_State &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[be]"></a>SWITCH_BUTTON1_Get_State</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Get_State))
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = SWITCH_BUTTON1_Get_State &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
 <BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEARTBEAT_SW_Update
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_Check_toTransmit
 </UL>
 
-<P><STRONG><a name="[af]"></a>SWITCH_BUTTON1_Init</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = SWITCH_BUTTON1_Init &rArr; GPIO_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[d0]"></a>SWITCH_BUTTON1_Init</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = SWITCH_BUTTON1_Init &rArr; GPIO_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 
 <P><STRONG><a name="[66]"></a>SWITCH_BUTTON1_Update</STRONG> (Thumb, 128 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_switch_task.o(i.SWITCH_BUTTON1_Update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = SWITCH_BUTTON1_Update &rArr; REG_CONFIG_CHECKS_GPIO_Check &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = SWITCH_BUTTON1_Update &rArr; REG_CONFIG_CHECKS_GPIO_Check &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_GPIO_Check
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_GPIO_Check
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
 </UL>
 <P><STRONG><a name="[b]"></a>SysTick_Handler</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, ttrd2-18a-t0401a-v001a_monittor_i.o(i.SysTick_Handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = SysTick_Handler &rArr; PROCESSOR_Get_MoSt &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = SysTick_Handler &rArr; PROCESSOR_Get_MoSt &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Change_MoSt
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Get_MoSt
+<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Change_MoSt
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Get_MoSt
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
 <P><STRONG><a name="[5d]"></a>SystemInit</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, system_stm32f4xx.o(i.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = SystemInit &rArr; SetSysClock
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(.text)
 </UL>
 <P><STRONG><a name="[28]"></a>TIM2_IRQHandler</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001c_scheduler.o(i.TIM2_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = TIM2_IRQHandler &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = TIM2_IRQHandler &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_TIMER_Check
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
+<BR>[Calls]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_TIMER_Check
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
+<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
 <P><STRONG><a name="[90]"></a>TIMEOUT_T3_USEC_Get_Timer_State</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_timeout_t3.o(i.TIMEOUT_T3_USEC_Get_Timer_State))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = TIMEOUT_T3_USEC_Get_Timer_State &rArr; REG_CONFIG_TIMER_Check &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = TIMEOUT_T3_USEC_Get_Timer_State &rArr; TIM_GetCounter &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCounter
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_TIMER_Check
+<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCounter
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_TIMER_Check
 </UL>
 <BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Read_Channel
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_Char
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 
 <P><STRONG><a name="[8a]"></a>TIMEOUT_T3_USEC_Init</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, ttrd2-05a-t0401a-v001a_timeout_t3.o(i.TIMEOUT_T3_USEC_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = TIMEOUT_T3_USEC_Init &rArr; TIM_TimeBaseInit &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = TIMEOUT_T3_USEC_Init &rArr; TIM_TimeBaseInit &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseStructInit
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<BR>[Calls]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseStructInit
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Init
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Init
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2PFC_BUF_O_Init
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Init
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Init
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Init
 </UL>
 
 <P><STRONG><a name="[8e]"></a>TIMEOUT_T3_USEC_Start</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_timeout_t3.o(i.TIMEOUT_T3_USEC_Start))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = TIMEOUT_T3_USEC_Start &rArr; TIM_SetCounter &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = TIMEOUT_T3_USEC_Start &rArr; TIM_SetCounter &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_TIMER_Store
+<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_TIMER_Store
 </UL>
 <BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Read_Channel
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_Char
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 
-<P><STRONG><a name="[ce]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_ClearITPendingBit))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = TIM_ClearITPendingBit &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[ed]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_ClearITPendingBit))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = TIM_ClearITPendingBit &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[cb]"></a>TIM_Cmd</STRONG> (Thumb, 144 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_Cmd))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = TIM_Cmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[ea]"></a>TIM_Cmd</STRONG> (Thumb, 144 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_Cmd))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = TIM_Cmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Start
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Start
+<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Start
 </UL>
 
-<P><STRONG><a name="[cf]"></a>TIM_GetCounter</STRONG> (Thumb, 104 bytes, Stack size 8 bytes, stm32f4xx_tim.o(i.TIM_GetCounter))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8 + In Cycle
-<LI>Call Chain = TIM_GetCounter &rArr;  assert_failed (Cycle)
+<P><STRONG><a name="[ee]"></a>TIM_GetCounter</STRONG> (Thumb, 104 bytes, Stack size 8 bytes, stm32f4xx_tim.o(i.TIM_GetCounter))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = TIM_GetCounter &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Get_Timer_State
 </UL>
 
-<P><STRONG><a name="[ca]"></a>TIM_ITConfig</STRONG> (Thumb, 160 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_ITConfig))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = TIM_ITConfig &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[e9]"></a>TIM_ITConfig</STRONG> (Thumb, 160 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_ITConfig))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = TIM_ITConfig &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Start
+<BR>[Called By]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Start
 </UL>
 
-<P><STRONG><a name="[d1]"></a>TIM_SetCounter</STRONG> (Thumb, 106 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_SetCounter))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = TIM_SetCounter &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[f0]"></a>TIM_SetCounter</STRONG> (Thumb, 106 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_SetCounter))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = TIM_SetCounter &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Start
 </UL>
 
-<P><STRONG><a name="[c5]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 278 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_TimeBaseInit))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = TIM_TimeBaseInit &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[e4]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 278 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_TimeBaseInit))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = TIM_TimeBaseInit &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Init
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Init_Microseconds
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Init_Microseconds
 </UL>
 
-<P><STRONG><a name="[d0]"></a>TIM_TimeBaseStructInit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_TimeBaseStructInit))
+<P><STRONG><a name="[ef]"></a>TIM_TimeBaseStructInit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_TimeBaseStructInit))
 <BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Init
 </UL>
 
-<P><STRONG><a name="[d2]"></a>UART2_BUF_O_Check_Data_Integrity</STRONG> (Thumb, 104 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Check_Data_Integrity))
+<P><STRONG><a name="[e2]"></a>UART2PFC_BUF_O_Init</STRONG> (Thumb, 120 bytes, Stack size 40 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2PFC_BUF_O_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Init
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_UART_Store
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+</UL>
+<BR>[Called By]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Init
+</UL>
+
+<P><STRONG><a name="[f1]"></a>UART2_BUF_O_Check_Data_Integrity</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Check_Data_Integrity))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24 + In Cycle
 <LI>Call Chain = UART2_BUF_O_Check_Data_Integrity &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
-<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_UART_Check
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_UART_Check
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
-<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Update
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_Char
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_All_Data
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_All_Data
 </UL>
 
-<P><STRONG><a name="[a7]"></a>UART2_BUF_O_Init</STRONG> (Thumb, 166 bytes, Stack size 32 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[c9]"></a>UART2_BUF_O_Init</STRONG> (Thumb, 380 bytes, Stack size 160 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Init
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_UART_Store
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DMACmd
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_UART_Store
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_StructInit
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Init
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetCmdStatus
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Init
-</UL>
-
-<P><STRONG><a name="[a9]"></a>UART2_BUF_O_Send_All_Data</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Send_All_Data))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = UART2_BUF_O_Send_All_Data &rArr; UART2_BUF_O_Send_Char &rArr;  TIMEOUT_T3_USEC_Start (Cycle)
-</UL>
-<BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_Char
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Check_Data_Integrity
-</UL>
-<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Update
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 
-<P><STRONG><a name="[d5]"></a>UART2_BUF_O_Send_Char</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Send_Char))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32 + In Cycle
-<LI>Call Chain = UART2_BUF_O_Send_Char &rArr;  TIMEOUT_T3_USEC_Start (Cycle)
+<P><STRONG><a name="[ca]"></a>UART2_BUF_O_Send_All_Data</STRONG> (Thumb, 120 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Send_All_Data))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = UART2_BUF_O_Send_All_Data &rArr; UART2_BUF_O_Check_Data_Integrity &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Start
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Get_Timer_State
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Check_Data_Integrity
+<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ClearFlag
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Check_Data_Integrity
 </UL>
 <BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Update
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_All_Data
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Update
 </UL>
 
-<P><STRONG><a name="[69]"></a>UART2_BUF_O_Update</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = UART2_BUF_O_Update &rArr; UART2_BUF_O_Send_Char &rArr;  TIMEOUT_T3_USEC_Start (Cycle)
+<P><STRONG><a name="[69]"></a>UART2_BUF_O_Update</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Update))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = UART2_BUF_O_Update &rArr; UART2_DMA_CHECK &rArr; DMA_GetCurrDataCounter &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_Char
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Check_Data_Integrity
+<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_DMA_CHECK
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_All_Data
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
 </UL>
-<P><STRONG><a name="[d8]"></a>UART2_BUF_O_Write_Char_To_Buffer</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_Char_To_Buffer))
-<BR><BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
+<P><STRONG><a name="[b5]"></a>UART2_BUF_O_Write_Char_To_Buffer</STRONG> (Thumb, 72 bytes, Stack size 0 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_Char_To_Buffer))
+<BR><BR>[Called By]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_PROCESS_DATA
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_SET_Parameters
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_PROCESS_DATA
 </UL>
 
-<P><STRONG><a name="[c0]"></a>UART2_BUF_O_Write_Number03_To_Buffer</STRONG> (Thumb, 86 bytes, Stack size 12 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_Number03_To_Buffer))
+<P><STRONG><a name="[e0]"></a>UART2_BUF_O_Write_Number03_To_Buffer</STRONG> (Thumb, 86 bytes, Stack size 12 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_Number03_To_Buffer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = UART2_BUF_O_Write_Number03_To_Buffer &rArr; UART2_BUF_O_Write_String_To_Buffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
+<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Update
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Update
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Update
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Update
 </UL>
 
-<P><STRONG><a name="[a8]"></a>UART2_BUF_O_Write_String_To_Buffer</STRONG> (Thumb, 24 bytes, Stack size 12 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_String_To_Buffer))
+<P><STRONG><a name="[b8]"></a>UART2_BUF_O_Write_String_To_Buffer</STRONG> (Thumb, 24 bytes, Stack size 12 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_BUF_O_Write_String_To_Buffer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = UART2_BUF_O_Write_String_To_Buffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_Char_To_Buffer
+<BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_Char_To_Buffer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Update
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_Check_toTransmit
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_Number03_To_Buffer
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Update
-</UL>
-
-<P><STRONG><a name="[6a]"></a>UART2_Check_toTransmit</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_Check_toTransmit))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = UART2_Check_toTransmit &rArr; SWITCH_BUTTON1_Get_State &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
-</UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Get_State
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
-</UL>
-<P><STRONG><a name="[d4]"></a>USART_Cmd</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, stm32f4xx_usart.o(i.USART_Cmd))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = USART_Cmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
-</UL>
-<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
-</UL>
-<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Update
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_PROCESS_DATA
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_Number03_To_Buffer
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_SET_Parameters
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REPORT_PFC_Update
 </UL>
 
-<P><STRONG><a name="[d6]"></a>USART_GetFlagStatus</STRONG> (Thumb, 182 bytes, Stack size 16 bytes, stm32f4xx_usart.o(i.USART_GetFlagStatus))
+<P><STRONG><a name="[f2]"></a>UART2_DMA_CHECK</STRONG> (Thumb, 96 bytes, Stack size 16 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_DMA_CHECK))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = UART2_DMA_CHECK &rArr; DMA_GetCurrDataCounter &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetCurrDataCounter
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_PROCESS_DATA
+</UL>
+<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Update
+</UL>
+
+<P><STRONG><a name="[f3]"></a>UART2_PROCESS_DATA</STRONG> (Thumb, 226 bytes, Stack size 20 bytes, ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o(i.UART2_PROCESS_DATA))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = UART2_PROCESS_DATA &rArr; UART2_BUF_O_Write_String_To_Buffer
+</UL>
+<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_Char_To_Buffer
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_DMA_CHECK
+</UL>
+
+<P><STRONG><a name="[ae]"></a>USART_ClearFlag</STRONG> (Thumb, 140 bytes, Stack size 16 bytes, stm32f4xx_usart.o(i.USART_ClearFlag))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16 + In Cycle
-<LI>Call Chain = USART_GetFlagStatus &rArr;  assert_failed (Cycle)
+<LI>Call Chain = USART_ClearFlag &rArr;  assert_failed (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_Char
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_All_Data
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Send_All_Data
 </UL>
 
-<P><STRONG><a name="[d3]"></a>USART_Init</STRONG> (Thumb, 480 bytes, Stack size 48 bytes, stm32f4xx_usart.o(i.USART_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
-</UL>
-<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
-</UL>
-<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
-</UL>
-
-<P><STRONG><a name="[d7]"></a>USART_SendData</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, stm32f4xx_usart.o(i.USART_SendData))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16 + In Cycle
-<LI>Call Chain = USART_SendData &rArr;  assert_failed (Cycle)
+<P><STRONG><a name="[9f]"></a>USART_Cmd</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, stm32f4xx_usart.o(i.USART_Cmd))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = USART_Cmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_Char
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2PFC_BUF_O_Init
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Init
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Init
 </UL>
 
-<P><STRONG><a name="[b8]"></a>WATCHDOG_Get_State</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Get_State))
+<P><STRONG><a name="[a1]"></a>USART_DMACmd</STRONG> (Thumb, 126 bytes, Stack size 16 bytes, stm32f4xx_usart.o(i.USART_DMACmd))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = USART_DMACmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
+</UL>
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Init
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Init
+</UL>
+
+<P><STRONG><a name="[a6]"></a>USART_GetFlagStatus</STRONG> (Thumb, 182 bytes, Stack size 16 bytes, stm32f4xx_usart.o(i.USART_GetFlagStatus))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = USART_GetFlagStatus &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
+</UL>
+<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Send_Char
+</UL>
+
+<P><STRONG><a name="[9c]"></a>USART_Init</STRONG> (Thumb, 480 bytes, Stack size 48 bytes, stm32f4xx_usart.o(i.USART_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
+</UL>
+<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2PFC_BUF_O_Init
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_BUF_O_Init
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Init
+</UL>
+
+<P><STRONG><a name="[a7]"></a>USART_SendData</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, stm32f4xx_usart.o(i.USART_SendData))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = USART_SendData &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
+</UL>
+<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Send_Char
+</UL>
+
+<P><STRONG><a name="[d9]"></a>WATCHDOG_Get_State</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Get_State))
 <BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
 
-<P><STRONG><a name="[ab]"></a>WATCHDOG_Init</STRONG> (Thumb, 52 bytes, Stack size 4 bytes, ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = WATCHDOG_Init
+<P><STRONG><a name="[cc]"></a>WATCHDOG_Init</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = WATCHDOG_Init &rArr; WATCHDOG_Update
 </UL>
 <BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WATCHDOG_Update
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 
-<P><STRONG><a name="[64]"></a>WATCHDOG_Update</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Update))
-<BR><BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WATCHDOG_Init
+<P><STRONG><a name="[64]"></a>WATCHDOG_Update</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, ttrd2-05a-t0401a-v001a_iwdt_task.o(i.WATCHDOG_Update))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = WATCHDOG_Update
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateCurrentTick
+</UL>
+<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WATCHDOG_Init
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTT_05b_Scheduler_Osc_Test_Update
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTT_05a_Scheduler_Osc_Test_Update
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt)
 </UL>
 <P><STRONG><a name="[93]"></a>assert_failed</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, ttrd2-19a-t0401a-v001a_assert_failed.o(i.assert_failed))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56 + In Cycle
+<BR><BR>[Stack]<UL><LI>Max Depth = 48 + In Cycle
 <LI>Call Chain = assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_Number03_To_Buffer
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_All_Data
+<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_Number03_To_Buffer
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_All_Data
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<BR>[Called By]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCounter
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWR_BackupAccessCmd
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DMACmd
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ClearFlag
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Init
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetCurrDataCounter
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetCmdStatus
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_TempSensorVrefintCmd
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_SoftwareStartConv
@@ -1550,130 +1861,131 @@ Global Symbols
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_GetConversionValue
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_CommonInit
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Cmd
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCounter
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_PriorityGroupConfig
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWR_BackupAccessCmd
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetFlagStatus
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_PriorityGroupConfig
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetFlagStatus
+<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
+<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
 </UL>
 
 <P><STRONG><a name="[76]"></a>main</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = main &rArr; PROCESSOR_Init &rArr; PROCESSOR_Configure_Reqd_MoSt &rArr; ADC1_Init &rArr; ADC1_Read_Channel &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 288<LI>Call Chain = main &rArr; PROCESSOR_Init &rArr; PROCESSOR_Configure_Reqd_MoSt &rArr; CC_TX_init &rArr; CC_TX_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Start
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Dispatch_Tasks
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Init
+<BR>[Calls]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Start
+<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Dispatch_Tasks
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
+</UL>
+
+<P><STRONG><a name="[f5]"></a>updateCurrentTick</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, tickcounter.o(i.updateCurrentTick))
+<BR><BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WATCHDOG_Update
 </UL>
 
 <P><STRONG><a name="[70]"></a>_fp_init</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, fpinit.o(x$fpl$fpinit))
 <BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_fp_1
 </UL>
 
-<P><STRONG><a name="[107]"></a>__fplib_config_fpu_vfp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
+<P><STRONG><a name="[123]"></a>__fplib_config_fpu_vfp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
 
-<P><STRONG><a name="[108]"></a>__fplib_config_pureend_doubles</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
+<P><STRONG><a name="[124]"></a>__fplib_config_pureend_doubles</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
 <P>
 <H3>
 Local Symbols
 </H3>
 <P><STRONG><a name="[8b]"></a>ADC1_Read_Channel</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, ttrd2-05a-t0401a-v001a_adc_task.o(i.ADC1_Read_Channel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = ADC1_Read_Channel &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = ADC1_Read_Channel &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2PFC_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
+<BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Start
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Get_Timer_State
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_SoftwareStartConv
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_RegularChannelConfig
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_GetFlagStatus
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_GetConversionValue
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Start
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Get_Timer_State
 </UL>
 <BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Update
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Init
 </UL>
 
-<P><STRONG><a name="[be]"></a>PROCESSOR_TASK_Retrieve_State</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Retrieve_State))
-<BR><BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Init
+<P><STRONG><a name="[de]"></a>PROCESSOR_TASK_Retrieve_State</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Retrieve_State))
+<BR><BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Init
 </UL>
 
-<P><STRONG><a name="[bf]"></a>PROCESSOR_TASK_Store_State</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Store_State))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = PROCESSOR_TASK_Store_State &rArr; RCC_APB1PeriphClockCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[df]"></a>PROCESSOR_TASK_Store_State</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, ttrd2-19a-t0401a-v001b_processor_task.o(i.PROCESSOR_TASK_Store_State))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = PROCESSOR_TASK_Store_State &rArr; RCC_APB1PeriphClockCmd &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWR_BackupAccessCmd
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWR_BackupAccessCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Update
 </UL>
 
-<P><STRONG><a name="[cd]"></a>SetSysClock</STRONG> (Thumb, 220 bytes, Stack size 12 bytes, system_stm32f4xx.o(i.SetSysClock))
+<P><STRONG><a name="[ec]"></a>SetSysClock</STRONG> (Thumb, 220 bytes, Stack size 12 bytes, system_stm32f4xx.o(i.SetSysClock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SetSysClock
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[a6]"></a>PROCESSOR_Configure_Reqd_MoSt</STRONG> (Thumb, 660 bytes, Stack size 16 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = PROCESSOR_Configure_Reqd_MoSt &rArr; ADC1_Init &rArr; ADC1_Read_Channel &rArr; PROCESSOR_Perform_Safe_Shutdown &rArr; REPORT_PFC_Init &rArr; UART2_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[c8]"></a>PROCESSOR_Configure_Reqd_MoSt</STRONG> (Thumb, 930 bytes, Stack size 16 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Configure_Reqd_MoSt))
+<BR><BR>[Stack]<UL><LI>Max Depth = 280<LI>Call Chain = PROCESSOR_Configure_Reqd_MoSt &rArr; CC_TX_init &rArr; CC_TX_BUF_O_Init &rArr; USART_Init &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WATCHDOG_Update
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WATCHDOG_Init
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEARTBEAT_SW_Init
+<BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Start
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Init
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMEOUT_T3_USEC_Get_Timer_State
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Change_MoSt
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Init
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_All_Data
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Init
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WATCHDOG_Update
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WATCHDOG_Init
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEARTBEAT_SW_Init
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Perform_Safe_Shutdown
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Update
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Init
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Get_Temperature_Celsius
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_Reqd_MoSt
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Store_PFC
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Change_MoSt
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_TASK_Init
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Write_String_To_Buffer
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Send_All_Data
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_BUF_O_Init
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWITCH_BUTTON1_Init
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_GPIO_Store
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Init_Microseconds
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Add_Task
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTT_Startup_04_WDT_Check
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Retrieve_PFC
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_TX_init
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_init
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Write_String_To_Buffer
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC_RX_BUF_O_Send_All_Data
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;REG_CONFIG_CHECKS_GPIO_Store
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Init_Microseconds
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCH_Add_Task
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTT_Startup_04_WDT_Check
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Retrieve_PFC
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Init
+<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Init
 </UL>
 
-<P><STRONG><a name="[b2]"></a>PROCESSOR_Identify_Reqd_MoSt</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Identify_Reqd_MoSt))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = PROCESSOR_Identify_Reqd_MoSt &rArr; RCC_GetFlagStatus &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
+<P><STRONG><a name="[d3]"></a>PROCESSOR_Identify_Reqd_MoSt</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Identify_Reqd_MoSt))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = PROCESSOR_Identify_Reqd_MoSt &rArr; RCC_GetFlagStatus &rArr; assert_failed &rArr;  PROCESSOR_Perform_Safe_Shutdown (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetFlagStatus
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_ClearFlag
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Set_MoSt
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Retrieve_Reqd_MoSt
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Retrieve_PFC
+<BR>[Calls]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetFlagStatus
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_ClearFlag
+<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Set_MoSt
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Retrieve_Reqd_MoSt
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Retrieve_PFC
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Init
-</UL>
-
-<P><STRONG><a name="[aa]"></a>PROCESSOR_Retrieve_PFC</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Retrieve_PFC))
-<BR><BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Identify_Reqd_MoSt
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
+<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Init
 </UL>
 
-<P><STRONG><a name="[b4]"></a>PROCESSOR_Retrieve_Reqd_MoSt</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Retrieve_Reqd_MoSt))
-<BR><BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Identify_Reqd_MoSt
+<P><STRONG><a name="[cb]"></a>PROCESSOR_Retrieve_PFC</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Retrieve_PFC))
+<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Identify_Reqd_MoSt
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Configure_Reqd_MoSt
 </UL>
 
-<P><STRONG><a name="[b5]"></a>PROCESSOR_Set_MoSt</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Set_MoSt))
-<BR><BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Identify_Reqd_MoSt
+<P><STRONG><a name="[d5]"></a>PROCESSOR_Retrieve_Reqd_MoSt</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Retrieve_Reqd_MoSt))
+<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Identify_Reqd_MoSt
+</UL>
+
+<P><STRONG><a name="[d6]"></a>PROCESSOR_Set_MoSt</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, ttrd2-19a-t0401a-v001b_processor.o(i.PROCESSOR_Set_MoSt))
+<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PROCESSOR_Identify_Reqd_MoSt
 </UL>
 <P>
 <H3>

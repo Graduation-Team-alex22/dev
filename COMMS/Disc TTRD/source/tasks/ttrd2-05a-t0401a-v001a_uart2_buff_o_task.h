@@ -44,15 +44,16 @@
 
 // Processor Header
 #include "../main/main.h"
+#include "rx_manager.h"
 
 // ------ Public function prototypes -----------------------------------------
-
+void 		 UART2PFC_BUF_O_Init(uint32_t BAUD_RATE);
 void     UART2_BUF_O_Init(uint32_t BAUD_RATE);
 uint32_t UART2_BUF_O_Update(void);
-uint32_t		 UART2_Check_toTransmit(void);
+uint32_t UART2_Check_toTransmit(void);
 
 void     UART2_BUF_O_Send_All_Data(void);
-
+void  	 UART2_BUF_O_Send_Check(void);
 void     UART2_BUF_O_Write_String_To_Buffer(const char* const);
 void     UART2_BUF_O_Write_Char_To_Buffer(const char);
 
@@ -60,7 +61,8 @@ void     UART2_BUF_O_Write_Number10_To_Buffer(const uint32_t DATA);
 void     UART2_BUF_O_Write_Number04_To_Buffer(const uint32_t DATA);
 void     UART2_BUF_O_Write_Number03_To_Buffer(const uint32_t DATA);
 void     UART2_BUF_O_Write_Number02_To_Buffer(const uint32_t DATA);
-
+uint32_t UART2_DMA_CHECK(void);
+void UART2_PROCESS_DATA(const void* data, size_t len);
 #endif
 
 /*----------------------------------------------------------------------------*-
