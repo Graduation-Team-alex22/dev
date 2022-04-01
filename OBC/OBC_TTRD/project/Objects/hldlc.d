@@ -1,0 +1,11 @@
+.\objects\hldlc.o: ..\source\upsat-ecss-services-master\hldlc.c
+.\objects\hldlc.o: ..\source\upsat-ecss-services-master\hldlc.h
+.\objects\hldlc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\hldlc.o: ..\source\upsat-ecss-services-master\services.h
+.\objects\hldlc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\hldlc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\hldlc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\hldlc.o: ..\source\upsat-ecss-services-master\subsystems_ids.h
+.\objects\hldlc.o: ..\source\upsat-ecss-services-master\system.h
+.\objects\hldlc.o: ..\source\upsat-ecss-services-master\upsat.h
+.\objects\hldlc.o: ..\source\upsat-ecss-services-master\pkt_pool.h

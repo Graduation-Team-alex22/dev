@@ -1,0 +1,9 @@
+.\objects\pkt_pool.o: ..\source\upsat-ecss-services-master\pkt_pool.c
+.\objects\pkt_pool.o: ..\source\upsat-ecss-services-master\pkt_pool.h
+.\objects\pkt_pool.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\pkt_pool.o: ..\source\upsat-ecss-services-master\services.h
+.\objects\pkt_pool.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\pkt_pool.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\pkt_pool.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\pkt_pool.o: ..\source\upsat-ecss-services-master\subsystems_ids.h
+.\objects\pkt_pool.o: ..\source\upsat-ecss-services-master\system.h
