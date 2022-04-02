@@ -283,7 +283,6 @@ uint32_t UART2_BUF_O_Update(void)
 -*----------------------------------------------------------------------------*/
 void UART2_BUF_O_Send_All_Data(void)
 {
-	uint32_t T3;
 	
 	// wait until the previous transfer is done
 	if(DMA1_Stream6->NDTR == 0 || DMA1_Stream6->NDTR == TX_BUFFER_SIZE_BYTES+1)
@@ -308,13 +307,6 @@ void UART2_BUF_O_Send_All_Data(void)
 		// Clear DMA Stream Flags
 		DMA1->HIFCR |= (0x3D << 16);
 
-		/*
-		// wait until USART transmission is complete
-		TIMEOUT_T3_USEC_Start();
-		while(( USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET )
-				 && (data_sent == 1) 
-				 && (COUNTING == (T3 = TIMEOUT_T3_USEC_Get_Timer_State(100))));
-		*/
 
 		// Clear USART Transfer Complete Flags
 		USART_ClearFlag(USART2,USART_FLAG_TC);  

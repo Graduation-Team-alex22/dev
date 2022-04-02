@@ -44,7 +44,7 @@
 
 // Required system operating frequency (in Hz)
 // Will be checked in the scheduler initialisation file
-#define REQUIRED_SYSTEM_CORE_CLOCK (84000000)
+#define REQUIRED_SYSTEM_CORE_CLOCK (180000000)
 
 // Links to HSI libraries
 #include "../hsi_library/misc.h"
@@ -74,6 +74,9 @@
 
 // Support functions
 #include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
+
+// application related
+#include "project.h"
 
 /*----------------------------------------------------------------------------*-
    Processor constants

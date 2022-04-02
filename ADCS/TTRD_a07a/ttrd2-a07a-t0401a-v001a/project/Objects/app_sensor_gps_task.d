@@ -39,6 +39,7 @@
 .\objects\app_sensor_gps_task.o: ..\source\tasks\../port/../main/../scheduler/ttrd2-a07a-t0401a-v001a_instrumented_scheduler.h
 .\objects\app_sensor_gps_task.o: ..\source\tasks\../port/../main/../scheduler/../main/main.h
 .\objects\app_sensor_gps_task.o: ..\source\tasks\../port/../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
+.\objects\app_sensor_gps_task.o: ..\source\tasks\../port/../main/project.h
 .\objects\app_sensor_gps_task.o: ..\source\tasks\../adcs/adcs_sensors/gps_sensor.h
 .\objects\app_sensor_gps_task.o: ..\source\tasks\../adcs/adcs_sensors/../services_utilities/nmea_parsing.h
 .\objects\app_sensor_gps_task.o: ..\source\tasks\../adcs/adcs_sensors/../services_utilities/../services_utilities/common.h

@@ -39,3 +39,4 @@
 .\objects\ttrd2-18a-t0401a-v001a_monittor_i.o: ..\source\scheduler\../main/../processor/ttrd2-a07a-t0401a-v001b_processor.h
 .\objects\ttrd2-18a-t0401a-v001a_monittor_i.o: ..\source\scheduler\../main/../scheduler/ttrd2-a07a-t0401a-v001a_instrumented_scheduler.h
 .\objects\ttrd2-18a-t0401a-v001a_monittor_i.o: ..\source\scheduler\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
+.\objects\ttrd2-18a-t0401a-v001a_monittor_i.o: ..\source\scheduler\../main/project.h

@@ -8,6 +8,7 @@ but it is scalable so you can easily add more
 #define NMEA_PARSING_H__
 
 #include "stdint.h"
+#include "../services_utilities/common.h"
 
 /******************************************
 GP-GGA (GPS fix data)
@@ -52,13 +53,13 @@ GP-GSA (GPS DOP and active satellites)
 // struct for parser output
 typedef struct {
 	// GPGGA
-	float time;
-	double lat;
-	double lon;
-	uint8_t fix;
-	uint8_t num_sat;
-	float hdop;
-	double alt;
+	float time;                // UTC time
+	double lat;                // Latitude
+	double lon;                // Longitude
+	uint8_t fix;               // GPS Fix
+	uint8_t num_sat;           // visible satellites number
+	float hdop;                // Horizontal Delusion of Precision
+	double alt;                // Altitude - from sea level
 	double Geoidal_sep;
 	double diff_fix_age;
 	uint16_t diff_ref_stationID;
@@ -67,13 +68,41 @@ typedef struct {
 	uint8_t sel_mode;
 	uint8_t mode;
 	uint16_t fix_sat_ID[12];
-	float DOP[3]; // P H V
+	float DOP[3];              // Positional, Horizontal, Vertical Delusion of Precision
 	
 } parser_output_t;
 
 //-- PUPLIC FUNCTIONS -------------------
+/*
+   nmea_parser_init
+
+   Initializes parser structures and mechanisms
+
+   @param None
+
+   @return     Error_code, or zero if no error
+*/
 uint8_t nmea_parser_init(void);
+
+/*
+   nmea_parser_init
+
+   Initializes parser structures and mechanisms
+
+   @param nmea_sen_str     a pointer to the nmea string to be parsed.  
+   @return Error_code      error_code, or zero if no error
+*/
 uint8_t nmea_sentence_parsing(char* nmea_sen_str);
+
+/*
+   nmea_sentence_getOutput
+
+   returns the parser output of the latest parsing proccess
+
+   @param  None.  
+   @return parser_output_t an instance of the parser output structure loaded
+                           with parser results.
+*/
 parser_output_t nmea_sentence_getOutput(void);
 
 #endif

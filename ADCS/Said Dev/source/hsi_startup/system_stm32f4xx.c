@@ -232,21 +232,21 @@
   *-----------------------------------------------------------------------------
   *        System Clock source                    | PLL (HSE)
   *-----------------------------------------------------------------------------
-  *        SYSCLK(Hz)                             | 84000000
+  *        SYSCLK(Hz)                             | 180000000
   *-----------------------------------------------------------------------------
-  *        HCLK(Hz)                               | 84000000
+  *        HCLK(Hz)                               | 180000000
   *-----------------------------------------------------------------------------
   *        AHB Prescaler                          | 1
   *-----------------------------------------------------------------------------
-  *        APB1 Prescaler                         | 2
+  *        APB1 Prescaler                         | 4
   *-----------------------------------------------------------------------------
-  *        APB2 Prescaler                         | 1
+  *        APB2 Prescaler                         | 2
   *-----------------------------------------------------------------------------
   *        HSE Frequency(Hz)                      | 8000000
   *-----------------------------------------------------------------------------
   *        PLL_M                                  | 8
   *-----------------------------------------------------------------------------
-  *        PLL_N                                  | 336
+  *        PLL_N                                  | 360
   *-----------------------------------------------------------------------------
   *        PLL_P                                  | 2
   *-----------------------------------------------------------------------------
@@ -388,7 +388,7 @@
 #define PLL_R      7
 #endif /* STM32F446xx */ 
 
-#if defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F469_479xx)
+#if defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F446xx) || defined(STM32F469_479xx)
 #define PLL_N      360
 /* SYSCLK = PLL_VCO / PLL_P */
 #define PLL_P      2
@@ -405,12 +405,6 @@
 /* SYSCLK = PLL_VCO / PLL_P */
 #define PLL_P      4
 #endif /* STM32F401xx */
-
-#if defined(STM32F446xx)
-#define PLL_N      336
-/* SYSCLK = PLL_VCO / PLL_P */
-#define PLL_P      4
-#endif /* STM32F446xx */
 
 #if defined(STM32F410xx) || defined(STM32F411xE)
 #define PLL_N      400
@@ -440,15 +434,11 @@
   uint32_t SystemCoreClock = 168000000;
 #endif /* STM32F40_41xxx */
 
-#if defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F469_479xx)
+#if defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F446xx) || defined(STM32F469_479xx)
   uint32_t SystemCoreClock = 180000000;
 #endif /* STM32F427_437x || STM32F429_439xx || STM32F446xx || STM32F469_479xx */
 
 #if defined(STM32F401xx)
-  uint32_t SystemCoreClock = 84000000;
-#endif /* STM32F401xx */
-
-#if defined(STM32F446xx)
   uint32_t SystemCoreClock = 84000000;
 #endif /* STM32F401xx */
 
@@ -660,7 +650,7 @@ void SystemCoreClockUpdate(void)
   */
 static void SetSysClock(void)
 {
-#if defined(STM32F40_41xxx) || defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F401xx) || defined(STM32F469_479xx)
+#if defined(STM32F40_41xxx) || defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F401xx) || defined(STM32F446xx)|| defined(STM32F469_479xx)
 /******************************************************************************/
 /*            PLL (clocked by HSE) used as System clock source                */
 /******************************************************************************/
@@ -767,7 +757,7 @@ static void SetSysClock(void)
   { /* If HSE fails to start-up, the application will have wrong clock
          configuration. User can add here some code to deal with this error */
   }
-#elif defined(STM32F410xx) || defined(STM32F411xE)|| defined(STM32F446xx)
+#elif defined(STM32F410xx) || defined(STM32F411xE)
 #if defined(USE_HSE_BYPASS) 
 /******************************************************************************/
 /*            PLL (clocked by HSE) used as System clock source                */
@@ -802,10 +792,10 @@ static void SetSysClock(void)
     /* HCLK = SYSCLK / 1*/
     RCC->CFGR |= RCC_CFGR_HPRE_DIV1;
 
-    /* PCLK2 = HCLK / 1*/
+    /* PCLK2 = HCLK / 2*/
     RCC->CFGR |= RCC_CFGR_PPRE2_DIV1;
     
-    /* PCLK1 = HCLK / 2*/
+    /* PCLK1 = HCLK / 4*/
     RCC->CFGR |= RCC_CFGR_PPRE1_DIV2;
 
     /* Configure the main PLL */

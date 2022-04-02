@@ -546,13 +546,21 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          // Store the GPIO register configuration
          // Check in the Heartbeat task 
          // - and any tasks that perform safety-related IO
-         REG_CONFIG_CHECKS_GPIO_Store();
+         //REG_CONFIG_CHECKS_GPIO_Store();
 				 
          // App tasks Init
          TIMEOUT_T3_USEC_Init();
          TIMEOUT_T3_USEC_Start();
          while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(60000));
          
+         // initialize all needed peripherals
+         Project_MSP_Init();
+         
+         // save register changes
+         REG_CONFIG_CHECKS_GPIO_Store();
+         //REG_CONFIG_CHECKS_UART_Store(UART4);
+         
+         // init application modules
          App_Sensor_Imu_Init();
          App_Sensor_Mgn_Init(); 
          App_Sensor_Gps_Init();

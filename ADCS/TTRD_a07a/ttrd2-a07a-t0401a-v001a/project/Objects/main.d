@@ -38,3 +38,4 @@
 .\objects\main.o: ..\source\main\../processor/ttrd2-a07a-t0401a-v001b_processor.h
 .\objects\main.o: ..\source\main\../scheduler/ttrd2-a07a-t0401a-v001a_instrumented_scheduler.h
 .\objects\main.o: ..\source\main\../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
+.\objects\main.o: ..\source\main\project.h

@@ -39,9 +39,9 @@
 .\objects\app_sensor_imu_task.o: ..\source\tasks\../port/../main/../scheduler/ttrd2-a07a-t0401a-v001a_instrumented_scheduler.h
 .\objects\app_sensor_imu_task.o: ..\source\tasks\../port/../main/../scheduler/../main/main.h
 .\objects\app_sensor_imu_task.o: ..\source\tasks\../port/../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
+.\objects\app_sensor_imu_task.o: ..\source\tasks\../port/../main/project.h
 .\objects\app_sensor_imu_task.o: ..\source\tasks\../adcs/adcs_sensors/imu_sensor.h
 .\objects\app_sensor_imu_task.o: ..\source\tasks\../adcs/adcs_sensors/driver_i2c.h
 .\objects\app_sensor_imu_task.o: ..\source\hsi_library\../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\app_sensor_imu_task.o: ..\source\hsi_library\../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\app_sensor_imu_task.o: ..\source\tasks\app_sensor_imu_task.h
-.\objects\app_sensor_imu_task.o: ..\source\tasks\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h
