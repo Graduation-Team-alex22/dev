@@ -144,9 +144,15 @@ void SCH_Init_Microseconds(const uint32_t TICKus)
    // Set up Timer 2 as tick source (BEGIN)
    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE); // Enable T2 clock 
 
+#if defined(STM32F401xx)
    // Time base configuration
    // From 84 MHz T2 clock to 1 MHz
    TIM_TimeBaseStructure.TIM_Prescaler = 83 - 1;
+#elif defined(STM32F446xx)
+   // Time base configuration
+   // From 90 MHz T2 clock to 1 MHz
+   TIM_TimeBaseStructure.TIM_Prescaler = 90;
+#endif
 
    // Set timer overflow value in microseconds
    TIM_TimeBaseStructure.TIM_Period = TICKus - 1;

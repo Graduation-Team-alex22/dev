@@ -65,12 +65,16 @@
 #include "ttrd2-04a-t0401a-v001a_pfc_reporting.h"
 
 // Tasks
+#include "../tasks/cc_rx.h"
+#include "../tasks/cc_tx.h"
 #include "../tasks/ttrd2-05a-t0401a-v001a_adc_task.h"
 #include "../tasks/ttrd2-05a-t0401a-v001a_heartbeat_sw_task.h"
 #include "../tasks/ttrd2-05a-t0401a-v001a_iwdt_task.h"
 #include "../tasks/ttrd2-05a-t0401a-v001a_switch_task.h"
 #include "../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h"
 #include "../tasks/ttrd2-19a-t0401a-v001b_processor_task.h"
+#include "../support_functions/comms_hal.h"
+#include "../tasks/rx_manager.h"
 
 // MoniTTor header 
 // This module has access to the MoniTTor: use with care!
@@ -250,7 +254,7 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
       Processor_MoSt_g = FAIL_SAFE_S;
       Processor_MoSt_ig = ~((uint32_t) FAIL_SAFE_S);
       }
-
+	 //Processor_MoSt_g = NORMAL_M;  // to bypass the checks
    switch (Processor_MoSt_g)
       {
       default:          // Default to "FAIL_SAFE_S"
@@ -258,7 +262,13 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          {
          UART2_BUF_O_Write_String_To_Buffer("\nFAIL_SAFE_S\n");
          UART2_BUF_O_Send_All_Data();
-
+					 
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
+					 
+ 
          // Trigger "fail safe" behaviour
          PROCESSOR_Perform_Safe_Shutdown(PROCESSOR_Retrieve_PFC());
 
@@ -270,7 +280,12 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          // Report Mode / State (for demo purposes only)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_01_PROCESSOR_MEMORY_CHECKS_S\n");
          UART2_BUF_O_Send_All_Data();
-
+				 
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
+				 
          // PLACEHOLDER: 
 
          // Here we will add calls to third-party library for checks of
@@ -294,7 +309,13 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          // Report Mode / State (for demo purposes only)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_02_SOFTWARE_CONFIGURATION_CHECKS_S\n");
          UART2_BUF_O_Send_All_Data();
-
+					 
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
+					 
+					 
          // PLACEHOLDER: 
 
          // Here we will check the software configuration (matched to 'Golden Signature')
@@ -315,7 +336,13 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          // Report Mode / State (for demo purposes only)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_03_ENVIRONMENT_CHECKS_S\n");
          UART2_BUF_O_Send_All_Data();
-
+				 
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));	 
+					 
+					 
          // Here we check only the CPU temperature 
          // via the sensor on the STM32F401, which is linked to ADC1
          ADC1_Init();
@@ -356,7 +383,10 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          // Report Mode / State (for demo purposes only)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_04_WDT_CHECK_S\n");
          UART2_BUF_O_Send_All_Data();
-
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
          // See ERES2, Chapter 16
 
          // NOTE:
@@ -384,7 +414,11 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          // Report Mode / State (for demo purposes only)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_05a_SCHEDULER_OSC_CHECK_M\n");
          UART2_BUF_O_Send_All_Data();
-
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
+				 
          // Having confirmed that the iWDT is operational,
          // we now use this component to test the scheduler operation
          // (and the MCU oscillator frequency, using the iWDT osc as a benchmark)
@@ -423,6 +457,10 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          {
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_05b_SCHEDULER_OSC_CHECK_M\n");
          UART2_BUF_O_Send_All_Data();
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
 
          // This is the second part of our scheduler / oscillator check
 
@@ -455,6 +493,10 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          {
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_06a_MONITTOR_ORUN_CHECK_M\n");
          UART2_BUF_O_Send_All_Data();
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
 
          // See ERES2, Chapter 18
          
@@ -476,6 +518,10 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          {
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_06b_MONITTOR_URUN_CHECK_M\n");
          UART2_BUF_O_Send_All_Data();
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
 
          // See ERES2, Chapter 18
          
@@ -494,6 +540,10 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          {
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_07_PREDICTTOR_CHECK_M\n");
          UART2_BUF_O_Send_All_Data();
+				 // wait until DMA finishes
+				 TIMEOUT_T3_USEC_Init();
+				 TIMEOUT_T3_USEC_Start();
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
 
          // See ERES2, Chapter 19
          
@@ -515,14 +565,28 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
 
          // Report Mode / State (for demo purposes only)
          UART2_BUF_O_Write_String_To_Buffer("NORMAL_M\n");
-
+					 
+				 CC_RX_init(9600);
+//				 CC_RX_BUF_O_Write_String_To_Buffer("\nStarting up the DMA module\n");
+//				 CC_RX_BUF_O_Send_All_Data();
+					 
+				 CC_TX_init(9600);
+//				 CC_TX_BUF_O_Write_String_To_Buffer("Starting\n");
+//				 CC_TX_BUF_O_Send_All_Data();
+//					 
+//					 
+//				 CC_TX_BUF_O_Write_String_To_Buffer("UART4\n");
+//				 CC_TX_BUF_O_Send_All_Data();
+//					 
+//				 CC_TX_BUF_O_Write_String_To_Buffer("A great thing\n");
+//				 CC_TX_BUF_O_Send_All_Data();
          // Set up scheduler for 5 ms ticks
          SCH_Init_Microseconds(5000);
 
          // Set up WDT 
          // Timeout is parameter * 125 µs: param 80 => ~10 ms
          // NOTE: WDT driven by RC oscillator - timing varies with temperature            
-         WATCHDOG_Init(80);
+         //WATCHDOG_Init(80);
 
          // Prepare for heartbeat task
          HEARTBEAT_SW_Init();
@@ -538,6 +602,8 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          // Controls Mode / State changes
          // Checks CPU temperature
          PROCESSOR_TASK_Init();
+					
+
 
          // Store the GPIO register configuration
          // Check in the Heartbeat task 
@@ -560,8 +626,8 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          SCH_Add_Task(SWITCH_BUTTON1_Update, 10, 2,   8,  7);    // Switch
          SCH_Add_Task(ADC1_Update,           0,  100, 36, 35);   // ADC1
          SCH_Add_Task(PROCESSOR_TASK_Update, 0,  200, 17, 2);    // Proc task   
-         SCH_Add_Task(UART2_BUF_O_Update,    0,  1,   212, 104); // UART2
-				 SCH_Add_Task(UART2_Check_toTransmit,10, 10,  4000, 2);  // UART2
+         SCH_Add_Task(UART2_BUF_O_Update,    0,  1,   600, 2); // UART2
+				 SCH_Add_Task(CC_TX_update,5, 1,  10000, 2);  				 // CC_RX
 
          // Feed the watchdog
          WATCHDOG_Update();
@@ -927,7 +993,10 @@ void PROCESSOR_Perform_Safe_Shutdown(const uint32_t PFC)
    // If we've got this far, we assume that the iWDT is *not* running
 
    // Set up 'Heartbeat' LED pin to report the PFC
-   REPORT_PFC_Init();
+			// stop the schedular just in case, disable the interrupt of TIM2
+	NVIC->ICER[TIM2_IRQn >> 0x05] =
+	(uint32_t)0x01 << (TIM2_IRQn & (uint8_t)0x1F);
+  REPORT_PFC_Init();
 
    while(1)
       {

@@ -45,7 +45,8 @@
 // Required system operating frequency (in Hz)
 // Will be checked in the scheduler initialisation file
 #define REQUIRED_SYSTEM_CORE_CLOCK (168000000)
-
+#include <string.h>
+#include <stddef.h>
 // Links to HSI libraries
 #include "../hsi_library/misc.h"
 #include "../hsi_library/stm32f4xx_gpio.h"
@@ -74,16 +75,18 @@
 
 // Support functions
 #include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
-#include "../support_functions/stddef.h"
 #include "../support_functions/stats.h"
 #include "../support_functions/services.h"
-//#include "../support_functions/comms_hal.h" //need to redesign
+#include "../support_functions/comms_hal.h" //need to redesign
 #include "../support_functions/config.h"
 #include "../support_functions/sysview.h"
 
 
-
+// Tasks
 #include "../tasks/comms_manager.h"
+#include "../tasks/TickCounter.h"
+
+//typedef unsigned int size_t;   /* see <stddef.h> */
 /*----------------------------------------------------------------------------*-
    Processor constants
 -*----------------------------------------------------------------------------*/

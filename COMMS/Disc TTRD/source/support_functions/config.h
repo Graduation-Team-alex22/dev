@@ -3,6 +3,25 @@
 
 #include "../main/main.h"
 
+	
+/*	Module you can choose one the following
+		CC1120
+		CC1101_UART
+		CC1101_SPI
+*/
+//#define CC1120 		1	
+#define CC1101_UART 1
+//#define CC1101_SPI	1
+
+//	#ifdef CC1120
+//	
+//	#elif CC1101_UART
+//	
+//	#elif CC1101_SPI
+//	
+//	
+//	#endif
+
 static const char __UPSAT_CALLSIGN[] = "ON02GR";
 static const uint8_t __UPSAT_SSID = 0;
 static const uint8_t __UPSAT_AX25_CTRL = 0x03;

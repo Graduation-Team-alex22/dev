@@ -74,8 +74,11 @@ typedef struct
  
   uint16_t USART_Mode;                /*!< Specifies whether the Receive or Transmit mode is enabled or disabled.
                                            This parameter can be a value of @ref USART_Mode */
-
-  uint16_t USART_HardwareFlowControl; /*!< Specifies wether the hardware flow control mode is enabled
+	
+	uint32_t OverSampling;              /*!< Specifies whether the Over sampling 8 is enabled or disabled, to achieve higher speed (up to fPCLK/8).
+                                           This parameter can be a value of @ref UART_Over_Sampling */
+  
+	uint16_t USART_HardwareFlowControl; /*!< Specifies wether the hardware flow control mode is enabled
                                            or disabled.
                                            This parameter can be a value of @ref USART_Hardware_Flow_Control */
 } USART_InitTypeDef;
@@ -187,6 +190,13 @@ typedef struct
                                ((CONTROL) == USART_HardwareFlowControl_RTS) || \
                                ((CONTROL) == USART_HardwareFlowControl_CTS) || \
                                ((CONTROL) == USART_HardwareFlowControl_RTS_CTS))
+
+/** @defgroup UART_Over_Sampling UART Over Sampling
+  * @{
+  */
+#define UART_OVERSAMPLING_16                    0x00000000U
+#define UART_OVERSAMPLING_8                     ((uint32_t)USART_CR1_OVER8)
+
 /**
   * @}
   */ 

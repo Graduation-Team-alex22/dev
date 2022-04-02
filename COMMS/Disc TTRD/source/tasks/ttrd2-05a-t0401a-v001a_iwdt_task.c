@@ -151,6 +151,9 @@ void WATCHDOG_Init(const uint32_t WDT_COUNT)
 -*----------------------------------------------------------------------------*/
 uint32_t WATCHDOG_Update(void)
    {
+		// Update Current Tick
+		updateCurrentTick();
+		 
    // Feed the watchdog (reload IWDG counter)
    IWDG->KR = 0xAAAA;
 

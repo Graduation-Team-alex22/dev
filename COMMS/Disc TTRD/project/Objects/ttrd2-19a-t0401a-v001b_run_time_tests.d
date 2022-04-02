@@ -1,5 +1,7 @@
 .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\ttrd2-19a-t0401a-v001b_run_time_tests.c
 .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/main.h
+.\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: D:\Keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: D:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../hsi_library/misc.h
 .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../hsi_library/stm32f4xx.h
 .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../hsi_library/core_cm4.h
@@ -45,11 +47,16 @@
 .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h
 .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h
 .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
-.\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../support_functions/stddef.h
 .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../support_functions/stats.h
 .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../support_functions/services.h
 .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../support_functions/config.h
+.\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../support_functions/comms_hal.h
+.\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../support_functions/upsat.h
 .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../support_functions/sysview.h
 .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../tasks/comms_manager.h
-.\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../tasks/../support_functions/upsat.h
+.\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../tasks/../support_functions/cc_tx_init.h
+.\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../tasks/../support_functions/cw.h
+.\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../tasks/../support_functions/cc_rx_init.h
+.\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../tasks/../support_functions/ax_25.h
+.\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../main/../tasks/TickCounter.h
 .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o: ..\source\processor\../tasks/ttrd2-05a-t0401a-v001a_iwdt_task.h
