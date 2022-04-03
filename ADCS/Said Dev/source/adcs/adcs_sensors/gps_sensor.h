@@ -33,7 +33,7 @@ typedef struct {
 typedef struct {
    uint8_t d3fix;                // 0 no fix , 1 fix , 2 differential fix
    xyz_t p_gps_ecef;             // in km
-   double p_gps_lla[3];          // altitude in meters - from sea level
+   double p_gps_lla[3];          // altitude is in meters from sea level
    xyz_t v_gps_ecef;             // in km/s
    float utc_time;               // HHMMSS.xx
    double sec;
