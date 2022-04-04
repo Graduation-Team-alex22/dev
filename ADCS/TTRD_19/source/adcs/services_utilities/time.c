@@ -5,8 +5,12 @@
 #define RTC_TR_RESERVED_MASK    ((uint32_t)0x007F7F7F)
 #define RTC_DR_RESERVED_MASK    ((uint32_t)0x00FFFF3F)
 
+// Error codes
+#define NO_ERROR              0 // Don't change
+#define ERROR_CODE_RTC_INIT   1
+
 /************* LOCAL VARIABLES ***************/
-static time_keeping_adcs_t time_keeping_adcs = {0};
+static time_t time_keeping_adcs = {0};
 
 /************* PRIVATE FUNCTIONS ************/
 static uint8_t RTC_Bcd2ToByte(uint8_t Value);
@@ -30,51 +34,49 @@ uint8_t time_init(void){
    // RTC is initialized with default parameters: 24h format, default prescalars for LSE
    RTC_InitTypeDef rtc_init_struct;
    RTC_StructInit(&rtc_init_struct);
-   if(RTC_Init(&rtc_init_struct) == ERROR) return 110;
-
+   if(RTC_Init(&rtc_init_struct) == ERROR)
+   {
+      return ERROR_CODE_RTC_INIT;
+   }
+   
    /******* RTC Clock time check *******/
    // check if the time is set correctly
-   time_update();		// update time_keeping_adcs according to current time of RTC
-   if(time_keeping_adcs.utc.year >= CURRENT_YEAR){
-   return 0;         // time is correctly set. No error.
-   }else{
-   uint32_t rtc_calender[2] = {0x00124530, 0x00220227};
+   time_update();
+   
+   // time is correctly set. No error.
+   if(time_keeping_adcs.utc.year >= CURRENT_YEAR)
+   {
+      return NO_ERROR;         
+   }
+   else
+   {
+      uint32_t rtc_calender[2] = {0x00124530, 0x00220227};
 
-   //obc_comm_get_time(rtc_calender); // rtc_calender[0] = TR, rtc_calender[1] = DR
+      //obc_comm_get_time(rtc_calender); // rtc_calender[0] = TR, rtc_calender[1] = DR
 
-   /******* set the time and date of RTC *******/
-   // disable write protection and enter initialization mode
-   RTC_WriteProtectionCmd(DISABLE);
-   if(RTC_EnterInitMode() == ERROR) return 111;
-   RTC->WPR = 0xCA;
-   RTC->WPR = 0x53;
+      /******* set the time and date of RTC *******/
+      // disable write protection and enter initialization mode
+      RTC_WriteProtectionCmd(DISABLE);
+      if(RTC_EnterInitMode() == ERROR) return 111;
+      RTC->WPR = 0xCA;
+      RTC->WPR = 0x53;
 
-   // write to TR and DR registers
-   RTC->TR = rtc_calender[0] & RTC_TR_RESERVED_MASK;
-   RTC->DR = rtc_calender[1] & RTC_DR_RESERVED_MASK;
+      // write to TR and DR registers
+      RTC->TR = rtc_calender[0] & RTC_TR_RESERVED_MASK;
+      RTC->DR = rtc_calender[1] & RTC_DR_RESERVED_MASK;
 
-   // enable write protection and exit initialization mode
-   RTC->WPR = 0xFF; 
-   RTC_ExitInitMode();
-   RTC_WriteProtectionCmd(ENABLE);
-
-   time_update();		// update time_keeping_adcs according to current time of RTC
+      // enable write protection and exit initialization mode
+      RTC->WPR = 0xFF; 
+      RTC_ExitInitMode();
+      RTC_WriteProtectionCmd(ENABLE);
    }
    PWR_BackupAccessCmd(DISABLE);								// Re-disable access to protected registers
 
-   return 0;		// no error	
+   return NO_ERROR;		// no error	
 }
 
-void time_update(void){
-   // update utc
-   /* all constants are deduced according to how different data
-      fields (seconds, minutes, ...) are arranged in RTC registers
-      TR (time register) and DR (date register). 
-   */
-
-   // pre-condition
-   /*************/
-
+void time_update(void)
+{
    uint32_t temp_reg = (RTC->TR & RTC_TR_RESERVED_MASK);
    time_keeping_adcs.utc.sec = RTC_Bcd2ToByte((uint8_t) temp_reg);
    time_keeping_adcs.utc.min = RTC_Bcd2ToByte((uint8_t) (temp_reg >> 8));
@@ -84,24 +86,21 @@ void time_update(void){
    time_keeping_adcs.utc.month = RTC_Bcd2ToByte((uint8_t) (temp_reg >> 8) & 0x1F);
    time_keeping_adcs.utc.weekday = RTC_Bcd2ToByte((uint8_t) (temp_reg >> 13) & 0x7);
    time_keeping_adcs.utc.year = RTC_Bcd2ToByte((uint8_t) (temp_reg >> 16));
-
+   time_keeping_adcs.utc.year += 2000;
+   
    // update other time formats
    tle_epoch();
    decyear();
    julday();
-
-   // post-condition
-   /*************/
-
 }
 
 
-time_keeping_adcs_t time_getTime(void){
+time_t time_getTime(void){
    return time_keeping_adcs;
 }
 
 void tle_epoch(void){
-   time_keeping_adcs_t* t = &time_keeping_adcs;
+   time_t* t = &time_keeping_adcs;
 
    uint16_t year = 2000 + t->utc.year;
    int days[] = { 0, 31, 59, 90, 120, 151, 182, 212, 243, 273, 304, 334 };
@@ -114,7 +113,7 @@ void tle_epoch(void){
 }
 
 void decyear(void){
-   time_keeping_adcs_t* t = &time_keeping_adcs;
+   time_t* t = &time_keeping_adcs;
 
    uint16_t year = 2000 + t->utc.year;
    int days[] = { 0, 31, 59, 90, 120, 151, 182, 212, 243, 273, 304, 334 };
@@ -129,25 +128,26 @@ void decyear(void){
                + day_hour / SOLAR_DAY_HOURS / ndays;
 }
 
-void julday(void){
-   time_keeping_adcs_t* t = &time_keeping_adcs;
-
-   uint16_t year = 2000 + t->utc.year;
-   float sgn = 100.0 * year + t->utc.month - 190002.5;
-
-   if (sgn > 0) {
-         sgn = 1;
-   } else if (sgn < 0) {
-         sgn = -1;
-   } else {
-         sgn = 0;
+void julday(void)
+{
+   uint16_t Y = time_keeping_adcs.utc.year;
+   uint8_t M = time_keeping_adcs.utc.month;
+   uint8_t D = time_keeping_adcs.utc.day;
+   
+   if( M <= 2)
+   {
+      Y -= 1;
+      M += 12;
    }
-
-   t->jd = 367.0 * year
-               - floor((7 * (year + floor((t->utc.month + 9) / 12.0))) * 0.25)
-               + floor(275 * t->utc.month / 9.0) + t->utc.day + 1721013.5
-               + ((t->utc.sec / 60.0 + t->utc.min) / 60.0 + t->utc.hour) / 24.0
-               - 0.5 * sgn + 0.5;
+   
+   uint8_t A = Y / 100;
+   uint8_t B = A / 4;
+   int8_t  C = 2 - A + B;
+   double  E = 365.25 * ( Y + 4716);
+   double  F = 30.6001 * (M + 1);
+   double  J = C + D + E + F - 1524.5;
+   
+   time_keeping_adcs.Julian_Date = J;
 }
 
 static uint8_t RTC_Bcd2ToByte(uint8_t Value)

@@ -9,7 +9,7 @@
 // ------ Private variables --------------------------------------------------
 static char Rx_buffer_g[GPS_RX_BUFFER_SIZE];
 static DMA_Stream_TypeDef * dma_streamx_g;
-static gps_sensor_t gps_sensor_data = {.DOP[0] = 0, .DOP[1] = 0, .DOP[2] = 0};
+static gps_sensor_t gps_sensor_data ;
 // NMEA sentences buffer
 static char nmea_sentences_g[NMEA_SENTENCE_BUFFER_SIZE][NMEA_SENTENCE_MAX_CHAR] = {0};
 static uint8_t nmea_pointer_g = 0;
@@ -21,7 +21,10 @@ uint8_t GPS_Sensor_Init(DMA_Stream_TypeDef * DMA_streamx)
    assert_param(IS_DMA_ALL_PERIPH(DMA_streamx));
 
    dma_streamx_g = DMA_streamx;
-
+   
+   // update device status
+   gps_sensor_data.status = DEVICE_OK;
+   
    // set up the NMEA parser
    nmea_parser_init();
 
@@ -94,7 +97,7 @@ uint16_t GPS_Sensor_Update(void)
    
    
    // translate parser output [End]
-   
+      
 	return 0;
 }
 

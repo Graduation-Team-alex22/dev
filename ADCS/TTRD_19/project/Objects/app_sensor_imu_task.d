@@ -44,4 +44,5 @@
 .\objects\app_sensor_imu_task.o: ..\source\tasks\../adcs/adcs_sensors/driver_i2c.h
 .\objects\app_sensor_imu_task.o: ..\source\hsi_library\../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\app_sensor_imu_task.o: ..\source\hsi_library\../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
+.\objects\app_sensor_imu_task.o: ..\source\tasks\../adcs/adcs_sensors/../services_utilities/common.h
 .\objects\app_sensor_imu_task.o: ..\source\tasks\app_sensor_imu_task.h

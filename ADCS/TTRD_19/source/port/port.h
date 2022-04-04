@@ -61,9 +61,6 @@
 #define UART2_PORT         GPIOA
 #define UART2_TX_PIN       GPIO_Pin_2
 
-// Sun Sensor interface
-#define CNV_Pin 					 GPIO_Pin_9
-#define CNV_GPIO_Port 		 GPIOC
 
 
 #endif

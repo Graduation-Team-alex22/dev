@@ -45,7 +45,7 @@ uint8_t  IMU_Configure(I2C_TypeDef* I2Cx);
 uint8_t  IMU_Mag_Calib(I2C_TypeDef* I2Cx, float* calib);
 
 // -- PUBLIC FUNCTIONS' IMPLEMENTATION ---------------------------
-uint8_t IMU_Init(I2C_TypeDef* I2Cx)
+uint8_t IMU_Sensor_Init(I2C_TypeDef* I2Cx)
 {
    uint8_t error_code;
 
@@ -73,10 +73,13 @@ uint8_t IMU_Init(I2C_TypeDef* I2Cx)
    error_code = IMU_Mag_Calib(I2Cx, imu_sensor_data.M_Calib);
    if(error_code){ return error_code+140;}
 
+   // update device status
+   imu_sensor_data.status = DEVICE_OK;
+   
    return 0;
 }
 
-uint8_t IMU_Update(I2C_TypeDef* I2Cx)
+uint8_t IMU_Sensor_Update(I2C_TypeDef* I2Cx)
 {
    uint8_t error_code;
    uint8_t data[8];
@@ -144,7 +147,7 @@ uint8_t IMU_Update(I2C_TypeDef* I2Cx)
 }
 
 
-imu_sensor_t IMU_Get_Data(void){
+imu_sensor_t IMU_Sensor_GetData(void){
    return imu_sensor_data;
 }
 

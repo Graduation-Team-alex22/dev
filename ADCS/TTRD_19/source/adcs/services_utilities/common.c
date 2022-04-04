@@ -1,4 +1,3 @@
-#include "stdint.h"
 #include "common.h"
 
 #define ERROR_CODE_NO_DOT 1

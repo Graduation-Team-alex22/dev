@@ -21,22 +21,151 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
 Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
-D:\_g_project\dev\ADCS\Said Dev\project\ttrd_eres02.uvprojx
-Project File Date:  04/02/2022
+D:\_g_project\dev\ADCS\TTRD_19\project\ttrd_eres02.uvprojx
+Project File Date:  04/04/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'STM32F446RE'
-compiling frame.c...
-..\source\adcs\adcs_controller\frame.c(8): warning:  #940-D: missing return statement at end of non-void function "CTRL_LLA2ECEF" 
-  }
-..\source\adcs\adcs_controller\frame.c: 1 warning, 0 errors
+compiling main.c...
+..\source\main\main.c(62): warning:  #111-D: statement is unreachable
+     return 1;
+..\source\main\main.c: 1 warning, 0 errors
+compiling ttrd2-05a-t0401a-v001a_heartbeat_sw_task.c...
+compiling ttrd2-05a-t0401a-v001a_adc_task.c...
+compiling ttrd2-05a-t0401a-v001a_iwdt_task.c...
 compiling project.c...
-compiling gps_sensor.c...
+compiling ttrd2-05a-t0401a-v001a_timeout_t3.c...
+compiling ttrd2-05a-t0401a-v001a_switch_task.c...
+compiling apptask_uart_hello.c...
+..\source\tasks\apptask_uart_hello.c(80): warning:  #223-D: function "IMU_Init" declared implicitly
+  	uint8_t error_code = IMU_Init(I2C1);
+..\source\tasks\apptask_uart_hello.c(87): warning:  #223-D: function "IMU_Get_Data" declared implicitly
+  	imu_sensor_t t = IMU_Get_Data();
+..\source\tasks\apptask_uart_hello.c(87): error:  #144: a value of type "int" cannot be used to initialize an entity of type "imu_sensor_t"
+  	imu_sensor_t t = IMU_Get_Data();
+..\source\tasks\apptask_uart_hello.c(234): warning:  #223-D: function "IMU_Update" declared implicitly
+  	uint8_t error_code = IMU_Update(I2C1);
+..\source\tasks\apptask_uart_hello.c(240): warning:  #223-D: function "IMU_Get_Data" declared implicitly
+  	imu_sensor_t t = IMU_Get_Data();
+..\source\tasks\apptask_uart_hello.c(240): error:  #144: a value of type "int" cannot be used to initialize an entity of type "imu_sensor_t"
+  	imu_sensor_t t = IMU_Get_Data();
+..\source\tasks\apptask_uart_hello.c: 4 warnings, 2 errors
+compiling ttrd2-19a-t0401a-v001b_processor_task.c...
+compiling ttrd2-05a-t0401a-v001a_uart2_buff_o_task.c...
+compiling app_sensor_tmp_task.c...
+compiling app_sensor_imu_task.c...
+..\source\tasks\app_sensor_imu_task.c(48): warning:  #223-D: function "IMU_Init" declared implicitly
+     uint8_t error_code = IMU_Init(I2C1);
+..\source\tasks\app_sensor_imu_task.c(94): warning:  #223-D: function "IMU_Update" declared implicitly
+     uint8_t error_code = IMU_Update(I2C1);
+..\source\tasks\app_sensor_imu_task.c: 2 warnings, 0 errors
 compiling app_sensor_gps_task.c...
-linking...
-Program Size: Code=28272 RO-data=500 RW-data=1368 ZI-data=5776  
-".\Objects\TTRD-ERES2.axf" - 0 Error(s), 1 Warning(s).
+compiling app_sensor_mgn_task.c...
+compiling ttrd2-04a-t0401a-v001a_pfc_reporting.c...
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.c...
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.c...
+compiling ttrd2-19a-t0401a-v001a_assert_failed.c...
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.c...
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.c...
+compiling ttrd2-19a-t0401a-v001b_processor.c...
+compiling ttrd2-18a-t0401a-v001a_monittor_i.c...
+compiling ttrd2-19a-t0401a-v001c_scheduler.c...
+compiling ttrd2-19a-t0401a-v001b_run_time_tests.c...
+compiling mgn_sensor.c...
+compiling ttrd2-19a-t0401a-v001b_predicttor_i.c...
+compiling driver_i2c.c...
+compiling imu_sensor.c...
+compiling tmp_sensor.c...
+compiling controller.c...
+..\source\adcs\adcs_controller\sgp4.h(47): warning:  #1295-D: Deprecated declaration init_satpos_xyz - give arg types
+  void init_satpos_xyz();
+..\source\adcs\adcs_controller\sgp4.h(56): warning:  #1295-D: Deprecated declaration init_tle - give arg types
+  void init_tle();
+..\source\adcs\adcs_controller\sgp4.h(57): warning:  #1295-D: Deprecated declaration update_sgp4 - give arg types
+  void update_sgp4();
+..\source\adcs\adcs_controller\wahbaRotM.h(252): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      if (norm < 1e-6) {
+..\source\adcs\adcs_controller\wahbaRotM.h(308): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          sqtrp1x2 = 2.0 * sqtrp1;
+..\source\adcs\adcs_controller\../adcs_sensors/gps_sensor.h(33): error:  #256: invalid redeclaration of type name "xyz_t"  (declared at line 24 of "..\source\adcs\adcs_controller\frame.h")
+  } xyz_t;
+..\source\adcs\adcs_controller\controller.c(44): error:  #20: identifier "adcs_sensors" is undefined
+     if (adcs_sensors.sun.sun_status == DEVICE_ENABLE)
+..\source\adcs\adcs_controller\controller.c(44): error:  #20: identifier "DEVICE_ENABLE" is undefined
+     if (adcs_sensors.sun.sun_status == DEVICE_ENABLE)
+..\source\adcs\adcs_controller\controller.c(48): error:  #20: identifier "DEVICE_DISABLE" is undefined
+     else if (adcs_sensors.sun.sun_status == DEVICE_DISABLE) 
+..\source\adcs\adcs_controller\controller.c(63): error:  #20: identifier "adcs_sensors" is undefined
+     if (adcs_sensors.mgn.rm_norm > MAX_IGRF_NORM
+..\source\adcs\adcs_controller\controller.c(63): error:  #20: identifier "MAX_IGRF_NORM" is undefined
+     if (adcs_sensors.mgn.rm_norm > MAX_IGRF_NORM
+..\source\adcs\adcs_controller\controller.c(64): error:  #20: identifier "MIN_IGRF_NORM" is undefined
+     || adcs_sensors.mgn.rm_norm < MIN_IGRF_NORM) 
+..\source\adcs\adcs_controller\controller.c(66): error:  #20: identifier "DEVICE_ERROR" is undefined
+        adcs_sensors.mgn.rm_status = DEVICE_ERROR;
+..\source\adcs\adcs_controller\controller.c(67): error:  #20: identifier "error_status_value" is undefined
+        error_status_value = ERROR_SENSOR;
+..\source\adcs\adcs_controller\controller.c(67): error:  #20: identifier "ERROR_SENSOR" is undefined
+        error_status_value = ERROR_SENSOR;
+..\source\adcs\adcs_controller\controller.c(69): error:  #20: identifier "adcs_sensors" is undefined
+     if (adcs_sensors.imu.xm_norm > MAX_IGRF_NORM
+..\source\adcs\adcs_controller\controller.c(69): error:  #20: identifier "MAX_IGRF_NORM" is undefined
+     if (adcs_sensors.imu.xm_norm > MAX_IGRF_NORM
+..\source\adcs\adcs_controller\controller.c(70): error:  #20: identifier "MIN_IGRF_NORM" is undefined
+     || adcs_sensors.imu.xm_norm < MIN_IGRF_NORM) 
+..\source\adcs\adcs_controller\controller.c(72): error:  #20: identifier "DEVICE_ERROR" is undefined
+        adcs_sensors.mgn.rm_status = DEVICE_ERROR;
+..\source\adcs\adcs_controller\controller.c(73): error:  #20: identifier "error_status_value" is undefined
+        error_status_value = ERROR_SENSOR;
+..\source\adcs\adcs_controller\controller.c(73): error:  #20: identifier "ERROR_SENSOR" is undefined
+        error_status_value = ERROR_SENSOR;
+..\source\adcs\adcs_controller\controller.c(76): error:  #20: identifier "adcs_sensors" is undefined
+     if ((adcs_sensors.mgn.rm_status == DEVICE_NORMAL
+..\source\adcs\adcs_controller\controller.c(76): error:  #20: identifier "DEVICE_NORMAL" is undefined
+     if ((adcs_sensors.mgn.rm_status == DEVICE_NORMAL
+..\source\adcs\adcs_controller\controller.c(80): error:  #20: identifier "gyroscope" is undefined
+        WahbaRotM(adcs_sensors.sun.sun_xyz, gyroscope,
+..\source\adcs\adcs_controller\controller.c(82): error:  #20: identifier "true" is undefined
+        WahbaRot.run_flag = true;
+..\source\adcs\adcs_controller\controller.c(86): error:  #20: identifier "gyroscope" is undefined
+        WahbaRotM(adcs_sensors.sun.sun_xyz, gyroscope,
+..\source\adcs\adcs_controller\controller.c(88): error:  #20: identifier "true" is undefined
+        WahbaRot.run_flag = true;
+..\source\adcs\adcs_controller\controller.c(6): warning:  #550-D: variable "gps_sensor_data"  was set but never used
+  static gps_sensor_t gps_sensor_data;
+..\source\adcs\adcs_controller\controller.c(7): warning:  #550-D: variable "imu_sensor_data"  was set but never used
+  static imu_sensor_t imu_sensor_data;
+..\source\adcs\adcs_controller\controller.c(8): warning:  #550-D: variable "tmp_sensor_data"  was set but never used
+  static tmp_sensor_t tmp_sensor_data;
+..\source\adcs\adcs_controller\controller.c(9): warning:  #550-D: variable "mgn_sensor_data"  was set but never used
+  static mgn_sensor_t mgn_sensor_data;
+..\source\adcs\adcs_controller\controller.c(10): warning:  #550-D: variable "time_data"  was set but never used
+  static time_t time_data;
+..\source\adcs\adcs_controller\controller.c: 10 warnings, 22 errors
+compiling WahbaRotM.c...
+..\source\adcs\adcs_controller\../services_utilities/common.h(12): warning:  #47-D: incompatible redefinition of macro "PI"  (declared at line 319 of "..\source\hsi_library\arm_math.h")
+  #define PI      3.141592654
+..\source\adcs\adcs_controller\WahbaRotM.h(252): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      if (norm < 1e-6) {
+..\source\adcs\adcs_controller\WahbaRotM.h(308): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          sqtrp1x2 = 2.0 * sqtrp1;
+..\source\adcs\adcs_controller\WahbaRotM.c(124): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      tr = ((WStruct->dR[0][0] + WStruct->dR[1][1] + WStruct->dR[2][2]) - 1.0) / 2.0;
+..\source\adcs\adcs_controller\WahbaRotM.c(128): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      if (fabsv(tmp) < TOL) {
+..\source\adcs\adcs_controller\WahbaRotM.c(129): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          tmp = 0.5 / dt;  // x/sin(x)|x->0
+..\source\adcs\adcs_controller\WahbaRotM.c(131): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          tmp = 0.5 / dt * tmp / sinv(tmp);
+..\source\adcs\adcs_controller\WahbaRotM.c(56): warning:  #550-D: variable "g"  was set but never used
+      static float a, g, ga, gm, m, A[3][3], dt;
+..\source\adcs\adcs_controller\WahbaRotM.c(64): warning:  #177-D: variable "AccErr"  was declared but never referenced
+      static float AccErr, *w_a, *w_g, *w_m, *g_va, *g_vm; //,*g_vg;
+..\source\adcs\adcs_controller\WahbaRotM.c(64): warning:  #550-D: variable "w_g"  was set but never used
+      static float AccErr, *w_a, *w_g, *w_m, *g_va, *g_vm; //,*g_vg;
+..\source\adcs\adcs_controller\WahbaRotM.c: 10 warnings, 0 errors
+".\Objects\TTRD-ERES2.axf" - 24 Error(s), 27 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -49,7 +178,8 @@ Package Vendor: Keil
   C:\Users\bluph\AppData\Local\Arm\Packs\.Download\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:03
+Target not created.
+Build Time Elapsed:  00:00:08
 </pre>
 </body>
 </html>

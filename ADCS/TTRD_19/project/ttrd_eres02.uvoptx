@@ -393,7 +393,7 @@
 
   <Group>
     <GroupName>port</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1584,8 +1584,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\source\adcs\adcs_sensors\sun_sensor.h</PathWithFileName>
-      <FilenameWithoutPath>sun_sensor.h</FilenameWithoutPath>
+      <PathWithFileName>..\source\adcs\adcs_sensors\tmp_sensor.h</PathWithFileName>
+      <FilenameWithoutPath>tmp_sensor.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1596,8 +1596,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\source\adcs\adcs_sensors\tmp_sensor.h</PathWithFileName>
-      <FilenameWithoutPath>tmp_sensor.h</FilenameWithoutPath>
+      <PathWithFileName>..\source\adcs\adcs_sensors\sensors_common.h</PathWithFileName>
+      <FilenameWithoutPath>sensors_common.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1608,8 +1608,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\source\adcs\adcs_sensors\sensors_common.h</PathWithFileName>
-      <FilenameWithoutPath>sensors_common.h</FilenameWithoutPath>
+      <PathWithFileName>..\source\adcs\adcs_sensors\sun_sensor.h</PathWithFileName>
+      <FilenameWithoutPath>sun_sensor.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1958,6 +1958,42 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\source\adcs\adcs_controller\ref_vectors.c</PathWithFileName>
       <FilenameWithoutPath>ref_vectors.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>13</GroupNumber>
+      <FileNumber>128</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\source\adcs\adcs_controller\controller.c</PathWithFileName>
+      <FilenameWithoutPath>controller.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>13</GroupNumber>
+      <FileNumber>129</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\source\adcs\adcs_controller\controller.h</PathWithFileName>
+      <FilenameWithoutPath>controller.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>13</GroupNumber>
+      <FileNumber>130</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\source\adcs\adcs_controller\WahbaRotM.c</PathWithFileName>
+      <FilenameWithoutPath>WahbaRotM.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

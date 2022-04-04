@@ -1,6 +1,8 @@
 #ifndef WAHBAROTM_H__
 #define	WAHBAROTM_H__
 
+#define ARM_MATH_CM4
+
 #include "stm32f4xx.h"
 #include "arm_math.h"
 #include "../services_utilities/common.h"

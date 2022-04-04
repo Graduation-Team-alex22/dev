@@ -1,4 +1,6 @@
-function vector = approxECISunPosition(UTCTime)
+UTCTime = datetime(2022, 04, 03);
+
+% function vector = approxECISunPosition(UTCTime)
 % Given Gregorian year(s), day(s), and time(s), calculate Earth-centered
 % inertial (ECI) coordinates (in meters) of the vector(s) pointing from
 % Earth's center to the center of the Sun.
@@ -49,4 +51,4 @@ distEarthToSunInMeters = ... % (new international definition for an A. U.)
 vector = ... % Use meters for generic code compatibility
 	distEarthToSunInMeters .* unitEarthSunVector; 
 
-end % End of function
+% end % End of function

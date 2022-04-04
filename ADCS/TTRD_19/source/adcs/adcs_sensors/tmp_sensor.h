@@ -15,8 +15,16 @@ Date:		2022-03-15
 #include "driver_i2c.h"
 #include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
 
+#include "../services_utilities/common.h"
+
 // ------ Public Macros --------------------------
 #define 	TEMP_I2C_CLOCK				400000U
+
+typedef struct {
+   float temprature;
+   device_status_e status;   
+}tmp_sensor_t;
+
 
 /************ Public Interfaces ************/
 /*
@@ -59,7 +67,7 @@ uint8_t TMP_Sensor_update(void);
   @return temperature value.
 
 */
-float TMP_Sensor_GetData(void); 
+tmp_sensor_t TMP_Sensor_GetData(void); 
 
 #endif
 

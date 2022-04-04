@@ -25,10 +25,11 @@ Date:		2022-03-11
 #ifndef IMU_SENSOR_H__
 #define IMU_SENSOR_H__
 
-
 #include "stdint.h"
 #include "driver_i2c.h"
 #include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
+
+#include "../services_utilities/common.h"
 
 /************* PUBLIC MACROS ***************/
 #define 	IMU_I2C_CLOCK       400000U
@@ -44,11 +45,12 @@ typedef struct {
    int16_t	Temprature_Raw;               /*!< Temperature raw data */
    float AMult, GMult, MMult;
    float M_Calib[3];
+   device_status_e status;
 } imu_sensor_t;
 
 /************ Public Interfaces ************/
 /*
-   IMU_Init
+   IMU_Sensor_Init
 
    Initialize      Imu sensor and check if it is connected or not
 
@@ -59,10 +61,10 @@ typedef struct {
    @return error_code,  An error code, Or Zero if no Error.
 
 */
-uint8_t IMU_Init(I2C_TypeDef* I2Cx);
+uint8_t IMU_Sensor_Init(I2C_TypeDef* I2Cx);
 
 /*
-  IMU_Update
+  IMU_Sensor_Update
   
   Receive updated GPS data from the sensor over a specified I2C peripheral
 	
@@ -73,10 +75,10 @@ uint8_t IMU_Init(I2C_TypeDef* I2Cx);
   @return Zero if no Error.
 
 */
-uint8_t IMU_Update(I2C_TypeDef* I2Cx);
+uint8_t IMU_Sensor_Update(I2C_TypeDef* I2Cx);
 
 /*
-   IMU_Get_Data
+   IMU_Sensor_GetData
 
    get last updated IMU values
 
@@ -87,6 +89,6 @@ uint8_t IMU_Update(I2C_TypeDef* I2Cx);
    @return temperature value.
 
 */
-imu_sensor_t IMU_Get_Data(void);
+imu_sensor_t IMU_Sensor_GetData(void);
 
 #endif

@@ -1,6 +1,13 @@
 #ifndef COMMON_H__
 #define COMMON_H__
 
+#include "stdint.h"
+
+typedef enum {
+   DEVICE_OK = 0,
+   DEVICE_REINIT,       // needs to be re initialized
+   DEVICE_BROKEN        // Not as broken as me tho :)
+} device_status_e;
 
 #define PI      3.141592654
 #define TWOPI   6.283185308

@@ -12,7 +12,7 @@
 
 // ------ Private VARIABLES --------------------------------------------------
 static I2C_TypeDef* tmp_I2Cx_g;
-static float temperature_value;
+static tmp_sensor_t tmp_sensor;
 static uint8_t data[2];
 
 // ------ Private FUNCTIONS --------------------------------------------------
@@ -38,6 +38,9 @@ uint8_t TMP_Sensor_Init(I2C_TypeDef* I2Cx)
    TIMEOUT_T3_USEC_Start();
    while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(6000));
 
+   // update device status
+   tmp_sensor.status = DEVICE_OK;
+   
    return 0;
 }
 
@@ -51,15 +54,15 @@ uint8_t TMP_Sensor_update(void)
    if(error_code) { return error_code; }
 
    // Calculate temperature based on updated data
-   temperature_value = TEMP_SENSOR_Calculate_Value();
-
+   tmp_sensor.temprature = TEMP_SENSOR_Calculate_Value();
+   
    return 0;
 }
 
 
-float TMP_Sensor_GetData(void)
+tmp_sensor_t TMP_Sensor_GetData(void)
 {
-   return temperature_value;
+   return tmp_sensor;
 } 
 
 // -- PRIVATE FUNCTIONS' IMPLEMENTATION ---------------------------

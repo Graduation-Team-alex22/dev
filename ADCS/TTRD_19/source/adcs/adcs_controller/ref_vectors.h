@@ -4,7 +4,7 @@
 #include "frame.h"
 
 typedef struct {
-    xyz_t sun_pos_eci;  // Position of Sun in ECI AU
+    xyz_t sun_pos_eci;  // Position of Sun in ECI AU - in meters
     xyz_t sun_pos_ned;  // Position of Sun in NED AU
     double norm;
     double rtasc;
@@ -26,6 +26,10 @@ typedef struct {
     double f;
 } geomag_vector_t;
 
+typedef struct {
+   sun_vector_t sun_vec;
+   geomag_vector_t geomag_vec;
+} ref_vectors_t;
 
 void CTRL_Ref_Sun_Update(double julian_date);
 
@@ -42,6 +46,6 @@ void geomag(geomag_vector_t *pGeomag_vector);
  */
 void update_sun(sun_vector_t *pSun_vector);
 
-
+ref_vectors_t Ref_Vectors_GetData(void);
 
 #endif

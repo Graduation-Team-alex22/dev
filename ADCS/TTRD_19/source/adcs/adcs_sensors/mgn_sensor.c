@@ -59,6 +59,9 @@ uint8_t MGN_Sensor_Init(I2C_TypeDef* I2Cx, mgn_init_t* mgn_init)
    TIMEOUT_T3_USEC_Start();
    while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(6000));
 
+   // update device status
+   mgn_data_g.status = DEVICE_OK;
+   
    return 0;
 }
 
@@ -79,6 +82,9 @@ uint8_t MGN_Sensor_Update(void)
    mgn_data_g.mag[1] = (float)mgn_data_g.raw[1] * mgn_range_g /32768;
    mgn_data_g.mag[2] = (float)mgn_data_g.raw[2] * mgn_range_g /32768;
 
+   // update device status
+   mgn_data_g.status = DEVICE_OK;
+   
    return 0;
 }
 

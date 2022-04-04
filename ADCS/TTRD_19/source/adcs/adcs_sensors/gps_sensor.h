@@ -16,6 +16,8 @@ Date:		2022-03-15
 #include "stdint.h"
 #include "../hsi_library/stm32f4xx_usart.h"
 #include "../services_utilities/nmea_parsing.h"
+#include "../services_utilities/common.h"
+
 
 /************* PUBLIC MACROS ***************/
 #define  GPS_BAUDRATE         9600
@@ -41,6 +43,7 @@ typedef struct {
    uint8_t num_sat;              // number of GPS satellites in vision
    uint8_t reset_flag;
    float DOP[3];                 // Delusion of precision (lower is better) - order: P H V
+   device_status_e status;
 } gps_sensor_t;
 
 

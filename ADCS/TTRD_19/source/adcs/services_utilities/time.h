@@ -50,13 +50,13 @@ Date:		2022-02-23
 
 /************ Public structures ************/
 typedef struct{
-   uint8_t weekday;
-   uint8_t day;
-   uint8_t month;
-   uint8_t year;
-   uint8_t hour;
-   uint8_t min;
-   uint8_t sec;
+   uint8_t weekday;     // 1 = Monday ---> 7 = Sunday
+   uint8_t day;         // day of the month
+   uint8_t month;       // 1 ---> 12
+   uint16_t year;        // 20xx
+   uint8_t hour;        // 00 ---> 23
+   uint8_t min;         // 00 ---> 59
+   uint8_t sec;         // 00 ---> 59
 } time_utc_t;
 
 typedef struct{
@@ -69,10 +69,10 @@ typedef struct {
    time_utc_t utc;
    tle_epoch_t tle_epoch;        // TLE epoch
    double decyear;               // Decimal year, for IGRF
-   double jd;                    // Julian days from 1st Jan 1900, for SGP4
+   double Julian_Date;           // Julian days from 1st Jan 1900, for SGP4
    double gps_sec;               // Time in sec of "gps_week" week
    uint16_t gps_week;            // Number of weeks from GPS starting date
-} time_keeping_adcs_t;
+} time_t;
 
 
 /************ Public Interfaces ************/
@@ -114,7 +114,7 @@ void time_update(void);
    @return  time_keeping_adcs_t.
 
 */
-time_keeping_adcs_t time_getTime(void);
+time_t time_getTime(void);
 
 
 /******** conversion functions ***********/
@@ -144,7 +144,9 @@ void decyear(void);
 
 /*
    julday
-   calculates time_keeping_adcs.jd from time_keeping_adcs.UTC
+   Converts UTC date to Julian Date
+   The conversion algorithm is found at
+   https://quasar.as.utexas.edu/BillInfo/JulianDatesG.html
 
    @note    None
 
