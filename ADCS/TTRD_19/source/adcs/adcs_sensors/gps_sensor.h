@@ -27,12 +27,6 @@ Date:		2022-03-15
 
 /************ Public structures ************/
 typedef struct {
-   double x;
-   double y;
-   double z;
-} xyz_t;
-
-typedef struct {
    uint8_t d3fix;                // 0 no fix , 1 fix , 2 differential fix
    xyz_t p_gps_ecef;             // in km
    double p_gps_lla[3];          // altitude is in meters from sea level

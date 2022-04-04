@@ -3,27 +3,37 @@
 
 
 //-- PRIVATE VARIABLES -----------------------
-static gps_sensor_t gps_sensor_data;
 static imu_sensor_t imu_sensor_data;
-static tmp_sensor_t tmp_sensor_data;
 static mgn_sensor_t mgn_sensor_data;
-static time_t time_data;
+static sun_sensor_t sun_sensor_data;
 static ref_vectors_t ref_vector_data;
+static magneto_handle_t magneto_torquer_handle;
 
+static adcs_control_t control = { .b_dot[0] = 0, .b_dot[1] = 0, .b_dot[2] = 0,
+                          .b_dot_prev[0] = 0, .b_dot_prev[1] = 0,
+                          .b_dot_prev[2] = 0,.k_bdot = BDOT_GAIN,
+                          .k_pointing[0] = POINTING_GAIN_W,
+                          .k_pointing[1] = POINTING_GAIN_Q,
+                          .sp_yaw = 0, .sp_pitch = 0, .sp_roll = 0,
+                          .Ix = 0, .Iy = 0, .Iz = 0 ,
+                          .k_spin = SPIN_TORQUER_GAIN,
+                          .sp_rpm = 0, .const_rmp = SPIN_TORQUER_REF_RPM };
+
+                          
+static spin_handle_t spin_motor_handle;
+                          
 void CTRL_Control_Init(void)
 {
    
    
 }
 
-void CTRL_Control_Update(void)
+void CTRL_Control_Determination_Update(void)
 {
    //-- update sensor values and status [Start] -----
-   gps_sensor_data = GPS_Sensor_GetData();
    imu_sensor_data = IMU_Sensor_GetData();
-   tmp_sensor_data = TMP_Sensor_GetData();
    mgn_sensor_data = MGN_Sensor_GetData();
-   time_data = time_getTime();
+   sun_sensor_data = SUN_Sensor_GetData();
    ref_vector_data = Ref_Vectors_GetData();
    //-- update sensor values and status [End] -------
    
@@ -41,55 +51,204 @@ void CTRL_Control_Update(void)
    WahbaRot.w_m[2] = ref_vector_data.geomag_vec.Zm / ref_vector_data.geomag_vec.norm;
    
    /* Check if the sun sensor is available */
-   if (adcs_sensors.sun.sun_status == DEVICE_ENABLE)
+   if (sun_sensor_data.status == DEVICE_OK)
    {
       WahbaRot.sun_sensor_gain = 1;
-   } 
-   else if (adcs_sensors.sun.sun_status == DEVICE_DISABLE) 
-   {
-      /* Propagate the sun sensor vector */
-      WahbaRot.sun_sensor_gain = 0.1;
-      mulMatrVec(adcs_sensors.sun.sun_xyz, WahbaRot.RotM, WahbaRot.w_a);
    } 
    else 
    {
       /* Error in sun sensor */
-      adcs_sensors.sun.sun_xyz[0] = 0;
-      adcs_sensors.sun.sun_xyz[1] = 0;
-      adcs_sensors.sun.sun_xyz[2] = 0;
+      sun_sensor_data.sun_xyz[0] = 0;
+      sun_sensor_data.sun_xyz[1] = 0;
+      sun_sensor_data.sun_xyz[2] = 0;
       WahbaRot.sun_sensor_gain = 0;
    }
-   /* Check magneto-meter values according to norm of IGRF */
-   if (adcs_sensors.mgn.rm_norm > MAX_IGRF_NORM
-   || adcs_sensors.mgn.rm_norm < MIN_IGRF_NORM) 
-   {
-      adcs_sensors.mgn.rm_status = DEVICE_ERROR;
-      error_status_value = ERROR_SENSOR;
-   }
-   if (adcs_sensors.imu.xm_norm > MAX_IGRF_NORM
-   || adcs_sensors.imu.xm_norm < MIN_IGRF_NORM) 
-   {
-      adcs_sensors.mgn.rm_status = DEVICE_ERROR;
-      error_status_value = ERROR_SENSOR;
-   }
+   
+   float gyroscope[3] = { 0 };
    /* Check the magneto-meter sensor to run attitude algorithm */
-   if ((adcs_sensors.mgn.rm_status == DEVICE_NORMAL
-   && adcs_sensors.imu.xm_status == DEVICE_NORMAL)
-   || adcs_sensors.mgn.rm_status == DEVICE_NORMAL) 
+   if (mgn_sensor_data.status == DEVICE_OK)
    {
-      WahbaRotM(adcs_sensors.sun.sun_xyz, gyroscope,
-             adcs_sensors.mgn.rm_f, &WahbaRot);
-      WahbaRot.run_flag = true;
+      WahbaRotM( sun_sensor_data.sun_xyz, gyroscope,
+             (float*)mgn_sensor_data.mag_filtered, &WahbaRot);
+      WahbaRot.run_flag = 1;
    } 
-   else if (adcs_sensors.imu.xm_status == DEVICE_NORMAL) 
+   else if (imu_sensor_data.status == DEVICE_OK) 
    {
-      WahbaRotM(adcs_sensors.sun.sun_xyz, gyroscope,
-             adcs_sensors.imu.xm_f, &WahbaRot);
-      WahbaRot.run_flag = true;
+      WahbaRotM(sun_sensor_data.sun_xyz, gyroscope,
+             imu_sensor_data.xm_filtered, &WahbaRot);
+      WahbaRot.run_flag = 1;
    }
     
-   // update attitude control
+}
+
+void CTRL_Control_Attitude_Update(void)
+{
+   float angular_velocities[3] = { 0 };
+   /* Reset control signals */
+   magneto_torquer_handle.current_z = 0;
+   magneto_torquer_handle.current_y = 0;
+   control.Iz = 0;
+   control.Iy = 0;
+   control.sp_rpm = 0;
+   /* Choose the correct velocities */
+   if (WahbaRot.run_flag == 0)
+   {
+      angular_velocities[0] = imu_sensor_data.gyro_filtered[0];
+      angular_velocities[1] = imu_sensor_data.gyro_filtered[1];
+      angular_velocities[2] = imu_sensor_data.gyro_filtered[2];
+      control.sp_rpm = 0;
+   }
+   else 
+   {
+      angular_velocities[0] = WahbaRot.W[0];
+      angular_velocities[1] = WahbaRot.W[1];
+      angular_velocities[2] = WahbaRot.W[2];
+      spin_torquer_controller(angular_velocities[1], &control);
+   }
+   /* Run B-dot and spin torquer controller if the angular velocities are bigger than thresholds */
+   if (fabsf(angular_velocities[0]) > WX_THRES
+   || fabsf(angular_velocities[1]) > WY_THRES
+   || fabsf(angular_velocities[2]) > WZ_THRES) 
+   {
+      /* Check the magneto-meter sensor */
+      if (mgn_sensor_data.status == DEVICE_OK)
+      {
+         b_dot((float*)mgn_sensor_data.mag_filtered, (float*)mgn_sensor_data.prev_mag,
+                 mgn_sensor_data.rm_norm, &control);
+         /* Set the currents to magneto-torquers in mA*/
+         magneto_torquer_handle.current_z = (int8_t) (control.Iz * 1000);
+         magneto_torquer_handle.current_y = (int8_t) (control.Iy * 1000);
+      } 
+      else if (imu_sensor_data.status == DEVICE_OK)
+      {
+         b_dot(imu_sensor_data.xm_filtered, imu_sensor_data.xm_prev,
+                 imu_sensor_data.xm_norm, &control);
+         /* Set the currents to magneto-torquers in mA*/
+         magneto_torquer_handle.current_z = (int8_t) (control.Iz * 1000);
+         magneto_torquer_handle.current_y = (int8_t) (control.Iy * 1000);
+      }
+   /* If angular velocities are smaller than the thresholds then run pointing controller */
+   }
+   else
+   {
+      /* Run pointing controller if the sun sensor is available */
+      if (sun_sensor_data.status == DEVICE_OK
+      && WahbaRot.run_flag == 1
+      && mgn_sensor_data.status == DEVICE_OK)
+      {
+         /* Run pointing controller when the sun sensor is available */
+         pointing_controller((float*)mgn_sensor_data.mag_filtered, mgn_sensor_data.rm_norm, &WahbaRot, &control);
+         /* Set the currents to magneto-torquers in mA*/
+         magneto_torquer_handle.current_z = (int8_t) (control.Iz * 1000);
+         magneto_torquer_handle.current_y = (int8_t) (control.Iy * 1000);
+         b_dot((float*)mgn_sensor_data.mag_filtered, (float*)mgn_sensor_data.prev_mag, mgn_sensor_data.rm_norm, &control);
+         /* Set the currents to magneto-torquers in mA*/
+         magneto_torquer_handle.current_z += (int8_t) (control.Iz * 1000);
+         magneto_torquer_handle.current_y += (int8_t) (control.Iy * 1000);
+      }
+   }
+   /* Set spin torquer RPM */
+   spin_motor_handle.RPM = control.const_rmp + control.sp_rpm;
    
-   
-   
+   // Update actuators
+   Magneto_Torquer_SetHandler(magneto_torquer_handle);
+   Spin_Motor_SetHandler(spin_motor_handle);
+}
+
+static float rpm_in_prev = 0;
+static float rpm_out_prev = 0;
+static float rpm_sum = 0;
+
+void spin_torquer_controller(float w, adcs_control_t *control_struct) 
+ {
+   rpm_in_prev = rpm_sum;
+   rpm_out_prev = control_struct->sp_rpm;
+   /* Integration of RPM */
+   rpm_sum += (-(float) (control_struct->k_spin) * (float)0.001)
+         * (w * RAD2RPM / I_SPIN_TORQUER) * LOOP_TIME;
+   /* Check for saturation */
+   if (rpm_sum > SATURATION_RPM)
+   {
+      rpm_sum = SATURATION_RPM;
+   } 
+   else if (rpm_sum < -SATURATION_RPM)
+   {
+      rpm_sum = -SATURATION_RPM;
+   }
+   /* Filter the output of RPM */
+   control_struct->sp_rpm = rpm_sum - SPIN_TORQUER_FILTER_Z *
+                        rpm_in_prev + SPIN_TORQUER_FILTER_P * rpm_out_prev;
+   /* Check for saturation if output RPM */
+   if (control_struct->sp_rpm > SATURATION_RPM)
+   {
+      control_struct->sp_rpm = SATURATION_RPM;
+   }
+   else if (control_struct->sp_rpm < -SATURATION_RPM)
+   {
+      control_struct->sp_rpm = -SATURATION_RPM;
+   }
+}
+
+void b_dot(float b[3], float b_prev[3], float b_norm, adcs_control_t *control_struct)
+{
+   float b_dot_x, b_dot_y, b_dot_z = 0;
+
+   control_struct->b_dot_prev[0] = control_struct->b_dot[0];
+   control_struct->b_dot_prev[1] = control_struct->b_dot[1];
+   control_struct->b_dot_prev[2] = control_struct->b_dot[2];
+   /* Calculate B-dot */
+   control_struct->b_dot[0] = (b[0] - b_prev[0]) / LOOP_TIME;
+   control_struct->b_dot[1] = (b[1] - b_prev[1]) / LOOP_TIME;
+   control_struct->b_dot[2] = (b[2] - b_prev[2]) / LOOP_TIME;
+   /* Moving average for B-dot */
+   b_dot_x = BDOT_FILTER * control_struct->b_dot[0]
+      + (1 - BDOT_FILTER) * control_struct->b_dot_prev[0];
+   b_dot_y = BDOT_FILTER * control_struct->b_dot[1]
+      + (1 - BDOT_FILTER) * control_struct->b_dot_prev[1];
+   b_dot_z = BDOT_FILTER * control_struct->b_dot[2]
+      + (1 - BDOT_FILTER) * control_struct->b_dot_prev[2];
+   /* Calculate the currents of coils in A */
+   control_struct->Ix = -((float) (control_struct->k_bdot) * 0.1 / A_COIL) * b_dot_x
+      * (1 / b_norm);
+   control_struct->Iy = -((float) (control_struct->k_bdot) * 0.1 / A_COIL) * b_dot_y
+      * (1 / b_norm);
+   control_struct->Iz = -((float) (control_struct->k_bdot) * 0.1 / A_COIL) * b_dot_z
+      * (1 / b_norm);
+
+}
+        
+void pointing_controller(float b[3], float b_norm, WahbaRotMStruct *WStruct, adcs_control_t *control_struct)
+{
+   float m_w[3], m_q[3] = { 0 };
+   Quat4 sp_quat;
+   float sp_rotm[3][3], rotm[3][3] = { 0 };
+   float sp_euler[3] = { 0 };
+
+   /* Convert set points to quaternions */
+   sp_euler[0] = 0;
+   sp_euler[1] = (float) RAD(control_struct->sp_pitch);
+   sp_euler[2] = 0;
+   euler2rotm((float *) rotm, (const float *) sp_euler);
+   mulMatr(sp_rotm, rotm, WStruct->RotM);
+   rotmtx2quat((const float *)sp_rotm, &sp_quat);
+   /* Calculate control signal from angular velocities */
+   m_w[0] = -(float) control_struct->k_pointing[0] * 0.01
+         * (b[1] * WStruct->W[2] - b[2] * WStruct->W[1]);
+   m_w[1] = -(float) control_struct->k_pointing[0] * 0.01
+         * (b[0] * WStruct->W[2] - b[2] * WStruct->W[0]);
+   m_w[2] = -(float) control_struct->k_pointing[0] * 0.01
+         * (b[0] * WStruct->W[1] - b[1] * WStruct->W[0]);
+
+   /* Calculate control signal from pitch set point */
+   m_q[0] = -(float) control_struct->k_pointing[1] * 0.01
+         * (b[1] * sp_quat.z - b[2] * sp_quat.y);
+   m_q[1] = -(float) control_struct->k_pointing[1] * 0.01
+         * (b[0] * sp_quat.z - b[2] * sp_quat.x);
+   m_q[2] = -(float) control_struct->k_pointing[1] * 0.01
+         * (b[0] * sp_quat.y - b[1] * sp_quat.x);
+
+   /* Convert to current in A */
+   control_struct->Ix = (m_q[0] + m_w[0]) / b_norm;
+   control_struct->Iy = (m_q[1] + m_w[1]) / b_norm;
+   control_struct->Iz = (m_q[2] + m_w[2]) / b_norm;
 }

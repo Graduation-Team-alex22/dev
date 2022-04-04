@@ -1,8 +1,7 @@
 #ifndef MGN_DRIVER_H__
 #define	MGN_DRIVER_H__
 
-#include "adcs_actuators.h"
-
+#include "stdint.h"
 /* Set Up PWM Start up Duty-Cycle */
 #define MAGNETO_TORQUER_PERIOD      65535   // 1.282 KHz
 #define MAGNETO_TORQUER_RESISTANCE  60      // in Ohm two R in parallel 120Ohm
@@ -15,11 +14,12 @@ typedef struct {
     uint32_t duty_cycle_z;
     uint32_t duty_cycle_y;
 } magneto_handle_t;
-
+/*
 void magneto_torquer_init(magneto_handle_t *pMagneto_handle);
 void magneto_torquer_update(magneto_handle_t *pMagneto_handle);
 // void magneto_torquer_on(); same as magneto_torquer_update
 void magneto_torquer_off();
-
+*/
+void Magneto_Torquer_SetHandler(magneto_handle_t magneto_handler);
 
 #endif

@@ -1,4 +1,5 @@
 #include "common.h"
+#include "math.h"
 
 #define ERROR_CODE_NO_DOT 1
 
@@ -75,4 +76,14 @@ double str_to_float_nl(char* str, uint8_t* get_len)
 inline uint8_t is_digit(char c)
 {
 	return (c >= '0' && c <= '9');
+}
+
+inline __attribute((always_inline)) double vect_magnitude(xyz_t vect)
+{
+     return sqrt( vect.x*vect.x + vect.y*vect.y + vect.z*vect.z );
+}
+
+inline __attribute((always_inline)) double vect_magnitude_arr(double vect[])
+{
+   return sqrt( vect[0]*vect[0] + vect[1]*vect[1] + vect[2]*vect[2] );
 }

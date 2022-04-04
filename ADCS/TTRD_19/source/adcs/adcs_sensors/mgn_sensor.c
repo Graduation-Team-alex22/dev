@@ -13,12 +13,12 @@
 #define 	MGN_REG_DATA_YH				0x03
 #define 	MGN_REG_DATA_ZL				0x04
 #define 	MGN_REG_DATA_ZH				0x05
-#define 	MGN_REG_STATUS				0x06
+#define 	MGN_REG_STATUS	   			0x06
 #define 	MGN_REG_TMP_L					0x07
 #define 	MGN_REG_TMP_H					0x08
-#define 	MGN_REG_CONTROL1			0x09
-#define 	MGN_REG_CONTROL2			0x0A
-#define 	MGN_REG_SET_PERIOD		0x0B
+#define 	MGN_REG_CONTROL1	   		0x09
+#define 	MGN_REG_CONTROL2		   	0x0A
+#define 	MGN_REG_SET_PERIOD	   	0x0B
 
 /************* LOCAL VARIABLES ***************/
 static I2C_TypeDef* mgn_I2Cx_g;
@@ -67,6 +67,10 @@ uint8_t MGN_Sensor_Init(I2C_TypeDef* I2Cx, mgn_init_t* mgn_init)
 
 uint8_t MGN_Sensor_Update(void)
 {
+   // update device status
+   mgn_data_g.status = DEVICE_OK;
+   
+   
    uint8_t error_code, data[6] = {0};
 
    error_code =I2Cx_Recv_Bytes(mgn_I2Cx_g, MGN_I2C_ADD, MGN_REG_DATA_XL, data, 6, I2C_EVENT_WAIT);
@@ -76,14 +80,32 @@ uint8_t MGN_Sensor_Update(void)
    mgn_data_g.raw[0] = ((int16_t) data[1] << 8) | data[0] ;
    mgn_data_g.raw[1] = ((int16_t) data[3] << 8) | data[2] ;
    mgn_data_g.raw[2] = ((int16_t) data[5] << 8) | data[4] ;
-
+   
+   // store mag values before update
+   mgn_data_g.prev_mag[0] = mgn_data_g.mag[0];
+   mgn_data_g.prev_mag[1] = mgn_data_g.mag[1];
+   mgn_data_g.prev_mag[2] = mgn_data_g.mag[2];   
+   
    // calculate value in Gauss
    mgn_data_g.mag[0] = (float)mgn_data_g.raw[0] * mgn_range_g /32768;
    mgn_data_g.mag[1] = (float)mgn_data_g.raw[1] * mgn_range_g /32768;
    mgn_data_g.mag[2] = (float)mgn_data_g.raw[2] * mgn_range_g /32768;
-
-   // update device status
-   mgn_data_g.status = DEVICE_OK;
+   
+   // filter mag readings
+   mgn_data_g.mag_filtered[0] = A_MGN * mgn_data_g.mag[0] 
+                              + (1 - A_MGN) * mgn_data_g.prev_mag[0];
+   mgn_data_g.mag_filtered[1] = A_MGN * mgn_data_g.mag[1] 
+                              + (1 - A_MGN) * mgn_data_g.prev_mag[1];
+   mgn_data_g.mag_filtered[2] = A_MGN * mgn_data_g.mag[2] 
+                              + (1 - A_MGN) * mgn_data_g.prev_mag[2];                           
+   
+   // calculate the magnitude of the vector
+   mgn_data_g.rm_norm = vect_magnitude_arr(mgn_data_g.mag);
+   if (mgn_data_g.rm_norm > MAX_IGRF_NORM
+   || mgn_data_g.rm_norm  < MIN_IGRF_NORM) 
+   {
+      mgn_data_g.status = READING_ERROR;
+   }
    
    return 0;
 }

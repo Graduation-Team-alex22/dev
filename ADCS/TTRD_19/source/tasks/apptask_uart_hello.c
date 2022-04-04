@@ -3,7 +3,7 @@
 #include "stdio.h"
 
 //#define    TEST_TIME
-#define     TEST_IMU
+//#define     TEST_IMU
 //#define      TEST_MGN
 //#define			I2C_SCANNER
 //#define    TEST_GPS

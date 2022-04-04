@@ -16,7 +16,7 @@
         <TargetCommonOption>
           <Device>STM32F446RETx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F4xx_DFP.2.16.0</PackID>
+          <PackID>Keil.STM32F4xx_DFP.2.15.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x08000000,0x00080000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -958,6 +958,11 @@
               <FileType>1</FileType>
               <FilePath>..\source\adcs\adcs_sensors\tmp_sensor.c</FilePath>
             </File>
+            <File>
+              <FileName>sun_sensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\adcs_sensors\sun_sensor.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1029,14 +1034,24 @@
               <FilePath>..\source\adcs\adcs_actuators\adcs_actuators.h</FilePath>
             </File>
             <File>
-              <FileName>mgn_driver.h</FileName>
+              <FileName>mgn_torquer_driver.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\source\adcs\adcs_actuators\mgn_driver.h</FilePath>
+              <FilePath>..\source\adcs\adcs_actuators\mgn_torquer_driver.h</FilePath>
             </File>
             <File>
-              <FileName>spin_driver.h</FileName>
+              <FileName>spin_motor_driver.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\source\adcs\adcs_actuators\spin_driver.h</FilePath>
+              <FilePath>..\source\adcs\adcs_actuators\spin_motor_driver.h</FilePath>
+            </File>
+            <File>
+              <FileName>mgn_torquer_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\adcs_actuators\mgn_torquer_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>spin_motor_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\adcs_actuators\spin_motor_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1092,6 +1107,26 @@
               <FileName>WahbaRotM.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\adcs\adcs_controller\WahbaRotM.c</FilePath>
+            </File>
+            <File>
+              <FileName>jacobiTS.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\adcs_controller\jacobiTS.c</FilePath>
+            </File>
+            <File>
+              <FileName>sgp4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\adcs_controller\sgp4.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>adcs_config</GroupName>
+          <Files>
+            <File>
+              <FileName>config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\adcs\config.h</FilePath>
             </File>
           </Files>
         </Group>

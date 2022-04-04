@@ -33,19 +33,10 @@ typedef struct {
 
 void CTRL_Ref_Sun_Update(double julian_date);
 
-//extern geomag_vector_t igrf_vector;
-void geomag(geomag_vector_t *pGeomag_vector);
-
-
-//extern sun_vector_t sun_vector;
-/*
- *	Gets the position victor of the sun
- *	in ECI (Earth Centred Inertial) frame
- *	of reference based on the time in ( Julian
- *	day) format
- */
-void update_sun(sun_vector_t *pSun_vector);
+void CTRL_Ref_Geomag_Update(void);
 
 ref_vectors_t Ref_Vectors_GetData(void);
+
+
 
 #endif

@@ -26,7 +26,7 @@ Date:		2022-03-18
 #include "stdint.h"
 #include "driver_i2c.h"
 #include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
-
+#include "../config.h"
 #include "../services_utilities/common.h"
 
 /************* PUBLIC MACROS ***************/
@@ -72,8 +72,11 @@ typedef struct {
 } mgn_init_t;
 
 typedef struct {
-   int16_t raw[3];
-   float 	mag[3];                     // readings in Gauss 
+   int16_t raw[3];               
+   double rm_norm;                     // Magnitude of the magnetic vector in gauss
+   double mag[3];                      // readings in Gauss 
+   double prev_mag[3];                 // previous readings
+   double mag_filtered[3];             // low pass filtering 
    device_status_e status;
 } mgn_sensor_t;
 

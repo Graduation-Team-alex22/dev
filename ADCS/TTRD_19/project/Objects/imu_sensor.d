@@ -44,3 +44,4 @@
 .\objects\imu_sensor.o: ..\source\hsi_library\../support_functions/../main/project.h
 .\objects\imu_sensor.o: ..\source\hsi_library\../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\imu_sensor.o: ..\source\adcs\adcs_sensors\../services_utilities/common.h
+.\objects\imu_sensor.o: ..\source\adcs\adcs_sensors\../config.h

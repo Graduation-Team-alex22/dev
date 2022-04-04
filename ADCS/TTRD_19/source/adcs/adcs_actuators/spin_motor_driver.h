@@ -1,7 +1,7 @@
 #ifndef SPIN_DRIVER_H__
 #define	SPIN_DRIVER_H__
 
-#include "adcs_actuators.h"
+#include "stdint.h"
 
 /* Spin Torquer */
 #define SPIN_ID         0x03
@@ -29,5 +29,7 @@ typedef struct {
 spin_status_e spin_torquer_init(spin_handle_t *pSpin_handle);
 spin_status_e spin_state_get(spin_handle_t *pSpin_handle);
 spin_status_e spin_torquer_update(spin_handle_t *pSpin_handle);
+
+void Spin_Motor_SetHandler(spin_handle_t spin_handler);
 
 #endif

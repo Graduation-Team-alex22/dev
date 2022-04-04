@@ -7,7 +7,7 @@
 #include "arm_math.h"
 #include "../services_utilities/common.h"
 
-#define TOL 1e-6
+#define TOL 1e-6f
 
 static inline float arm_sqrt(float in) {
     float out;
@@ -249,7 +249,7 @@ static inline void dRpropagat(real (*Rbe)[3], real (*R)[3], real *wb, real dt) {
     mulMatrTrVec(w, R, wb); // w body to earth;
 
     norm = normV(w);
-    if (norm < 1e-6) {
+    if (norm < (real)1e-6) {
         for (int i = 0; i < 3; i++) {
             dR[0][i] = 0;
             dR[1][i] = 0;
@@ -305,7 +305,7 @@ static inline void rotmtx2quat(const float *rotmtx, Quat4 *q) {
     const float tr = rotmtx[0] + rotmtx[4] + rotmtx[8];
     if (tr > 1e-6f) {
         sqtrp1 = sqrtv(tr + 1.0f);
-        sqtrp1x2 = 2.0 * sqtrp1;
+        sqtrp1x2 = (float)2.0 * sqtrp1;
 
         q->w = 0.5f * sqtrp1;
         q->x = (rotmtx[7] - rotmtx[5]) / sqtrp1x2;

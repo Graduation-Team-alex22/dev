@@ -3,18 +3,16 @@
 
 #include "stdint.h"
 
-typedef enum {
-   DEVICE_OK = 0,
-   DEVICE_REINIT,       // needs to be re initialized
-   DEVICE_BROKEN        // Not as broken as me tho :)
-} device_status_e;
+#ifndef PI
+#define PI  3.141592654f
 
-#define PI      3.141592654
-#define TWOPI   6.283185308
-#define HALFPI  1.570796327
-#define DEG2RAD 0.017453293
-#define RAD2DEG 57.295779506
-#define RAD2RPM 60.0/(2*PI)
+#endif
+
+#define TWOPI   6.283185308f
+#define HALFPI  1.570796327f
+#define DEG2RAD 0.017453293f
+#define RAD2DEG 57.295779506f
+#define RAD2RPM 60.0f/(2*PI)
 
 #define GEO_NAN log(-1.0)
 
@@ -26,7 +24,7 @@ typedef enum {
 #define LEAP_SECOND     17                                  // Leap seconds of 2016
 #define JD1900          2415020.5                           // Julian day number for Jan 1st, 00:00 hours 1900
 
-#define EQRAD   6378.137                   // Earth radius at equator, km
+#define EQRAD   6378.137f                   // Earth radius at equator, km
 #define LATCON  (1.0/298.257)               // Latitude radius constant
 #define ECON    ((1.0-LATCON)*(1.0-LATCON))
 
@@ -46,9 +44,25 @@ typedef enum {
 #define MASS    2.3         // Mass of cubesat in Kg
 #define AREA    0.1*0.1     // Cross-sectional effective Area m^2
 
+typedef enum {
+   DEVICE_OK = 0,
+   READING_ERROR,
+   DEVICE_REINIT,       // needs to be re initialized
+   DEVICE_BROKEN        // Not as broken as me tho :)
+   
+} device_status_e;
+
+typedef struct {
+   double x;
+   double y;
+   double z;
+} xyz_t;
+
 double str_to_float(char* str, uint8_t length);
 double str_to_float_nl(char* str, uint8_t* get_len);
 inline uint8_t is_digit(char c);
+double vect_magnitude_xyz(xyz_t vect);
+double vect_magnitude_arr(double vect[]);
 
 
 #endif

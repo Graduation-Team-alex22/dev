@@ -3,183 +3,142 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: µVision V5.36.0.0
+IDE-Version: µVision V5.35.0.0
 Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Alpha Arslan, asd, LIC=----
+License Information: Ali Elfakharany, student, LIC=----
  
 Tool Versions:
-Toolchain:       MDK-Lite  Version: 5.36.0.0
+Toolchain:       MDK-Lite  Version: 5.35.0.2
 Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 7 (build 960)
 Assembler:       Armasm.exe V5.06 update 7 (build 960)
 Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
 Library Manager: ArmAr.exe V5.06 update 7 (build 960)
 Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
-CPU DLL:         SARMCM3.DLL V5.36.0.0
+CPU DLL:         SARMCM3.DLL V5.35.0.2
 Dialog DLL:      DCM.DLL V1.17.3.0
 Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
 Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
-D:\_g_project\dev\ADCS\TTRD_19\project\ttrd_eres02.uvprojx
-Project File Date:  04/04/2022
+E:\Self_learning_courses\Graduation project repo\dev\ADCS\TTRD_19\project\ttrd_eres02.uvprojx
+Project File Date:  04/05/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'STM32F446RE'
-compiling main.c...
-..\source\main\main.c(62): warning:  #111-D: statement is unreachable
-     return 1;
-..\source\main\main.c: 1 warning, 0 errors
-compiling ttrd2-05a-t0401a-v001a_heartbeat_sw_task.c...
-compiling ttrd2-05a-t0401a-v001a_adc_task.c...
-compiling ttrd2-05a-t0401a-v001a_iwdt_task.c...
-compiling project.c...
-compiling ttrd2-05a-t0401a-v001a_timeout_t3.c...
-compiling ttrd2-05a-t0401a-v001a_switch_task.c...
-compiling apptask_uart_hello.c...
-..\source\tasks\apptask_uart_hello.c(80): warning:  #223-D: function "IMU_Init" declared implicitly
-  	uint8_t error_code = IMU_Init(I2C1);
-..\source\tasks\apptask_uart_hello.c(87): warning:  #223-D: function "IMU_Get_Data" declared implicitly
-  	imu_sensor_t t = IMU_Get_Data();
-..\source\tasks\apptask_uart_hello.c(87): error:  #144: a value of type "int" cannot be used to initialize an entity of type "imu_sensor_t"
-  	imu_sensor_t t = IMU_Get_Data();
-..\source\tasks\apptask_uart_hello.c(234): warning:  #223-D: function "IMU_Update" declared implicitly
-  	uint8_t error_code = IMU_Update(I2C1);
-..\source\tasks\apptask_uart_hello.c(240): warning:  #223-D: function "IMU_Get_Data" declared implicitly
-  	imu_sensor_t t = IMU_Get_Data();
-..\source\tasks\apptask_uart_hello.c(240): error:  #144: a value of type "int" cannot be used to initialize an entity of type "imu_sensor_t"
-  	imu_sensor_t t = IMU_Get_Data();
-..\source\tasks\apptask_uart_hello.c: 4 warnings, 2 errors
-compiling ttrd2-19a-t0401a-v001b_processor_task.c...
-compiling ttrd2-05a-t0401a-v001a_uart2_buff_o_task.c...
-compiling app_sensor_tmp_task.c...
-compiling app_sensor_imu_task.c...
-..\source\tasks\app_sensor_imu_task.c(48): warning:  #223-D: function "IMU_Init" declared implicitly
-     uint8_t error_code = IMU_Init(I2C1);
-..\source\tasks\app_sensor_imu_task.c(94): warning:  #223-D: function "IMU_Update" declared implicitly
-     uint8_t error_code = IMU_Update(I2C1);
-..\source\tasks\app_sensor_imu_task.c: 2 warnings, 0 errors
-compiling app_sensor_gps_task.c...
-compiling app_sensor_mgn_task.c...
-compiling ttrd2-04a-t0401a-v001a_pfc_reporting.c...
-compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.c...
-compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.c...
-compiling ttrd2-19a-t0401a-v001a_assert_failed.c...
-compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.c...
-compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.c...
-compiling ttrd2-19a-t0401a-v001b_processor.c...
-compiling ttrd2-18a-t0401a-v001a_monittor_i.c...
-compiling ttrd2-19a-t0401a-v001c_scheduler.c...
-compiling ttrd2-19a-t0401a-v001b_run_time_tests.c...
-compiling mgn_sensor.c...
-compiling ttrd2-19a-t0401a-v001b_predicttor_i.c...
-compiling driver_i2c.c...
-compiling imu_sensor.c...
-compiling tmp_sensor.c...
-compiling controller.c...
-..\source\adcs\adcs_controller\sgp4.h(47): warning:  #1295-D: Deprecated declaration init_satpos_xyz - give arg types
-  void init_satpos_xyz();
-..\source\adcs\adcs_controller\sgp4.h(56): warning:  #1295-D: Deprecated declaration init_tle - give arg types
-  void init_tle();
-..\source\adcs\adcs_controller\sgp4.h(57): warning:  #1295-D: Deprecated declaration update_sgp4 - give arg types
-  void update_sgp4();
-..\source\adcs\adcs_controller\wahbaRotM.h(252): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      if (norm < 1e-6) {
-..\source\adcs\adcs_controller\wahbaRotM.h(308): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          sqtrp1x2 = 2.0 * sqtrp1;
-..\source\adcs\adcs_controller\../adcs_sensors/gps_sensor.h(33): error:  #256: invalid redeclaration of type name "xyz_t"  (declared at line 24 of "..\source\adcs\adcs_controller\frame.h")
-  } xyz_t;
-..\source\adcs\adcs_controller\controller.c(44): error:  #20: identifier "adcs_sensors" is undefined
-     if (adcs_sensors.sun.sun_status == DEVICE_ENABLE)
-..\source\adcs\adcs_controller\controller.c(44): error:  #20: identifier "DEVICE_ENABLE" is undefined
-     if (adcs_sensors.sun.sun_status == DEVICE_ENABLE)
-..\source\adcs\adcs_controller\controller.c(48): error:  #20: identifier "DEVICE_DISABLE" is undefined
-     else if (adcs_sensors.sun.sun_status == DEVICE_DISABLE) 
-..\source\adcs\adcs_controller\controller.c(63): error:  #20: identifier "adcs_sensors" is undefined
-     if (adcs_sensors.mgn.rm_norm > MAX_IGRF_NORM
-..\source\adcs\adcs_controller\controller.c(63): error:  #20: identifier "MAX_IGRF_NORM" is undefined
-     if (adcs_sensors.mgn.rm_norm > MAX_IGRF_NORM
-..\source\adcs\adcs_controller\controller.c(64): error:  #20: identifier "MIN_IGRF_NORM" is undefined
-     || adcs_sensors.mgn.rm_norm < MIN_IGRF_NORM) 
-..\source\adcs\adcs_controller\controller.c(66): error:  #20: identifier "DEVICE_ERROR" is undefined
-        adcs_sensors.mgn.rm_status = DEVICE_ERROR;
-..\source\adcs\adcs_controller\controller.c(67): error:  #20: identifier "error_status_value" is undefined
-        error_status_value = ERROR_SENSOR;
-..\source\adcs\adcs_controller\controller.c(67): error:  #20: identifier "ERROR_SENSOR" is undefined
-        error_status_value = ERROR_SENSOR;
-..\source\adcs\adcs_controller\controller.c(69): error:  #20: identifier "adcs_sensors" is undefined
-     if (adcs_sensors.imu.xm_norm > MAX_IGRF_NORM
-..\source\adcs\adcs_controller\controller.c(69): error:  #20: identifier "MAX_IGRF_NORM" is undefined
-     if (adcs_sensors.imu.xm_norm > MAX_IGRF_NORM
-..\source\adcs\adcs_controller\controller.c(70): error:  #20: identifier "MIN_IGRF_NORM" is undefined
-     || adcs_sensors.imu.xm_norm < MIN_IGRF_NORM) 
-..\source\adcs\adcs_controller\controller.c(72): error:  #20: identifier "DEVICE_ERROR" is undefined
-        adcs_sensors.mgn.rm_status = DEVICE_ERROR;
-..\source\adcs\adcs_controller\controller.c(73): error:  #20: identifier "error_status_value" is undefined
-        error_status_value = ERROR_SENSOR;
-..\source\adcs\adcs_controller\controller.c(73): error:  #20: identifier "ERROR_SENSOR" is undefined
-        error_status_value = ERROR_SENSOR;
-..\source\adcs\adcs_controller\controller.c(76): error:  #20: identifier "adcs_sensors" is undefined
-     if ((adcs_sensors.mgn.rm_status == DEVICE_NORMAL
-..\source\adcs\adcs_controller\controller.c(76): error:  #20: identifier "DEVICE_NORMAL" is undefined
-     if ((adcs_sensors.mgn.rm_status == DEVICE_NORMAL
-..\source\adcs\adcs_controller\controller.c(80): error:  #20: identifier "gyroscope" is undefined
-        WahbaRotM(adcs_sensors.sun.sun_xyz, gyroscope,
-..\source\adcs\adcs_controller\controller.c(82): error:  #20: identifier "true" is undefined
-        WahbaRot.run_flag = true;
-..\source\adcs\adcs_controller\controller.c(86): error:  #20: identifier "gyroscope" is undefined
-        WahbaRotM(adcs_sensors.sun.sun_xyz, gyroscope,
-..\source\adcs\adcs_controller\controller.c(88): error:  #20: identifier "true" is undefined
-        WahbaRot.run_flag = true;
-..\source\adcs\adcs_controller\controller.c(6): warning:  #550-D: variable "gps_sensor_data"  was set but never used
-  static gps_sensor_t gps_sensor_data;
-..\source\adcs\adcs_controller\controller.c(7): warning:  #550-D: variable "imu_sensor_data"  was set but never used
-  static imu_sensor_t imu_sensor_data;
-..\source\adcs\adcs_controller\controller.c(8): warning:  #550-D: variable "tmp_sensor_data"  was set but never used
-  static tmp_sensor_t tmp_sensor_data;
-..\source\adcs\adcs_controller\controller.c(9): warning:  #550-D: variable "mgn_sensor_data"  was set but never used
-  static mgn_sensor_t mgn_sensor_data;
-..\source\adcs\adcs_controller\controller.c(10): warning:  #550-D: variable "time_data"  was set but never used
-  static time_t time_data;
-..\source\adcs\adcs_controller\controller.c: 10 warnings, 22 errors
-compiling WahbaRotM.c...
-..\source\adcs\adcs_controller\../services_utilities/common.h(12): warning:  #47-D: incompatible redefinition of macro "PI"  (declared at line 319 of "..\source\hsi_library\arm_math.h")
-  #define PI      3.141592654
-..\source\adcs\adcs_controller\WahbaRotM.h(252): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      if (norm < 1e-6) {
-..\source\adcs\adcs_controller\WahbaRotM.h(308): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          sqtrp1x2 = 2.0 * sqtrp1;
-..\source\adcs\adcs_controller\WahbaRotM.c(124): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      tr = ((WStruct->dR[0][0] + WStruct->dR[1][1] + WStruct->dR[2][2]) - 1.0) / 2.0;
-..\source\adcs\adcs_controller\WahbaRotM.c(128): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      if (fabsv(tmp) < TOL) {
-..\source\adcs\adcs_controller\WahbaRotM.c(129): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          tmp = 0.5 / dt;  // x/sin(x)|x->0
-..\source\adcs\adcs_controller\WahbaRotM.c(131): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          tmp = 0.5 / dt * tmp / sinv(tmp);
-..\source\adcs\adcs_controller\WahbaRotM.c(56): warning:  #550-D: variable "g"  was set but never used
-      static float a, g, ga, gm, m, A[3][3], dt;
-..\source\adcs\adcs_controller\WahbaRotM.c(64): warning:  #177-D: variable "AccErr"  was declared but never referenced
-      static float AccErr, *w_a, *w_g, *w_m, *g_va, *g_vm; //,*g_vg;
-..\source\adcs\adcs_controller\WahbaRotM.c(64): warning:  #550-D: variable "w_g"  was set but never used
-      static float AccErr, *w_a, *w_g, *w_m, *g_va, *g_vm; //,*g_vg;
-..\source\adcs\adcs_controller\WahbaRotM.c: 10 warnings, 0 errors
-".\Objects\TTRD-ERES2.axf" - 24 Error(s), 27 Warning(s).
+compiling sgp4.c...
+..\source\adcs\adcs_controller\sgp4.c(275): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  static const real a3ovk2 = (real) (-XJ3 / CK2 * (AE * AE * AE));
+..\source\adcs\adcs_controller\sgp4.c(739): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      if (eo < (real) 0.0 || eo > ECC_LIMIT_HIGH) {
+..\source\adcs\adcs_controller\sgp4.c(744): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      if (xno < 0.035 * TWOPI / XMNPDA || xno > 18.0 * TWOPI / XMNPDA) {
+..\source\adcs\adcs_controller\sgp4.c(744): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      if (xno < 0.035 * TWOPI / XMNPDA || xno > 18.0 * TWOPI / XMNPDA) {
+..\source\adcs\adcs_controller\sgp4.c(777): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      temp0 = (real) (1.5 * CK2) * x3thm1 / (betao * betao2);
+..\source\adcs\adcs_controller\sgp4.c(777): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      temp0 = (real) (1.5 * CK2) * x3thm1 / (betao * betao2);
+..\source\adcs\adcs_controller\sgp4.c(779): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      a0 = a1 * (1.0 - del1 * (1.0 / 3.0 + del1 * (1.0 + del1 * 134.0 / 81.0)));
+..\source\adcs\adcs_controller\sgp4.c(781): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      xnodp = xno / (1.0 + del0);
+..\source\adcs\adcs_controller\sgp4.c(782): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      aodp = (real) (a0 / (1.0 - del0));
+..\source\adcs\adcs_controller\sgp4.c(783): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      perigee = (aodp * (1.0 - eo) - AE) * XKMPER;
+..\source\adcs\adcs_controller\sgp4.c(784): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      apogee = (aodp * (1.0 + eo) - AE) * XKMPER;
+..\source\adcs\adcs_controller\sgp4.c(785): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      period = (TWOPI * 1440.0 / XMNPDA) / xnodp;
+..\source\adcs\adcs_controller\sgp4.c(819): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          qoms24 = POW4((real) ((120.0 - s4) * (AE / XKMPER)));
+..\source\adcs\adcs_controller\sgp4.c(822): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          s4 = KS;
+..\source\adcs\adcs_controller\sgp4.c(836): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+                 + (real) (0.75 * CK2) * tsi / psisq * x3thm1 * 
+..\source\adcs\adcs_controller\sgp4.c(836): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+                 + (real) (0.75 * CK2) * tsi / psisq * x3thm1 * 
+..\source\adcs\adcs_controller\sgp4.c(842): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+           + eo * ((real) 0.5 + (real) 2.0 * etasq) - (real) (2.0 * CK2) * tsi / (aodp * psisq)
+..\source\adcs\adcs_controller\sgp4.c(842): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+           + eo * ((real) 0.5 + (real) 2.0 * etasq) - (real) (2.0 * CK2) * tsi / (aodp * psisq)
+..\source\adcs\adcs_controller\sgp4.c(861): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      temp1 = (real) (3.0 * CK2) * pinvsq * (real) xnodp;
+..\source\adcs\adcs_controller\sgp4.c(861): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      temp1 = (real) (3.0 * CK2) * pinvsq * (real) xnodp;
+..\source\adcs\adcs_controller\sgp4.c(862): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      temp2 = temp1 * CK2 * pinvsq;
+..\source\adcs\adcs_controller\sgp4.c(863): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      temp3 = (real) (1.25 * CK4) * pinvsq * pinvsq * (real) xnodp;
+..\source\adcs\adcs_controller\sgp4.c(865): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      xmdot = xnodp + (0.5 * temp1 * betao * x3thm1 + (real) 0.0625 * temp2 * betao
+..\source\adcs\adcs_controller\sgp4.c(700): warning:  #550-D: variable "epoch"  was set but never used
+      LOCAL_DOUBLE a0, a1, epoch;
+..\source\adcs\adcs_controller\sgp4.c(985): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+              kep->rfdotk = aodp * xnodp * (XKMPER / AE * XMNPDA / 86400.0); /* For km/sec */
+..\source\adcs\adcs_controller\sgp4.c(1028): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      } else if (e > ECC_LIMIT_HIGH) {
+..\source\adcs\adcs_controller\sgp4.c(1029): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          e = ECC_LIMIT_HIGH;
+..\source\adcs\adcs_controller\sgp4.c(1075): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          df = 1.0 - ecosE;
+..\source\adcs\adcs_controller\sgp4.c(1080): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          if (ii == 0 && FABS(nr) > 1.25 * maxnr)
+..\source\adcs\adcs_controller\sgp4.c(1085): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+              nr = f / (df + 0.5 * esinE * nr); /* f/(df - 0.5*d2f*f/df) */
+..\source\adcs\adcs_controller\sgp4.c(1106): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      temp1 = CK2 * temp0;
+..\source\adcs\adcs_controller\sgp4.c(1136): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+                  * (XKMPER / AE * XMNPDA / 86400.0); /* Into km/sec */
+..\source\adcs\adcs_controller\sgp4.c(1140): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+                  * (XKMPER / AE * XMNPDA / 86400.0);
+..\source\adcs\adcs_controller\sgp4.c(1449): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      else if (fabs(nu) < 168.0 * DEG2RAD) {
+..\source\adcs\adcs_controller\sgp4.c(1455): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          *m = fmod(*m, 2.0 * PI);
+..\source\adcs\adcs_controller\sgp4.c(1457): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+              *m = *m + 2.0 * PI;
+..\source\adcs\adcs_controller\sgp4.c(1458): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          *e0 = fmod(*e0, 2.0 * PI);
+..\source\adcs\adcs_controller\sgp4.c(66): warning:  #177-D: variable "upsat_tle"  was declared but never referenced
+  static orbit_t upsat_tle, temp_tle;
+..\source\adcs\adcs_controller\sgp4.c(66): warning:  #177-D: variable "temp_tle"  was declared but never referenced
+  static orbit_t upsat_tle, temp_tle;
+..\source\adcs\adcs_controller\sgp4.c(67): warning:  #177-D: variable "tle_string"  was declared but never referenced
+  static uint8_t tle_string[TLE_SIZE];
+..\source\adcs\adcs_controller\sgp4.c(68): warning:  #177-D: variable "p_eci"  was declared but never referenced
+  static xyz_t p_eci, v_eci;
+..\source\adcs\adcs_controller\sgp4.c(68): warning:  #177-D: variable "v_eci"  was declared but never referenced
+  static xyz_t p_eci, v_eci;
+..\source\adcs\adcs_controller\sgp4.c(162): warning:  #177-D: function "DCUBE"  was declared but never referenced
+  static INLINE double DCUBE(double a) {
+..\source\adcs\adcs_controller\sgp4.c(168): warning:  #177-D: function "DPOW4"  was declared but never referenced
+  static INLINE double DPOW4(double a) {
+..\source\adcs\adcs_controller\sgp4.c(299): warning:  #550-D: variable "Isat"  was set but never used
+  static uint32_t Isat = 0; /* 16-bit compilers need 'long' integer for higher space catalogue numbers. */
+..\source\adcs\adcs_controller\sgp4.c(302): warning:  #177-D: variable "Icount"  was declared but never referenced
+  static uint32_t Icount = 0;
+..\source\adcs\adcs_controller\sgp4.c(303): warning:  #177-D: variable "MaxNR"  was declared but never referenced
+  static uint8_t MaxNR = 0;
+..\source\adcs\adcs_controller\sgp4.c: 47 warnings, 0 errors
+linking...
+Program Size: Code=30560 RO-data=500 RW-data=1368 ZI-data=5920  
+".\Objects\TTRD-ERES2.axf" - 0 Error(s), 47 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: Keil
-                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.16.0.pack
-                Keil.STM32F4xx_DFP.2.16.0
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.15.0.pack
+                Keil.STM32F4xx_DFP.2.15.0
                 STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\bluph\AppData\Local\Arm\Packs\.Download\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+  C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Target not created.
-Build Time Elapsed:  00:00:08
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

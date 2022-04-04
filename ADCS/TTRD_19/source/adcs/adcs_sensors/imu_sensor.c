@@ -37,7 +37,6 @@
 
 /***************** PRIVATE VARIABLES *********************/
 static imu_sensor_t imu_sensor_data;
-static enum {STAGE_1, STAGE_2, STAGE_3} update_stage_counter = STAGE_1;
 
 /***************** PRIVATE FUNCTIONS *********************/
 uint8_t  IMU_Wakeup(I2C_TypeDef* I2Cx);
@@ -81,68 +80,77 @@ uint8_t IMU_Sensor_Init(I2C_TypeDef* I2Cx)
 
 uint8_t IMU_Sensor_Update(I2C_TypeDef* I2Cx)
 {
+   imu_sensor_data.status = DEVICE_OK;
+   
    uint8_t error_code;
    uint8_t data[8];
+   
+   /**************** Read Accel ****************/
+   error_code = I2Cx_Recv_Bytes(I2Cx, IMU_I2C_ADD, IMU_REG_ACCEL_DATA, data, 6, I2C_EVENT_WAIT);
+   if(error_code){ return error_code;}
 
-   switch(update_stage_counter)
+   imu_sensor_data.Ax_Raw = ((int16_t) data[0] << 8) | data[1];
+   imu_sensor_data.Ax = (float)imu_sensor_data.Ax_Raw * imu_sensor_data.AMult;
+   imu_sensor_data.Ay_Raw = ((int16_t) data[2] << 8) | data[3];
+   imu_sensor_data.Ay = (float)imu_sensor_data.Ay_Raw * imu_sensor_data.AMult;
+   imu_sensor_data.Az_Raw = ((int16_t) data[4] << 8) | data[5];
+   imu_sensor_data.Az = (float)imu_sensor_data.Az_Raw * imu_sensor_data.AMult;
+  
+   /***************** Read Gyro ****************/
+   error_code = I2Cx_Recv_Bytes(I2Cx, IMU_I2C_ADD, IMU_REG_GYRO_DATA, data, 6, I2C_EVENT_WAIT);
+   if(error_code){ return error_code;}
+
+   // store previous gyro readings
+   imu_sensor_data.gyro_prev[0] = imu_sensor_data.Gx;
+   imu_sensor_data.gyro_prev[1] = imu_sensor_data.Gy;
+   imu_sensor_data.gyro_prev[2] = imu_sensor_data.Gz;
+   
+   imu_sensor_data.Gx_Raw = ((int16_t) data[0] << 8) | data[1];
+   imu_sensor_data.Gx = (float)imu_sensor_data.Gx_Raw * imu_sensor_data.GMult;
+   imu_sensor_data.Gy_Raw = ((int16_t) data[2] << 8) | data[3];
+   imu_sensor_data.Gy = (float)imu_sensor_data.Gy_Raw * imu_sensor_data.GMult;
+   imu_sensor_data.Gz_Raw = ((int16_t) data[4] << 8) | data[5];
+   imu_sensor_data.Gz = (float)imu_sensor_data.Gz_Raw * imu_sensor_data.GMult;
+   
+   // calculate filtered gyro values 
+   imu_sensor_data.gyro_filtered[0] = A_GYRO * imu_sensor_data.Gx + (1 - A_GYRO) * imu_sensor_data.gyro_prev[0];
+   imu_sensor_data.gyro_filtered[1] = A_GYRO * imu_sensor_data.Gy + (1 - A_GYRO) * imu_sensor_data.gyro_prev[1];
+   imu_sensor_data.gyro_filtered[2] = A_GYRO * imu_sensor_data.Gz + (1 - A_GYRO) * imu_sensor_data.gyro_prev[2];
+   
+   /***************** Read Mag *****************/
+   error_code = I2Cx_Recv_Bytes(I2Cx, IMU_AKM_ADD, IMU_REG_MAG_ST1, data, 8, I2C_EVENT_WAIT);
+   if(error_code){ return error_code;}
+   
+   // store previous mgn readings
+   imu_sensor_data.xm_prev[0] = imu_sensor_data.Mx;
+   imu_sensor_data.xm_prev[1] = imu_sensor_data.My;
+   imu_sensor_data.xm_prev[2] = imu_sensor_data.Mz;
+   
+   // check on data ready flag and check for magnetic overflow
+   if((data[0] & 0x01) && !(data[7] & 0x08) )
    {
-   case STAGE_1:
-      update_stage_counter = STAGE_2 ;
-   
-      /**************** Read Accel ****************/
-      error_code = I2Cx_Recv_Bytes(I2Cx, IMU_I2C_ADD, IMU_REG_ACCEL_DATA, data, 6, I2C_EVENT_WAIT);
-      if(error_code){ return error_code;}
-
-      imu_sensor_data.Ax_Raw = ((int16_t) data[0] << 8) | data[1];
-      imu_sensor_data.Ax = (float)imu_sensor_data.Ax_Raw * imu_sensor_data.AMult;
-      imu_sensor_data.Ay_Raw = ((int16_t) data[2] << 8) | data[3];
-      imu_sensor_data.Ay = (float)imu_sensor_data.Ay_Raw * imu_sensor_data.AMult;
-      imu_sensor_data.Az_Raw = ((int16_t) data[4] << 8) | data[5];
-      imu_sensor_data.Az = (float)imu_sensor_data.Az_Raw * imu_sensor_data.AMult;
-      break;
-
-   case STAGE_2:
-      update_stage_counter = STAGE_3 ;
-   
-      /***************** Read Gyro ****************/
-      error_code = I2Cx_Recv_Bytes(I2Cx, IMU_I2C_ADD, IMU_REG_GYRO_DATA, data, 6, I2C_EVENT_WAIT);
-      if(error_code){ return error_code;}
-
-      imu_sensor_data.Gx_Raw = ((int16_t) data[0] << 8) | data[1];
-      imu_sensor_data.Gx = (float)imu_sensor_data.Gx_Raw * imu_sensor_data.GMult;
-      imu_sensor_data.Gy_Raw = ((int16_t) data[2] << 8) | data[3];
-      imu_sensor_data.Gy = (float)imu_sensor_data.Gy_Raw * imu_sensor_data.GMult;
-      imu_sensor_data.Gz_Raw = ((int16_t) data[4] << 8) | data[5];
-      imu_sensor_data.Gz = (float)imu_sensor_data.Gz_Raw * imu_sensor_data.GMult;
-      break;
-
-   case STAGE_3:
-      update_stage_counter = STAGE_1 ;
-         
-      /***************** Read Mag *****************/
-      imu_sensor_data.Mx =0;
-      imu_sensor_data.My =0;
-      imu_sensor_data.Mz =0;
-
-      error_code = I2Cx_Recv_Bytes(I2Cx, IMU_AKM_ADD, IMU_REG_MAG_ST1, data, 8, I2C_EVENT_WAIT);
-      if(error_code){ return error_code;}
-
-      // check on data ready flag and check for magnetic overflow
-      if((data[0] & 0x01) && !(data[7] & 0x08) )
-      {
-      imu_sensor_data.Mx_Raw = ((int16_t) data[2] << 8) | data[1];
-      imu_sensor_data.Mx = (float)imu_sensor_data.Mx_Raw * imu_sensor_data.MMult * imu_sensor_data.M_Calib[0];
-      imu_sensor_data.My_Raw = ((int16_t) data[4] << 8) | data[3];
-      imu_sensor_data.My = (float)imu_sensor_data.My_Raw * imu_sensor_data.MMult * imu_sensor_data.M_Calib[1];
-      imu_sensor_data.Mz_Raw = ((int16_t) data[6] << 8) | data[5];
-      imu_sensor_data.Mz = (float)imu_sensor_data.Mz_Raw * imu_sensor_data.MMult * imu_sensor_data.M_Calib[2];
-      }
-      break;
-
-   default:
-      // We shouldn't be here
-      return 255;
+   imu_sensor_data.Mx_Raw = ((int16_t) data[2] << 8) | data[1];
+   imu_sensor_data.Mx = (float)imu_sensor_data.Mx_Raw * imu_sensor_data.MMult * imu_sensor_data.M_Calib[0];
+   imu_sensor_data.My_Raw = ((int16_t) data[4] << 8) | data[3];
+   imu_sensor_data.My = (float)imu_sensor_data.My_Raw * imu_sensor_data.MMult * imu_sensor_data.M_Calib[1];
+   imu_sensor_data.Mz_Raw = ((int16_t) data[6] << 8) | data[5];
+   imu_sensor_data.Mz = (float)imu_sensor_data.Mz_Raw * imu_sensor_data.MMult * imu_sensor_data.M_Calib[2];
    }
+   
+   // calculate filtered mgn values 
+   imu_sensor_data.xm_filtered[0] = A_MGN * imu_sensor_data.Mx + (1 - A_MGN) * imu_sensor_data.xm_prev[0];
+   imu_sensor_data.xm_filtered[1] = A_MGN * imu_sensor_data.My + (1 - A_MGN) * imu_sensor_data.xm_prev[1];
+   imu_sensor_data.xm_filtered[2] = A_MGN * imu_sensor_data.Mz + (1 - A_MGN) * imu_sensor_data.xm_prev[2];
+   
+   // calculate the magnitude of mag vector
+   imu_sensor_data.xm_norm = vect_magnitude_arr((double*)&imu_sensor_data.Mx);
+   
+   if (imu_sensor_data.xm_norm > MAX_IGRF_NORM
+   || imu_sensor_data.xm_norm < MIN_IGRF_NORM) 
+   {
+      imu_sensor_data.status = READING_ERROR;
+   }
+  
    return 0;
 }
 

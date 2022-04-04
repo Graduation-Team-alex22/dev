@@ -17,11 +17,7 @@ Date:		2022-04-02
 #ifndef FRAME_H__
 #define FRAME_H__
 
-typedef struct {
-    double x;
-    double y;
-    double z;
-} xyz_t;
+#include "../services_utilities/common.h"
 
 typedef struct {
     double lat;

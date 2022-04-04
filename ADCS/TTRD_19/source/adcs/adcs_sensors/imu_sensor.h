@@ -30,6 +30,7 @@ Date:		2022-03-11
 #include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
 
 #include "../services_utilities/common.h"
+#include "../config.h"
 
 /************* PUBLIC MACROS ***************/
 #define 	IMU_I2C_CLOCK       400000U
@@ -39,12 +40,17 @@ typedef struct {
    float Ax, Ay, Az;                      /*!< Accelerometer raw data */
    float Gx, Gy, Gz;                      /*!< Gyroscope raw data */
    float Mx, My, Mz;                      /*!< Magnetometer raw data */
+   double xm_norm;                        /*!< magnometer vector magnitude */
    int16_t Ax_Raw, Ay_Raw, Az_Raw;        /*!< Accelerometer raw data */
    int16_t Gx_Raw, Gy_Raw, Gz_Raw;        /*!< Gyroscope raw data */
    int16_t Mx_Raw, My_Raw, Mz_Raw;        /*!< Magnetometer raw data */
    int16_t	Temprature_Raw;               /*!< Temperature raw data */
    float AMult, GMult, MMult;
    float M_Calib[3];
+   float xm_filtered[3];                  /*!<Filtered mgn output */
+   float xm_prev[3];
+   float gyro_filtered[3];                /*!<Filtered gyro output */
+   float gyro_prev[3];
    device_status_e status;
 } imu_sensor_t;
 

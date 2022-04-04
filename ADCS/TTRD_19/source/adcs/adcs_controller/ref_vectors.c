@@ -69,6 +69,12 @@ void CTRL_Ref_Sun_Update(double julian_date)
    
 }
 
+void CTRL_Ref_Geomag_Update(void)
+{
+   
+   
+}
+
 ref_vectors_t Ref_Vectors_GetData(void)
 {
    ref_vectors_t r = {.sun_vec = sun_vector, .geomag_vec = geomag_vector};

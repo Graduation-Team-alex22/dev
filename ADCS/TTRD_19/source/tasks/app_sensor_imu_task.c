@@ -45,7 +45,7 @@
 void App_Sensor_Imu_Init(void)
 {
    /******* initializing IMU Sensor *******/
-   uint8_t error_code = IMU_Init(I2C1);
+   uint8_t error_code = IMU_Sensor_Init(I2C1);
    if(error_code)
    {
       PROCESSOR_Perform_Safe_Shutdown(error_code);
@@ -91,7 +91,7 @@ void App_Sensor_Imu_Init(void)
 -*----------------------------------------------------------------------------*/
 uint32_t App_Sensor_Imu_Update(void)
 {
-   uint8_t error_code = IMU_Update(I2C1);
+   uint8_t error_code = IMU_Sensor_Update(I2C1);
    if(error_code)   
    {
       PROCESSOR_Perform_Safe_Shutdown(error_code);

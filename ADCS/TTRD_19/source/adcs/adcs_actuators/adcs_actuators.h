@@ -3,8 +3,8 @@
 
 #include <stdint.h>
 
-#include "spin_driver.h"
-#include "mgn_driver.h"
+#include "spin_motor_driver.h"
+#include "mgn_torquer_driver.h"
 
 
 typedef struct {
