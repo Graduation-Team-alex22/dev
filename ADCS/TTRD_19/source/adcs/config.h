@@ -12,9 +12,9 @@
 #define A_MGN  ((float)0.7)    // Coefficient < 1.0
 #define A_XM   ((float)0.7)    // Coefficient < 1.0
 
-#define WX_THRES        RAD(0.3f) // Threshold to enable B-dot controller (in deg/s)
-#define WY_THRES        RAD(0.3f) // Threshold to enable B-dot controller (in deg/s)
-#define WZ_THRES        RAD(0.3f) // Threshold to enable B-dot controller (in deg/s)
+#define WX_THRES        RAD(0.3) // Threshold to enable B-dot controller (in deg/s)
+#define WY_THRES        RAD(0.3) // Threshold to enable B-dot controller (in deg/s)
+#define WZ_THRES        RAD(0.3) // Threshold to enable B-dot controller (in deg/s)
 
 #define BDOT_GAIN            10     // Gain of B-dot controller, *0.1Nms
 #define POINTING_GAIN_W      1      // Point gain kp1

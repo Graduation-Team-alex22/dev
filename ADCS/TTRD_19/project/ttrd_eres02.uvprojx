@@ -16,7 +16,7 @@
         <TargetCommonOption>
           <Device>STM32F446RETx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F4xx_DFP.2.15.0</PackID>
+          <PackID>Keil.STM32F4xx_DFP.2.16.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x08000000,0x00080000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -1117,6 +1117,16 @@
               <FileName>sgp4.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\adcs\adcs_controller\sgp4.c</FilePath>
+            </File>
+            <File>
+              <FileName>tle.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\adcs\adcs_controller\tle.h</FilePath>
+            </File>
+            <File>
+              <FileName>tle.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\adcs_controller\tle.c</FilePath>
             </File>
           </Files>
         </Group>

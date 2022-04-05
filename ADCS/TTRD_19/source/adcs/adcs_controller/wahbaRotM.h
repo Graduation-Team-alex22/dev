@@ -237,9 +237,9 @@ static inline real normVd(real A[3], real B[3]) {
  * @param  A,B 3x1 real vector
  * @retval real A*B
  */
-static inline real dot(real A[3], real B[3]) {
+/*static inline real dot(real A[3], real B[3]) {
     return sqrtv(A[0] * B[0] + A[1] * B[1] + A[2] * B[2]);
-}
+}*/
 
 static inline void dRpropagat(real (*Rbe)[3], real (*R)[3], real *wb, real dt) {
     real norm, th, c, s, u;

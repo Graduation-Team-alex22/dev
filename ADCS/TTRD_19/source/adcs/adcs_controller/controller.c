@@ -106,9 +106,9 @@ void CTRL_Control_Attitude_Update(void)
       spin_torquer_controller(angular_velocities[1], &control);
    }
    /* Run B-dot and spin torquer controller if the angular velocities are bigger than thresholds */
-   if (fabsf(angular_velocities[0]) > WX_THRES
-   || fabsf(angular_velocities[1]) > WY_THRES
-   || fabsf(angular_velocities[2]) > WZ_THRES) 
+   if (fabsf(angular_velocities[0]) > (float)WX_THRES
+   || fabsf(angular_velocities[1]) > (float)WY_THRES
+   || fabsf(angular_velocities[2]) > (float)WZ_THRES) 
    {
       /* Check the magneto-meter sensor */
       if (mgn_sensor_data.status == DEVICE_OK)
@@ -164,8 +164,8 @@ void spin_torquer_controller(float w, adcs_control_t *control_struct)
    rpm_in_prev = rpm_sum;
    rpm_out_prev = control_struct->sp_rpm;
    /* Integration of RPM */
-   rpm_sum += (-(float) (control_struct->k_spin) * (float)0.001)
-         * (w * RAD2RPM / I_SPIN_TORQUER) * LOOP_TIME;
+   rpm_sum += (-(float) (control_struct->k_spin) * 0.001f)
+         * (w * (float)RAD2RPM / (float)I_SPIN_TORQUER) * (float)LOOP_TIME;
    /* Check for saturation */
    if (rpm_sum > SATURATION_RPM)
    {
@@ -208,11 +208,11 @@ void b_dot(float b[3], float b_prev[3], float b_norm, adcs_control_t *control_st
    b_dot_z = BDOT_FILTER * control_struct->b_dot[2]
       + (1 - BDOT_FILTER) * control_struct->b_dot_prev[2];
    /* Calculate the currents of coils in A */
-   control_struct->Ix = -((float) (control_struct->k_bdot) * 0.1 / A_COIL) * b_dot_x
+   control_struct->Ix = -((float) (control_struct->k_bdot) * 0.1f / A_COIL) * b_dot_x
       * (1 / b_norm);
-   control_struct->Iy = -((float) (control_struct->k_bdot) * 0.1 / A_COIL) * b_dot_y
+   control_struct->Iy = -((float) (control_struct->k_bdot) * 0.1f / A_COIL) * b_dot_y
       * (1 / b_norm);
-   control_struct->Iz = -((float) (control_struct->k_bdot) * 0.1 / A_COIL) * b_dot_z
+   control_struct->Iz = -((float) (control_struct->k_bdot) * 0.1f / A_COIL) * b_dot_z
       * (1 / b_norm);
 
 }
@@ -232,19 +232,19 @@ void pointing_controller(float b[3], float b_norm, WahbaRotMStruct *WStruct, adc
    mulMatr(sp_rotm, rotm, WStruct->RotM);
    rotmtx2quat((const float *)sp_rotm, &sp_quat);
    /* Calculate control signal from angular velocities */
-   m_w[0] = -(float) control_struct->k_pointing[0] * 0.01
+   m_w[0] = -(float) control_struct->k_pointing[0] * 0.01f
          * (b[1] * WStruct->W[2] - b[2] * WStruct->W[1]);
-   m_w[1] = -(float) control_struct->k_pointing[0] * 0.01
+   m_w[1] = -(float) control_struct->k_pointing[0] * 0.01f
          * (b[0] * WStruct->W[2] - b[2] * WStruct->W[0]);
-   m_w[2] = -(float) control_struct->k_pointing[0] * 0.01
+   m_w[2] = -(float) control_struct->k_pointing[0] * 0.01f
          * (b[0] * WStruct->W[1] - b[1] * WStruct->W[0]);
 
    /* Calculate control signal from pitch set point */
-   m_q[0] = -(float) control_struct->k_pointing[1] * 0.01
+   m_q[0] = -(float) control_struct->k_pointing[1] * 0.01f
          * (b[1] * sp_quat.z - b[2] * sp_quat.y);
-   m_q[1] = -(float) control_struct->k_pointing[1] * 0.01
+   m_q[1] = -(float) control_struct->k_pointing[1] * 0.01f
          * (b[0] * sp_quat.z - b[2] * sp_quat.x);
-   m_q[2] = -(float) control_struct->k_pointing[1] * 0.01
+   m_q[2] = -(float) control_struct->k_pointing[1] * 0.01f
          * (b[0] * sp_quat.y - b[1] * sp_quat.x);
 
    /* Convert to current in A */

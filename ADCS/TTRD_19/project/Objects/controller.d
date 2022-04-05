@@ -5,6 +5,9 @@
 .\objects\controller.o: ..\source\adcs\adcs_controller\../services_utilities/common.h
 .\objects\controller.o: ..\source\adcs\adcs_controller\ref_vectors.h
 .\objects\controller.o: ..\source\adcs\adcs_controller\sgp4.h
+.\objects\controller.o: ..\source\adcs\adcs_controller\tle.h
+.\objects\controller.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\controller.o: ..\source\adcs\adcs_controller\../services_utilities/flash.h
 .\objects\controller.o: ..\source\adcs\adcs_controller\../services_utilities/time.h
 .\objects\controller.o: ..\source\hsi_library\../hsi_library/stm32f4xx_rtc.h
 .\objects\controller.o: ..\source\hsi_library\../hsi_library/stm32f4xx.h
@@ -34,11 +37,9 @@
 .\objects\controller.o: ..\source\hsi_library\../hsi_library/stm32f4xx_usart.h
 .\objects\controller.o: ..\source\hsi_library\../hsi_library/stm32f4xx_wwdg.h
 .\objects\controller.o: ..\source\hsi_library\../hsi_library/misc.h
-.\objects\controller.o: ..\source\adcs\adcs_controller\../services_utilities/flash.h
 .\objects\controller.o: ..\source\adcs\adcs_controller\wahbaRotM.h
 .\objects\controller.o: ..\source\hsi_library\arm_math.h
 .\objects\controller.o: ..\source\hsi_library\core_cm4.h
-.\objects\controller.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\controller.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\controller.o: ..\source\adcs\adcs_controller\../adcs_sensors/gps_sensor.h
 .\objects\controller.o: ..\source\adcs\adcs_controller\../adcs_sensors/../services_utilities/nmea_parsing.h

@@ -4,15 +4,14 @@
 #include "stdint.h"
 
 #ifndef PI
-#define PI  3.141592654f
-
+#define PI  3.141592654
 #endif
 
-#define TWOPI   6.283185308f
-#define HALFPI  1.570796327f
-#define DEG2RAD 0.017453293f
-#define RAD2DEG 57.295779506f
-#define RAD2RPM 60.0f/(2*PI)
+#define TWOPI   6.283185308
+#define HALFPI  1.570796327
+#define DEG2RAD 0.017453293
+#define RAD2DEG 57.295779506
+#define RAD2RPM 60.0/(2*PI)
 
 #define GEO_NAN log(-1.0)
 
@@ -61,8 +60,18 @@ typedef struct {
 double str_to_float(char* str, uint8_t length);
 double str_to_float_nl(char* str, uint8_t* get_len);
 inline uint8_t is_digit(char c);
+
+void cnv32_8(const uint32_t from, uint8_t *to);
+void cnv16_8(const uint16_t from, uint8_t *to);
+void cnv8_32(uint8_t *from, uint32_t *to);
+void cnv8_16(uint8_t *from, uint16_t *to);
+void cnv8_16LE(uint8_t *from, uint16_t *to);
+void cnvF_8(const float from, uint8_t *to);
+void cnv8_F(uint8_t *from, float *to);
+void cnvD_8(const double from, uint8_t *to);
+void cnv8_D(uint8_t *from, double *to);
+
 double vect_magnitude_xyz(xyz_t vect);
 double vect_magnitude_arr(double vect[]);
-
 
 #endif

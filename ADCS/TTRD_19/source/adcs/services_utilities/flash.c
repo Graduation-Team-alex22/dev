@@ -1,20 +1,42 @@
 #include "flash.h"
 
-
-flash_status_e flash_init(void){
-	/*
-	uint8_t flash_id = 0;
-	// Initialize flash memory 
-	
-	HAL_GPIO_WritePin(FM_nCE_GPIO_Port, FM_nCE_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(FM_nHLD_GPIO_Port, FM_nHLD_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(FM_nWP_GPIO_Port, FM_nWP_Pin, GPIO_PIN_SET);
-	
-	if (flash_readID(&flash_id) != FLASH_NORMAL) {
-			return ERROR_FLASH;
-	}
-	return FLASH_NORMAL;
-
-	*/
-	return 0;
+flash_status_e flash_init(void)
+{
+   
+   return FLASH_NORMAL;
+}
+flash_status_e flash_write_enable(void)
+{
+   
+   return FLASH_NORMAL;
+}
+flash_status_e flash_readID(uint8_t *id)
+{
+   
+   return FLASH_NORMAL;
+}
+flash_status_e flash_chip_erase(void)
+{
+   
+   return FLASH_NORMAL;
+}
+flash_status_e flash_erase_block4K(uint32_t address)
+{
+   
+   return FLASH_NORMAL;
+}
+flash_status_e flash_write_byte(uint8_t data, uint32_t address)
+{
+   
+   return FLASH_NORMAL;
+}
+flash_status_e flash_write_page(uint8_t *data, uint8_t data_len, uint32_t address)
+{
+   
+   return FLASH_NORMAL;
+}
+flash_status_e flash_read_byte(uint8_t *data, uint32_t address)
+{
+   
+   return FLASH_NORMAL;
 }

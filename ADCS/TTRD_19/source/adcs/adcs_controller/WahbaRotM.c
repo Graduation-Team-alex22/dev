@@ -53,21 +53,21 @@ volatile real RtM[3][3] = { { 0.99756, 0.0697, 0 }, { -0.0697, 0.99756, 0 }, {
 volatile real Rr[3][3];
 
 void WahbaRotM(float acc[3], float gyr[3], float mag[3], WahbaRotMStruct *WStruct) {
-    static float a, g, ga, gm, m, A[3][3], dt;
+    static float a, ga, gm, m, A[3][3], dt; // g,
     real (*RotM)[3];
     a = WStruct->sun_sensor_gain;
     m = 1;
-    g = 0.0;
+    // g = 0.0;
     ga = 1 - a;
     gm = 1 - m;
 
-    static float *w_a, *w_g, *w_m, *g_va, *g_vm; //,*g_vg,AccErr;
+    static float *w_a, *w_m, *g_va, *g_vm; //,*g_vg,AccErr;*w_g,
     w_a = WStruct->w_a;
-    w_g = WStruct->w_g;
+    // w_g = WStruct->w_g;
     w_m = WStruct->w_m;
     RotM = WStruct->RotM;
     g_va = WStruct->g_va;
-    //g_vg=WStruct->g_vg;
+    // g_vg=WStruct->g_vg;
     g_vm = WStruct->g_vm;
 
     dt = WStruct->dt;
@@ -117,7 +117,7 @@ void WahbaRotM(float acc[3], float gyr[3], float mag[3], WahbaRotMStruct *WStruc
     if (fabsv(tmp) < TOL) {
         tmp = 0.5f / dt;  // x/sin(x)|x->0
     } else {
-        tmp = 0.5 / dt * tmp / sinv(tmp);
+        tmp = 0.5f / dt * tmp / sinv(tmp);
     }
     WStruct->W[0] = tmp * (WStruct->dR[2][1] - WStruct->dR[1][2]);
     WStruct->W[1] = tmp * (WStruct->dR[0][2] - WStruct->dR[2][0]);
