@@ -47,7 +47,7 @@
 void App_Sensor_Tmp_Init(void)
 {
    #ifdef DIAGNOSIS_OUTPUT
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG] TMP Init\n");
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - INIT] TMP Init\n");
       UART2_BUF_O_Send_All_Data();
    #endif
 	error_t error_code = TMP_Sensor_Init(I2C1);

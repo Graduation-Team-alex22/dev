@@ -49,7 +49,7 @@
 void App_Sensor_Mgn_Init(void)
 {
    #ifdef DIAGNOSIS_OUTPUT
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG] MGN Init\n");
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - INIT] MGN Init\n");
       UART2_BUF_O_Send_All_Data();
    #endif
    mgn_init_t mgn_init;

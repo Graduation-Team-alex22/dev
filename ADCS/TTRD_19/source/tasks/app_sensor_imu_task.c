@@ -48,7 +48,7 @@
 void App_Sensor_Imu_Init(void)
 {
    #ifdef DIAGNOSIS_OUTPUT
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG] IMU Init\n");
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - INIT] IMU Init\n");
       UART2_BUF_O_Send_All_Data();
    #endif
     error_t error_code = IMU_Sensor_Init(I2C1);

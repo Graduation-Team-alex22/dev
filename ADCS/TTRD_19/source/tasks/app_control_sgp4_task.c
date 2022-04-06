@@ -11,7 +11,7 @@
 void App_Control_Sgp4_Init(void)
 {
    #ifdef DIAGNOSIS_OUTPUT
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG] SGP4 Init\n");
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - INIT] SGP4 Init\n");
       UART2_BUF_O_Send_All_Data();
    #endif
    error_t error_code = CTRL_SGP4_Init();

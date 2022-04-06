@@ -10,7 +10,7 @@
 void App_Control_Tle_Init(void)
 {
    #ifdef DIAGNOSIS_OUTPUT
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG] TLE Init\n");
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - INIT] TLE Init\n");
       UART2_BUF_O_Send_All_Data();
    #endif
    error_t error_code = CTRL_TLE_Init();

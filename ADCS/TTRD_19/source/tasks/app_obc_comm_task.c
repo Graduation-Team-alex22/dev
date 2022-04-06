@@ -9,7 +9,7 @@
 void App_Obc_Comm_Init(void)
 {
    #ifdef DIAGNOSIS_OUTPUT
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG] OBC Comm Init\n");
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - INIT] OBC Comm Init\n");
       UART2_BUF_O_Send_All_Data();
    #endif
 }

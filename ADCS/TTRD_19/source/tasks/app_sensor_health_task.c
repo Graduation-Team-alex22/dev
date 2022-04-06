@@ -9,7 +9,7 @@
 void App_Sensor_Health_Init(void)
 {
   #ifdef DIAGNOSIS_OUTPUT
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG] Health Check Init\n");
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - INIT] Health Check Init\n");
       UART2_BUF_O_Send_All_Data();
    #endif
   
