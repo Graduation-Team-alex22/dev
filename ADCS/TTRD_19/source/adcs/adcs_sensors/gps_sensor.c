@@ -100,7 +100,7 @@ uint32_t GPS_Sensor_Update(void)
    
    // translate parser output [End]
       
-	return 0;
+	return NO_ERROR;
 }
 
 gps_sensor_t GPS_Sensor_GetData(void)
