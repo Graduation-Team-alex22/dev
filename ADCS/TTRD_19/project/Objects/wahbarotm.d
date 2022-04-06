@@ -33,4 +33,3 @@
 .\objects\wahbarotm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\wahbarotm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\wahbarotm.o: ..\source\adcs\adcs_controller\../services_utilities/common.h
-.\objects\wahbarotm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

@@ -543,6 +543,96 @@
               <FileType>5</FileType>
               <FilePath>..\source\tasks\app_sensor_tmp_task.h</FilePath>
             </File>
+            <File>
+              <FileName>app_actuators_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\tasks\app_actuators_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_control_attitude_det_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\tasks\app_control_attitude_det_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_actuators_task.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\tasks\app_actuators_task.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_control_attitude_det_task.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\tasks\app_control_attitude_det_task.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_control_attitude_update_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\tasks\app_control_attitude_update_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_control_attitude_update_task.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\tasks\app_control_attitude_update_task.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_control_ref_vector_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\tasks\app_control_ref_vector_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_control_ref_vector_task.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\tasks\app_control_ref_vector_task.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_control_sgp4_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\tasks\app_control_sgp4_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_control_tle_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\tasks\app_control_tle_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_control_sgp4_task.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\tasks\app_control_sgp4_task.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_control_tle_task.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\tasks\app_control_tle_task.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_obc_comm_task.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\tasks\app_obc_comm_task.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_sensor_health_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\tasks\app_sensor_health_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_sensor_health_task.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\tasks\app_sensor_health_task.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_sensor_sun_task.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\tasks\app_sensor_sun_task.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_sensor_sun_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\tasks\app_sensor_sun_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_obc_comm_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\tasks\app_obc_comm_task.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -919,11 +1009,6 @@
               <FilePath>..\source\adcs\adcs_sensors\tmp_sensor.h</FilePath>
             </File>
             <File>
-              <FileName>sensors_common.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\adcs\adcs_sensors\sensors_common.h</FilePath>
-            </File>
-            <File>
               <FileName>sun_sensor.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\source\adcs\adcs_sensors\sun_sensor.h</FilePath>
@@ -1029,11 +1114,6 @@
           <GroupName>adcs_actuators</GroupName>
           <Files>
             <File>
-              <FileName>adcs_actuators.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\adcs\adcs_actuators\adcs_actuators.h</FilePath>
-            </File>
-            <File>
               <FileName>mgn_torquer_driver.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\source\adcs\adcs_actuators\mgn_torquer_driver.h</FilePath>
@@ -1072,11 +1152,6 @@
               <FileName>sgp4.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\source\adcs\adcs_controller\sgp4.h</FilePath>
-            </File>
-            <File>
-              <FileName>adcs_controller.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\adcs\adcs_controller\adcs_controller.h</FilePath>
             </File>
             <File>
               <FileName>wahbaRotM.h</FileName>

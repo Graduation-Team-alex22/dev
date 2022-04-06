@@ -1,4 +1,7 @@
 #include "mgn_sensor.h"
+#include " ../../../main/project.h"
+#include "../config.h"
+#include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
 
 /************* LOCAL DEFINITIONS ***************/
 // costants
@@ -29,7 +32,7 @@ static uint8_t mgn_range_g;
 uint8_t MGN_Configure(mgn_init_t* mgn_init);
 
 // -- PUBLIC FUNCTIONS' IMPLEMENTATION ---------------------------
-uint8_t MGN_Sensor_Init(I2C_TypeDef* I2Cx, mgn_init_t* mgn_init)
+uint32_t MGN_Sensor_Init(I2C_TypeDef* I2Cx, mgn_init_t* mgn_init)
 {
    uint8_t error_code;
 
@@ -49,11 +52,11 @@ uint8_t MGN_Sensor_Init(I2C_TypeDef* I2Cx, mgn_init_t* mgn_init)
 
    // check if the device is connected - no check for whoiam
    error_code = I2Cx_Is_Device_Connected(I2Cx, MGN_I2C_ADD, 0xFF, 0xFF, I2C_EVENT_WAIT);
-   if(error_code){ return error_code+100;}
+   if(error_code){ return ERROR_MGN_CONNECTED_BASE + error_code;}
 
    // configure the device
    error_code = MGN_Configure(mgn_init);
-   if(error_code){ return error_code+116;}
+   if(error_code){ return ERROR_MGN_CONFIG_BASE + error_code;}
 
    // wait for 6 ms
    TIMEOUT_T3_USEC_Start();
@@ -65,7 +68,7 @@ uint8_t MGN_Sensor_Init(I2C_TypeDef* I2Cx, mgn_init_t* mgn_init)
    return 0;
 }
 
-uint8_t MGN_Sensor_Update(void)
+uint32_t MGN_Sensor_Update(void)
 {
    // update device status
    mgn_data_g.status = DEVICE_OK;
@@ -74,7 +77,7 @@ uint8_t MGN_Sensor_Update(void)
    uint8_t error_code, data[6] = {0};
 
    error_code =I2Cx_Recv_Bytes(mgn_I2Cx_g, MGN_I2C_ADD, MGN_REG_DATA_XL, data, 6, I2C_EVENT_WAIT);
-   if(error_code) {return error_code ;}
+   if(error_code) {return ERROR_MGN_UPDATE_BASE + error_code;}
 
    // extract raw data
    mgn_data_g.raw[0] = ((int16_t) data[1] << 8) | data[0] ;

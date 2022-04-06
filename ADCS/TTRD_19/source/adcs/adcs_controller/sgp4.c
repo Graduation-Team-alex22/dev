@@ -35,14 +35,12 @@
  */
 
 #include "stm32f4xx.h"
-#include <string.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "frame.h"
+#include "../services_utilities/flash.h"
 
 #include "sgp4.h"
-
-#include "../services_utilities/common.h"
 
 /*
  * =============================== MACROS ============================

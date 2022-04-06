@@ -30,6 +30,8 @@
 .\objects\tmp_sensor.o: ..\source\hsi_library\../hsi_library/stm32f4xx_usart.h
 .\objects\tmp_sensor.o: ..\source\hsi_library\../hsi_library/stm32f4xx_wwdg.h
 .\objects\tmp_sensor.o: ..\source\hsi_library\../hsi_library/misc.h
+.\objects\tmp_sensor.o: ..\source\adcs\adcs_sensors\../services_utilities/common.h
+.\objects\tmp_sensor.o: ..\source\hsi_library\ ../../../main/project.h
 .\objects\tmp_sensor.o: ..\source\hsi_library\../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\tmp_sensor.o: ..\source\hsi_library\../support_functions/../main/main.h
 .\objects\tmp_sensor.o: ..\source\hsi_library\../support_functions/../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.h
@@ -41,6 +43,3 @@
 .\objects\tmp_sensor.o: ..\source\hsi_library\../support_functions/../main/../processor/ttrd2-19a-t0401a-v001b_processor.h
 .\objects\tmp_sensor.o: ..\source\hsi_library\../support_functions/../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h
 .\objects\tmp_sensor.o: ..\source\hsi_library\../support_functions/../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
-.\objects\tmp_sensor.o: ..\source\hsi_library\../support_functions/../main/project.h
-.\objects\tmp_sensor.o: ..\source\hsi_library\../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
-.\objects\tmp_sensor.o: ..\source\adcs\adcs_sensors\../services_utilities/common.h

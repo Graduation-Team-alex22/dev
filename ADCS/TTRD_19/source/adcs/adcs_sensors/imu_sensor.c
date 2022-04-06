@@ -1,4 +1,7 @@
 #include "imu_sensor.h"
+#include " ../../../main/project.h"
+#include "../config.h"
+#include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
 
 /************ PRIVATE DEFINITIONS ************/
 
@@ -44,7 +47,7 @@ uint8_t  IMU_Configure(I2C_TypeDef* I2Cx);
 uint8_t  IMU_Mag_Calib(I2C_TypeDef* I2Cx, float* calib);
 
 // -- PUBLIC FUNCTIONS' IMPLEMENTATION ---------------------------
-uint8_t IMU_Sensor_Init(I2C_TypeDef* I2Cx)
+uint32_t IMU_Sensor_Init(I2C_TypeDef* I2Cx)
 {
    uint8_t error_code;
 
@@ -55,22 +58,22 @@ uint8_t IMU_Sensor_Init(I2C_TypeDef* I2Cx)
 
    // check if the device is connected
    error_code = I2Cx_Is_Device_Connected(I2Cx, IMU_I2C_ADD, IMU_REG_WHOIAM, IMU_WHOIAM_VAL, I2C_EVENT_WAIT);
-   if(error_code){ return error_code+100;}
+   if(error_code){ return ERROR_IMU_CONNECTED_BASE + error_code;}
 
    // reset the device, turn off sleep mode, set clock source
    error_code = IMU_Wakeup(I2Cx);
-   if(error_code){ return error_code+108;}
+   if(error_code){ return ERROR_IMU_WAKEUP_BASE + error_code;}
 
    // configuration
    error_code = IMU_Configure(I2Cx);
-   if(error_code){ return error_code+116;}
+   if(error_code){ return ERROR_IMU_CONFIG_BASE + error_code;}
 
    // calibration and multipliers
    imu_sensor_data.AMult = 2.0f / 32768.0f;
    imu_sensor_data.GMult = 250.0f / 32768.0f;
    imu_sensor_data.MMult = 10.0f * 4912.0f / 32768.0f;
    error_code = IMU_Mag_Calib(I2Cx, imu_sensor_data.M_Calib);
-   if(error_code){ return error_code+140;}
+   if(error_code){ return ERROR_IMU_CALIBRATED_BASE + error_code;}
 
    // update device status
    imu_sensor_data.status = DEVICE_OK;
@@ -78,7 +81,7 @@ uint8_t IMU_Sensor_Init(I2C_TypeDef* I2Cx)
    return 0;
 }
 
-uint8_t IMU_Sensor_Update(I2C_TypeDef* I2Cx)
+uint32_t IMU_Sensor_Update(I2C_TypeDef* I2Cx)
 {
    imu_sensor_data.status = DEVICE_OK;
    
@@ -87,7 +90,7 @@ uint8_t IMU_Sensor_Update(I2C_TypeDef* I2Cx)
    
    /**************** Read Accel ****************/
    error_code = I2Cx_Recv_Bytes(I2Cx, IMU_I2C_ADD, IMU_REG_ACCEL_DATA, data, 6, I2C_EVENT_WAIT);
-   if(error_code){ return error_code;}
+   if(error_code){ return ERROR_IMU_ACC_UPDATE_BASE + error_code;}
 
    imu_sensor_data.Ax_Raw = ((int16_t) data[0] << 8) | data[1];
    imu_sensor_data.Ax = (float)imu_sensor_data.Ax_Raw * imu_sensor_data.AMult;
@@ -98,7 +101,7 @@ uint8_t IMU_Sensor_Update(I2C_TypeDef* I2Cx)
   
    /***************** Read Gyro ****************/
    error_code = I2Cx_Recv_Bytes(I2Cx, IMU_I2C_ADD, IMU_REG_GYRO_DATA, data, 6, I2C_EVENT_WAIT);
-   if(error_code){ return error_code;}
+   if(error_code){ return ERROR_IMU_GYRO_UPDATE_BASE + error_code;}
 
    // store previous gyro readings
    imu_sensor_data.gyro_prev[0] = imu_sensor_data.Gx;
@@ -119,7 +122,7 @@ uint8_t IMU_Sensor_Update(I2C_TypeDef* I2Cx)
    
    /***************** Read Mag *****************/
    error_code = I2Cx_Recv_Bytes(I2Cx, IMU_AKM_ADD, IMU_REG_MAG_ST1, data, 8, I2C_EVENT_WAIT);
-   if(error_code){ return error_code;}
+   if(error_code){ return ERROR_IMU_MGN_UPDATE_BASE + error_code;}
    
    // store previous mgn readings
    imu_sensor_data.xm_prev[0] = imu_sensor_data.Mx;

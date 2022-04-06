@@ -2,7 +2,6 @@
 #define CONFIG_H__
 
 
-
 //---PUBLIC IDENTIFIERS--------------------------
 #define MAX_IGRF_NORM   0.8    // in guass, to check if the magneto-meter values are valid
 #define MIN_IGRF_NORM   0.1   // in guass, to check if the magneto-meter values are valid
@@ -30,5 +29,7 @@
 #define SPIN_TORQUER_FILTER_Z 1        // Zero in spin torquer filter
 
 #define LOOP_TIME           1       // in sec
+
+#define 	I2C_CLOCK       400000U
 
 #endif

@@ -76,6 +76,15 @@
 #include "../tasks/app_sensor_imu_task.h"
 #include "../tasks/app_sensor_gps_task.h"
 #include "../tasks/app_sensor_tmp_task.h"
+#include "../tasks/app_sensor_sun_task.h"
+#include "../tasks/app_sensor_health_task.h"
+#include "../tasks/app_control_tle_task.h"
+#include "../tasks/app_control_sgp4_task.h"
+#include "../tasks/app_control_ref_vector_task.h"
+#include "../tasks/app_control_attitude_det_task.h"
+#include "../tasks/app_control_attitude_update_task.h"
+#include "../tasks/app_actuators_task.h"
+#include "../tasks/app_obc_comm_task.h"
 
 // MoniTTor header 
 // This module has access to the MoniTTor: use with care!
@@ -336,10 +345,10 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_03_ENVIRONMENT_CHECKS_S\n");
          UART2_BUF_O_Send_All_Data();
 
-             // wait until DMA finishes
-             TIMEOUT_T3_USEC_Init();
-             TIMEOUT_T3_USEC_Start();
-             while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
+         // wait until DMA finishes
+         TIMEOUT_T3_USEC_Init();
+         TIMEOUT_T3_USEC_Start();
+         while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
                 
          // Here we check only the CPU temperature 
          // via the sensor on the STM32F401, which is linked to ADC1
@@ -440,7 +449,7 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          PROCESSOR_Store_Reqd_MoSt(FAIL_SAFE_S);
          PROCESSOR_Store_PFC(PFC_SCH_STARTUP_TEST_5A);
          
-         //WATCHDOG_Init(16);  // 16 x 125 µs => 2 ms 
+         WATCHDOG_Init(16);  // 16 x 125 µs => 2 ms 
          WATCHDOG_Update();
 
          // Set up the scheduler (1 ms Ticks)
@@ -544,6 +553,11 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          {
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_07_PREDICTTOR_CHECK_M\n");
          UART2_BUF_O_Send_All_Data();
+         
+         // wait until DMA finishes
+         TIMEOUT_T3_USEC_Init();
+         TIMEOUT_T3_USEC_Start();
+         while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
 
          // See ERES2, Chapter 19
          
@@ -583,14 +597,12 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          UART2_BUF_O_Write_String_To_Buffer("NORMAL_M4\n");
          UART2_BUF_O_Send_All_Data();
 
-         // Set up scheduler for 5 ms ticks
-         SCH_Init_Microseconds(5000);
+         // Set up scheduler for 10 ms ticks
+         SCH_Init_Microseconds(10000);
 
          // Prepare for heartbeat task
          HEARTBEAT_SW_Init();
 
-         // Prepare for the switch-reading task
-         SWITCH_BUTTON1_Init(); 
              
          // Prepare for ADC task
          // Includes ADC start-up checks 
@@ -623,7 +635,14 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          App_Sensor_Mgn_Init(); 
          App_Sensor_Gps_Init();
          App_Sensor_Tmp_Init();
-
+         App_Sensor_Sun_Init();
+         App_Sensor_Health_Init();
+         App_Control_Tle_Init();
+         App_Control_Sgp4_Init();
+         App_Control_Ref_Vector_Init();
+         App_Actuator_Init();
+         App_Obc_Comm_Init();
+         
          // Add tasks to schedule.
          // Parameters are:
          // A. Task name
@@ -631,18 +650,29 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          // C. Task period (in Ticks): Must be > 0
          // D. WCET (microseconds)
          // E. BCET (microseconds)
-         //           A                      B   C    D     E
-         SCH_Add_Task(WATCHDOG_Update,       0,  1,   5000, 0);  // iWDT
-         SCH_Add_Task(HEARTBEAT_SW_Update,   0,  200, 5000, 0);  // Heartbeat
-         SCH_Add_Task(SWITCH_BUTTON1_Update, 10, 2,   5000, 0);  // Switch
-         SCH_Add_Task(ADC1_Update,           0,  100, 5000, 0);  // ADC1
-         SCH_Add_Task(PROCESSOR_TASK_Update, 0,  200, 5000, 0);  // Proc task   
-         SCH_Add_Task(UART2_BUF_O_Update,    0,  1,   5000, 0);  // UART2         
-         SCH_Add_Task(App_Sensor_Imu_Update, 1,  40,  5000, 0);  // IMU - 200 ms     
-         SCH_Add_Task(App_Sensor_Mgn_Update, 7,  40,  5000, 0);  // mgn - 200 ms     
-         SCH_Add_Task(App_Sensor_Tmp_Update, 3,  40,  5000, 0);  // tmp - 200 ms
-         SCH_Add_Task(App_Sensor_Gps_Update, 5,  50,  5000, 0);  // GPS - 250 ms
+         //           A                                 B   C    D     E
+         SCH_Add_Task(WATCHDOG_Update,                  0, 1  , 10000, 0);    // iWDT
+         SCH_Add_Task(HEARTBEAT_SW_Update,              0, 100, 10000, 0);    // Heartbeat
+         SCH_Add_Task(ADC1_Update,                      0, 50 , 10000, 0);    // ADC1    
+         SCH_Add_Task(PROCESSOR_TASK_Update,            0, 100, 10000, 0);    // Proc task     
+         SCH_Add_Task(UART2_BUF_O_Update,               0, 1  , 10000, 0);    // UART2         
+         SCH_Add_Task(App_Sensor_Imu_Update,            1, 20 , 10000, 0);    // IMU      
+         SCH_Add_Task(App_Sensor_Mgn_Update,            2, 20 , 10000, 0);    // mgn      
+         SCH_Add_Task(App_Sensor_Tmp_Update,            3, 20 , 10000, 0);    // tmp 
+         SCH_Add_Task(App_Sensor_Gps_Update,            4, 20 , 10000, 0);    // GPS
+         SCH_Add_Task(App_Sensor_Sun_Update,            5, 20 , 10000, 0);    // sun sensor
+         SCH_Add_Task(App_Sensor_Health_Update,         6, 20 , 10000, 0);    // health check
+         SCH_Add_Task(App_Control_Tle_Update,           7, 20 , 10000, 0);    // tle
+         SCH_Add_Task(App_Control_Sgp4_Update,          8, 20 , 10000, 0);    // sgp4
+         SCH_Add_Task(App_Control_Ref_Vector_Update,    9, 20 , 10000, 0);    // ref verctors
+         SCH_Add_Task(App_Control_Attitude_Det_Update, 10, 20 , 10000, 0);    // attitude determination
+         SCH_Add_Task(App_Control_Attitude_Update,     11, 20 , 10000, 0);    // control update
+         SCH_Add_Task(App_Actuator_Update,             12, 20 , 10000, 0);    // Actuators
+         SCH_Add_Task(App_Obc_Comm_Update,             13, 100, 10000, 0);    // OBC Comm
 
+
+         WATCHDOG_Init(240);  // 240 x 125 µs => 30 ms 
+         
          // Feed the watchdog
          WATCHDOG_Update();
              

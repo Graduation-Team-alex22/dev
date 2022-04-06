@@ -8,7 +8,6 @@ but it is scalable so you can easily add more
 #define NMEA_PARSING_H__
 
 #include "stdint.h"
-#include "../services_utilities/common.h"
 
 /******************************************
 GP-GGA (GPS fix data)

@@ -15,15 +15,12 @@ Date:		2022-03-15
 
 #include "stdint.h"
 #include "../hsi_library/stm32f4xx_usart.h"
-#include "../services_utilities/nmea_parsing.h"
 #include "../services_utilities/common.h"
-
 
 /************* PUBLIC MACROS ***************/
 #define  GPS_BAUDRATE         9600
 #define  GPS_RX_BUFFER_SIZE   ((uint16_t)512)
 
-#define  ERROR_CODE_NMEA_BUFFER_FULL      1
 
 /************ Public structures ************/
 typedef struct {
@@ -56,7 +53,7 @@ typedef struct {
    @return error_code,  An error code, Or Zero if no Error.
 
 */
-uint8_t GPS_Sensor_Init(DMA_Stream_TypeDef * DMA_streamx);
+uint32_t GPS_Sensor_Init(DMA_Stream_TypeDef * DMA_streamx);
 
 /*
    GPS_Sensor_Update
@@ -70,7 +67,7 @@ uint8_t GPS_Sensor_Init(DMA_Stream_TypeDef * DMA_streamx);
    @return Zero if no Error.
 
 */
-uint16_t GPS_Sensor_Update(void);
+uint32_t GPS_Sensor_Update(void);
 
 char* GPS_Sensor_get_pBuffer(void);
 

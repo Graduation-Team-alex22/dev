@@ -1,4 +1,6 @@
 #include "tmp_sensor.h"
+#include " ../../../main/project.h"
+#include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
 
 // -- PRIVATE MACROS ---------------------------------------------
 // Device I2C Address
@@ -19,7 +21,7 @@ static uint8_t data[2];
 static float TEMP_SENSOR_Calculate_Value(void);
 
 // -- PUBLIC FUNCTIONS' IMPLEMENTATION ---------------------------
-uint8_t TMP_Sensor_Init(I2C_TypeDef* I2Cx)
+uint32_t TMP_Sensor_Init(I2C_TypeDef* I2Cx)
 {
    uint8_t error_code;
    assert_param(IS_I2C_ALL_PERIPH(I2Cx));
@@ -32,7 +34,7 @@ uint8_t TMP_Sensor_Init(I2C_TypeDef* I2Cx)
 
    // check if the device is connected - no check for whoiam
    error_code = I2Cx_Is_Device_Connected(I2Cx, TMP_I2C_ADD, TMP_ID_REG, TMP_ID_VALUE, I2C_EVENT_WAIT);
-   if(error_code){ return error_code;}
+   if(error_code){ return ERROR_TMP_CONNECTED_BASE + error_code;}
 
    // wait for 6 ms
    TIMEOUT_T3_USEC_Start();
@@ -45,13 +47,13 @@ uint8_t TMP_Sensor_Init(I2C_TypeDef* I2Cx)
 }
 
 
-uint8_t TMP_Sensor_update(void)
+uint32_t TMP_Sensor_update(void)
 {
    uint8_t data[2];
    uint8_t error_code;
 
    error_code = I2Cx_Recv_Bytes(tmp_I2Cx_g, TMP_I2C_ADD, TEMP_REG_ADDRESS, data, 2, I2C_EVENT_WAIT);
-   if(error_code) { return error_code; }
+   if(error_code) { return ERROR_TMP_UPDATE_BASE + error_code; }
 
    // Calculate temperature based on updated data
    tmp_sensor.temprature = TEMP_SENSOR_Calculate_Value();

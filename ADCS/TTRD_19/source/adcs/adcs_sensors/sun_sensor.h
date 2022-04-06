@@ -33,10 +33,8 @@ typedef struct {
    device_status_e status;		// Status of sun sensors system
 } sun_sensor_t;
 
-
-void init_sun_sensor(sun_sensor_t *pSunSensor);
-void update_sun_sensor(sun_sensor_t *pSunSensor);
-void update_ad7682(uint8_t ch, uint16_t *v_raw);
+uint8_t SUN_Sensor_Init(void);
+uint8_t SUN_Sensor_Update(void);
 sun_sensor_t SUN_Sensor_GetData(void);
 
 #endif

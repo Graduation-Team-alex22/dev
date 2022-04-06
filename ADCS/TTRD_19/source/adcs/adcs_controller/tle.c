@@ -1,3 +1,9 @@
+#include "stdint.h"
+#include "string.h"
+
+#include "../services_utilities/common.h"
+#include "../services_utilities/time.h"
+
 #include "tle.h"
 
 #include <stdlib.h>

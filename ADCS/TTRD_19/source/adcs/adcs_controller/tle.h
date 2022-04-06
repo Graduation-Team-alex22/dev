@@ -1,20 +1,13 @@
 #ifndef TLE_H__
 #define TLE_H__
 
-#include "stdint.h"
-#include "string.h"
-
 #include "../services_utilities/flash.h"
-#include "../services_utilities/common.h"
-#include "../services_utilities/time.h"
-
 
 #define TLE_SIZE 145
 #define TLE_LINE2_OFFSET 69+1
 #define TLE_INIT_STRING "1 25544U 98067A   16229.19636472  .00005500  00000-0  87400-4 0  9991\n2 25544  51.6439 118.5889 0001926 134.0246   3.7037 15.55029964 14324"
 
 // ERROR CODES
-#define NO_ERROR                 0
 #define ERROR_CODE_TLE_FLASH     1
 
 typedef struct orbit_s {

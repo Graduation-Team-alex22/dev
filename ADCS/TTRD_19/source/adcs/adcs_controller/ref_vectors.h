@@ -1,7 +1,7 @@
 #ifndef REF_VECTORS_H__
 #define REF_VECTORS_H__
 
-#include "frame.h"
+#include "../services_utilities/common.h"
 
 typedef struct {
     xyz_t sun_pos_eci;  // Position of Sun in ECI AU - in meters
@@ -31,7 +31,7 @@ typedef struct {
    geomag_vector_t geomag_vec;
 } ref_vectors_t;
 
-void CTRL_Ref_Sun_Update(double julian_date);
+void CTRL_Ref_Sun_Update(void);
 
 void CTRL_Ref_Geomag_Update(void);
 

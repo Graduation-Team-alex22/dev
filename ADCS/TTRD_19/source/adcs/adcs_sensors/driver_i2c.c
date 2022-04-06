@@ -1,5 +1,7 @@
 #include "driver_i2c.h"
 
+#include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
+
 // -- PRIVATE MACROS ---------------------------------------------
 // waiting time after every stop stop generation - [ unjustified behaviour ]
 #define STOP_GENERATION_WAIT        50    //  in microsecond

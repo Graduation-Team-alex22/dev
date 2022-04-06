@@ -1,6 +1,7 @@
 .\objects\time.o: ..\source\adcs\services_utilities\time.c
 .\objects\time.o: ..\source\adcs\services_utilities\time.h
 .\objects\time.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\time.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\time.o: ..\source\hsi_library\../hsi_library/stm32f4xx_rtc.h
 .\objects\time.o: ..\source\hsi_library\../hsi_library/stm32f4xx.h
 .\objects\time.o: ..\source\hsi_library\../hsi_library/core_cm4.h
@@ -30,4 +31,3 @@
 .\objects\time.o: ..\source\hsi_library\../hsi_library/stm32f4xx_wwdg.h
 .\objects\time.o: ..\source\hsi_library\../hsi_library/misc.h
 .\objects\time.o: ..\source\adcs\services_utilities\common.h
-.\objects\time.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

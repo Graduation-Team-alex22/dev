@@ -347,7 +347,7 @@ uint32_t RTT_07_PredicTTor_Test_Update(void)
    static uint32_t Call_count_s = 0;
 
    // Call count must be > TSIP for the task set used for testing
-   if (++Call_count_s == 30)
+   if (++Call_count_s == 50)
       {
       // If we are here, the test was not passed
       PROCESSOR_Perform_Safe_Shutdown(PFC_PREDICTTOR_TASK_SEQ_FAULT_TEST);

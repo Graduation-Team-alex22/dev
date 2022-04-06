@@ -13,8 +13,6 @@ Date:		2022-03-15
 
 #include "stdint.h"
 #include "driver_i2c.h"
-#include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
-
 #include "../services_utilities/common.h"
 
 // ------ Public Macros --------------------------
@@ -39,7 +37,7 @@ typedef struct {
   @return error_code,  An error code, Or Zero if no Error.
 
 */
-uint8_t TMP_Sensor_Init(I2C_TypeDef* I2Cx);
+uint32_t TMP_Sensor_Init(I2C_TypeDef* I2Cx);
 
 /*
   TMP_Sensor_update
@@ -53,7 +51,7 @@ uint8_t TMP_Sensor_Init(I2C_TypeDef* I2Cx);
   @return error_code,  An error code, Or Zero if no Error.
 
 */
-uint8_t TMP_Sensor_update(void);
+uint32_t TMP_Sensor_update(void);
 
 /*
   TMP_Sensor_GetData

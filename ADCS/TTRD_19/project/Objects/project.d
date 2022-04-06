@@ -30,5 +30,4 @@
 .\objects\project.o: ..\source\main\../hsi_library/misc.h
 .\objects\project.o: ..\source\main\project.h
 .\objects\project.o: ..\source\main\../adcs/adcs_sensors/gps_sensor.h
-.\objects\project.o: ..\source\main\../adcs/adcs_sensors/../services_utilities/nmea_parsing.h
-.\objects\project.o: ..\source\main\../adcs/adcs_sensors/../services_utilities/../services_utilities/common.h
+.\objects\project.o: ..\source\main\../adcs/adcs_sensors/../services_utilities/common.h

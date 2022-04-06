@@ -22,10 +22,9 @@
 #ifndef _SGP4_H
 #define _SGP4_H
 
-#include "frame.h"
 #include "tle.h"
+#include "../services_utilities/common.h"
 #include "../services_utilities/time.h"
-#include "../services_utilities/flash.h"
 
 // ERROR CODES
 #define ERROR_CODE_SGP4_MODE     1

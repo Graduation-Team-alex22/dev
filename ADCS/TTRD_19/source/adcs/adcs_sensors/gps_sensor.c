@@ -1,4 +1,6 @@
 #include "gps_sensor.h"
+#include " ../../../main/project.h"
+#include "../services_utilities/nmea_parsing.h"
 
 // ------ Private constants --------------------------------------------------
 // NMEA buffer 2d array size
@@ -16,7 +18,7 @@ static uint8_t nmea_pointer_g = 0;
 
 
 // -- PUBLIC FUNCTIONS' IMPLEMENTATION ---------------------------
-uint8_t GPS_Sensor_Init(DMA_Stream_TypeDef * DMA_streamx)
+uint32_t GPS_Sensor_Init(DMA_Stream_TypeDef * DMA_streamx)
 {	
    assert_param(IS_DMA_ALL_PERIPH(DMA_streamx));
 
@@ -31,7 +33,7 @@ uint8_t GPS_Sensor_Init(DMA_Stream_TypeDef * DMA_streamx)
    return 0;
 }
 
-uint16_t GPS_Sensor_Update(void)
+uint32_t GPS_Sensor_Update(void)
 {
 	// an index to mark where to start proccessing
 	static uint16_t buffer_start_index =0;
@@ -43,7 +45,7 @@ uint16_t GPS_Sensor_Update(void)
    if(nmea_pointer_g == NMEA_SENTENCE_BUFFER_SIZE)
    {
       nmea_pointer_g = 0;
-      return ERROR_CODE_NMEA_BUFFER_FULL;
+      return ERROR_GPS_NMEA_BUFFER_FULL;
    }
    // Pre-Condition Checks [End]
    

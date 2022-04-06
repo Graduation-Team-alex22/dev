@@ -1,9 +1,12 @@
 #include "stdint.h"
-#include "../port/port.h"
 #include "../adcs/adcs_sensors/imu_sensor.h"
-
+#include "../processor/ttrd2-19a-t0401a-v001b_processor.h"
 #include "app_sensor_imu_task.h"
+#include "../main/project.h"
 
+#ifdef DIAGNOSIS_OUTPUT
+#include "../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h"
+#endif
 
 /*----------------------------------------------------------------------------*-
 
@@ -44,9 +47,12 @@
 -*----------------------------------------------------------------------------*/
 void App_Sensor_Imu_Init(void)
 {
-   /******* initializing IMU Sensor *******/
-   uint8_t error_code = IMU_Sensor_Init(I2C1);
-   if(error_code)
+   #ifdef DIAGNOSIS_OUTPUT
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG] IMU Init\n");
+      UART2_BUF_O_Send_All_Data();
+   #endif
+    error_t error_code = IMU_Sensor_Init(I2C1);
+   if(error_code != NO_ERROR)
    {
       PROCESSOR_Perform_Safe_Shutdown(error_code);
    }
@@ -97,5 +103,5 @@ uint32_t App_Sensor_Imu_Update(void)
       PROCESSOR_Perform_Safe_Shutdown(error_code);
    }
     
-   return RETURN_NORMAL_STATE;
+   return 0;
 }

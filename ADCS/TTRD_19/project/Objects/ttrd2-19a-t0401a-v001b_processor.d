@@ -52,4 +52,13 @@
 .\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/app_sensor_imu_task.h
 .\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/app_sensor_gps_task.h
 .\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/app_sensor_tmp_task.h
+.\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/app_sensor_sun_task.h
+.\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/app_sensor_health_task.h
+.\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/app_control_tle_task.h
+.\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/app_control_sgp4_task.h
+.\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/app_control_ref_vector_task.h
+.\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/app_control_attitude_det_task.h
+.\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/app_control_attitude_update_task.h
+.\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/app_actuators_task.h
+.\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/app_obc_comm_task.h
 .\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../scheduler/ttrd2-18a-t0401a-v001a_monittor_i.h

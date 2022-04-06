@@ -25,8 +25,6 @@ Date:		2022-03-18
 
 #include "stdint.h"
 #include "driver_i2c.h"
-#include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
-#include "../config.h"
 #include "../services_utilities/common.h"
 
 /************* PUBLIC MACROS ***************/
@@ -94,7 +92,7 @@ typedef struct {
    @return error_code,  An error code, Or Zero if no Error.
 
 */
-uint8_t MGN_Sensor_Init(I2C_TypeDef* I2Cx, mgn_init_t* mgn_init);
+uint32_t MGN_Sensor_Init(I2C_TypeDef* I2Cx, mgn_init_t* mgn_init);
 
 /*
    MGN_Sensor_Update
@@ -106,7 +104,7 @@ uint8_t MGN_Sensor_Init(I2C_TypeDef* I2Cx, mgn_init_t* mgn_init);
    @return error_code,  An error code, Or Zero if no Error.
 
 */
-uint8_t MGN_Sensor_Update(void);
+uint32_t MGN_Sensor_Update(void);
 
 /*
   MGN_Sensor_GetData

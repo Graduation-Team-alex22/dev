@@ -108,93 +108,93 @@
 -*----------------------------------------------------------------------------*/
 
 // Problem detected in HSI library
-#define PFC_HSI_LIBRARY                                         ((uint8_t) 5)
+#define PFC_HSI_LIBRARY                                        ((uint32_t) 5)
 
 // Processor temperature outside spec (startup)
-#define PFC_PROCESSOR_TEMPERATURE_STARTUP                      ((uint8_t) 10)
+#define PFC_PROCESSOR_TEMPERATURE_STARTUP                      ((uint32_t) 10)
 
 // Processor temperature outside spec (normal operation)
-#define PFC_PROCESSOR_TEMPERATURE                              ((uint8_t) 11)
+#define PFC_PROCESSOR_TEMPERATURE                              ((uint32_t) 11)
 
 // Incorrect function parameter (e.g. out of range)
-#define PFC_FUNCTION_PARAMETER_INCORRECT                       ((uint8_t) 15)
+#define PFC_FUNCTION_PARAMETER_INCORRECT                       ((uint32_t) 15)
 
 // Corruption detected in long-term data
-#define PFC_LONG_TERM_DATA_CORRUPTION                          ((uint8_t) 20)
+#define PFC_LONG_TERM_DATA_CORRUPTION                          ((uint32_t) 20)
 
 // PFC is unknown - corrupted data in the backup register
-#define PFC_UNKNOWN_FAULT                                      ((uint8_t) 30)
+#define PFC_UNKNOWN_FAULT                                      ((uint32_t) 30)
 
 // Problem detected when attempting to add task to schedule
-#define PFC_SCH_ADD_TASK                                       ((uint8_t) 35)
+#define PFC_SCH_ADD_TASK                                       ((uint32_t) 35)
 
 // Problem detected during scheduler startup checks
-#define PFC_SCH_STARTUP_OPERATION                              ((uint8_t) 36)
+#define PFC_SCH_STARTUP_OPERATION                              ((uint32_t) 36)
 
 // Problem detected during scheduler startup checks
-#define PFC_SCH_STARTUP_TEST_5A                                ((uint8_t) 37)
+#define PFC_SCH_STARTUP_TEST_5A                                ((uint32_t) 37)
 
 // Problem detected during scheduler startup checks
-#define PFC_SCH_STARTUP_TEST_5B                                ((uint8_t) 38)
+#define PFC_SCH_STARTUP_TEST_5B                                ((uint32_t) 38)
 
 // Osc problem detected when setting up scheduler 
-#define PFC_SCH_CLOCK_FREQUENCY                                ((uint8_t) 39)
+#define PFC_SCH_CLOCK_FREQUENCY                                ((uint32_t) 39)
 
 // Tick_count_g exceeds limit (in Dispatcher)
-#define PFC_SCH_TICK_COUNT                                     ((uint8_t) 40)
+#define PFC_SCH_TICK_COUNT                                     ((uint32_t) 40)
 
 // Task has reported an abnormal state
-#define PFC_TASK_RETURN                                        ((uint8_t) 45)
+#define PFC_TASK_RETURN                                        ((uint32_t) 45)
 
 // Problem during iWDT testing
-#define PFC_WDT_TEST                                           ((uint8_t) 50)
+#define PFC_WDT_TEST                                           ((uint32_t) 50)
 
 // Problem when MoniTTor is tested 
-#define PFC_MONITTOR_OVERRUN_TEST                              ((uint8_t) 55)
-#define PFC_MONITTOR_UNDERRUN_TEST                             ((uint8_t) 56)
+#define PFC_MONITTOR_OVERRUN_TEST                              ((uint32_t) 55)
+#define PFC_MONITTOR_UNDERRUN_TEST                             ((uint32_t) 56)
 
 // Problem during normal MoniTTor use
-#define PFC_MONITTOR_PARAMETERS                                ((uint8_t) 60)
-#define PFC_MONITTOR_OVERRUN                                   ((uint8_t) 61)
-#define PFC_MONITTOR_UNDERRUN                                  ((uint8_t) 62)
+#define PFC_MONITTOR_PARAMETERS                                ((uint32_t) 60)
+#define PFC_MONITTOR_OVERRUN                                   ((uint32_t) 61)
+#define PFC_MONITTOR_UNDERRUN                                  ((uint32_t) 62)
 
 // Problem when PredicTTor is tested 
-#define PFC_PREDICTTOR_TASK_SEQ_FAULT_TEST                     ((uint8_t) 65)
+#define PFC_PREDICTTOR_TASK_SEQ_FAULT_TEST                     ((uint32_t) 65)
 
 // Problem during normal PredicTTor use
-#define PFC_PREDICTTOR_TASK_SEQ_FAULT                          ((uint8_t) 66)
+#define PFC_PREDICTTOR_TASK_SEQ_FAULT                          ((uint32_t) 66)
 
 // Invalid UART selected
-#define PFC_INVALID_UART                                       ((uint8_t) 67)
+#define PFC_INVALID_UART                                       ((uint32_t) 67)
 
 // ADC reference value is out of range
-#define PFC_ADC_RANGE                                          ((uint8_t) 70)
+#define PFC_ADC_RANGE                                          ((uint32_t) 70)
 
 // Temperature value from ADC is changing too quickly
-#define PFC_ADC_TEMP_CHANGE                                    ((uint8_t) 71)
+#define PFC_ADC_TEMP_CHANGE                                    ((uint32_t) 71)
 
 // ADC has timed out during data acquisition
-#define PFC_ADC_TIMEOUT                                        ((uint8_t) 72)
+#define PFC_ADC_TIMEOUT                                        ((uint32_t) 72)
 
 // Register configuration checks
-#define PFC_REG_CONFIG_ADC1                                    ((uint8_t) 80)
-#define PFC_REG_CONFIG_GPIO                                    ((uint8_t) 81)
-#define PFC_REG_CONFIG_TIMER                                   ((uint8_t) 82)
-#define PFC_REG_CONFIG_UART                                    ((uint8_t) 83)
+#define PFC_REG_CONFIG_ADC1                                    ((uint32_t) 80)
+#define PFC_REG_CONFIG_GPIO                                    ((uint32_t) 81)
+#define PFC_REG_CONFIG_TIMER                                   ((uint32_t) 82)
+#define PFC_REG_CONFIG_UART                                    ((uint32_t) 83)
 
 // Switch appears to be stuck 'on'
-#define PFC_SWITCH_STUCK                                       ((uint8_t) 90)
+#define PFC_SWITCH_STUCK                                       ((uint32_t) 90)
 
 // UART2 errors
-#define UART2_DMA_START_FAILED                                ((uint8_t) 100)
-#define UART2_DMA_FREE_FAILED                                 ((uint8_t) 101)
-#define UART2_TX_FINISH_FAILED                                 ((uint8_t) 101)
+#define UART2_DMA_START_FAILED                                ((uint32_t) 100)
+#define UART2_DMA_FREE_FAILED                                 ((uint32_t) 101)
+#define UART2_TX_FINISH_FAILED                                 ((uint32_t) 101)
 
 // PFC stored prior to planned mode change
-#define PFC_NO_FAULT                                          ((uint8_t) 240)
+#define PFC_NO_FAULT                                          ((uint32_t) 240)
 
 // Stored as default after reset: usually triggered by iWDT
-#define PFC_UNSPECIFIED_FAULT                                 ((uint8_t) 250)
+#define PFC_UNSPECIFIED_FAULT                                 ((uint32_t) 5555)
 
 #endif
 

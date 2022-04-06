@@ -27,13 +27,11 @@
 .\objects\sgp4.o: ..\source\hsi_library\stm32f4xx_usart.h
 .\objects\sgp4.o: ..\source\hsi_library\stm32f4xx_wwdg.h
 .\objects\sgp4.o: ..\source\hsi_library\misc.h
-.\objects\sgp4.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\sgp4.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\sgp4.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\sgp4.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\sgp4.o: ..\source\adcs\adcs_controller\sgp4.h
 .\objects\sgp4.o: ..\source\adcs\adcs_controller\frame.h
 .\objects\sgp4.o: ..\source\adcs\adcs_controller\../services_utilities/common.h
-.\objects\sgp4.o: ..\source\adcs\adcs_controller\tle.h
 .\objects\sgp4.o: ..\source\adcs\adcs_controller\../services_utilities/flash.h
+.\objects\sgp4.o: ..\source\adcs\adcs_controller\sgp4.h
+.\objects\sgp4.o: ..\source\adcs\adcs_controller\tle.h
 .\objects\sgp4.o: ..\source\adcs\adcs_controller\../services_utilities/time.h

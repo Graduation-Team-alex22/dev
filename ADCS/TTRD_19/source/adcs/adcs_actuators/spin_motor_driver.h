@@ -25,11 +25,11 @@ typedef struct {
     int32_t m_RPM;
     spin_status_e status;
 } spin_handle_t;
-
+/*
 spin_status_e spin_torquer_init(spin_handle_t *pSpin_handle);
 spin_status_e spin_state_get(spin_handle_t *pSpin_handle);
 spin_status_e spin_torquer_update(spin_handle_t *pSpin_handle);
-
+*/
 void Spin_Motor_SetHandler(spin_handle_t spin_handler);
 
 #endif

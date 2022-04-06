@@ -152,7 +152,7 @@ void REPORT_PFC_Update(uint32_t PFC_CODE)
 
    // Report PFC via UART
    UART2_BUF_O_Write_String_To_Buffer("PFC: ");
-   UART2_BUF_O_Write_Number03_To_Buffer(PFC_CODE);
+   UART2_BUF_O_Write_Number04_To_Buffer(PFC_CODE);
    UART2_BUF_O_Write_String_To_Buffer("\n");
    UART2_BUF_O_Send_All_Data();
 

@@ -27,13 +27,7 @@ Date:		2022-03-11
 
 #include "stdint.h"
 #include "driver_i2c.h"
-#include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
-
 #include "../services_utilities/common.h"
-#include "../config.h"
-
-/************* PUBLIC MACROS ***************/
-#define 	IMU_I2C_CLOCK       400000U
 
 /************ Public structures ************/
 typedef struct {
@@ -67,7 +61,7 @@ typedef struct {
    @return error_code,  An error code, Or Zero if no Error.
 
 */
-uint8_t IMU_Sensor_Init(I2C_TypeDef* I2Cx);
+uint32_t IMU_Sensor_Init(I2C_TypeDef* I2Cx);
 
 /*
   IMU_Sensor_Update
@@ -81,7 +75,7 @@ uint8_t IMU_Sensor_Init(I2C_TypeDef* I2Cx);
   @return Zero if no Error.
 
 */
-uint8_t IMU_Sensor_Update(I2C_TypeDef* I2Cx);
+uint32_t IMU_Sensor_Update(I2C_TypeDef* I2Cx);
 
 /*
    IMU_Sensor_GetData

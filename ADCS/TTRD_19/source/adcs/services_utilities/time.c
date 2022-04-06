@@ -1,6 +1,9 @@
 #include "time.h"
 #include "math.h"
 
+#include "../hsi_library/stm32f4xx_rtc.h"
+#include "common.h"
+
 /************* LOCAL DEFINITIONS ***************/
 #define RTC_TR_RESERVED_MASK    ((uint32_t)0x007F7F7F)
 #define RTC_DR_RESERVED_MASK    ((uint32_t)0x00FFFF3F)

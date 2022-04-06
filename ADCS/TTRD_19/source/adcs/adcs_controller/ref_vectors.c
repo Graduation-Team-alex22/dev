@@ -1,7 +1,8 @@
-#include "ref_vectors.h"
-
-#include "../services_utilities/common.h"
+#include "../services_utilities/time.h"
 #include "math.h"
+#include "frame.h"
+
+#include "ref_vectors.h"
 
 //-- PRIVATE VARIABLES ----------------------
 static sun_vector_t sun_vector;
@@ -22,8 +23,9 @@ Seth Wagenman (2022). approxECISunPosition
 MATLAB Central File Exchange. Retrieved April 2, 2022.
 */
 
-void CTRL_Ref_Sun_Update(double julian_date)
+void CTRL_Ref_Sun_Update(void)
 {
+   double julian_date = time_getTime().Julian_Date;
    // Set time(s) relative to the J2000.0 epoch 
    double fractionalDay = julian_date - 2451545.0;
    

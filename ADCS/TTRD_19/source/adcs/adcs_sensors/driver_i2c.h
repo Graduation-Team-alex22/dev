@@ -14,10 +14,8 @@ Date:		2022-03-15
 
 #include "stdint.h"
 #include "../hsi_library/stm32f4xx_i2c.h"
-#include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
 
 /********** ERROR CODE DEFINITION **********/
-#define NO_ERROR                                0			// don't change
 #define ERROR_CODE_TIMEOUT                      1
 #define ERROR_CODE_DEVICE_NOT_CONNECTED		   2
 #define ERROR_CODE_BAD_WHOIAM							3

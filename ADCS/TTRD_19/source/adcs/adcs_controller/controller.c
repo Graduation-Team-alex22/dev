@@ -1,6 +1,22 @@
+#include "stdint.h"
+
+// sensor modules
+#include "../adcs_sensors/imu_sensor.h"
+#include "../adcs_sensors/mgn_sensor.h"
+#include "../adcs_sensors/sun_sensor.h"
+
+#include "../services_utilities/common.h"
+
+// actuators modules
+#include "../adcs_actuators/mgn_torquer_driver.h"
+#include "../adcs_actuators/spin_motor_driver.h"
+
+// controller modules
+#include "ref_vectors.h"
+#include "sgp4.h"
+#include "../config.h"
+
 #include "controller.h"
-
-
 
 //-- PRIVATE VARIABLES -----------------------
 static imu_sensor_t imu_sensor_data;
@@ -22,11 +38,6 @@ static adcs_control_t control = { .b_dot[0] = 0, .b_dot[1] = 0, .b_dot[2] = 0,
                           
 static spin_handle_t spin_motor_handle;
                           
-void CTRL_Control_Init(void)
-{
-   
-   
-}
 
 void CTRL_Control_Determination_Update(void)
 {

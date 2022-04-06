@@ -1,5 +1,7 @@
 #include "nmea_parsing.h"
 
+#include "../services_utilities/common.h"
+
 //-- PRIVATE DEFINITIONS -----------------
 // this number relates to the number of implemented message groups
 // now it's 2 as we implemented GPGGA and GPGSA messages only.
