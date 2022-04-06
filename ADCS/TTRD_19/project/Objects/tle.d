@@ -1,9 +1,0 @@
-.\objects\tle.o: ..\source\adcs\adcs_controller\tle.c
-.\objects\tle.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\tle.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\tle.o: ..\source\adcs\adcs_controller\../services_utilities/common.h
-.\objects\tle.o: ..\source\adcs\adcs_controller\../services_utilities/time.h
-.\objects\tle.o: ..\source\adcs\adcs_controller\tle.h
-.\objects\tle.o: ..\source\adcs\adcs_controller\../services_utilities/flash.h
-.\objects\tle.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\tle.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
