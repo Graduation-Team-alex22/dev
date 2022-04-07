@@ -87,7 +87,7 @@ typedef struct {
    @return  error code or Zero if no error.
 
 */
-uint8_t time_init(void);
+uint32_t time_init(void);
 
 /*
    time_update

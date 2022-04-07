@@ -216,20 +216,21 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          SCH_Add_Task(DUMMY_TASK_Update, 0,  100);  // Heartbeat
          SCH_Add_Task(DUMMY_TASK_Update, 0,  50);  // ADC1    
          SCH_Add_Task(DUMMY_TASK_Update, 0,  100);  // Proc task     
-         SCH_Add_Task(DUMMY_TASK_Update, 0,  1);    // UART2         
-         SCH_Add_Task(DUMMY_TASK_Update, 1,  20);    // IMU      
-         SCH_Add_Task(DUMMY_TASK_Update, 2,  20);    // mgn      
-         SCH_Add_Task(DUMMY_TASK_Update, 3,  20);    // tmp 
-         SCH_Add_Task(DUMMY_TASK_Update, 4,  20);    // GPS
-         SCH_Add_Task(DUMMY_TASK_Update, 5,  20);    // sun sensor
-         SCH_Add_Task(DUMMY_TASK_Update, 6,  20);    // health check
-         SCH_Add_Task(DUMMY_TASK_Update, 7,  20);    // tle
-         SCH_Add_Task(DUMMY_TASK_Update, 8,  20);    // sgp4
-         SCH_Add_Task(DUMMY_TASK_Update, 9,  20);    // ref verctors
-         SCH_Add_Task(DUMMY_TASK_Update, 10,  20);    // attitude determination
-         SCH_Add_Task(DUMMY_TASK_Update, 11,  20);    // control update
-         SCH_Add_Task(DUMMY_TASK_Update, 12,  20);    // Actuators
-         SCH_Add_Task(DUMMY_TASK_Update, 13,  100);    // OBC Comm
+         SCH_Add_Task(DUMMY_TASK_Update, 0,  1);    // UART2  
+         SCH_Add_Task(DUMMY_TASK_Update, 1,  100);    // OBC Comm       
+         SCH_Add_Task(DUMMY_TASK_Update, 2,  20);    // IMU      
+         SCH_Add_Task(DUMMY_TASK_Update, 3,  20);    // mgn      
+         SCH_Add_Task(DUMMY_TASK_Update, 4,  20);    // tmp 
+         SCH_Add_Task(DUMMY_TASK_Update, 5,  20);    // GPS
+         SCH_Add_Task(DUMMY_TASK_Update, 6,  20);    // sun sensor
+         SCH_Add_Task(DUMMY_TASK_Update, 7,  20);    // health check
+         SCH_Add_Task(DUMMY_TASK_Update, 8,  20);    // time
+         SCH_Add_Task(DUMMY_TASK_Update, 9,  20);    // tle
+         SCH_Add_Task(DUMMY_TASK_Update, 10,  20);    // sgp4
+         SCH_Add_Task(DUMMY_TASK_Update, 11,  20);    // ref verctors
+         SCH_Add_Task(DUMMY_TASK_Update, 12,  20);    // attitude determination
+         SCH_Add_Task(DUMMY_TASK_Update, 13,  20);    // control update
+         SCH_Add_Task(DUMMY_TASK_Update, 14,  20);    // Actuators
          
 
          // Now configure the Dry Scheduler elements

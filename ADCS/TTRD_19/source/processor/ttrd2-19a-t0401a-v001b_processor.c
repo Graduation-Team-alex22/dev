@@ -582,7 +582,6 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          //REG_CONFIG_CHECKS_UART_Store(UART4);
          
          // init application modules
-         time_init();
          App_Sensor_Imu_Init();
          App_Sensor_Mgn_Init(); 
          App_Sensor_Gps_Init();

@@ -25,6 +25,8 @@ typedef uint32_t error_t;
 #define ERROR_TLE_FLASH_READ                 ((error_t) 1501) 
 #define ERROR_SGP4_BAD_INIT_TLE_DATA         ((error_t) 1601) 
 #define ERROR_SGP4_BAD_OP_MODE               ((error_t) 1602)
+#define ERROR_RTC_INIT                       ((error_t) 1701)
+#define ERROR_RTC_ENTER_INIT_MODE            ((error_t) 1702)
 
 #define PROJECT_I2C1_CLOCK (400000)
 

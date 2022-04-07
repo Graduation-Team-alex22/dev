@@ -46,24 +46,23 @@ This code is copyright (c) 2014-2017 SafeTTy Systems Ltd.
 
 // The tick lists for each mode
 // (No tick list for Fail Safe mode)
-#define LENGTH_OF_TICK_LIST_TASKS_NORMAL 265
+#define LENGTH_OF_TICK_LIST_TASKS_NORMAL 270
 
 // Length of "Task Sequence Initialisation Period"
 // See 'ERES2' (Chapter 19) for details.
-#define LENGTH_OF_TSIP_TASKS_NORMAL 41
+#define LENGTH_OF_TSIP_TASKS_NORMAL 44
 
 // Tick list applies to all "Normal" modes
 uint8_t TICK_LIST_NORMAL[LENGTH_OF_TICK_LIST_TASKS_NORMAL] =
 {
-0,4,17,                                 // Tick : 0000000013
-0,4,                                    // Tick : 0000000014
+0,4,18,                                 // Tick : 0000000014
 0,4,                                    // Tick : 0000000015
 0,4,                                    // Tick : 0000000016
 0,4,                                    // Tick : 0000000017
 0,4,                                    // Tick : 0000000018
 0,4,                                    // Tick : 0000000019
 0,4,                                    // Tick : 0000000020
-0,4,5,                                  // Tick : 0000000021
+0,4,                                    // Tick : 0000000021
 0,4,6,                                  // Tick : 0000000022
 0,4,7,                                  // Tick : 0000000023
 0,4,8,                                  // Tick : 0000000024
@@ -75,15 +74,15 @@ uint8_t TICK_LIST_NORMAL[LENGTH_OF_TICK_LIST_TASKS_NORMAL] =
 0,4,14,                                 // Tick : 0000000030
 0,4,15,                                 // Tick : 0000000031
 0,4,16,                                 // Tick : 0000000032
-0,4,                                    // Tick : 0000000033
-0,4,                                    // Tick : 0000000034
+0,4,17,                                 // Tick : 0000000033
+0,4,18,                                 // Tick : 0000000034
 0,4,                                    // Tick : 0000000035
 0,4,                                    // Tick : 0000000036
 0,4,                                    // Tick : 0000000037
 0,4,                                    // Tick : 0000000038
 0,4,                                    // Tick : 0000000039
 0,4,                                    // Tick : 0000000040
-0,4,5,                                  // Tick : 0000000041
+0,4,                                    // Tick : 0000000041
 0,4,6,                                  // Tick : 0000000042
 0,4,7,                                  // Tick : 0000000043
 0,4,8,                                  // Tick : 0000000044
@@ -95,15 +94,15 @@ uint8_t TICK_LIST_NORMAL[LENGTH_OF_TICK_LIST_TASKS_NORMAL] =
 0,2,4,14,                               // Tick : 0000000050
 0,4,15,                                 // Tick : 0000000051
 0,4,16,                                 // Tick : 0000000052
-0,4,                                    // Tick : 0000000053
-0,4,                                    // Tick : 0000000054
+0,4,17,                                 // Tick : 0000000053
+0,4,18,                                 // Tick : 0000000054
 0,4,                                    // Tick : 0000000055
 0,4,                                    // Tick : 0000000056
 0,4,                                    // Tick : 0000000057
 0,4,                                    // Tick : 0000000058
 0,4,                                    // Tick : 0000000059
 0,4,                                    // Tick : 0000000060
-0,4,5,                                  // Tick : 0000000061
+0,4,                                    // Tick : 0000000061
 0,4,6,                                  // Tick : 0000000062
 0,4,7,                                  // Tick : 0000000063
 0,4,8,                                  // Tick : 0000000064
@@ -115,15 +114,15 @@ uint8_t TICK_LIST_NORMAL[LENGTH_OF_TICK_LIST_TASKS_NORMAL] =
 0,4,14,                                 // Tick : 0000000070
 0,4,15,                                 // Tick : 0000000071
 0,4,16,                                 // Tick : 0000000072
-0,4,                                    // Tick : 0000000073
-0,4,                                    // Tick : 0000000074
+0,4,17,                                 // Tick : 0000000073
+0,4,18,                                 // Tick : 0000000074
 0,4,                                    // Tick : 0000000075
 0,4,                                    // Tick : 0000000076
 0,4,                                    // Tick : 0000000077
 0,4,                                    // Tick : 0000000078
 0,4,                                    // Tick : 0000000079
 0,4,                                    // Tick : 0000000080
-0,4,5,                                  // Tick : 0000000081
+0,4,                                    // Tick : 0000000081
 0,4,6,                                  // Tick : 0000000082
 0,4,7,                                  // Tick : 0000000083
 0,4,8,                                  // Tick : 0000000084
@@ -135,8 +134,8 @@ uint8_t TICK_LIST_NORMAL[LENGTH_OF_TICK_LIST_TASKS_NORMAL] =
 0,4,14,                                 // Tick : 0000000090
 0,4,15,                                 // Tick : 0000000091
 0,4,16,                                 // Tick : 0000000092
-0,4,                                    // Tick : 0000000093
-0,4,                                    // Tick : 0000000094
+0,4,17,                                 // Tick : 0000000093
+0,4,18,                                 // Tick : 0000000094
 0,4,                                    // Tick : 0000000095
 0,4,                                    // Tick : 0000000096
 0,4,                                    // Tick : 0000000097
@@ -155,6 +154,7 @@ uint8_t TICK_LIST_NORMAL[LENGTH_OF_TICK_LIST_TASKS_NORMAL] =
 0,4,14,                                 // Tick : 0000000110
 0,4,15,                                 // Tick : 0000000111
 0,4,16,                                 // Tick : 0000000112
+0,4,17,                                 // Tick : 0000000113
 };
 
 #endif

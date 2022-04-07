@@ -1,16 +1,12 @@
 #include "time.h"
 #include "math.h"
-
+#include "../main/project.h"
 #include "../hsi_library/stm32f4xx_rtc.h"
 #include "common.h"
 
 /************* LOCAL DEFINITIONS ***************/
 #define RTC_TR_RESERVED_MASK    ((uint32_t)0x007F7F7F)
 #define RTC_DR_RESERVED_MASK    ((uint32_t)0x00FFFF3F)
-
-// Error codes
-#define NO_ERROR              0 // Don't change
-#define ERROR_CODE_RTC_INIT   1
 
 /************* LOCAL VARIABLES ***************/
 static time_t time_keeping_adcs = {0};
@@ -19,7 +15,7 @@ static time_t time_keeping_adcs = {0};
 static uint8_t RTC_Bcd2ToByte(uint8_t Value);
 
 // -- PUBLIC FUNCTIONS' IMPLEMENTATION ---------------------------
-uint8_t time_init(void){
+uint32_t time_init(void){
    
    /******* init the RTC peripheral *******/
    // to set up RTC clock control registers in the RCC peripheral,
@@ -39,7 +35,7 @@ uint8_t time_init(void){
    RTC_StructInit(&rtc_init_struct);
    if(RTC_Init(&rtc_init_struct) == ERROR)
    {
-      return ERROR_CODE_RTC_INIT;
+      return ERROR_RTC_INIT;
    }
    
    /******* RTC Clock time check *******/
@@ -60,7 +56,7 @@ uint8_t time_init(void){
       /******* set the time and date of RTC *******/
       // disable write protection and enter initialization mode
       RTC_WriteProtectionCmd(DISABLE);
-      if(RTC_EnterInitMode() == ERROR) return 111;
+      if(RTC_EnterInitMode() == ERROR) return ERROR_RTC_ENTER_INIT_MODE;
       RTC->WPR = 0xCA;
       RTC->WPR = 0x53;
 
