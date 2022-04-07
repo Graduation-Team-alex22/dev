@@ -1,14 +1,13 @@
 #ifndef TLE_H__
 #define TLE_H__
 
+#include "../main/project.h"
 #include "../services_utilities/flash.h"
 
 #define TLE_SIZE 145
 #define TLE_LINE2_OFFSET 69+1
 #define TLE_INIT_STRING "1 25544U 98067A   16229.19636472  .00005500  00000-0  87400-4 0  9991\n2 25544  51.6439 118.5889 0001926 134.0246   3.7037 15.55029964 14324"
 
-// ERROR CODES
-#define ERROR_CODE_TLE_FLASH     1
 
 typedef struct orbit_s {
    /* Add the epoch time if required. */
@@ -31,8 +30,8 @@ typedef struct{
    enum { INIT_DATA, NEW_DATA, OLD_DATA} data_status;
 }tle_data_t;
 
-uint8_t CTRL_TLE_Init(void);
-uint8_t CTRL_TLE_Update(void);
+error_t CTRL_TLE_Init(void);
+error_t CTRL_TLE_Update(void);
 tle_data_t CTRL_TLE_GetData(void);
 
 uint8_t init_tle(void);

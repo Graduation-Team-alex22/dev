@@ -5,6 +5,7 @@
 #include "../main/project.h"
 
 #ifdef DIAGNOSIS_OUTPUT
+#include "stdio.h"
 #include "../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h"
 #endif
 
@@ -97,11 +98,22 @@ void App_Sensor_Imu_Init(void)
 -*----------------------------------------------------------------------------*/
 uint32_t App_Sensor_Imu_Update(void)
 {
-   uint8_t error_code = IMU_Sensor_Update(I2C1);
+   error_t error_code = IMU_Sensor_Update(I2C1);
    if(error_code)   
    {
       PROCESSOR_Perform_Safe_Shutdown(error_code);
    }
+   
+   #ifdef DIAGNOSIS_OUTPUT
+      char buff[200];
+      imu_sensor_t t = IMU_Sensor_GetData();
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Update] IMU Update\n");
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Data]: \n");
+      sprintf(buff, "A: %+.3f %+.3f %+.3f\nG: %+.3f %+.3f %+.3f\nM: %+.3f %+.3f %+.3f\n",
+                     t.Ax, t.Ay, t.Az, t.Gx, t.Gy, t.Gz, t.Mx, t.My, t.Mz);
+      UART2_BUF_O_Write_String_To_Buffer(buff);
+      UART2_BUF_O_Send_All_Data();
+   #endif
     
    return 0;
 }

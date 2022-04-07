@@ -1,5 +1,6 @@
 #ifndef _APP_OBC_COMM_TASK_H
 #define _APP_OBC_COMM_TASK_H	1
+#include "stdint.h"
 
 // ------ Public function prototypes (declarations) --------------------------
 void App_Obc_Comm_Init(void);

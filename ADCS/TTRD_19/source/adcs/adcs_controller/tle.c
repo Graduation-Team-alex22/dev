@@ -3,6 +3,7 @@
 
 #include "../services_utilities/common.h"
 #include "../services_utilities/time.h"
+#include "../services_utilities/obc_comm.h"
 
 #include "tle.h"
 
@@ -19,28 +20,34 @@ static void rv2coe(double r[3], double v[3], double mu, double *p, double *a,
         double *ecc, double *incl, double *omega, double *argp, double *nu,
         double *m, double *arglat, double *truelon, double *lonper);
         
-uint8_t CTRL_TLE_Init(void)
+error_t CTRL_TLE_Init(void)
 {
    // initialize the privete variable with hardcoded TLE
    tle_data.orbit_data = read_tle(TLE_INIT_STRING);
    tle_data.data_status = INIT_DATA;
-   return 0;
+   return NO_ERROR;
 }
 
-uint8_t CTRL_TLE_Update(void)
+error_t CTRL_TLE_Update(void)
 {
-   orbit_t tmp_orbit;
+   // check if new tle data is available
+   if(!(OBC_Comm_GetFlags() & TLE_FLAG_BIT))
+   {
+      return NO_ERROR;
+   }
+   
    // Try to fetch tle data from flash
+   orbit_t tmp_orbit;
    if (flash_read_tle(&tmp_orbit) == FLASH_ERROR)
    { 
       tle_data.data_status = OLD_DATA;
-      return ERROR_CODE_TLE_FLASH;
+      return ERROR_TLE_FLASH_READ;
    }
    
    tle_data.orbit_data = tmp_orbit;
    tle_data.data_status = NEW_DATA;
    
-   return 0;
+   return NO_ERROR;
 }
 
 tle_data_t CTRL_TLE_GetData(void)

@@ -237,14 +237,22 @@ static void kep2xyz(kep_t *K, xyz_t *pos, xyz_t *vel);
 
 
 //======= PUBLIC FUNCTIONS IMPLEMENTATION ===============
-uint8_t CTRL_SGP4_Init(void)
+error_t CTRL_SGP4_Init(void)
 {
    // get tle data
    tle_data = CTRL_TLE_GetData();
-   return 0;
+   sgp4_status imode = init_sgp4();
+      
+   // check if we don't have the correct operation mode
+   if(imode != SGP4_NEAR_SIMP && imode != SGP4_NEAR_NORM)
+   {
+     return ERROR_SGP4_BAD_INIT_TLE_DATA;
+   }
+   
+   return NO_ERROR;
 }   
 
-uint8_t CTRL_SGP4_Update(void)
+error_t CTRL_SGP4_Update(void)
 {
    // get tle data
    tle_data_t tle_tmp = CTRL_TLE_GetData();
@@ -268,15 +276,27 @@ uint8_t CTRL_SGP4_Update(void)
    }
 
    // calculate position and velocity
-   sgp4_status satpos_status = satpos_xyz( time_getTime().Julian_Date, &p_eci, &v_eci);
+   double jd = time_getTime().Julian_Date;
+   sgp4_status satpos_status = satpos_xyz( jd , &p_eci, &v_eci);
 
    // check if the output is correct
    if (satpos_status == SGP4_ZERO_ECC || satpos_status == SGP4_NEAR_SIMP
-            || satpos_status == SGP4_NEAR_NORM) {
-      return 0;
+            || satpos_status == SGP4_NEAR_NORM)
+   {
+      return NO_ERROR;
    }
    
-    return ERROR_CODE_SGP4_MODE;
+    return ERROR_SGP4_BAD_OP_MODE;
+}
+
+xyz_t CTRL_SGP4_GetPECI(void)
+{
+   return p_eci;
+}
+
+xyz_t CTRL_SGP4_GetVECI(void)
+{
+   return v_eci;
 }
 
         

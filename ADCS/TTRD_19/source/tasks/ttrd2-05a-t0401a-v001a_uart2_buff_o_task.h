@@ -51,6 +51,7 @@ void     UART2_BUF_O_Init(uint32_t BAUD_RATE);
 uint32_t UART2_BUF_O_Update(void);
 
 void     UART2_BUF_O_Send_All_Data(void);
+void     UART2_BUF_O_Send_All_Data_Blocking(void);
 
 void     UART2_BUF_O_Write_String_To_Buffer(const char* const);
 void     UART2_BUF_O_Write_Char_To_Buffer(const char);
@@ -59,6 +60,8 @@ void     UART2_BUF_O_Write_Number10_To_Buffer(const uint32_t DATA);
 void     UART2_BUF_O_Write_Number04_To_Buffer(const uint32_t DATA);
 void     UART2_BUF_O_Write_Number03_To_Buffer(const uint32_t DATA);
 void     UART2_BUF_O_Write_Number02_To_Buffer(const uint32_t DATA);
+
+uint32_t UART2_BUF_O_Get_WaitingIdx(void);
 
 #endif
 

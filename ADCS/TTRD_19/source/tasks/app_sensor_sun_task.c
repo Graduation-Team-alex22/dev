@@ -60,5 +60,11 @@ uint32_t App_Sensor_Sun_Update(void)
       PROCESSOR_Perform_Safe_Shutdown(error_code);
    }
     
+   #ifdef DIAGNOSIS_OUTPUT
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Update] Sun Sensor Update\n");
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Data]: \n");
+      UART2_BUF_O_Send_All_Data();
+   #endif
+   
    return RETURN_NORMAL_STATE;
 }

@@ -98,9 +98,11 @@ uint32_t App_Sensor_Gps_Update(void)
    #ifdef DIAGNOSIS_OUTPUT
       char buff[200];
       gps_sensor_t gps_data = GPS_Sensor_GetData();
-      sprintf(buff, "fix: %d \t lat: %f \t long: %f \t alt: %f\n utc: %f\tsatnum: %d, DOP: %f  %f  %f",
-         gps_data.d3fix, gps_data.p_gps_lla[0], gps_data.p_gps_lla[1], gps_data.p_gps_lla[2],
-         gps_data.utc_time, gps_data.num_sat, gps_data.DOP[0], gps_data.DOP[1], gps_data.DOP[2]);
+      sprintf(buff, "fix:%d\tlat:%6.6f\tlong:%6.6f\talt:%6.6f\nutc:%f\tsatnum:%d DOP: %1.2f %1.2f %1.2f\n",
+                     gps_data.d3fix,
+                     gps_data.p_gps_lla[0], gps_data.p_gps_lla[1], gps_data.p_gps_lla[2],
+                     gps_data.utc_time, gps_data.num_sat,
+                     gps_data.DOP[0], gps_data.DOP[1], gps_data.DOP[2]);
    
       UART2_BUF_O_Write_String_To_Buffer("[DIAG - Update] GPS Update\n");
       UART2_BUF_O_Write_String_To_Buffer("[DIAG - Data]: \n");

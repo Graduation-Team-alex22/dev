@@ -15,6 +15,7 @@
 #include "ref_vectors.h"
 #include "sgp4.h"
 #include "../config.h"
+#include "wahbaRotM.h"
 
 #include "controller.h"
 
@@ -24,6 +25,8 @@ static mgn_sensor_t mgn_sensor_data;
 static sun_sensor_t sun_sensor_data;
 static ref_vectors_t ref_vector_data;
 static magneto_handle_t magneto_torquer_handle;
+
+static WahbaRotMStruct control_WahbaRot;
 
 static adcs_control_t control = { .b_dot[0] = 0, .b_dot[1] = 0, .b_dot[2] = 0,
                           .b_dot_prev[0] = 0, .b_dot_prev[1] = 0,
@@ -37,6 +40,11 @@ static adcs_control_t control = { .b_dot[0] = 0, .b_dot[1] = 0, .b_dot[2] = 0,
 
                           
 static spin_handle_t spin_motor_handle;
+        
+//-- PRIVATE FUNCTIONS ------------------
+static void spin_torquer_controller(float w, adcs_control_t *control_struct); 
+static void b_dot(float b[3], float b_prev[3], float b_norm, adcs_control_t *control_struct);
+static void pointing_controller(float b[3], float b_norm, WahbaRotMStruct *WStruct, adcs_control_t *control_struct);
                           
 
 void CTRL_Control_Determination_Update(void)
@@ -45,26 +53,25 @@ void CTRL_Control_Determination_Update(void)
    imu_sensor_data = IMU_Sensor_GetData();
    mgn_sensor_data = MGN_Sensor_GetData();
    sun_sensor_data = SUN_Sensor_GetData();
-   ref_vector_data = Ref_Vectors_GetData();
+   ref_vector_data = CTRL_Ref_Vectors_GetData();
    //-- update sensor values and status [End] -------
    
    //-- update attitude determination [Start] -------
-   WahbaRotMStruct WahbaRot;
    
    // insert sun reference vector
-   WahbaRot.w_a[0] = ref_vector_data.sun_vec.sun_pos_ned.x / ref_vector_data.sun_vec.norm;
-   WahbaRot.w_a[1] = ref_vector_data.sun_vec.sun_pos_ned.y / ref_vector_data.sun_vec.norm;
-   WahbaRot.w_a[2] = ref_vector_data.sun_vec.sun_pos_ned.z / ref_vector_data.sun_vec.norm;
+   control_WahbaRot.w_a[0] = ref_vector_data.sun_vec.sun_pos_ned.x / ref_vector_data.sun_vec.norm;
+   control_WahbaRot.w_a[1] = ref_vector_data.sun_vec.sun_pos_ned.y / ref_vector_data.sun_vec.norm;
+   control_WahbaRot.w_a[2] = ref_vector_data.sun_vec.sun_pos_ned.z / ref_vector_data.sun_vec.norm;
    
    // insert geomagentic reference vector
-   WahbaRot.w_m[0] = ref_vector_data.geomag_vec.Xm / ref_vector_data.geomag_vec.norm;
-   WahbaRot.w_m[1] = ref_vector_data.geomag_vec.Ym / ref_vector_data.geomag_vec.norm;
-   WahbaRot.w_m[2] = ref_vector_data.geomag_vec.Zm / ref_vector_data.geomag_vec.norm;
+   control_WahbaRot.w_m[0] = ref_vector_data.geomag_vec.Xm / ref_vector_data.geomag_vec.norm;
+   control_WahbaRot.w_m[1] = ref_vector_data.geomag_vec.Ym / ref_vector_data.geomag_vec.norm;
+   control_WahbaRot.w_m[2] = ref_vector_data.geomag_vec.Zm / ref_vector_data.geomag_vec.norm;
    
    /* Check if the sun sensor is available */
    if (sun_sensor_data.status == DEVICE_OK)
    {
-      WahbaRot.sun_sensor_gain = 1;
+      control_WahbaRot.sun_sensor_gain = 1;
    } 
    else 
    {
@@ -72,7 +79,7 @@ void CTRL_Control_Determination_Update(void)
       sun_sensor_data.sun_xyz[0] = 0;
       sun_sensor_data.sun_xyz[1] = 0;
       sun_sensor_data.sun_xyz[2] = 0;
-      WahbaRot.sun_sensor_gain = 0;
+      control_WahbaRot.sun_sensor_gain = 0;
    }
    
    float gyroscope[3] = { 0 };
@@ -80,14 +87,14 @@ void CTRL_Control_Determination_Update(void)
    if (mgn_sensor_data.status == DEVICE_OK)
    {
       WahbaRotM( sun_sensor_data.sun_xyz, gyroscope,
-             (float*)mgn_sensor_data.mag_filtered, &WahbaRot);
-      WahbaRot.run_flag = 1;
+             (float*)mgn_sensor_data.mag_filtered, &control_WahbaRot);
+      control_WahbaRot.run_flag = 1;
    } 
    else if (imu_sensor_data.status == DEVICE_OK) 
    {
       WahbaRotM(sun_sensor_data.sun_xyz, gyroscope,
-             imu_sensor_data.xm_filtered, &WahbaRot);
-      WahbaRot.run_flag = 1;
+             imu_sensor_data.xm_filtered, &control_WahbaRot);
+      control_WahbaRot.run_flag = 1;
    }
     
 }
@@ -102,7 +109,7 @@ void CTRL_Control_Attitude_Update(void)
    control.Iy = 0;
    control.sp_rpm = 0;
    /* Choose the correct velocities */
-   if (WahbaRot.run_flag == 0)
+   if (control_WahbaRot.run_flag == 0)
    {
       angular_velocities[0] = imu_sensor_data.gyro_filtered[0];
       angular_velocities[1] = imu_sensor_data.gyro_filtered[1];
@@ -111,9 +118,9 @@ void CTRL_Control_Attitude_Update(void)
    }
    else 
    {
-      angular_velocities[0] = WahbaRot.W[0];
-      angular_velocities[1] = WahbaRot.W[1];
-      angular_velocities[2] = WahbaRot.W[2];
+      angular_velocities[0] = control_WahbaRot.W[0];
+      angular_velocities[1] = control_WahbaRot.W[1];
+      angular_velocities[2] = control_WahbaRot.W[2];
       spin_torquer_controller(angular_velocities[1], &control);
    }
    /* Run B-dot and spin torquer controller if the angular velocities are bigger than thresholds */
@@ -144,11 +151,11 @@ void CTRL_Control_Attitude_Update(void)
    {
       /* Run pointing controller if the sun sensor is available */
       if (sun_sensor_data.status == DEVICE_OK
-      && WahbaRot.run_flag == 1
+      && control_WahbaRot.run_flag == 1
       && mgn_sensor_data.status == DEVICE_OK)
       {
          /* Run pointing controller when the sun sensor is available */
-         pointing_controller((float*)mgn_sensor_data.mag_filtered, mgn_sensor_data.rm_norm, &WahbaRot, &control);
+         pointing_controller((float*)mgn_sensor_data.mag_filtered, mgn_sensor_data.rm_norm, &control_WahbaRot, &control);
          /* Set the currents to magneto-torquers in mA*/
          magneto_torquer_handle.current_z = (int8_t) (control.Iz * 1000);
          magneto_torquer_handle.current_y = (int8_t) (control.Iy * 1000);
@@ -160,6 +167,9 @@ void CTRL_Control_Attitude_Update(void)
    }
    /* Set spin torquer RPM */
    spin_motor_handle.RPM = control.const_rmp + control.sp_rpm;
+   
+   // reset wahba run flag
+   control_WahbaRot.run_flag = 0;
    
    // Update actuators
    Magneto_Torquer_SetHandler(magneto_torquer_handle);

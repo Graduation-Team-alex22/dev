@@ -39,8 +39,8 @@ Date:		2022-02-23
 #define  TM_MONTH_NOVEMBER        ((uint8_t)0x11U)
 #define  TM_MONTH_DECEMBER        ((uint8_t)0x12U)
 
-#define  MAX_YEAR                 22
-#define  CURRENT_YEAR             22
+#define  MAX_YEAR                 2022
+#define  CURRENT_YEAR             2022
 
 #define  MIN_QB_SECS              2678400
 #define  MAX_QB_SECS              662774400

@@ -5,6 +5,7 @@
 #include "../main/project.h"
 
 #ifdef DIAGNOSIS_OUTPUT
+#include "stdio.h"
 #include "../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h"
 #endif
 
@@ -102,5 +103,17 @@ uint32_t App_Sensor_Tmp_Update(void)
    {
       PROCESSOR_Perform_Safe_Shutdown(error_code);
    }
+   
+   #ifdef DIAGNOSIS_OUTPUT
+      char buf[200];
+      tmp_sensor_t tg = TMP_Sensor_GetData();
+      sprintf(buf, "Temperature: %3.4f\n", tg.temprature );
+
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Update] TMP Update\n");
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Data]: \n");
+      UART2_BUF_O_Write_String_To_Buffer(buf);
+      UART2_BUF_O_Send_All_Data();
+   #endif
+   
 	return NO_ERROR;
 }

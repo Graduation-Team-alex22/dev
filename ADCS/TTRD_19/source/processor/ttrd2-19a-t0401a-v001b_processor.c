@@ -85,6 +85,7 @@
 #include "../tasks/app_control_attitude_update_task.h"
 #include "../tasks/app_actuators_task.h"
 #include "../tasks/app_obc_comm_task.h"
+#include "../adcs/services_utilities/time.h"
 
 // MoniTTor header 
 // This module has access to the MoniTTor: use with care!
@@ -272,11 +273,6 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          {
          UART2_BUF_O_Write_String_To_Buffer("\nFAIL_SAFE_S\n");
          UART2_BUF_O_Send_All_Data();
-
-             // wait until DMA finishes
-             TIMEOUT_T3_USEC_Init();
-             TIMEOUT_T3_USEC_Start();
-             while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
                 
          // Trigger "fail safe" behaviour
          PROCESSOR_Perform_Safe_Shutdown(PROCESSOR_Retrieve_PFC());
@@ -288,13 +284,8 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          {
          // Report Mode / State (for demo purposes only)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_01_PROCESSOR_MEMORY_CHECKS_S\n");
-         UART2_BUF_O_Send_All_Data();
+         UART2_BUF_O_Send_All_Data_Blocking();
 
-             // wait until DMA finishes
-             TIMEOUT_T3_USEC_Init();
-             TIMEOUT_T3_USEC_Start();
-             while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
-                
          // PLACEHOLDER: 
 
          // Here we will add calls to third-party library for checks of
@@ -317,13 +308,8 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          {
          // Report Mode / State (for demo purposes only)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_02_SOFTWARE_CONFIGURATION_CHECKS_S\n");
-         UART2_BUF_O_Send_All_Data();
-
-             // wait until DMA finishes
-             TIMEOUT_T3_USEC_Init();
-             TIMEOUT_T3_USEC_Start();
-             while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
-                
+         UART2_BUF_O_Send_All_Data_Blocking();
+         
          // PLACEHOLDER: 
 
          // Here we will check the software configuration (matched to 'Golden Signature')
@@ -343,12 +329,7 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          {
          // Report Mode / State (for demo purposes only)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_03_ENVIRONMENT_CHECKS_S\n");
-         UART2_BUF_O_Send_All_Data();
-
-         // wait until DMA finishes
-         TIMEOUT_T3_USEC_Init();
-         TIMEOUT_T3_USEC_Start();
-         while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
+         UART2_BUF_O_Send_All_Data_Blocking();
                 
          // Here we check only the CPU temperature 
          // via the sensor on the STM32F401, which is linked to ADC1
@@ -389,12 +370,7 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          {
          // Report Mode / State (for demo purposes only)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_04_WDT_CHECK_S\n");
-         UART2_BUF_O_Send_All_Data();
-
-         // wait until DMA finishes
-         TIMEOUT_T3_USEC_Init();
-         TIMEOUT_T3_USEC_Start();
-         while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(200));
+         UART2_BUF_O_Send_All_Data_Blocking();
           
          // See ERES2, Chapter 16
 
@@ -423,11 +399,6 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          // Report Mode / State (for demo purposes only)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_05a_SCHEDULER_OSC_CHECK_M\n");
          UART2_BUF_O_Send_All_Data();
-
-         // wait until DMA finishes
-         TIMEOUT_T3_USEC_Init();
-         TIMEOUT_T3_USEC_Start();
-         while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
              
          // Having confirmed that the iWDT is operational,
          // we now use this component to test the scheduler operation
@@ -467,11 +438,6 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          {
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_05b_SCHEDULER_OSC_CHECK_M\n");
          UART2_BUF_O_Send_All_Data();
-
-         // wait until DMA finishes
-         TIMEOUT_T3_USEC_Init();
-         TIMEOUT_T3_USEC_Start();
-         while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
                 
          // This is the second part of our scheduler / oscillator check
 
@@ -503,12 +469,7 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
       case STARTUP_06a_MONITTOR_ORUN_CHECK_M:
          {
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_06a_MONITTOR_ORUN_CHECK_M\n");
-         UART2_BUF_O_Send_All_Data();
-
-         // wait until DMA finishes
-         TIMEOUT_T3_USEC_Init();
-         TIMEOUT_T3_USEC_Start();
-         while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
+         UART2_BUF_O_Send_All_Data_Blocking();
                 
          // See ERES2, Chapter 18
          
@@ -530,11 +491,6 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          {
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_06b_MONITTOR_URUN_CHECK_M\n");
          UART2_BUF_O_Send_All_Data();
-         
-         // wait until DMA finishes
-         TIMEOUT_T3_USEC_Init();
-         TIMEOUT_T3_USEC_Start();
-         while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
           
          // See ERES2, Chapter 18
          
@@ -554,11 +510,6 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          UART2_BUF_O_Write_String_To_Buffer("STARTUP_07_PREDICTTOR_CHECK_M\n");
          UART2_BUF_O_Send_All_Data();
          
-         // wait until DMA finishes
-         TIMEOUT_T3_USEC_Init();
-         TIMEOUT_T3_USEC_Start();
-         while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
-
          // See ERES2, Chapter 19
          
          // Set up the scheduler (short TI) 
@@ -631,6 +582,7 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          //REG_CONFIG_CHECKS_UART_Store(UART4);
          
          // init application modules
+         time_init();
          App_Sensor_Imu_Init();
          App_Sensor_Mgn_Init(); 
          App_Sensor_Gps_Init();
@@ -671,7 +623,7 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          SCH_Add_Task(App_Obc_Comm_Update,             13, 100, 10000, 0);    // OBC Comm
 
 
-         WATCHDOG_Init(240);  // 240 x 125 µs => 30 ms 
+         //WATCHDOG_Init(240);  // 240 x 125 µs => 30 ms 
          
          // Feed the watchdog
          WATCHDOG_Update();
@@ -790,10 +742,10 @@ eProc_MoSt PROCESSOR_Get_MoSt(void)
 
 -*----------------------------------------------------------------------------*/
 void PROCESSOR_Change_MoSt(void)
-   {
+{
    // Trigger software reset
    NVIC_SystemReset();       
-   }
+}
 
 /*----------------------------------------------------------------------------*-
 
@@ -1011,52 +963,36 @@ uint32_t PROCESSOR_Retrieve_PFC(void)
    
 -*----------------------------------------------------------------------------*/
 void PROCESSOR_Perform_Safe_Shutdown(const uint32_t PFC)
-   {
-   uint32_t WDT_state = WATCHDOG_Get_State();
-
-   // Check if the iWDT is running
-   if (WDT_state == WDT_RUNNING)
-      {
-      // Feed the WDT
-      WATCHDOG_Update();
-
-      // Reset (with the aim of disabling the iWDT)
+{
+   
+   // wait until uart buffer is emptied
+   UART2_BUF_O_Send_All_Data_Blocking();
+   
+   // change mode to safe mode
+   if( PROCESSOR_Get_MoSt() !=  FAIL_SAFE_S )
+   {     
       PROCESSOR_Store_Reqd_MoSt(FAIL_SAFE_S);
       PROCESSOR_Store_PFC(PFC);
       PROCESSOR_Change_MoSt();
-      }
-
-   if (WDT_state == WDT_UNKNOWN_STATE )
-      {
-      // Reset (with the aim of disabling the iWDT, just in case)
-      PROCESSOR_Store_Reqd_MoSt(FAIL_SAFE_S);
-      PROCESSOR_Store_PFC(PFC);
-      PROCESSOR_Change_MoSt();
-      }
-
-   // If we've got this far, we assume that the iWDT is *not* running (we are in FAIL_SAFE mode already)
-
-		// stop the schedular just in case, disable the interrupt of TIM2
-		NVIC->ICER[TIM2_IRQn >> 0x05] =
-		(uint32_t)0x01 << (TIM2_IRQn & (uint8_t)0x1F);
-			
+   }
+   
    // Set up 'Heartbeat' LED pin to report the PFC
    REPORT_PFC_Init();
 
-			
+
    while(1)
-      {
+   {
       // 0.5-second delay (max timeout is ~65 ms => we use 50 ms x 10)
       for (uint32_t i = 0; i <= 10; i++)
-         {
+      {
          TIMEOUT_T3_USEC_Start();
          while (COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(50000));
-         }       
+      }       
 
       // Report PFC
       REPORT_PFC_Update(PFC);
-      }
    }
+}
 
 /*----------------------------------------------------------------------------*-
   ------------------------------ END OF FILE ---------------------------------

@@ -5,6 +5,7 @@
 #include "../main/project.h"
 
 #ifdef DIAGNOSIS_OUTPUT
+#include "stdio.h"
 #include "../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h"
 #endif
 
@@ -104,12 +105,22 @@ void App_Sensor_Mgn_Init(void)
 -*----------------------------------------------------------------------------*/
 uint32_t App_Sensor_Mgn_Update(void)
 {
-   
 	error_t error_code = MGN_Sensor_Update();
 	if(error_code != NO_ERROR)
 	{
 		PROCESSOR_Perform_Safe_Shutdown(error_code);
 	}
+   
+   #ifdef DIAGNOSIS_OUTPUT
+      char buf[200];
+      mgn_sensor_t tg = MGN_Sensor_GetData();
+      sprintf(buf, "X: %+.4f  Y: %+.4f  Z:%+.4f\n",
+                   tg.mag[0], tg.mag[1], tg.mag[2]);
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Update] MGN Update\n");
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Data]: \n");
+	   UART2_BUF_O_Write_String_To_Buffer(buf);
+      UART2_BUF_O_Send_All_Data();
+   #endif
    
 	return 0;
 }

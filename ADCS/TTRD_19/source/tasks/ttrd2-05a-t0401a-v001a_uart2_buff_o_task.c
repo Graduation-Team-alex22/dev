@@ -324,6 +324,22 @@ void UART2_BUF_O_Send_All_Data(void)
 	
 }
 
+void     UART2_BUF_O_Send_All_Data_Blocking(void)
+{
+   
+   // wait until uart buffer is emptied
+   while(UART2_BUF_O_Get_WaitingIdx() || DMA1_Stream6->NDTR != 0)
+   {
+      UART2_BUF_O_Send_All_Data();
+   }
+   
+   // wait for last character to be sent
+   TIMEOUT_T3_USEC_Init();
+   TIMEOUT_T3_USEC_Start();
+   while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(100));
+   
+}
+
 
 /*----------------------------------------------------------------------------*-
    
@@ -678,6 +694,11 @@ void UART2_BUF_O_Check_Data_Integrity(void)
       }
    }
 
+uint32_t UART2_BUF_O_Get_WaitingIdx(void)
+{
+   return Wait_idx_g;
+}
+   
 /*----------------------------------------------------------------------------*-
   ------------------------------ END OF FILE ---------------------------------
 -*----------------------------------------------------------------------------*/

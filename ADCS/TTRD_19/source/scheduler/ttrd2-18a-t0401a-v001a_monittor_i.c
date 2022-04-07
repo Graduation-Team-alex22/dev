@@ -215,9 +215,10 @@ void MONITTORi_Stop(void)
    {
    SysTick->CTRL &= 0xFFFFFFFC;  // Stop timer + disable interrupt
 
+   
    // Execution time in microseconds from DWT counter (runs at 84 MHz)
-   uint32_t Execution_time_us = DWT->CYCCNT / 84;
-
+   uint32_t Execution_time_us = DWT->CYCCNT / 90;
+      
    // After time-sensitive operations, check the pre-conditions (START)
 
    // Failure of any PreC will force a shutdown in this design

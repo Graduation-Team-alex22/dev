@@ -73,5 +73,6 @@ void cnv8_D(uint8_t *from, double *to);
 
 double vect_magnitude_xyz(xyz_t vect);
 double vect_magnitude_arr(double vect[]);
+double norm(double x1, double x2, double x3);
 
 #endif

@@ -26,7 +26,10 @@ typedef struct {
 } llh_t;
 
 // unit of length will follow the height units as is
-xyz_t CTRL_LLA2ECEF(const llh_t *source);
+xyz_t spher2cart(const llh_t* source);
+xyz_t ECI2ECEF(const double* jd, const xyz_t* source);
+llh_t cart2spher(const xyz_t* source);
+
 
 /*
 void ECEF2ECI(double jd, xyz_t from, xyz_t *to);

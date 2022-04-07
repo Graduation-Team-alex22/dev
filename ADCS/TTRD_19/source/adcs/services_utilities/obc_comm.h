@@ -1,11 +1,15 @@
 #ifndef OBC_COMM_H__
-#define	OBC_COMM_H__
+#define	OBC_COMM_H__ 1
 
-#include <stdint.h>
+#include "../main/project.h"
 
-void update_eps_pkt(void);
-//adcs_error_status init_obc_communication(uint32_t boot_cnt);
-//adcs_error_status update_obc_communication();
+typedef uint8_t obc_comm_flags_t;
 
+#define TLE_FLAG_BIT       ((obc_comm_flags_t)0x01)
+
+error_t OBC_Comm_Init(void);
+error_t OBC_Comm_Update(void);
+obc_comm_flags_t OBC_Comm_GetFlags(void);
+char* OBC_Comm_GetTLE(void);
 
 #endif

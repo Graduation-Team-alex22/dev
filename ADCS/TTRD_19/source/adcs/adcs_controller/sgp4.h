@@ -22,12 +22,11 @@
 #ifndef _SGP4_H
 #define _SGP4_H
 
+#include "../../main/project.h"
 #include "tle.h"
 #include "../services_utilities/common.h"
 #include "../services_utilities/time.h"
 
-// ERROR CODES
-#define ERROR_CODE_SGP4_MODE     1
 
 /* SGP4 function return values. */
 typedef enum {
@@ -42,8 +41,10 @@ typedef enum {
 } sgp4_status;
 
 
-uint8_t CTRL_SGP4_Init(void);
-uint8_t CTRL_SGP4_Update(void);
+error_t CTRL_SGP4_Init(void);
+error_t CTRL_SGP4_Update(void);
+xyz_t CTRL_SGP4_GetPECI(void);
+xyz_t CTRL_SGP4_GetVECI(void);
 
 void init_satpos_xyz(void);
 sgp4_status satpos_xyz(double jd, xyz_t *pos, xyz_t *vel);

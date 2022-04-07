@@ -22,6 +22,9 @@ typedef uint32_t error_t;
 #define ERROR_MGN_UPDATE_BASE                ((error_t) 1320)
 #define ERROR_TMP_CONNECTED_BASE             ((error_t) 1400)
 #define ERROR_TMP_UPDATE_BASE                ((error_t) 1410)
+#define ERROR_TLE_FLASH_READ                 ((error_t) 1501) 
+#define ERROR_SGP4_BAD_INIT_TLE_DATA         ((error_t) 1601) 
+#define ERROR_SGP4_BAD_OP_MODE               ((error_t) 1602)
 
 #define PROJECT_I2C1_CLOCK (400000)
 

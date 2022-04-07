@@ -17,6 +17,11 @@ void App_Sensor_Health_Init(void)
 
 uint32_t App_Sensor_Health_Update(void)
 {
+   #ifdef DIAGNOSIS_OUTPUT
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Update] Health Check Update\n");
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Data]: \n");
+      UART2_BUF_O_Send_All_Data();
+   #endif
    
    return NO_ERROR;
 }

@@ -2,7 +2,6 @@
 #define CONTROLLER_H__
 
 #include "stdint.h"
-#include "wahbaRotM.h"
 
 typedef struct {
    /* B-dot Controller */
@@ -24,10 +23,6 @@ typedef struct {
 
 void CTRL_Control_Determination_Update(void);
 void CTRL_Control_Attitude_Update(void);
-
-void spin_torquer_controller(float w, adcs_control_t *control_struct); 
-void b_dot(float b[3], float b_prev[3], float b_norm, adcs_control_t *control_struct);
-void pointing_controller(float b[3], float b_norm, WahbaRotMStruct *WStruct, adcs_control_t *control_struct);
 
 
 #endif

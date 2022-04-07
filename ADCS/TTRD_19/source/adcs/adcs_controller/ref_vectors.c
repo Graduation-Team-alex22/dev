@@ -1,12 +1,15 @@
 #include "../services_utilities/time.h"
+#include "../services_utilities/common.h"
 #include "math.h"
 #include "frame.h"
+#include "sgp4.h"
+#include "geomag.h"
 
 #include "ref_vectors.h"
 
 //-- PRIVATE VARIABLES ----------------------
 static sun_vector_t sun_vector;
-static geomag_vector_t geomag_vector;
+static geomag_vector_t igrf_vector;
 
 /*
 
@@ -73,12 +76,25 @@ void CTRL_Ref_Sun_Update(void)
 
 void CTRL_Ref_Geomag_Update(void)
 {
+   xyz_t p_eci = CTRL_SGP4_GetPECI();
+   xyz_t p_ecef = { .x = 0, .y = 0, .z = 0 };
+   llh_t p_ecef_llh = { .lat = 0, .lon = 0, .alt = 0 };
    
+   time_t time = time_getTime();
+   
+   p_ecef = ECI2ECEF(&time.Julian_Date, &p_eci);
+   p_ecef_llh = cart2spher(&p_ecef);
+   igrf_vector.sdate = time.decyear;
+   igrf_vector.latitude = p_ecef_llh.lat;
+   igrf_vector.longitude = p_ecef_llh.lon;
+   igrf_vector.alt = p_ecef_llh.alt;
+   geomag(&igrf_vector); // Xm,Ym,Zm in NED
+   igrf_vector.norm = norm(igrf_vector.Xm, igrf_vector.Ym, igrf_vector.Zm);
    
 }
 
-ref_vectors_t Ref_Vectors_GetData(void)
+ref_vectors_t CTRL_Ref_Vectors_GetData(void)
 {
-   ref_vectors_t r = {.sun_vec = sun_vector, .geomag_vec = geomag_vector};
+   ref_vectors_t r = {.sun_vec = sun_vector, .geomag_vec = igrf_vector};
    return r;
 }

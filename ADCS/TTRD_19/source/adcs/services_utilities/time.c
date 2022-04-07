@@ -53,7 +53,7 @@ uint8_t time_init(void){
    }
    else
    {
-      uint32_t rtc_calender[2] = {0x00124530, 0x00220227};
+      uint32_t rtc_calender[2] = {0x00124530, 0x00170227};
 
       //obc_comm_get_time(rtc_calender); // rtc_calender[0] = TR, rtc_calender[1] = DR
 
@@ -99,6 +99,7 @@ void time_update(void)
 
 
 time_t time_getTime(void){
+   time_update();
    return time_keeping_adcs;
 }
 
