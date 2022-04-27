@@ -104,9 +104,9 @@
 #endif /* STM32F40_41xxx && STM32F427_437xx && STM32F429_439xx && STM32F401xx && STM32F410xx && STM32F411xE && STM32F412xG && STM32F413_423xx && STM32F446xx && STM32F469_479xx */
 
 /* Old STM32F40XX definition, maintained for legacy purpose */
-#ifdef STM32F40XX
-  #define STM32F40_41xxx
-#endif /* STM32F40XX */
+//#ifdef STM32F40XX
+//#define STM32F40_41xxx
+//#endif /* STM32F40XX */
 
 /* Old STM32F427X definition, maintained for legacy purpose */
 #ifdef STM32F427X
@@ -2084,9 +2084,9 @@ typedef struct
 
 /*!< Peripheral memory map */
 #define APB1PERIPH_BASE       PERIPH_BASE
-#define APB2PERIPH_BASE       (PERIPH_BASE + 0x00010000)
+#define APB2PERIPH_BASE       (uint32_t) (PERIPH_BASE + 0x00010000)
 #define AHB1PERIPH_BASE       (PERIPH_BASE + 0x00020000)
-#define AHB2PERIPH_BASE       (PERIPH_BASE + 0x10000000)
+#define AHB2PERIPH_BASE       PERIPH_BASE + 0x10000000
 
 /*!< APB1 peripherals */
 #define TIM2_BASE             (APB1PERIPH_BASE + 0x0000)

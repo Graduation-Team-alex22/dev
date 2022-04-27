@@ -7,139 +7,106 @@
   * @brief   Default main function.
   ******************************************************************************
 */
-//#include "defines.h"
+
+
 #include "stm32f4xx.h"
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_gpio.h"
-#include "stm32f4xx_tim.h"
+#include "stm32f4xx_adc.h"
+//#include "defines.h"
+//#include "tm_stm32f4_gpio.h"
 
-void TM_LEDS_Init(void) {
-	GPIO_InitTypeDef GPIO_InitStruct;
+int main(void)
+{ //Enable Required Buses
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2, ENABLE);
 
-	/* Clock for GPIOD */
-    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
 
-	/* Alternating functions for pins */
-	GPIO_PinAFConfig(GPIOD, GPIO_PinSource12, GPIO_AF_TIM4);
-	GPIO_PinAFConfig(GPIOD, GPIO_PinSource13, GPIO_AF_TIM4);
-	GPIO_PinAFConfig(GPIOD, GPIO_PinSource14, GPIO_AF_TIM4);
-	GPIO_PinAFConfig(GPIOD, GPIO_PinSource15, GPIO_AF_TIM4);
+	//GPIO structure to config the GPIO pins
+	GPIO_InitTypeDef GPIO_InitStructure;
+	//DMA structure to config DMA
+	DMA_InitTypeDef DMA_InitStructure;
+	//ADC cong structures to set ADC configurations
+	ADC_InitTypeDef ADC_InitStructure;
+	ADC_CommonInitTypeDef ADC_CommonInitStructure;
 
-	/* Set pins */
-	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
-	GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;
-	GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
-    GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF;
-    GPIO_InitStruct.GPIO_Speed = GPIO_Speed_100MHz;
-    GPIO_Init(GPIOD, &GPIO_InitStruct);
-}
 
-void TM_TIMER_Init(void) {
-	TIM_TimeBaseInitTypeDef TIM_BaseStruct;
+	// creating variable to save the readings
+	uint16_t ADC1_CH0_Value = 0;
 
-	/* Enable clock for TIM4 */
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
-/*
-	TIM4 is connected to APB1 bus, which has on F407 device 42MHz clock
-	But, timer has internal PLL, which double this frequency for timer, up to 84MHz
-	Remember: Not each timer is connected to APB1, there are also timers connected
-	on APB2, which works at 84MHz by default, and internal PLL increase
-	this to up to 168MHz
 
-	Set timer pre-scaler
-	Timer count frequency is set with
+	//ADC1 IN0 connected to PA0 Pin
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	//Activate the GPIO configurations
+	GPIO_Init(GPIOA, &GPIO_InitStructure);
 
-	timer_tick_frequency = Timer_default_frequency / (prescaller_set + 1)
 
-	In our case, we want a max frequency for timer, so we set prescaller to 0
-	And our timer will have tick frequency
 
-	timer_tick_frequency = 84000000 / (0 + 1) = 84000000
-*/
-	TIM_BaseStruct.TIM_Prescaler = 32000;
-	/* Count up */
-    TIM_BaseStruct.TIM_CounterMode = TIM_CounterMode_Up;
-/*
-	Set timer period when it have reset
-	First you have to know max value for timer
-	In our case it is 16bit = 65535
-	To get your frequency for PWM, equation is simple
+	ADC_CommonInitStructure.ADC_Mode = ADC_Mode_Independent; // We set the ADC Mode as Independent to work.
+	ADC_CommonInitStructure.ADC_Prescaler = ADC_Prescaler_Div4; // We have set the prescaler value. Received data will bi divided by 4.
+	ADC_CommonInit(&ADC_CommonInitStructure); //Started the above configurations.
 
-	PWM_frequency = timer_tick_frequency / (TIM_Period + 1)
+	ADC_InitStructure.ADC_Resolution = ADC_Resolution_8b; // this means we are going to divide the value by 20mV.
+	ADC_InitStructure.ADC_ScanConvMode = DISABLE;
+	ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;
+	ADC_InitStructure.ADC_ExternalTrigConvEdge = ADC_ExternalTrigConvEdge_None;
+	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_T1_CC1;
+	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
+	ADC_InitStructure.ADC_NbrOfConversion = 1;
+	ADC_Init(ADC1, &ADC_InitStructure); //Set configuration of ADC1
 
-	If you know your PWM frequency you want to have timer period set correct
+	//Enable ADC1
+	ADC_Cmd(ADC1, ENABLE);
 
-	TIM_Period = timer_tick_frequency / PWM_frequency - 1
+	DMA_InitStructure.DMA_Channel = DMA_Channel_0;
+	DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t) &ADC1->DR;
+	DMA_InitStructure.DMA_Memory0BaseAddr = (uint32_t) &ADC1_CH0_Value;
+	DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralToMemory;
+	DMA_InitStructure.DMA_BufferSize = 2;
+	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Disable;
+	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;
+	DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;
+	DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;
+	DMA_InitStructure.DMA_Priority = DMA_Priority_High;
+	DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Disable;
+	DMA_InitStructure.DMA_FIFOThreshold = DMA_FIFOThreshold_HalfFull;
+	DMA_InitStructure.DMA_MemoryBurst = DMA_MemoryBurst_Single;
+	DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
+	//here we select the DMA Stream to use
+	DMA_Init(DMA2_Stream0, &DMA_InitStructure);
+	//Here we start the related DMA
+	DMA_Cmd(DMA2_Stream0, ENABLE);
 
-	In our case, for 10Khz PWM_frequency, set Period to
+	//////////////
 
-	TIM_Period = 84000000 / 10000 - 1 = 8399
-
-	If you get TIM_Period larger than max timer value (in our case 65535),
-	you have to choose larger prescaler and slow down timer tick frequency
-*/
-    TIM_BaseStruct.TIM_Period = 262; /* 10kHz PWM */
-    TIM_BaseStruct.TIM_ClockDivision = TIM_CKD_DIV1;
-    TIM_BaseStruct.TIM_RepetitionCounter = 0;
-	/* Initialize TIM4 */
-    TIM_TimeBaseInit(TIM4, &TIM_BaseStruct);
-	/* Start count on TIM4 */
-    TIM_Cmd(TIM4, ENABLE);
-}
-
-void TM_PWM_Init(void) {
-	TIM_OCInitTypeDef TIM_OCStruct;
-
-	/* Common settings */
-
-	/* PWM mode 2 = Clear on compare match */
-	/* PWM mode 1 = Set on compare match */
-	TIM_OCStruct.TIM_OCMode = TIM_OCMode_PWM2;
-	TIM_OCStruct.TIM_OutputState = TIM_OutputState_Enable;
-	TIM_OCStruct.TIM_OCPolarity = TIM_OCPolarity_Low;
-
-/*
-	To get proper duty cycle, you have simple equation
-
-	pulse_length = ((TIM_Period + 1) * DutyCycle) / 100 - 1
-
-	where DutyCycle is in percent, between 0 and 100%
-
-	25% duty cycle: 	pulse_length = ((8399 + 1) * 25) / 100 - 1 = 2099
-	50% duty cycle: 	pulse_length = ((8399 + 1) * 50) / 100 - 1 = 4199
-	75% duty cycle: 	pulse_length = ((8399 + 1) * 75) / 100 - 1 = 6299
-	100% duty cycle:	pulse_length = ((8399 + 1) * 100) / 100 - 1 = 8399
-
-	Remember: if pulse_length is larger than TIM_Period, you will have output HIGH all the time
-*/
-	TIM_OCStruct.TIM_Pulse = 65; /* 25% duty cycle */
-	TIM_OC1Init(TIM4, &TIM_OCStruct);
-	TIM_OC1PreloadConfig(TIM4, TIM_OCPreload_Enable);
-
-	TIM_OCStruct.TIM_Pulse = 130; /* 50% duty cycle */
-	TIM_OC2Init(TIM4, &TIM_OCStruct);
-	TIM_OC2PreloadConfig(TIM4, TIM_OCPreload_Enable);
-
-	TIM_OCStruct.TIM_Pulse = 196; /* 75% duty cycle */
-	TIM_OC3Init(TIM4, &TIM_OCStruct);
-	TIM_OC3PreloadConfig(TIM4, TIM_OCPreload_Enable);
-
-	TIM_OCStruct.TIM_Pulse = 262; /* 100% duty cycle */
-	TIM_OC4Init(TIM4, &TIM_OCStruct);
-	TIM_OC4PreloadConfig(TIM4, TIM_OCPreload_Enable);
-}
-
-int main(void) {
-	/* Initialize system */
-	SystemInit();
-	/* Init leds */
-	TM_LEDS_Init();
-	/* Init timer */
-	TM_TIMER_Init();
-	/* Init PWM */
-	TM_PWM_Init();
-
-	while (1) {
-
+	uint16_t ADC_GetConversionValue(ADC_TypeDef* ADC1)
+	{
+	  /* Check the parameters */
+	  assert_param(IS_ADC_ALL_PERIPH(ADC1));
+	  /* Return the selected ADC conversion value */
+	  return (uint16_t) ADC1->DR;
 	}
+
+	while(1)
+		{
+			int delaytime = ADC1_CH0_Value * 500;
+			GPIO_SetBits(GPIOB, GPIO_Pin_0);
+			//ADC1_CH0_Value = ADC_GetConversionValue(ADC1);
+			while(delaytime ) delaytime --;
+			//ADC1_CH0_Value = ADC_GetConversionValue(ADC_TypeDef* ADC1);
+			GPIO_ResetBits(GPIOB, GPIO_Pin_0);
+			while(delaytime ) delaytime --;
+			//ADC1_CH0_Value = ADC_GetConversionValue(ADC_TypeDef* ADC1);
+
+		}
+
+
+
 }
+

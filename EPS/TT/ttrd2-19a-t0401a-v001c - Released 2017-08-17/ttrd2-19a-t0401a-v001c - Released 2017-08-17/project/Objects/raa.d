@@ -48,3 +48,4 @@
 .\objects\raa.o: ..\source\tasks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\raa.o: ..\source\tasks\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h
 .\objects\raa.o: ..\source\tasks\ttrd2-05a-t0401a-v001a_switch_task.h
+.\objects\raa.o: ..\source\tasks\../tasks/ttrd2-05a-t0401a-v001a_adc_task.h

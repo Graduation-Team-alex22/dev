@@ -31,10 +31,10 @@ endif
 all: obcTEST.elf
 
 # Tool invocations
-obcTEST.elf: $(OBJS) $(USER_OBJS) C:\Users\Abdel\OneDrive\Documents\eclipseWorkspace\obc_upsat\obcTEST/LinkerScript.ld
+obcTEST.elf: $(OBJS) $(USER_OBJS) C:\Users\Abdelrahman\ Ahmed\Documents\GitHub\dev\EPS\Testing\ Project\Test2\obcTEST\obcTEST/LinkerScript.ld
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU GCC Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"C:/Users/Abdel/OneDrive/Documents/eclipseWorkspace/obc_upsat/obcTEST/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "obcTEST.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"C:/Users/Abdelrahman Ahmed/Documents/GitHub/dev/EPS/Testing Project/Test2/obcTEST/obcTEST/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "obcTEST.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build

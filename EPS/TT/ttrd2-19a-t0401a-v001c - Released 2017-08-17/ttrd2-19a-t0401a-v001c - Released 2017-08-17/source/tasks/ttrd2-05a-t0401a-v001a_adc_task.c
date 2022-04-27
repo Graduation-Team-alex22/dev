@@ -393,9 +393,8 @@ int32_t ADC1_Get_Temperature_Celsius(void)
      None.
 
 -*----------------------------------------------------------------------------*/
-uint32_t ADC1_Read_Channel(const uint32_t CHANNEL, 
-                           const uint32_t ADC_SAMPLE_TIME) 
-   {
+uint32_t ADC1_Read_Channel(const uint32_t CHANNEL,const uint32_t ADC_SAMPLE_TIME) 
+{
    uint32_t T3;
 
    // Configure channel
@@ -419,8 +418,7 @@ uint32_t ADC1_Read_Channel(const uint32_t CHANNEL,
  
    // Return result  
    return ADC_GetConversionValue(ADC1);
-   }   
-
+}   
 /*----------------------------------------------------------------------------*-
   ------------------------------ END OF FILE ---------------------------------
 -*----------------------------------------------------------------------------*/

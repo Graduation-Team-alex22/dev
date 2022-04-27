@@ -13,6 +13,7 @@
 ".\objects\eps_power_module.o"
 ".\objects\eps_state.o"
 ".\objects\eps_soft_error_handling.o"
+".\objects\adcdma.o"
 ".\objects\misc.o"
 ".\objects\stm32f4xx_adc.o"
 ".\objects\stm32f4xx_can.o"
