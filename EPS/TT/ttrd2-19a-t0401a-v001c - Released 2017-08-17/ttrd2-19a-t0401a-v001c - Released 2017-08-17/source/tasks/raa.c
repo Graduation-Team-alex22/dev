@@ -20,7 +20,7 @@ uint32_t ADC1_Read_Channel(const uint32_t CHANNEL,const uint32_t ADC_SAMPLE_TIME
    // Allow 20 microseconds
    TIMEOUT_T3_USEC_Start();
    while((ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET)
-          && (COUNTING == (T3 = TIMEOUT_T3_USEC_Get_Timer_State(20))));
+          && (COUNTING == (T3 = TIMEOUT_T3_USEC_Get_Timer_State(200))));
 
    if (T3 == TIMED_OUT)
       {
