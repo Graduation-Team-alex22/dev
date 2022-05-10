@@ -358,7 +358,73 @@ int32_t ADC1_Get_Temperature_Celsius(void)
    // Return result  
    return Temp_celsius;
    }      
+/*----------------------------------------------------------------------------*-
 
+  ADC1_Get_Temperature_mv()
+
+  Reports current CPU temperature (Celsius). 
+  
+  See data sheet (values are not very precise ...).
+   
+  PARAMETERS:
+     None.
+
+  LONG-TERM DATA:
+     None.
+   
+  MCU HARDWARE:
+     ADC1.
+
+  PRE-CONDITION CHECKS:
+     None.
+
+  POST-CONDITION CHECKS:
+     None.
+
+  ERROR DETECTION / ERROR HANDLING:
+     None.
+
+  WCET:
+     Not yet determined.
+
+  BCET:
+     Not yet determined.
+
+  RETURN VALUE:
+     Temperature (Celsius).
+
+-*----------------------------------------------------------------------------*/
+int32_t ADC1_Get_Temperature_mv(void) 
+ {
+   int32_t  Temp_celsius = 0;
+   int32_t  Temp_mv;
+   uint32_t ADC_steps_per_volt;
+   
+   // Check pre-conditions (START)
+   
+   // Check data integrity (stored temperature value)
+   if (ADC1_temperature_raw_ig != ~ADC1_temperature_raw_g)
+      {
+      // Data have been corrupted: Treat here as Fatal Platform Failure
+      PROCESSOR_Perform_Safe_Shutdown(PFC_LONG_TERM_DATA_CORRUPTION);
+      }   
+    
+   // Check pre-conditions (END)
+
+   // We perform the core task activities only if we meet the pre-conditions
+
+   // Assume 1.2V reference voltage
+   ADC_steps_per_volt = (ADC_ref_v_g * 10) / 12;
+ 
+   // Calculate temperature 
+   Temp_mv      = ((uint32_t)ADC1_temperature_raw_g * 1000) 
+                  / ADC_steps_per_volt;
+                  
+   Temp_celsius = (Temp_mv - ADC_TEMPERATURE_V25) / 25 + 25;
+    
+   // Return result  
+   return Temp_mv;
+ }  
 /*----------------------------------------------------------------------------*-
 
   ADC1_Read_Channel()

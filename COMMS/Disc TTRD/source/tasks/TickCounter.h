@@ -1,6 +1,8 @@
 #include "../main/main.h"
 
 
-void updateCurrentTick();
+void updateCurrentTick(void);
 
-uint32_t getCurrentTick();
+uint32_t getCurrentTick(void);
+
+

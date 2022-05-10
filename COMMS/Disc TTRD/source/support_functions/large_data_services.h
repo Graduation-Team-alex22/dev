@@ -11,9 +11,7 @@
 
 #define LD_MAX_TRANSFER_TIME    30000
 
-#define MIN(A,B) 			\
-   ({ __typeof__ (A) _A = (A); 		\
-       __typeof__ (B) _B = (B); 	\
+#define MIN(A,B) ({ __typeof__ (A) _A = (A); __typeof__ (B) _B = (B); 	\
      _A < _B ? _A : _B; })
 
 /**
@@ -47,7 +45,7 @@ struct _ld_status {
 };
 
 //Init
-void large_data_init();
+void large_data_init(void);
 
 //Update
 
@@ -67,15 +65,17 @@ SAT_returnState large_data_updatePkt(tc_tm_pkt *pkt, uint16_t size, uint8_t subt
 SAT_returnState large_data_downlinkPkt(tc_tm_pkt **pkt, uint8_t lid, uint16_t n, uint16_t dest_id);
 SAT_returnState large_data_verifyPkt(tc_tm_pkt **pkt, uint8_t lid, uint16_t n, uint16_t dest_id);
 SAT_returnState large_data_abortPkt(tc_tm_pkt **pkt, uint8_t lid, uint16_t dest_id, uint8_t subtype);
-void large_data_IDLE();
-SAT_returnState large_data_timeout();
+void large_data_IDLE(void);
+SAT_returnState large_data_timeout(void);
 
 
 // Getters
 SAT_returnState large_data_app(tc_tm_pkt *pkt);
 
 
-
+//Private
+//uint16_t htons(uint16_t x);
+//uint16_t ntohs(uint16_t x);
 
 
 #endif

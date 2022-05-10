@@ -4,19 +4,26 @@
 // Processor Header
 #include "../main/main.h"
 #include "../support_functions/ax_25.h"
-//#include "../support_functions/cc_definitions.h"
-//#include "../support_functions/cc_init.h"
-
+#include "../tasks/cc_rx.h"
+#include "ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h"
+#include "../support_functions/stats.h"
+#include "ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h"
 
 #ifdef CC1101_UART
 /***************** CC_RX ******************************************************/
+
 //Init
-void rx_init();
+void rx_init(void);
+
+//update 
+uint32_t rx_update(void);
 
 //Setters
+
 int32_t rx_data_continuous (uint8_t *out, size_t maxlen, size_t timeout_ms);
 
 int32_t rx_data (uint8_t *out, size_t len, size_t timeout_ms);
+
 /***********************************************************************************/
 #elif CC1120
 

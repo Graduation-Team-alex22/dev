@@ -3,8 +3,12 @@
 
 // Project header
 #include "../main/main.h"
+#include "../tasks/ttrd2-05a-t0401a-v001a_adc_task.h"
+#include <math.h>
+#include "wod_handling.h"
 
-typedef struct {
+typedef struct 
+{
   uint16_t rx_failed_cnt;
   uint16_t rx_crc_failed_cnt;
   uint16_t tx_failed_cnt;
@@ -35,10 +39,10 @@ typedef struct {
 void comms_rf_stats_init(comms_rf_stat_t *h);
 
 //Update
-void comms_rf_stats_update(comms_rf_stat_t *h);
+uint32_t comms_rf_stats_update(void);
 
 //Setters
-void comms_rf_stats_set_reset_src(comms_rf_stat_t *h, uint8_t src);
+void comms_rf_stats_set_reset_src(comms_rf_stat_t *h);
 
 void comms_rf_stats_frame_received(comms_rf_stat_t *h, uint8_t succesfull,
 			      int16_t error);

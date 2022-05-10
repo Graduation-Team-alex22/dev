@@ -174,26 +174,4 @@ ax25_decode_status_t ax25_decode (ax25_handle_t *h, uint8_t *out, size_t *out_le
 //ax25_encode_status_t ax25_nrz_bit_stuffing (float *out, size_t *out_len, const uint8_t *buffer, const size_t buffer_len);// is not included in c
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #endif

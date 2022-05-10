@@ -1,5 +1,6 @@
 #ifndef __SERVICES_H
 #define __SERVICES_H
+#include <math.h>
 
 /* 
 	This file includes also subsystems_ids.h, ecss_stats.h, flash.h, hldlc.h, housekeeping_services.h, 
@@ -7,8 +8,7 @@
 	log.h, persistent_mem.h, packet_pool.h, power_ctrl.h
 */
 // Processor Header
-#include "../main/main.h"
-//////////////////////////////////////////////// STRING ////////////////////////////////////
+//////////////////////////////////////////////// STRING DONE ////////////////////////////////////
 
 size_t	 strnlen (const char *s, size_t maxlen);
 
@@ -22,7 +22,7 @@ size_t	 strnlen (const char *s, size_t maxlen);
 
 #define SYSTEM_ENDIANNESS SYS_LITTLE_ENDIAN
 
-//////////////////////////////////////////////// SERVICES ////////////////////////////////////
+//////////////////////////////////////////////// SERVICES DONE ////////////////////////////////////
 
 #define _OBC_APP_ID_   1
 #define _EPS_APP_ID_   2
@@ -379,6 +379,13 @@ typedef enum {
     LAST_EV_EVENT        = 13
 }EV_event;
 
+#define traceGET_PKT(ID)   ;
+#define traceFREE_PKT(ID)  ;
+
+#define traceGC_QUEUE_PKT() ;
+#define traceGC_POOL_PKT(ID) ;
+
+#define traceASSERTION(FID, LINE) ;
 #define C_ASSERT(e)    ((e) ? (true) : (tst_debugging(__FILE_ID__, __LINE__, #e)))
 
 union _cnv {
@@ -440,7 +447,7 @@ extern uint16_t assertion_last_line;
 uint8_t tst_debugging(uint16_t fi, uint32_t l, char *e);
 
 
-/////////////////////////////////////////////////// ECSS_STATS /////////////////////////////////////////////////
+/////////////////////////////////////////////////// ECSS_STATS DONE /////////////////////////////////////////////////
 //Init
 
 //Update
@@ -459,7 +466,7 @@ uint16_t ecss_stats_hk(uint8_t *buffer);
 
 ////////////////////////////////////////////////// FLASH /////////////////////////////////
 //Init
-uint32_t flash_INIT();
+uint32_t flash_INIT(void);
 
 //Update
 
@@ -476,7 +483,7 @@ void flash_write_trasmit(uint32_t data, size_t offset);
 SAT_returnState HLDLC_deframe(uint8_t *buf_in, uint8_t *buf_out, uint16_t *size);
 
 SAT_returnState HLDLC_frame(uint8_t *buf_in, uint8_t *buf_out, uint16_t *size);
-////////////////////////////////////////////// HOUSEKEEPING_SERVICES ////////////////////////////////////
+////////////////////////////////////////////// HOUSEKEEPING_SERVICES DONE ////////////////////////////////////
 
 #define OBC_EXT_WOD_SIZE      50
 #define OBC_EXT_WOD_OFFSET     1
@@ -502,14 +509,14 @@ SAT_returnState hk_crt_pkt_TM(tc_tm_pkt *pkt, const TC_TM_app_id app_id, const H
 // S
 SAT_returnState hk_crt_empty_pkt_TM(tc_tm_pkt **pkt, const TC_TM_app_id app_id, const HK_struct_id sid);
 
-////////////////////////////////////////////////// HOUSEKEEPING ////////////////////////////////////////////////
+////////////////////////////////////////////////// HOUSEKEEPING DONE ////////////////////////////////////////////////
 //SF_S
 SAT_returnState hk_parameters_report(TC_TM_app_id app_id, HK_struct_id sid, uint8_t *data, uint8_t len);
 SAT_returnState hk_report_parameters(HK_struct_id sid, tc_tm_pkt *pkt);
 
 //extern void HAL_sys_delay(uint32_t sec); // REMOVE
 
-////////////////////////////////////////////////// QUEUE ////////////////////////////////////////////////
+////////////////////////////////////////////////// QUEUE DONE ////////////////////////////////////////////////
 
 // Init
 
@@ -533,7 +540,7 @@ uint8_t queueSize(TC_TM_app_id app_id);
 tc_tm_pkt * queuePeak(TC_TM_app_id app_id);
 
 
-////////////////////////////////////////////////// SERVICE_UTILITIES ////////////////////////////////////////////////
+////////////////////////////////////////////////// SERVICE_UTILITIES DONE ////////////////////////////////////////////////
 
 // Init
 
@@ -573,15 +580,12 @@ void cnvD_8(const double from, uint8_t *to);
 
 void cnv8_D(uint8_t *from, double *to);
 
-/*
-// not used + missing part of code (#define ...)
-uint16_t htons(uint16_t x);
-uint16_t ntohs(uint16_t x);
-*/
 
 ////////////////////////////////////////////////// STATUS ////////////////////////////////////////////////
 
-enum {
+enum 
+{
+	COMMS_STATUS_DMA_BUSY = -10,
   COMMS_STATUS_DMA_ERROR = -9,
   COMMS_STATUS_RF_OFF = -8,
   COMMS_STATUS_RF_SWITCH_CMD = -7,
@@ -594,34 +598,24 @@ enum {
   COMMS_STATUS_OK = 0,
 };
 
-////////////////////////////////////////////////// TEST_SERVICE ////////////////////////////////////////////////
-
+////////////////////////////////////////////////// TEST_SERVICE DONE ////////////////////////////////////////////////
 // Init
-
 
 // Update
 
-
 // Setters
-
-
 
 // Getters
 SAT_returnState test_app(tc_tm_pkt *pkt);
 // SF_G
 SAT_returnState test_crt_pkt(tc_tm_pkt **pkt, TC_TM_app_id dest_id);
 
-////////////////////////////////////////////////// VERIFICATION_SERVICE ////////////////////////////////////////////////
-
+////////////////////////////////////////////////// VERIFICATION_SERVICE DONE ////////////////////////////////////////////////
 // Init
-
 
 // Update
 
-
 // Setters
-
-
 
 // Getters
 SAT_returnState verification_app(const tc_tm_pkt *pkt);
@@ -754,7 +748,8 @@ bit_count (unsigned int x)
 }
 //SF_G
 static const uint8_t _bytes_reversed[256] =
-  { 0x00, 0x80, 0x40, 0xC0, 0x20, 0xA0, 0x60, 0xE0, 0x10, 0x90, 0x50, 0xD0,
+{
+			0x00, 0x80, 0x40, 0xC0, 0x20, 0xA0, 0x60, 0xE0, 0x10, 0x90, 0x50, 0xD0,
       0x30, 0xB0, 0x70, 0xF0, 0x08, 0x88, 0x48, 0xC8, 0x28, 0xA8, 0x68, 0xE8,
       0x18, 0x98, 0x58, 0xD8, 0x38, 0xB8, 0x78, 0xF8, 0x04, 0x84, 0x44, 0xC4,
       0x24, 0xA4, 0x64, 0xE4, 0x14, 0x94, 0x54, 0xD4, 0x34, 0xB4, 0x74, 0xF4,
@@ -875,10 +870,9 @@ extern uint8_t dbg_msg;
 #define LOG_UART_ERROR(huart, M, ...)
 #endif
 
-////////////////////////////////////////// PERSISTENT_MEM ////////////////////////////////////////////////////////////////
+////////////////////////////////////////// PERSISTENT_MEM DONE ////////////////////////////////////////////////////////////////
 // Init
-uint32_t
-comms_persistent_mem_init();
+uint32_t comms_persistent_mem_init();
 
 //Update
 
@@ -889,7 +883,7 @@ void comms_write_persistent_word(uint32_t word, size_t offset);
 //Getters
 uint32_t comms_read_persistent_word(size_t offset);
 
-//////////////////////////////////////// PACKET_POOL //////////////////////////////////////////////////////////////////////
+//////////////////////////////////////// PACKET_POOL DONE ////////////////////////////////////////////////////////////////////// 
 
 #define PKT_TIMEOUT 60000 /*in mseconds*/
 #define PKT_NORMAL  198   /*MAX_PKT_DATA*/
@@ -905,7 +899,7 @@ uint32_t comms_read_persistent_word(size_t offset);
 #endif
 
 //Init
-SAT_returnState pkt_pool_INIT();
+SAT_returnState pkt_pool_INIT(void);
 
 //Update
 
@@ -927,5 +921,10 @@ extern void HAL_comms_SD_OFF();
 //SF_S
 SAT_returnState power_control_api(FM_dev_id did, FM_fun_id fid, uint8_t *state);
 
+///////////////////////////////////////////////// HSI Added functions ///////////////////////////////////////////////////////////
+void HSI_reset_source(uint8_t *src);
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #endif

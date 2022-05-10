@@ -64,6 +64,11 @@ static uint32_t uart3_cr2_ig;
 static uint32_t uart3_cr3_ig;
 static uint32_t uart3_brr_ig;
 
+static uint32_t uart4_cr1_ig;
+static uint32_t uart4_cr2_ig;
+static uint32_t uart4_cr3_ig;
+static uint32_t uart4_brr_ig;
+
 static uint32_t uart6_cr1_ig;
 static uint32_t uart6_cr2_ig;
 static uint32_t uart6_cr3_ig;
@@ -101,46 +106,54 @@ static uint32_t uart6_brr_ig;
 
 -*----------------------------------------------------------------------------*/
 void REG_CONFIG_CHECKS_UART_Store(USART_TypeDef* pUSARTx)
-   {
+{
    // Valid UART? 
-   if (((pUSARTx != USART1) &&
+	if  (((pUSARTx != USART1) &&
         (pUSARTx != USART2) &&
 				(pUSARTx != USART3) &&
+				(pUSARTx != UART4 ) &&
         (pUSARTx != USART6)))
-      {
-      // We treat this as a Fatal Platform Failure
-      PROCESSOR_Perform_Safe_Shutdown(PFC_INVALID_UART);
-      }
+	{
+		// We treat this as a Fatal Platform Failure
+		PROCESSOR_Perform_Safe_Shutdown(PFC_INVALID_UART);
+	}
 
-   if (pUSARTx == USART1)
-      {
-      uart1_cr1_ig = ~(pUSARTx->CR1);    
-      uart1_cr2_ig = ~(pUSARTx->CR2);    
-      uart1_cr3_ig = ~(pUSARTx->CR3);    
-      uart1_brr_ig = ~(pUSARTx->BRR);    
-      }
-   else if (pUSARTx == USART2)
-      {
-      uart2_cr1_ig = ~(pUSARTx->CR1);    
-      uart2_cr2_ig = ~(pUSARTx->CR2);    
-      uart2_cr3_ig = ~(pUSARTx->CR3);    
-      uart2_brr_ig = ~(pUSARTx->BRR);    
-      }
-	 else if(pUSARTx == USART3)
-      {
-      uart3_cr1_ig = ~(pUSARTx->CR1);    
-      uart3_cr2_ig = ~(pUSARTx->CR2);    
-      uart3_cr3_ig = ~(pUSARTx->CR3);    
-      uart3_brr_ig = ~(pUSARTx->BRR);    
-      }
-   else if(pUSARTx == USART6)
-      {
-      uart6_cr1_ig = ~(pUSARTx->CR1);    
-      uart6_cr2_ig = ~(pUSARTx->CR2);    
-      uart6_cr3_ig = ~(pUSARTx->CR3);    
-      uart6_brr_ig = ~(pUSARTx->BRR);    
-      }
-   }
+	if (pUSARTx == USART1)
+	{
+		uart1_cr1_ig = ~(pUSARTx->CR1);    
+		uart1_cr2_ig = ~(pUSARTx->CR2);    
+		uart1_cr3_ig = ~(pUSARTx->CR3);    
+		uart1_brr_ig = ~(pUSARTx->BRR);    
+	}
+	else if (pUSARTx == USART2)
+	{
+		uart2_cr1_ig = ~(pUSARTx->CR1);    
+		uart2_cr2_ig = ~(pUSARTx->CR2);    
+		uart2_cr3_ig = ~(pUSARTx->CR3);    
+		uart2_brr_ig = ~(pUSARTx->BRR);    
+	}
+	else if(pUSARTx == USART3)
+	{
+		uart3_cr1_ig = ~(pUSARTx->CR1);    
+		uart3_cr2_ig = ~(pUSARTx->CR2);    
+		uart3_cr3_ig = ~(pUSARTx->CR3);    
+		uart3_brr_ig = ~(pUSARTx->BRR);    
+	}
+	else if(pUSARTx == UART4)
+	{
+		uart4_cr1_ig = ~(pUSARTx->CR1);    
+		uart4_cr2_ig = ~(pUSARTx->CR2);    
+		uart4_cr3_ig = ~(pUSARTx->CR3);    
+		uart4_brr_ig = ~(pUSARTx->BRR);    
+	}
+	else if(pUSARTx == USART6)
+	{
+		uart6_cr1_ig = ~(pUSARTx->CR1);    
+		uart6_cr2_ig = ~(pUSARTx->CR2);    
+		uart6_cr3_ig = ~(pUSARTx->CR3);    
+		uart6_brr_ig = ~(pUSARTx->BRR);    
+	}
+}
 
 /*----------------------------------------------------------------------------*-
    
@@ -190,6 +203,7 @@ void REG_CONFIG_CHECKS_UART_Check(USART_TypeDef* pUSARTx)
    if (((pUSARTx != USART1) &&
         (pUSARTx != USART2) &&
 				(pUSARTx != USART3) &&
+				(pUSARTx != UART4 ) &&
         (pUSARTx != USART6)))
       {
       // We treat this as a Fatal Platform Failure

@@ -89,7 +89,10 @@
 #define CC_RX_RX_PIN       	 GPIO_Pin_11
 #define CC_RX_TX_PIN_SOURCE  GPIO_PinSource10
 #define CC_RX_RX_PIN_SOURCE	 GPIO_PinSource11
-#define CC_RX_SET_PIN			 	 GPIO_Pin_12
+
+#define CC_RX_SET_PIN			 	 GPIO_Pin_11
+#define CC_RX_SET_PORT       GPIOE
+#define CC_RX_SET_PORT_RCC	 RCC_AHB1Periph_GPIOE
 
 // CC_TX interface
 #define CC_TX_PORT_RCC		 	 RCC_AHB1Periph_GPIOC
@@ -107,22 +110,20 @@
 #define CC_TX_RX_PIN_SOURCE	 GPIO_PinSource10
 #define CC_TX_SET_PIN			 	 GPIO_Pin_9
 
-/////////////////////////////////////////// MXCONSTANT ///////////////////////////////////////
-
-//#define PA_CNTRL_Pin GPIO_Pin_5
-//#define PA_CNTRL_GPIO_Port GPIOA
-//#define RESETN_RX_Pin GPIO_Pin_1
-//#define RESETN_RX_GPIO_Port GPIOB
-//#define CC_GPIO2_START_END_OF_PACKET_Pin GPIO_Pin_9
-//#define CC_GPIO2_START_END_OF_PACKET_GPIO_Port GPIOE
-//#define CS_SPI2_RX_Pin GPIO_Pin_15
-//#define CS_SPI2_RX_GPIO_Port GPIOE
-//#define CC_GPIO0_RXFIFO_THR_Pin GPIO_Pin_12
-//#define CC_GPIO0_RXFIFO_THR_GPIO_Port GPIOB
-//#define RESETN_TX_Pin GPIO_Pin_10
-//#define RESETN_TX_GPIO_Port GPIOA
-//#define CS_SPI1_TX_Pin GPIO_Pin_15
-//#define CS_SPI1_TX_GPIO_Port GPIOA
+// OBC_C interface
+#define OBC_C_PORT_RCC		 	 RCC_AHB1Periph_GPIOC
+#define OBC_C_UART_RCC			 RCC_APB2Periph_USART6
+#define OBC_C_DMA_RCC		 		 RCC_AHB1Periph_DMA2
+#define OBC_C_DMA_RX_STREAM	 DMA2_Stream2
+#define OBC_C_DMA_TX_STREAM	 DMA2_Stream7
+#define OBC_C_DMA_Channel	   DMA_Channel_5
+#define OBC_C_PORT        	 GPIOC
+#define OBC_C_UARTX          USART6 
+#define OBC_C_AF		         GPIO_AF_USART6 
+#define OBC_C_TX_PIN      	 GPIO_Pin_6
+#define OBC_C_RX_PIN      	 GPIO_Pin_7
+#define OBC_C_TX_PIN_SOURCE	 GPIO_PinSource6
+#define OBC_C_RX_PIN_SOURCE	 GPIO_PinSource7
 
 
 #endif

@@ -1,16 +1,16 @@
 #include "cc_rx.h"
 
-
-
 #if CC1101_UART
 /***************** DMA for UART **************************/
 // ------ Private variables -----------------------------
 #define ARRAY_LEN(x)            (sizeof(x) / sizeof((x)[0]))	
-uint8_t CC_RX_Flag=0;
 #define CC_RX_SettingDelay 60
-extern uint8_t CC_RX_Sent_Flag;
-static uint8_t	CC_RX_Ready=1;
+static 		uint8_t	CC_RX_Ready=1;
+volatile 	uint8_t rx_sync_flag = 0;
 uint8_t CC_RX_SET_Counter=0;
+struct CC_RX_FLAGS_t CC_RX_FLAGS;
+
+
 static char CC_RX_Tx_buffer_g [CC_RX_TX_BUFFER_SIZE_BYTES];
 static char CC_RX_Tx_buffer_ig[CC_RX_TX_BUFFER_SIZE_BYTES];  // Inverted copy
 
@@ -34,6 +34,7 @@ void CC_RX_BUF_O_Check_Data_Integrity(void);
 //Init
 void CC_RX_init(uint32_t BAUD_RATE)
 {
+	CC_RX_FLAGS.ID_Flag=1;
 	CC_RX_BUF_O_Init(BAUD_RATE);
 }
 /*----------------------------------------------------------------------------*-
@@ -78,6 +79,9 @@ void CC_RX_BUF_O_Init(uint32_t BAUD_RATE)
 	// GPIOB clock enable 
 	RCC_AHB1PeriphClockCmd(CC_RX_PORT_RCC, ENABLE);
 	 
+	// GPIOE clock enable 
+	RCC_AHB1PeriphClockCmd(CC_RX_SET_PORT_RCC, ENABLE);
+	
 	/* DMA controller clock enable */
 	RCC_AHB1PeriphClockCmd(CC_RX_DMA_RCC, ENABLE);
 	// GPIO config
@@ -89,15 +93,17 @@ void CC_RX_BUF_O_Init(uint32_t BAUD_RATE)
 	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
 	GPIO_Init(CC_RX_PORT, &GPIO_InitStructure); 
-	 // Set pin init 
+	
+	// Set pin init 
+
 	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_OUT;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_High_Speed; 
 	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;
 	GPIO_InitStructure.GPIO_Pin   = CC_RX_SET_PIN;
-	GPIO_Init(CC_RX_PORT, &GPIO_InitStructure); 
+	GPIO_Init(CC_RX_SET_PORT, &GPIO_InitStructure); 
 
-	GPIO_SetBits(CC_RX_PORT, CC_RX_SET_PIN);
+	GPIO_SetBits(CC_RX_SET_PORT, CC_RX_SET_PIN);
 	// USART3 configuration
 	// - BaudRate as specified in function parameter
 	// - Word Length = 8 Bits
@@ -126,7 +132,7 @@ void CC_RX_BUF_O_Init(uint32_t BAUD_RATE)
 	hdma_usart3_rx.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
 	hdma_usart3_rx.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
 	hdma_usart3_rx.DMA_Mode = DMA_Mode_Circular;
-	hdma_usart3_rx.DMA_Priority = DMA_Priority_High;
+	hdma_usart3_rx.DMA_Priority = DMA_Priority_VeryHigh;
 	hdma_usart3_rx.DMA_FIFOMode = DMA_FIFOMode_Disable;
 	hdma_usart3_rx.DMA_FIFOThreshold = DMA_FIFOThreshold_Full;
 	hdma_usart3_rx.DMA_MemoryBurst = DMA_MemoryBurst_Single;
@@ -156,7 +162,7 @@ void CC_RX_BUF_O_Init(uint32_t BAUD_RATE)
 }
  
 
-// update
+// update 
 uint32_t CC_RX_update(void)
 {
 	uint32_t Return_value = RETURN_NORMAL_STATE;
@@ -164,7 +170,6 @@ uint32_t CC_RX_update(void)
 	{
 		CC_RX_DMA_CHECK();
 		CC_RX_SET_Parameters();
-		CC_RX_BUF_O_Update();
 	}
 	else
 	{// need here to make init function for automatic setting values
@@ -214,33 +219,97 @@ uint32_t CC_RX_update(void)
      None.
 
 -*----------------------------------------------------------------------------*/
-void CC_RX_BUF_O_Update(void)
-   {
-   // Check data integrity
-   CC_RX_BUF_O_Check_Data_Integrity();
+uint32_t CC_RX_BUF_O_Update(void)
+{
+	uint32_t Return_value = RETURN_NORMAL_STATE;
+	// Check data integrity
+	CC_RX_BUF_O_Check_Data_Integrity();
 
-   // Are there any data ready to send?
-   if (CC_RX_Sent_idx_g < CC_RX_Wait_idx_g)
-      {
-      CC_RX_BUF_O_Send_Char(CC_RX_Tx_buffer_g[CC_RX_Sent_idx_g]);     
+	// Are there any data ready to send?
+	if (CC_RX_Sent_idx_g < CC_RX_Wait_idx_g)
+		{
+		CC_RX_BUF_O_Send_Char(CC_RX_Tx_buffer_g[CC_RX_Sent_idx_g]);     
 
-      CC_RX_Sent_idx_g++;
-      }
-   else
-      {
-      // No data to send - just reset the buffer index
-      CC_RX_Wait_idx_g = 0;
-      CC_RX_Sent_idx_g = 0;
-      }
+		CC_RX_Sent_idx_g++;
+		}
+	else
+		{
+		// No data to send - just reset the buffer index
+		CC_RX_Wait_idx_g = 0;
+		CC_RX_Sent_idx_g = 0;
+		}
 
-   // Update the copies
-   CC_RX_Wait_idx_ig = ~CC_RX_Wait_idx_g;
-   CC_RX_Sent_idx_ig = ~CC_RX_Sent_idx_g;
-   }
+	// Update the copies
+	CC_RX_Wait_idx_ig = ~CC_RX_Wait_idx_g;
+	CC_RX_Sent_idx_ig = ~CC_RX_Sent_idx_g;
+	return Return_value;
+}
 // Setters
+int32_t  CC_RX_data_packet(uint8_t *out, size_t max_len)
+{
+	//UART2_BUF_O_Write_String_To_Buffer("CC_RX_data_packet\n");
+	uint8_t* data;
+	int32_t length;
+	if(CC_RX_FLAGS.ID_Flag == 2)// frame recvd from 1
+	{
+		//UART2_BUF_O_Write_String_To_Buffer("\nrx_update1");
+		length = CC_RX_FLAGS.EndPtr1 - CC_RX_FLAGS.StartPtr1+1;
+		data = CC_RX_FLAGS.StartPtr1;
+		
+		
+		// clearing the frame parameters
+		CC_RX_FLAGS.End1_Flag=0;
+		CC_RX_FLAGS.EndPtr1=0;
+		CC_RX_FLAGS.Length1=0;
+		CC_RX_FLAGS.Start1_Flag=0;
+		CC_RX_FLAGS.StartPtr1=0;
+	}
+	else if(CC_RX_FLAGS.ID_Flag == 3)// frame recvd from 2
+	{
+		//UART2_BUF_O_Write_String_To_Buffer("\nrx_update2");
+		length = CC_RX_FLAGS.EndPtr2 - CC_RX_FLAGS.StartPtr2+1;
+		data = CC_RX_FLAGS.StartPtr2;
+
+
+		// clearing the frame parameters
+		CC_RX_FLAGS.Start2_Flag=0;
+		CC_RX_FLAGS.End2_Flag=0;
+		CC_RX_FLAGS.StartPtr2=0;
+		CC_RX_FLAGS.EndPtr2=0;
+		CC_RX_FLAGS.Length2=0;
+	}
+	else if (CC_RX_FLAGS.ID_Flag == 1)// frame recvd from 3
+	{
+		//UART2_BUF_O_Write_String_To_Buffer("\nrx_update3");
+		length = CC_RX_FLAGS.EndPtr3 - CC_RX_FLAGS.StartPtr3+1;
+		data = CC_RX_FLAGS.StartPtr3;
+		
+		// clearing the frame parameters
+		CC_RX_FLAGS.Start3_Flag=0;
+		CC_RX_FLAGS.End3_Flag=0;
+		CC_RX_FLAGS.StartPtr3=0;
+		CC_RX_FLAGS.EndPtr3=0;
+		CC_RX_FLAGS.Length3=0;
+	}
+	
+	UART2_BUF_O_Write_String_To_Buffer("\n--> Size:");
+	UART2_BUF_O_Write_Number04_To_Buffer(length);
+	UART2_BUF_O_Write_String_To_Buffer("\n");
+	if(length > max_len) // here need to make a request for the corrupted packet
+	{
+		UART2_BUF_O_Write_String_To_Buffer("\nSize Error:");
+		UART2_BUF_O_Write_String_To_Buffer("\n--> Size:");
+		UART2_BUF_O_Write_Number10_To_Buffer(length);
+		UART2_BUF_O_Write_String_To_Buffer("\n");
+		length=AX25_MAX_FRAME_LEN;
+	}
+	//memset(out,'\0',max_len);
+	memcpy(out, data, length);
+	return length;
+}
 void CC_RX_Clear_Command(void)
 {
-	CC_RX_Sent_Flag=1;
+	CC_RX_FLAGS.Sent_Flag = 1;
 	CC_RX_SP_Command[0]='\0';
 	CC_RX_SP_Command[1]='\0';
 	CC_RX_SP_Command[2]='\0';
@@ -249,10 +318,10 @@ void CC_RX_Clear_Command(void)
 }
 void  	 CC_RX_SET_Parameters(void)
 {
-	if(CC_RX_SP_Flag == 1)
+	if(CC_RX_FLAGS.SetParam_Flag == 1)
 	{
-		GPIO_ResetBits(CC_RX_PORT, CC_RX_SET_PIN);
-		if((CC_RX_SET_Counter>=CC_RX_SettingDelay)&&(!CC_RX_Sent_Flag))
+		GPIO_ResetBits(CC_RX_SET_PORT, CC_RX_SET_PIN);
+		if((CC_RX_SET_Counter>=CC_RX_SettingDelay)&&(!CC_RX_FLAGS.Sent_Flag))
 		{
 			switch (CC_RX_SP_Command[3])
 			{
@@ -366,9 +435,9 @@ void  	 CC_RX_SET_Parameters(void)
 				UART2_BUF_O_Write_String_To_Buffer("in E case\n");
 				if((CC_RX_SP_Command[4]=='X')&&(CC_RX_SP_Command[5]=='I')&&(CC_RX_SP_Command[6]=='T'))
 				{
-					GPIO_SetBits(CC_RX_PORT, CC_RX_SET_PIN);
+					GPIO_SetBits(CC_RX_SET_PORT, CC_RX_SET_PIN);
 					CC_RX_SET_Counter=0;
-					CC_RX_SP_Flag = 0;
+					CC_RX_FLAGS.SetParam_Flag = 0;
 					CC_RX_Clear_Command();
 				}	
 				else
@@ -520,7 +589,6 @@ void CC_RX_DMA_CHECK(void)
 {
 	static uint32_t old_pos=0;
 	uint32_t pos=0;
-	//__HAL_DMA_GET_COUNTER(Sucess) IS_DMA_BUFFER_SIZE  IS_DMA_PERIPHERAL_DATA_SIZE  IS_DMA_MEMORY_DATA_SIZE
 	pos = ARRAY_LEN(CC_RX_Rx_buffer_g) - DMA_GetCurrDataCounter(DMA1_Stream1); 
 	if (pos != old_pos) 
 	 {                       /* Check change in received data */
@@ -577,15 +645,97 @@ void CC_RX_DMA_CHECK(void)
  * \param[in]       data: Data to process
  * \param[in]       len: Length in units of bytes
  */
-void CC_RX_PROCESS_DATA(const void* data, size_t len)
+void CC_RX_PROCESS_DATA(void* data, size_t len)
 {
-	 const uint8_t* d = data;
-
-   for ( ;len > 0;len--, ++d)
+	uint8_t* d = data;
+	for ( ;len > 0;len--, ++d)
+	{
+		if(CC_RX_FLAGS.SetParam_Flag)
 		{
-		UART2_BUF_O_Write_Char_To_Buffer(*d);
+			UART2_BUF_O_Write_Char_To_Buffer(*d);
 		}
+		if(*d == 0x7E)
+		{
+			if(CC_RX_FLAGS.Error_Flag)
+			{
+				CC_RX_FLAGS.Error_Flag=0;
+				continue;
+			}
+			//UART2_BUF_O_Write_String_To_Buffer("\nCC_RX:rcvd 7E\n");
+			if(CC_RX_FLAGS.ID_Flag == 1)
+			{
+				if((CC_RX_FLAGS.End1_Flag == 0) && (CC_RX_FLAGS.Start1_Flag ==0))
+				{
+					CC_RX_FLAGS.Start1_Flag=1;	// rises the flag that a frame has started
+					CC_RX_FLAGS.StartPtr1=d;		// take that pointer of the start of the frame
+					CC_RX_FLAGS.Frame_Flag=1;
+				}
+				else if((CC_RX_FLAGS.End1_Flag == 0) && (CC_RX_FLAGS.Start1_Flag ==1))
+				{
+					CC_RX_FLAGS.End1_Flag=1;	// rises the flag that a frame has ended
+					CC_RX_FLAGS.EndPtr1=d;		// take that pointer of the end of the frame
+					CC_RX_FLAGS.ID_Flag = 2;
+					rx_sync_flag =1;
+				}
+				else
+				{
+					UART2_BUF_O_Write_String_To_Buffer("CC_RX:Frame Error 1\n");
+					CC_RX_FLAGS.Error_Flag=1;
+					
+					CC_RX_FLAGS.End1_Flag=0;
+					CC_RX_FLAGS.Start1_Flag=0;
+				}
+			}
+			else if(CC_RX_FLAGS.ID_Flag == 2)
+			{
+				if((CC_RX_FLAGS.End2_Flag == 0) && (CC_RX_FLAGS.Start2_Flag ==0))
+				{
+					CC_RX_FLAGS.Start2_Flag=1;	// rises the flag that a frame has started
+					CC_RX_FLAGS.StartPtr2=d;		// take that pointer of the start of the frame
+					CC_RX_FLAGS.Frame_Flag=1;
+				}
+				else if((CC_RX_FLAGS.End2_Flag == 0) && (CC_RX_FLAGS.Start2_Flag ==1))
+				{
+					CC_RX_FLAGS.End2_Flag=1;	// rises the flag that a frame has ended
+					CC_RX_FLAGS.EndPtr2=d;		// take that pointer of the end of the frame
+					CC_RX_FLAGS.ID_Flag = 3;
+					rx_sync_flag =1;
+				}
+				else
+				{
+					UART2_BUF_O_Write_String_To_Buffer("CC_RX:Frame Error 2\n");
+					CC_RX_FLAGS.Error_Flag=1;
 
+					CC_RX_FLAGS.End2_Flag=0;
+					CC_RX_FLAGS.Start2_Flag=0;
+				}
+			}
+			else if(CC_RX_FLAGS.ID_Flag == 3)
+			{
+				if((CC_RX_FLAGS.End3_Flag == 0) && (CC_RX_FLAGS.Start3_Flag ==0))
+				{
+					CC_RX_FLAGS.Start3_Flag=1;	// rises the flag that a frame has started
+					CC_RX_FLAGS.StartPtr3=d;		// take that pointer of the start of the frame
+					CC_RX_FLAGS.Frame_Flag=1;
+				}
+				else if((CC_RX_FLAGS.End3_Flag == 0) && (CC_RX_FLAGS.Start3_Flag ==1))
+				{
+					CC_RX_FLAGS.End3_Flag=1;	// rises the flag that a frame has ended
+					CC_RX_FLAGS.EndPtr3=d;		// take that pointer of the end of the frame
+					CC_RX_FLAGS.ID_Flag = 1;
+					rx_sync_flag =1;
+				}
+				else
+				{
+					UART2_BUF_O_Write_String_To_Buffer("CC_RX:Frame Error 3\n");
+					CC_RX_FLAGS.Error_Flag=1;
+
+					CC_RX_FLAGS.End3_Flag=0;
+					CC_RX_FLAGS.Start3_Flag=0;
+				}
+			}
+		}
+	}
 }
 /*----------------------------------------------------------------------------*-
    
