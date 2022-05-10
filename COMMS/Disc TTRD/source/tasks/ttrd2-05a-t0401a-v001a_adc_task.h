@@ -49,6 +49,7 @@
 void     ADC1_Init(void);
 uint32_t ADC1_Update(void);
  int32_t ADC1_Get_Temperature_Celsius(void); 
+ int32_t ADC1_Get_Temperature_mv(void);
 
 #endif
 

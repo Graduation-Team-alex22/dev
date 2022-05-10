@@ -1,16 +1,16 @@
 #include "cc_tx.h"
-
+#include "../support_functions/cw.h"
 
 
 #if CC1101_UART
 /***************** DMA for UART **************************/
 // ------ Private variables -----------------------------
 #define ARRAY_LEN(x)            (sizeof(x) / sizeof((x)[0]))	
-uint8_t CC_TX_Flag=0;
 #define CC_TX_SettingDelay 60
 extern uint8_t CC_TX_Sent_Flag;
 static uint8_t	CC_TX_Ready=1;
 uint8_t CC_TX_SET_Counter=0;
+
 static char CC_TX_Tx_buffer_g [CC_TX_TX_BUFFER_SIZE_BYTES];
 static char CC_TX_Tx_buffer_ig[CC_TX_TX_BUFFER_SIZE_BYTES];  // Inverted copy
 
@@ -131,7 +131,7 @@ void CC_TX_BUF_O_Init(uint32_t BAUD_RATE)
 	hdma_usart4_rx.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
 	hdma_usart4_rx.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
 	hdma_usart4_rx.DMA_Mode = DMA_Mode_Circular;
-	hdma_usart4_rx.DMA_Priority = DMA_Priority_High;
+	hdma_usart4_rx.DMA_Priority = DMA_Priority_Low;
 	hdma_usart4_rx.DMA_FIFOMode = DMA_FIFOMode_Disable;
 	hdma_usart4_rx.DMA_FIFOThreshold = DMA_FIFOThreshold_Full;
 	hdma_usart4_rx.DMA_MemoryBurst = DMA_MemoryBurst_Single;
@@ -144,7 +144,7 @@ void CC_TX_BUF_O_Init(uint32_t BAUD_RATE)
  hdma_usart4_tx.DMA_MemoryInc = DMA_MemoryInc_Enable;
  hdma_usart4_tx.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
  hdma_usart4_tx.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
- hdma_usart4_tx.DMA_Priority = DMA_Priority_High;
+ hdma_usart4_tx.DMA_Priority = DMA_Priority_VeryHigh;
  hdma_usart4_tx.DMA_FIFOMode = DMA_FIFOMode_Disable;
  hdma_usart4_tx.DMA_FIFOThreshold = DMA_FIFOThreshold_1QuarterFull;//DMA_FIFOThreshold_1QuarterFull
  hdma_usart4_tx.DMA_MemoryBurst = DMA_MemoryBurst_Single;
@@ -191,7 +191,7 @@ void CC_TX_BUF_O_Init(uint32_t BAUD_RATE)
 //		CC_TX_Rx_buffer_ig[i] = (char) ~'K'; 
 //		}
 	// Store the UART register configuration
-	REG_CONFIG_CHECKS_UART_Store(USART3);
+	REG_CONFIG_CHECKS_UART_Store(UART4);
 		
 }
 // update
@@ -200,7 +200,6 @@ uint32_t CC_TX_update(void)
 	uint32_t Return_value = RETURN_NORMAL_STATE;
 	if(CC_TX_Ready)
 	{
-		CC_RX_update();
 		CC_TX_DMA_CHECK();
 		CC_TX_SET_Parameters();
 		CC_TX_BUF_O_Update();
@@ -257,6 +256,25 @@ void CC_TX_BUF_O_Update(void)
 	
 }
 // Setters
+int32_t  CC_TX_data_packet(const uint8_t *data, size_t size)
+{
+	const uint8_t* d = data;
+	for ( ;size > 0;size--, ++d)
+	{
+		CC_TX_BUF_O_Write_Char_To_Buffer(*d);
+	}
+	return COMMS_STATUS_OK;
+}
+int32_t  CC_TX_data_packet_cw(const cw_pulse_t *in, size_t len)
+{
+//	const cw_pulse_t* d = data;
+//	for ( ;size > 0;size--, ++d)
+	{
+//		CC_TX_BUF_O_Write_Char_To_Buffer(*d);
+	}
+	return COMMS_STATUS_OK;
+}
+
 void CC_TX_Clear_Command(void)
 {
 	CC_TX_Sent_Flag=1;
@@ -401,7 +419,6 @@ void  	 CC_TX_SET_Parameters(void)
 				{
 					UART2_BUF_O_Write_String_To_Buffer("TX:in AT case\n");
 					CC_TX_BUF_O_Write_String_To_Buffer("AT\n");
-					CC_TX_BUF_O_Send_All_Data();
 				}
 				else
 				{
@@ -464,7 +481,7 @@ void  	 CC_TX_SET_Parameters(void)
 void CC_TX_BUF_O_Check_Data_Integrity(void)
 {
 	// Check the UART register configuration
-	REG_CONFIG_CHECKS_UART_Check(USART3);  
+	REG_CONFIG_CHECKS_UART_Check(UART4);  
 
 	// Check integrity of 'waiting' index
 	if ((CC_TX_Wait_idx_g != (~CC_TX_Wait_idx_ig)))
@@ -602,6 +619,16 @@ void CC_TX_BUF_O_Write_String_To_Buffer(const char* const STR_PTR)
 		i++;
 	}
 }
+void CC_TX_BUF_O_Write_Frame_To_Buffer(const void* data, size_t len)
+{
+	 const uint8_t* d = data;
+   for ( ;len > 0;len--, ++d)
+	{
+//		if(*d==0x7E)
+//			continue;
+		CC_TX_BUF_O_Write_Char_To_Buffer(*d);
+	}
+}
 /*----------------------------------------------------------------------------*-
    
   CC_TX_BUF_O_Write_Char_To_Buffer()
@@ -655,7 +682,7 @@ void CC_TX_BUF_O_Write_Char_To_Buffer(const char CHARACTER)
 		// Write buffer is full
 		// No error handling / reporting here (characters may be lost)
 		// Adapt as required to meet the needs of your application
-			UART2_BUF_O_Write_String_To_Buffer("Error inside CC_TX Write buffer is full");
+			UART2_BUF_O_Write_String_To_Buffer("Error inside CC_TX Write buffer is full\n");
 		}
 
 	// Update the copy

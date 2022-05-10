@@ -51,10 +51,15 @@ void 		 UART2PFC_BUF_O_Init(uint32_t BAUD_RATE);
 void     UART2_BUF_O_Init(uint32_t BAUD_RATE);
 uint32_t UART2_BUF_O_Update(void);
 uint32_t UART2_Check_toTransmit(void);
+uint32_t FreeTask(void);
+
 
 void     UART2_BUF_O_Send_All_Data(void);
 void  	 UART2_BUF_O_Send_Check(void);
-void     UART2_BUF_O_Write_String_To_Buffer(const char* const);
+void     UART2_BUF_O_Write_pkt_To_Buffer(tc_tm_pkt *pkt);
+void 		 UART2_BUF_O_Write_StringByLength_To_Buffer(const void* data, size_t len);
+void     UART2_BUF_O_Write_String_To_Buffer(const char* const); 
+void 		 UART2_BUF_O_Write_Frame_To_Buffer(const void* data, size_t len);
 void     UART2_BUF_O_Write_Char_To_Buffer(const char);
 
 void     UART2_BUF_O_Write_Number10_To_Buffer(const uint32_t DATA);

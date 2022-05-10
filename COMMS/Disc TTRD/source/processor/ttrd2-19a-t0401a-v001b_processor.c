@@ -60,21 +60,22 @@
 
 // Support for run-time tests
 #include "ttrd2-19a-t0401a-v001b_run_time_tests.h"
+#include "../support_functions/stats.h"
 
 // Support for reporting PFCs
 #include "ttrd2-04a-t0401a-v001a_pfc_reporting.h"
 
 // Tasks
+#include "../tasks/rx_manager.h"
 #include "../tasks/cc_rx.h"
 #include "../tasks/cc_tx.h"
+#include "../tasks/obc_comm.h"
 #include "../tasks/ttrd2-05a-t0401a-v001a_adc_task.h"
 #include "../tasks/ttrd2-05a-t0401a-v001a_heartbeat_sw_task.h"
 #include "../tasks/ttrd2-05a-t0401a-v001a_iwdt_task.h"
 #include "../tasks/ttrd2-05a-t0401a-v001a_switch_task.h"
 #include "../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h"
 #include "../tasks/ttrd2-19a-t0401a-v001b_processor_task.h"
-#include "../support_functions/comms_hal.h"
-#include "../tasks/rx_manager.h"
 
 // MoniTTor header 
 // This module has access to the MoniTTor: use with care!
@@ -417,7 +418,9 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
 				 // wait until DMA finishes
 				 TIMEOUT_T3_USEC_Init();
 				 TIMEOUT_T3_USEC_Start();
-				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000));
+				 while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(2000))
+				 {
+				 }
 				 
          // Having confirmed that the iWDT is operational,
          // we now use this component to test the scheduler operation
@@ -565,22 +568,20 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
 
          // Report Mode / State (for demo purposes only)
          UART2_BUF_O_Write_String_To_Buffer("NORMAL_M\n");
+			
+				 /*Must use this in order the compiler occupies flash sector 3*/
+				 comms_persistent_mem_init();
+				 
+				 /*Make all the proper initializations for the COMMS */
+				 comms_init();
+				 
+				 /* Get the reason of re-booting */
+				 extern comms_rf_stat_t comms_stats;
+				 comms_rf_stats_set_reset_src(&comms_stats);
 					 
-				 CC_RX_init(9600);
-//				 CC_RX_BUF_O_Write_String_To_Buffer("\nStarting up the DMA module\n");
-//				 CC_RX_BUF_O_Send_All_Data();
-					 
-				 CC_TX_init(9600);
-//				 CC_TX_BUF_O_Write_String_To_Buffer("Starting\n");
-//				 CC_TX_BUF_O_Send_All_Data();
-//					 
-//					 
-//				 CC_TX_BUF_O_Write_String_To_Buffer("UART4\n");
-//				 CC_TX_BUF_O_Send_All_Data();
-//					 
-//				 CC_TX_BUF_O_Write_String_To_Buffer("A great thing\n");
-//				 CC_TX_BUF_O_Send_All_Data();
-         // Set up scheduler for 5 ms ticks
+				 OBC_C_init(9600);//230400
+
+				 // Set up scheduler for 5 ms ticks
          SCH_Init_Microseconds(5000);
 
          // Set up WDT 
@@ -621,14 +622,23 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          // Note: WCET / BCET data obtained using TTRD2-19b
          //
          //           A                      B   C    D     E
-         SCH_Add_Task(WATCHDOG_Update,       0,  1,   1,  0);    // iWDT
-         SCH_Add_Task(HEARTBEAT_SW_Update,   0,  200, 7,  6);    // Heartbeat
-         SCH_Add_Task(SWITCH_BUTTON1_Update, 10, 2,   8,  7);    // Switch
-         SCH_Add_Task(ADC1_Update,           0,  100, 36, 35);   // ADC1
-         SCH_Add_Task(PROCESSOR_TASK_Update, 0,  200, 17, 2);    // Proc task   
-         SCH_Add_Task(UART2_BUF_O_Update,    0,  1,   600, 2); // UART2
-				 SCH_Add_Task(CC_TX_update,5, 1,  10000, 2);  				 // CC_RX
-
+         SCH_Add_Task(WATCHDOG_Update,       0,  1,   1,  0);    // iWDT					0
+         SCH_Add_Task(HEARTBEAT_SW_Update,   0,  200, 7,  6);    // Heartbeat			1
+         SCH_Add_Task(SWITCH_BUTTON1_Update, 10, 2,   8,  7);    // Switch				2
+         SCH_Add_Task(ADC1_Update,           0,  100, 36, 35);   // ADC1					3
+         SCH_Add_Task(PROCESSOR_TASK_Update, 0,  200, 17, 2);    // Proc task   	4
+         SCH_Add_Task(OBC_C_update,    			 10, 1,  900, 0);   // OBC_C_update	5
+				 SCH_Add_Task(CC_RX_BUF_O_Update,    10, 1,   600, 2);   // CC_RX_command 6 transmit as no need to use DMA	
+				 SCH_Add_Task(CC_RX_update,          10, 10,  900, 2);   // CC_RX 				7
+				 SCH_Add_Task(rx_update,             12, 10,  9000,2);   // rx					  8
+				 SCH_Add_Task(UART2_BUF_O_Update,    13, 10,  900, 2);	 // UART2					9
+				 SCH_Add_Task(CC_TX_update,          17, 10,  900, 2);	 // CC_TX					10 
+				 SCH_Add_Task(OBC_C_BUF_O_Update,    15, 10,  900, 2);	 // OBC_C					11
+				 SCH_Add_Task(sys_refresh,           11, 200, 300, 0);	 // sys_refresh		12	transmit packet to EPS that tells him we are on
+				 SCH_Add_Task(tx_type_update,        18, 200, 300, 0);	 // tx_type_update13
+				 SCH_Add_Task(tx_update,             19, 10,  9000, 0);	 // tx_update     14 comms_rf_stats_update
+				 SCH_Add_Task(comms_rf_stats_update, 21, 200, 300, 0);	 // comms_rf_stat 15 s_update     
+				 
          // Feed the watchdog
          WATCHDOG_Update();
 

@@ -1,20 +1,20 @@
 #include "../main/main.h"
 
 
-static uint32_t currentTick = 0;
-const uint32_t lastTick = 0xFFFFFFFF;
+static uint32_t currentTick;
+#define lastTick  0xFFFF0000
 
-void updateCurrentTick()
+void updateCurrentTick(void)
 {
 	if(currentTick >= lastTick)
 	{
 		currentTick = 0;
 	}
 	
-		currentTick ++;
+		currentTick = currentTick + 5;
 }
 
-uint32_t getCurrentTick()
+uint32_t getCurrentTick(void)
 {
 	return currentTick;
 }

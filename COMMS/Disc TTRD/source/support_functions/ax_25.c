@@ -421,15 +421,18 @@ int32_t ax25_recv(ax25_handle_t *h, uint8_t *out, size_t *out_len, const uint8_t
  */
 int32_t ax25_extract_payload(uint8_t *out, const uint8_t *in, size_t frame_len, size_t addr_len, size_t ctrl_len)
 {
-//  if (!C_ASSERT (out != NULL && in != NULL)) { // SYSVIEW checks
-//    return AX25_DEC_FAIL;
-//  }
+  if (!C_ASSERT (out != NULL && in != NULL))
+	{ 
+    return AX25_DEC_FAIL;
+  }
 
-  if(addr_len != AX25_MIN_ADDR_LEN && addr_len != AX25_MAX_ADDR_LEN) {
+  if(addr_len != AX25_MIN_ADDR_LEN && addr_len != AX25_MAX_ADDR_LEN) 
+	{
     return AX25_DEC_SIZE_ERROR;
   }
 
-  if(addr_len + ctrl_len >= frame_len || ctrl_len > 2) {
+  if(addr_len + ctrl_len >= frame_len || ctrl_len > 2) 
+	{
     return AX25_DEC_SIZE_ERROR;
   }
 
@@ -769,9 +772,7 @@ ax25_decoder_enter_frame_end(ax25_handle_t *h)
  * @return AX25_DEC_NOT_READY if yet no AX.25 frame received or
  * AX25_DEC_OK if an AX.25 frame successfully retrieved.
  */
-ax25_decode_status_t
-ax25_decode (ax25_handle_t *h, uint8_t *out, size_t *out_len,
-	     const uint8_t *ax25_frame, size_t len)
+ax25_decode_status_t ax25_decode (ax25_handle_t *h, uint8_t *out, size_t *out_len, const uint8_t *ax25_frame, size_t len)
 {
   size_t i;
   uint16_t fcs;

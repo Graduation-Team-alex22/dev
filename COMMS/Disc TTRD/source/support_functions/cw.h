@@ -15,6 +15,10 @@
  * a space with duration of 4 more dots should be applied.
  */
 #define CW_WORD_SPACE_MS (4*CW_DOT_DURATION_MS)
+//comms_rf_stat_t comms_stats;
+//extern comms_rf_stat_t comms_stats;
+
+
 
 /**
  * The different CW symbols
@@ -50,7 +54,7 @@ typedef struct {
 } cw_char_t;
 
 //Init
-void cw_init ();
+void cw_init (void);
 
 //Update
 

@@ -47,7 +47,7 @@
 
 // Module header
 #include "ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h"
-
+#include "cc_rx.h"
 
 // Supports checks of register integrity
 #include "../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h"
@@ -61,9 +61,8 @@
 char * data="Hello TTRD\n";
 uint8_t UART2_Flag=0;
 // variablees belong to RX ---------------------------------------------------
-uint8_t CC_RX_SP_Flag;
 char CC_RX_SP_Command[10];
-uint8_t CC_RX_Sent_Flag=0;
+extern struct CC_RX_FLAGS_t CC_RX_FLAGS;
 // variablees belong to TX ---------------------------------------------------
 uint8_t CC_TX_SP_Flag;
 char CC_TX_SP_Command[10];
@@ -254,7 +253,7 @@ void UART2_BUF_O_Init(uint32_t BAUD_RATE)
 	 hdma_usart2_rx.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
 	 hdma_usart2_rx.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
 	 hdma_usart2_rx.DMA_Mode = DMA_Mode_Circular;
-	 hdma_usart2_rx.DMA_Priority = DMA_Priority_High;
+	 hdma_usart2_rx.DMA_Priority = DMA_Priority_Low;
 	 hdma_usart2_rx.DMA_FIFOMode = DMA_FIFOMode_Disable;
 	 hdma_usart2_rx.DMA_FIFOThreshold = DMA_FIFOThreshold_Full;
 	 hdma_usart2_rx.DMA_MemoryBurst = DMA_MemoryBurst_Single;
@@ -268,7 +267,7 @@ void UART2_BUF_O_Init(uint32_t BAUD_RATE)
 	 hdma_usart2_tx.DMA_MemoryInc = DMA_MemoryInc_Enable;
 	 hdma_usart2_tx.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
 	 hdma_usart2_tx.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
-	 hdma_usart2_tx.DMA_Priority = DMA_Priority_High;
+	 hdma_usart2_tx.DMA_Priority = DMA_Priority_Medium;
 	 hdma_usart2_tx.DMA_FIFOMode = DMA_FIFOMode_Disable;
 	 hdma_usart2_tx.DMA_FIFOThreshold = DMA_FIFOThreshold_1QuarterFull;//DMA_FIFOThreshold_1QuarterFull
 	 hdma_usart2_tx.DMA_MemoryBurst = DMA_MemoryBurst_Single;
@@ -353,6 +352,11 @@ void UART2_BUF_O_Init(uint32_t BAUD_RATE)
      None.
 
 -*----------------------------------------------------------------------------*/
+uint32_t FreeTask(void)
+{
+	uint32_t Return_value = RETURN_NORMAL_STATE;
+	return Return_value;
+}
 uint32_t UART2_BUF_O_Update(void)
 {
 	uint32_t Return_value = RETURN_NORMAL_STATE;
@@ -477,7 +481,81 @@ void UART2_BUF_O_Write_String_To_Buffer(const char* const STR_PTR)
 	i++;
 	}
 }
+void UART2_BUF_O_Write_Frame_To_Buffer(const void* data, size_t len)
+{
+	 const uint8_t* d = data;
+   for ( ;len > 0;len--, ++d)
+	{
+		if(*d==0x7E)
+			continue;
+		UART2_BUF_O_Write_Char_To_Buffer(*d);
+	}
+}
 
+
+void     UART2_BUF_O_Write_pkt_To_Buffer(tc_tm_pkt *pkt)
+{
+	UART2_BUF_O_Write_String_To_Buffer("/*********************** Print Packet ***************************************/");
+	if (pkt->type == TC) 
+		UART2_BUF_O_Write_String_To_Buffer("\npkt->type: TC");
+	else if (pkt->type == TM)
+		UART2_BUF_O_Write_String_To_Buffer("\npkt->type: TM");
+	
+	if (pkt->app_id == OBC_APP_ID) 
+		UART2_BUF_O_Write_String_To_Buffer("\npkt->app_id: OBC");
+	else if (pkt->app_id == EPS_APP_ID) 
+		UART2_BUF_O_Write_String_To_Buffer("\npkt->app_id: EPS");
+	else if (pkt->app_id == ADCS_APP_ID)
+		UART2_BUF_O_Write_String_To_Buffer("\npkt->app_id: ADCS");
+	else if (pkt->app_id == COMMS_APP_ID) 
+		UART2_BUF_O_Write_String_To_Buffer("\npkt->app_id: COMMS");
+	else if (pkt->app_id == GND_APP_ID) 
+		UART2_BUF_O_Write_String_To_Buffer("\npkt->app_id: GND");
+	else
+	{
+		UART2_BUF_O_Write_String_To_Buffer("\npkt->app_id: ");
+		UART2_BUF_O_Write_Number02_To_Buffer(pkt->app_id);
+	}
+	
+	if (pkt->dest_id == OBC_APP_ID)
+		UART2_BUF_O_Write_String_To_Buffer("\npkt->dest_id: OBC");
+	else if (pkt->dest_id == EPS_APP_ID) 
+		UART2_BUF_O_Write_String_To_Buffer("\npkt->dest_id: EPS");
+	else if (pkt->dest_id == ADCS_APP_ID) 
+		UART2_BUF_O_Write_String_To_Buffer("\npkt->dest_id: ADCS");
+	else if (pkt->dest_id == COMMS_APP_ID) 
+		UART2_BUF_O_Write_String_To_Buffer("\npkt->dest_id: COMMS");
+	else if (pkt->dest_id == GND_APP_ID) 
+		UART2_BUF_O_Write_String_To_Buffer("\npkt->dest_id: GND");
+	else
+	{
+		UART2_BUF_O_Write_String_To_Buffer("\npkt->dest_id: ");
+		UART2_BUF_O_Write_Number02_To_Buffer(pkt->dest_id);
+	}
+	
+	UART2_BUF_O_Write_String_To_Buffer("\npkt->len: ");
+	UART2_BUF_O_Write_Number04_To_Buffer(pkt->len);
+	UART2_BUF_O_Write_String_To_Buffer("\npkt->ack: ");
+	UART2_BUF_O_Write_Number02_To_Buffer(pkt->ack);
+	UART2_BUF_O_Write_String_To_Buffer("\npkt->ser_type: ");
+	UART2_BUF_O_Write_Number02_To_Buffer(pkt->ser_type);
+	UART2_BUF_O_Write_String_To_Buffer("\npkt->ser_subtype: ");
+	UART2_BUF_O_Write_Number02_To_Buffer(pkt->ser_subtype);
+	UART2_BUF_O_Write_String_To_Buffer("\npkt->verification_state: ");
+	UART2_BUF_O_Write_Number04_To_Buffer(pkt->verification_state);
+	UART2_BUF_O_Write_String_To_Buffer("\npkt->data: ");
+	UART2_BUF_O_Write_StringByLength_To_Buffer(pkt->data,sizeof(pkt->data));
+	UART2_BUF_O_Write_String_To_Buffer("\n/*********************** End of Packet ***************************************/\n");
+}
+void UART2_BUF_O_Write_StringByLength_To_Buffer(const void* data, size_t len)
+{
+	 const uint8_t* d = data;
+	
+   for ( ;len > 0;len--, ++d)
+	{
+		UART2_BUF_O_Write_Char_To_Buffer(*d);
+	}
+}
 /*----------------------------------------------------------------------------*-
    
   UART2_BUF_O_Write_Char_To_Buffer()
@@ -804,21 +882,21 @@ void UART2_BUF_O_Check_Data_Integrity(void)
 
 -*----------------------------------------------------------------------------*/
 	 
-	 uint32_t		 UART2_Check_toTransmit(void)
+uint32_t		 UART2_Check_toTransmit(void)
+{
+ uint32_t Return_value = RETURN_NORMAL_STATE;
+ if ((SWITCH_BUTTON1_Get_State() == BUTTON1_PRESSED)||UART2_Flag)
 	 {
-		 uint32_t Return_value = RETURN_NORMAL_STATE;
-		 if ((SWITCH_BUTTON1_Get_State() == BUTTON1_PRESSED)||UART2_Flag)
-			 {
-				 UART2_Flag++;
-				 if(UART2_Flag>20)	//200 ms
-				 {
-				 UART2_BUF_O_Write_String_To_Buffer(data);
-				 UART2_Flag=0;
-				 }
-			 }
-		 
-		 return Return_value;
+		 UART2_Flag++;
+		 if(UART2_Flag>20)	//200 ms
+		 {
+		 UART2_BUF_O_Write_String_To_Buffer(data);
+		 UART2_Flag=0;
+		 }
 	 }
+ 
+ return Return_value;
+}
 
 uint32_t UART2_DMA_CHECK(void)
 {
@@ -891,8 +969,8 @@ void UART2_PROCESS_DATA(const void* data, size_t len)
 	const uint8_t* d = data;
 	if((*d == 'R')&&(*(d+1) == 'X')&&(*(d+2)=='_')&&(*(d+3)=='A')&&(*(d+4)=='T'))// checking for the sequence of the input data
 	{
-		CC_RX_SP_Flag = 1;
-		CC_RX_Sent_Flag=0;
+		CC_RX_FLAGS.SetParam_Flag = 1;
+		CC_RX_FLAGS.Sent_Flag=0;
 		UART2_BUF_O_Write_String_To_Buffer("\nRX:");
 		for (int CC_RX_counter=0; CC_RX_counter < 10;CC_RX_counter++)
 		{

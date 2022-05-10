@@ -1,5 +1,30 @@
 /*----------------------------------------------------------------------------*-
 
+		At the moment am working on the next functions at the destination
+		
+  ----------------------------------------------------------------------------
+	 1) rx_update DONE
+	 2) cc_tx_data_continuous redesign @ tx_data DONE
+   3) import_pkt -->(implement UART5&its DMA, HLDLC_deframe, HAL_uart_rx) DONE
+	 4) export_pkt -->(implement UART5&its DMA, HLDLC_frame, HAL_uart_tx, HAL_uart_tx_check) DONE
+	 ---> implement UART5&its DMA  DONE 
+	 ---> HLDLC_deframe, HLDLC_frame  DONE
+	 ---> HAL_uart_rx, HAL_uart_tx DONE
+	 5) Add the update & Init functions working on it DONE
+	 6) testing the code and verify everything is working <--------------- this will act as the end of the code
+	 ---> sysrefresh is working fine
+	 ---> exporting packet is working fine			DONE
+	 ---> tx to ground working fine  		DONE
+	 ---> rx from ground working fine   DONE
+	 --->created packet sucessfully without data DONE
+	 ---> create packet with data
+	 6) CMD&CTRL for the CC1101_UART modules 
+	 7) Morse on-off symbols transmit function is a pluse
+		
+		i have commented comms_read_persistent_word and flash functions
+-*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*-
+
    main.h (Release 2017-08-17a)
 
   ----------------------------------------------------------------------------
@@ -77,10 +102,8 @@
 #include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
 #include "../support_functions/stats.h"
 #include "../support_functions/services.h"
-#include "../support_functions/comms_hal.h" //need to redesign
 #include "../support_functions/config.h"
-#include "../support_functions/sysview.h"
-
+#include "../support_functions/upsat.h"
 
 // Tasks
 #include "../tasks/comms_manager.h"
@@ -135,13 +158,13 @@
 #define PFC_UNKNOWN_FAULT                                      ((uint8_t) 30)
 
 // Problem detected when attempting to add task to schedule
-#define PFC_SCH_ADD_TASK                                       ((uint8_t) 35)
+#define PFC_SCH_ADD_TASK                                       ((uint8_t) 35)// happens when forgetting to increase the SCH_MAX_TASKS
 
 // Problem detected during scheduler startup checks
 #define PFC_SCH_STARTUP_OPERATION                              ((uint8_t) 36)
 
 // Problem detected during scheduler startup checks
-#define PFC_SCH_STARTUP_TEST_5A                                ((uint8_t) 37)
+#define PFC_SCH_STARTUP_TEST_5A                                ((uint8_t) 37) //happen when the RW-data > 3684  hint decrease the static
 
 // Problem detected during scheduler startup checks
 #define PFC_SCH_STARTUP_TEST_5B                                ((uint8_t) 38)
@@ -164,11 +187,11 @@
 
 // Problem during normal MoniTTor use
 #define PFC_MONITTOR_PARAMETERS                                ((uint8_t) 60)
-#define PFC_MONITTOR_OVERRUN                                   ((uint8_t) 61)
-#define PFC_MONITTOR_UNDERRUN                                  ((uint8_t) 62)
+#define PFC_MONITTOR_OVERRUN                                   ((uint8_t) 61) //happens when a task exceed the WCET time
+#define PFC_MONITTOR_UNDERRUN                                  ((uint8_t) 62) // happend when a task runs less than the BCET time
 
 // Problem when PredicTTor is tested 
-#define PFC_PREDICTTOR_TASK_SEQ_FAULT_TEST                     ((uint8_t) 65)
+#define PFC_PREDICTTOR_TASK_SEQ_FAULT_TEST                     ((uint8_t) 65)// happens when the ticklist is not correct
 
 // Problem during normal PredicTTor use
 #define PFC_PREDICTTOR_TASK_SEQ_FAULT                          ((uint8_t) 66)

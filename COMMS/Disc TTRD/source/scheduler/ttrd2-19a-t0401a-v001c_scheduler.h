@@ -84,10 +84,10 @@ void SCH_Add_Task(uint32_t (* pTask)(),
 // during the execution of the program
 //
 // MUST BE CHECKED FOR EACH PROJECT (*not* dynamic)
-#define SCH_MAX_TASKS (7)
+#define SCH_MAX_TASKS (16)
 
 // Usually set to 1, unless 'Long Tasks' are employed
-#define SCH_TICK_COUNT_LIMIT (1)
+#define SCH_TICK_COUNT_LIMIT (10)
 
 // Default value for pTask (no task at this location)
 #define SCH_NULL_PTR ((uint32_t (*) (void)) 0)

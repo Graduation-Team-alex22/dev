@@ -138,7 +138,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -449,16 +449,6 @@
               <FilePath>..\source\support_functions\stats.h</FilePath>
             </File>
             <File>
-              <FileName>comms_hal.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\source\support_functions\comms_hal.c</FilePath>
-            </File>
-            <File>
-              <FileName>comms_hal.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\support_functions\comms_hal.h</FilePath>
-            </File>
-            <File>
               <FileName>services.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\support_functions\services.c</FilePath>
@@ -499,34 +489,19 @@
               <FilePath>..\source\support_functions\large_data_services.h</FilePath>
             </File>
             <File>
-              <FileName>cc_commands.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\support_functions\cc_commands.h</FilePath>
-            </File>
-            <File>
-              <FileName>cc_definitions.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\support_functions\cc_definitions.h</FilePath>
-            </File>
-            <File>
-              <FileName>cc_rx_init.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\support_functions\cc_rx_init.h</FilePath>
-            </File>
-            <File>
-              <FileName>cc_tx_init.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\support_functions\cc_tx_init.h</FilePath>
-            </File>
-            <File>
-              <FileName>cc_tx_init.c</FileName>
+              <FileName>sha256.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\source\support_functions\cc_tx_init.c</FilePath>
+              <FilePath>..\source\support_functions\sha256.c</FilePath>
             </File>
             <File>
-              <FileName>cc_init.h</FileName>
+              <FileName>sha256.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\source\support_functions\cc_init.h</FilePath>
+              <FilePath>..\source\support_functions\sha256.h</FilePath>
+            </File>
+            <File>
+              <FileName>large_data_services.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\support_functions\large_data_services.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -652,6 +627,16 @@
               <FileName>cc_tx.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\source\tasks\cc_tx.h</FilePath>
+            </File>
+            <File>
+              <FileName>obc_comm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\tasks\obc_comm.c</FilePath>
+            </File>
+            <File>
+              <FileName>obc_comm.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\tasks\obc_comm.h</FilePath>
             </File>
           </Files>
         </Group>
