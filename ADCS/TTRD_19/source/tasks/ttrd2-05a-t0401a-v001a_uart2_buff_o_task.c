@@ -55,7 +55,7 @@
 // ------ Private constants --------------------------------------------------
 
 // The transmit buffer length
-#define TX_BUFFER_SIZE_BYTES 500
+#define TX_BUFFER_SIZE_BYTES 1024
 
 // ------ Private variables --------------------------------------------------
 

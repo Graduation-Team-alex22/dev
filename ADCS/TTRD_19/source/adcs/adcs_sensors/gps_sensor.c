@@ -16,6 +16,8 @@ static gps_sensor_t gps_sensor_data ;
 static char nmea_sentences_g[NMEA_SENTENCE_BUFFER_SIZE][NMEA_SENTENCE_MAX_CHAR] = {0};
 static uint8_t nmea_pointer_g = 0;
 
+// activation
+static activated_sensor_e activated_gps = FIRST;
 
 // -- PUBLIC FUNCTIONS' IMPLEMENTATION ---------------------------
 uint32_t GPS_Sensor_Init(DMA_Stream_TypeDef * DMA_streamx)
@@ -23,6 +25,9 @@ uint32_t GPS_Sensor_Init(DMA_Stream_TypeDef * DMA_streamx)
    assert_param(IS_DMA_ALL_PERIPH(DMA_streamx));
 
    dma_streamx_g = DMA_streamx;
+   
+   // activate one gps module
+   
    
    // update device status
    gps_sensor_data.status = DEVICE_OK;
@@ -37,9 +42,10 @@ uint32_t GPS_Sensor_Update(void)
 {
 	// an index to mark where to start proccessing
 	static uint16_t buffer_start_index =0;
-	uint16_t buffer_end_index = 0;
+	static uint16_t buffer_end_index = 0;
 	static uint16_t sentence_char_index = 0;
-	
+	static uint8_t no_data_counter = 0;
+   
    // Pre-Condition Checks [Start]
    // check if the NMEA sentence buffer is full
    if(nmea_pointer_g == NMEA_SENTENCE_BUFFER_SIZE)
@@ -51,7 +57,24 @@ uint32_t GPS_Sensor_Update(void)
    
 	// get new sentences from the buffer [Start]
 	// check if new data has been received
-	buffer_end_index = GPS_RX_BUFFER_SIZE - DMA_GetCurrDataCounter(dma_streamx_g);
+   if( buffer_end_index == GPS_RX_BUFFER_SIZE - DMA_GetCurrDataCounter(dma_streamx_g) )
+   {
+      // no new data has arrived
+      no_data_counter++;
+      // check if device is broken
+      if(no_data_counter == GPS_NO_DATA_TIME) 
+      {
+         gps_sensor_data.status = DEVICE_BROKEN;
+      }
+      return NO_ERROR;
+   }
+   else
+   {
+      // new data has arrived
+      buffer_end_index = GPS_RX_BUFFER_SIZE - DMA_GetCurrDataCounter(dma_streamx_g);
+      no_data_counter = 0;
+   }
+	
 	
    while(buffer_end_index != buffer_start_index)
    {
@@ -111,4 +134,25 @@ gps_sensor_t GPS_Sensor_GetData(void)
 char* GPS_Sensor_get_pBuffer(void)
 {
    return Rx_buffer_g;
+}
+
+void GPS_Sensor_SetStatus(device_status_e new_status)
+{
+   gps_sensor_data.status = new_status;
+}
+
+void GPS_Change_Activated_Module(void)
+{
+   switch(activated_gps)
+   {
+      case FIRST:
+         activated_gps = SECOND;
+         GPIO_SetBits(SENSOR_ACTIVATION_PORT, GPS_ACTIVATION_PIN);
+      break;
+      
+      case SECOND:
+         activated_gps = FIRST;
+         GPIO_ResetBits(SENSOR_ACTIVATION_PORT, GPS_ACTIVATION_PIN);
+      break;   
+   }
 }

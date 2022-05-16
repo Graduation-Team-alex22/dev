@@ -1,6 +1,7 @@
 #include "../main/project.h"
 #include "../adcs/adcs_sensors/sun_sensor.h"
 #include "app_sensor_sun_task.h"
+#include "../main/main.h"
 
 #ifdef DIAGNOSIS_OUTPUT
 #include "../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h"
@@ -42,7 +43,7 @@
 void App_Sensor_Sun_Init(void)
 {
    #ifdef DIAGNOSIS_OUTPUT
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG - INIT] Sun Init\n");
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Sun] Init\n");
       UART2_BUF_O_Send_All_Data();
    #endif
    error_t error_code = SUN_Sensor_Init();
@@ -61,8 +62,7 @@ uint32_t App_Sensor_Sun_Update(void)
    }
     
    #ifdef DIAGNOSIS_OUTPUT
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Update] Sun Sensor Update\n");
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Data]: \n");
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Sun]: \n");
       UART2_BUF_O_Send_All_Data();
    #endif
    

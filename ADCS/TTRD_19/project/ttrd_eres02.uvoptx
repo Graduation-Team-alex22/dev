@@ -157,18 +157,66 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>27</LineNumber>
+          <LineNumber>179</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134229306</Address>
+          <Address>134239454</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\source\tasks\app_control_ref_vector_task.c</Filename>
+          <Filename>..\source\adcs\adcs_sensors\imu_sensor.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\TTRD_ERES2\../source/tasks/app_control_ref_vector_task.c\27</Expression>
+          <Expression>\\TTRD_ERES2\../source/adcs/adcs_sensors/imu_sensor.c\179</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>172</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134239440</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\source\adcs\adcs_sensors\imu_sensor.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\TTRD_ERES2\../source/adcs/adcs_sensors/imu_sensor.c\172</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>170</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134239416</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\source\adcs\adcs_sensors\imu_sensor.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\TTRD_ERES2\../source/adcs/adcs_sensors/imu_sensor.c\170</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>169</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>..\source\adcs\adcs_sensors\imu_sensor.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -176,6 +224,11 @@
           <count>0</count>
           <WinNumber>1</WinNumber>
           <ItemText>SGP4_jd0</ItemText>
+        </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Wait_idx_g</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
@@ -185,14 +238,6 @@
           <ItemText>Task_id</ItemText>
         </Ww>
       </WatchWindow2>
-      <MemoryWindow1>
-        <Mm>
-          <WinNumber>1</WinNumber>
-          <SubType>0</SubType>
-          <ItemText>&amp;omgdot</ItemText>
-          <AccSizeX>0</AccSizeX>
-        </Mm>
-      </MemoryWindow1>
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>
@@ -217,7 +262,7 @@
         <aPa1>0</aPa1>
         <AscS4>0</AscS4>
         <aSer4>0</aSer4>
-        <StkLoc>0</StkLoc>
+        <StkLoc>1</StkLoc>
         <TrcWin>0</TrcWin>
         <newCpu>0</newCpu>
         <uProt>0</uProt>
@@ -321,7 +366,7 @@
 
   <Group>
     <GroupName>port</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2005,6 +2050,30 @@
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>139</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\source\adcs\services_utilities\printf.c</PathWithFileName>
+      <FilenameWithoutPath>printf.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>140</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\source\adcs\services_utilities\printf.h</PathWithFileName>
+      <FilenameWithoutPath>printf.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
   </Group>
 
   <Group>
@@ -2015,7 +2084,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>139</FileNumber>
+      <FileNumber>141</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2027,7 +2096,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>140</FileNumber>
+      <FileNumber>142</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2039,7 +2108,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>141</FileNumber>
+      <FileNumber>143</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2051,7 +2120,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>142</FileNumber>
+      <FileNumber>144</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2071,7 +2140,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>143</FileNumber>
+      <FileNumber>145</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2083,7 +2152,7 @@
     </File>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>144</FileNumber>
+      <FileNumber>146</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2095,7 +2164,7 @@
     </File>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>145</FileNumber>
+      <FileNumber>147</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2107,7 +2176,7 @@
     </File>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>146</FileNumber>
+      <FileNumber>148</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2119,7 +2188,7 @@
     </File>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>147</FileNumber>
+      <FileNumber>149</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2131,7 +2200,7 @@
     </File>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>148</FileNumber>
+      <FileNumber>150</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2143,7 +2212,7 @@
     </File>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>149</FileNumber>
+      <FileNumber>151</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2155,7 +2224,7 @@
     </File>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>150</FileNumber>
+      <FileNumber>152</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2167,7 +2236,7 @@
     </File>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>151</FileNumber>
+      <FileNumber>153</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2179,7 +2248,7 @@
     </File>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>152</FileNumber>
+      <FileNumber>154</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2191,7 +2260,7 @@
     </File>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>153</FileNumber>
+      <FileNumber>155</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2203,7 +2272,7 @@
     </File>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>154</FileNumber>
+      <FileNumber>156</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2215,7 +2284,7 @@
     </File>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>155</FileNumber>
+      <FileNumber>157</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2227,7 +2296,7 @@
     </File>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>156</FileNumber>
+      <FileNumber>158</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2239,33 +2308,13 @@
     </File>
     <File>
       <GroupNumber>13</GroupNumber>
-      <FileNumber>157</FileNumber>
+      <FileNumber>159</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\source\adcs\adcs_controller\geomag.c</PathWithFileName>
       <FilenameWithoutPath>geomag.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-  </Group>
-
-  <Group>
-    <GroupName>adcs_config</GroupName>
-    <tvExp>1</tvExp>
-    <tvExpOptDlg>0</tvExpOptDlg>
-    <cbSel>0</cbSel>
-    <RteFlg>0</RteFlg>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>158</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\source\adcs\config.h</PathWithFileName>
-      <FilenameWithoutPath>config.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

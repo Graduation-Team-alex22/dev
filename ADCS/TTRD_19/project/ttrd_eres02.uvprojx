@@ -1123,6 +1123,16 @@
               <FileType>1</FileType>
               <FilePath>..\source\adcs\services_utilities\obc_comm.c</FilePath>
             </File>
+            <File>
+              <FileName>printf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\adcs\services_utilities\printf.c</FilePath>
+            </File>
+            <File>
+              <FileName>printf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\adcs\services_utilities\printf.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1227,16 +1237,6 @@
               <FileName>geomag.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\adcs\adcs_controller\geomag.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>adcs_config</GroupName>
-          <Files>
-            <File>
-              <FileName>config.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\adcs\config.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -68,7 +68,7 @@ static uint32_t Tick_count_g = 0;
 static uint32_t Tick_count_ig = ~0;           // Inverted copy
 
 // to mark last running task
-static uint32_t last_run_task_id = 20;
+static uint32_t last_run_task_id = 0;
 static uint32_t abs_tick_count = 0;
 
 // ------ Private function prototypes ----------------------------------------
@@ -560,6 +560,11 @@ void SCH_Set_Interrupt_Priority_Levels(void)
    NVIC_SetPriority(SysTick_IRQn, 0);
    }   
     
+   
+ uint32_t SCH_Get_LastRunTaskID(void)
+ {
+    return last_run_task_id;
+ }
 /*----------------------------------------------------------------------------*-
   ------------------------------ END OF FILE ---------------------------------
 -*----------------------------------------------------------------------------*/

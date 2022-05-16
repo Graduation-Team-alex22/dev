@@ -85,6 +85,7 @@
 #include "../tasks/app_control_attitude_update_task.h"
 #include "../tasks/app_actuators_task.h"
 #include "../tasks/app_obc_comm_task.h"
+#include "../tasks/app_time_keeping_task.h"
 #include "../adcs/services_utilities/time.h"
 
 // MoniTTor header 
@@ -588,6 +589,7 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          App_Sensor_Tmp_Init();
          App_Sensor_Sun_Init();
          App_Sensor_Health_Init();
+         App_Time_keeping_Init();
          App_Control_Tle_Init();
          App_Control_Sgp4_Init();
          App_Control_Ref_Vector_Init();
@@ -606,20 +608,21 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          SCH_Add_Task(HEARTBEAT_SW_Update,              0, 100, 10000, 0);    // Heartbeat
          SCH_Add_Task(ADC1_Update,                      0, 50 , 10000, 0);    // ADC1    
          SCH_Add_Task(PROCESSOR_TASK_Update,            0, 100, 10000, 0);    // Proc task     
-         SCH_Add_Task(UART2_BUF_O_Update,               0, 1  , 10000, 0);    // UART2         
-         SCH_Add_Task(App_Sensor_Imu_Update,            1, 20 , 10000, 0);    // IMU      
-         SCH_Add_Task(App_Sensor_Mgn_Update,            2, 20 , 10000, 0);    // mgn      
-         SCH_Add_Task(App_Sensor_Tmp_Update,            3, 20 , 10000, 0);    // tmp 
-         SCH_Add_Task(App_Sensor_Gps_Update,            4, 20 , 10000, 0);    // GPS
-         SCH_Add_Task(App_Sensor_Sun_Update,            5, 20 , 10000, 0);    // sun sensor
-         SCH_Add_Task(App_Sensor_Health_Update,         6, 20 , 10000, 0);    // health check
-         SCH_Add_Task(App_Control_Tle_Update,           7, 20 , 10000, 0);    // tle
-         SCH_Add_Task(App_Control_Sgp4_Update,          8, 20 , 10000, 0);    // sgp4
-         SCH_Add_Task(App_Control_Ref_Vector_Update,    9, 20 , 10000, 0);    // ref verctors
-         SCH_Add_Task(App_Control_Attitude_Det_Update, 10, 20 , 10000, 0);    // attitude determination
-         SCH_Add_Task(App_Control_Attitude_Update,     11, 20 , 10000, 0);    // control update
-         SCH_Add_Task(App_Actuator_Update,             12, 20 , 10000, 0);    // Actuators
-         SCH_Add_Task(App_Obc_Comm_Update,             13, 100, 10000, 0);    // OBC Comm
+         SCH_Add_Task(UART2_BUF_O_Update,               0, 1  , 10000, 0);    // UART2 
+         SCH_Add_Task(App_Obc_Comm_Update,              1, 100, 10000, 0);    // OBC Comm        
+         SCH_Add_Task(App_Sensor_Imu_Update,            2, 20 , 10000, 0);    // IMU      
+         SCH_Add_Task(App_Sensor_Mgn_Update,            3, 20 , 10000, 0);    // mgn      
+         SCH_Add_Task(App_Sensor_Tmp_Update,            4, 20 , 10000, 0);    // tmp 
+         SCH_Add_Task(App_Sensor_Gps_Update,            5, 20 , 10000, 0);    // GPS
+         SCH_Add_Task(App_Sensor_Sun_Update,            6, 20 , 10000, 0);    // sun sensor
+         SCH_Add_Task(App_Sensor_Health_Update,         7, 20 , 10000, 0);    // health check
+         SCH_Add_Task(App_Time_keeping_Update,          8, 20 , 10000, 0);    // time
+         SCH_Add_Task(App_Control_Tle_Update,           9, 20 , 10000, 0);    // tle
+         SCH_Add_Task(App_Control_Sgp4_Update,         10, 20 , 10000, 0);    // sgp4
+         SCH_Add_Task(App_Control_Ref_Vector_Update,   11, 20 , 10000, 0);    // ref verctors
+         SCH_Add_Task(App_Control_Attitude_Det_Update, 12, 20 , 10000, 0);    // attitude determination
+         SCH_Add_Task(App_Control_Attitude_Update,     13, 20 , 10000, 0);    // control update
+         SCH_Add_Task(App_Actuator_Update,             14, 20 , 10000, 0);    // Actuators
 
 
          //WATCHDOG_Init(240);  // 240 x 125 µs => 30 ms 
@@ -996,3 +999,4 @@ void PROCESSOR_Perform_Safe_Shutdown(const uint32_t PFC)
 /*----------------------------------------------------------------------------*-
   ------------------------------ END OF FILE ---------------------------------
 -*----------------------------------------------------------------------------*/
+

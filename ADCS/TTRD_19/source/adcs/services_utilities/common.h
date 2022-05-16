@@ -57,6 +57,11 @@ typedef struct {
    double z;
 } xyz_t;
 
+typedef enum {
+   FIRST,
+   SECOND
+} activated_sensor_e;
+
 double str_to_float(char* str, uint8_t length);
 double str_to_float_nl(char* str, uint8_t* get_len);
 inline uint8_t is_digit(char c);

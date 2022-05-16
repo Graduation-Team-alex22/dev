@@ -4,8 +4,10 @@
 #include "app_sensor_mgn_task.h" 
 #include "../main/project.h"
 
+//#define DIAGNOSIS_OUTPUT
+
 #ifdef DIAGNOSIS_OUTPUT
-#include "stdio.h"
+#include "../adcs/services_utilities/printf.h"
 #include "../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h"
 #endif
 
@@ -50,7 +52,7 @@
 void App_Sensor_Mgn_Init(void)
 {
    #ifdef DIAGNOSIS_OUTPUT
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG - INIT] MGN Init\n");
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - MGN] Init\n");
       UART2_BUF_O_Send_All_Data();
    #endif
    mgn_init_t mgn_init;
@@ -112,12 +114,10 @@ uint32_t App_Sensor_Mgn_Update(void)
 	}
    
    #ifdef DIAGNOSIS_OUTPUT
-      char buf[200];
+      char buf[200] = {0};
       mgn_sensor_t tg = MGN_Sensor_GetData();
-      sprintf(buf, "X: %+.4f  Y: %+.4f  Z:%+.4f\n",
+      sprintf(buf, "[DIAG - MGN] X: %+.4f  Y: %+.4f  Z:%+.4f\n",
                    tg.mag[0], tg.mag[1], tg.mag[2]);
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Update] MGN Update\n");
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Data]: \n");
 	   UART2_BUF_O_Write_String_To_Buffer(buf);
       UART2_BUF_O_Send_All_Data();
    #endif

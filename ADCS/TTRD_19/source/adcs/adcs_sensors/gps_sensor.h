@@ -70,7 +70,8 @@ uint32_t GPS_Sensor_Init(DMA_Stream_TypeDef * DMA_streamx);
 uint32_t GPS_Sensor_Update(void);
 
 char* GPS_Sensor_get_pBuffer(void);
-
 gps_sensor_t GPS_Sensor_GetData(void);
+void GPS_Sensor_SetStatus(device_status_e new_status);
+void GPS_Change_Activated_Module(void);
 
 #endif

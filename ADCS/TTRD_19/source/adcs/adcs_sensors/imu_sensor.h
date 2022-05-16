@@ -91,4 +91,6 @@ uint32_t IMU_Sensor_Update(I2C_TypeDef* I2Cx);
 */
 imu_sensor_t IMU_Sensor_GetData(void);
 
+void IMU_Sensor_SetStatus(device_status_e new_status);
+void IMU_Change_Activated_Module(void);
 #endif

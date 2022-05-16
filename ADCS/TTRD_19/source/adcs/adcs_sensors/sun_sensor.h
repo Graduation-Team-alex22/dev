@@ -24,13 +24,15 @@ Date:		2022-02-27
 
 #include "stdint.h"
 #include "../services_utilities/common.h"
+#include "../main/project.h"
 
 typedef struct {
-   uint16_t v_sun_raw[5];						// Raw Values
-   float v_sun[5];										// Raw Values converted to volts
-   float sun_rough[3];								// sun vector in polar co-ordinates: Alpha, Beta, Magnitude = 1
-   float sun_xyz[3];									// polar co-ordinates converted to cartizian co-ordinates
-   device_status_e status;		// Status of sun sensors system
+   // solar panel arrangement: X+ , X- , Y+ , Y- , Z+ , Z-
+   uint16_t v_sun_raw[SLR_NUM];		// Raw Values
+   float v_sun[SLR_NUM];				// Raw Values converted to volts
+   float sun_rough[3];			      // sun vector in polar co-ordinates: Alpha, Beta, Magnitude = 1
+   float sun_xyz[3];				      // polar co-ordinates converted to cartizian co-ordinates
+   device_status_e status;		      // Status of sun sensors system
 } sun_sensor_t;
 
 uint8_t SUN_Sensor_Init(void);

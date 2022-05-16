@@ -1,6 +1,7 @@
 #include "../hsi_library/stm32f4xx_gpio.h"
 #include "../hsi_library/stm32f4xx_i2c.h"
 #include "../hsi_library/stm32f4xx_usart.h"
+#include "../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h"
 
 #include "project.h"
 
@@ -9,12 +10,14 @@
 //-- Private funtions -----------------------
 void I2C1_Init(void);
 void UART4_DMA_RX_Init(void);
+void Activation_Pins_Init(void);
 
 // initializes the peripherals needed in the project
 void Project_MSP_Init(void)
 {
    I2C1_Init();
    UART4_DMA_RX_Init();
+   
 }
 
 void I2C1_Init()
@@ -58,6 +61,7 @@ void I2C1_Init()
    I2C_Cmd(I2C1, ENABLE);
 }
 
+// GPS UART
 void UART4_DMA_RX_Init(void)
 {
    //----------set up GPIO pin A1 as usart4 RX pin-----------
@@ -127,3 +131,45 @@ void UART4_DMA_RX_Init(void)
    
 }
 
+
+void Activation_Pins_Init(void)
+{
+   // GPIO Init
+   GPIO_InitTypeDef GPIO_InitStruct;
+
+   // clock enable 
+   if( SENSOR_ACTIVATION_PORT == GPIOA )
+   {
+      RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+   }
+   else
+   {
+      // in case another developer used another port for sensor activation
+      // but forgot to add a case for it above
+      assert_failed((uint8_t *)__FILE__, __LINE__);
+   }
+   
+   // GPIO config
+   GPIO_InitStruct.GPIO_Pin   = GPS_ACTIVATION_PIN | IMU_ACTIVATION_PIN | MGN_ACTIVATION_PIN | TMP_ACTIVATION_PIN;
+   GPIO_InitStruct.GPIO_Mode  = GPIO_Mode_OUT;
+   GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;
+   GPIO_InitStruct.GPIO_Speed = GPIO_High_Speed; 
+   GPIO_InitStruct.GPIO_PuPd  = GPIO_PuPd_NOPULL;
+
+   GPIO_Init(SENSOR_ACTIVATION_PORT, &GPIO_InitStruct);
+   
+   GPIO_ResetBits(SENSOR_ACTIVATION_PORT, GPS_ACTIVATION_PIN);
+   GPIO_ResetBits(SENSOR_ACTIVATION_PORT, IMU_ACTIVATION_PIN);
+   GPIO_ResetBits(SENSOR_ACTIVATION_PORT, MGN_ACTIVATION_PIN);
+   GPIO_ResetBits(SENSOR_ACTIVATION_PORT, TMP_ACTIVATION_PIN);
+}
+
+
+
+void HardFault_Handler(void)
+{
+   // print task id
+   static uint32_t tid = 0;
+   tid = SCH_Get_LastRunTaskID();
+   while(1);
+}

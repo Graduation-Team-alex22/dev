@@ -40,6 +40,9 @@
 
 /***************** PRIVATE VARIABLES *********************/
 static imu_sensor_t imu_sensor_data;
+// activation
+static activated_sensor_e activated_imu = FIRST;
+static char device_address = IMU_I2C_ADD;
 
 /***************** PRIVATE FUNCTIONS *********************/
 uint8_t  IMU_Wakeup(I2C_TypeDef* I2Cx);
@@ -55,42 +58,73 @@ uint32_t IMU_Sensor_Init(I2C_TypeDef* I2Cx)
 
    // Set up timeout mechanism
    TIMEOUT_T3_USEC_Init();
-
+   
    // check if the device is connected
-   error_code = I2Cx_Is_Device_Connected(I2Cx, IMU_I2C_ADD, IMU_REG_WHOIAM, IMU_WHOIAM_VAL, I2C_EVENT_WAIT);
-   if(error_code){ return ERROR_IMU_CONNECTED_BASE + error_code;}
-
+   error_code = I2Cx_Is_Device_Connected(I2Cx, device_address, IMU_REG_WHOIAM, IMU_WHOIAM_VAL, I2C_EVENT_WAIT);
+   //if(error_code){ return ERROR_IMU_CONNECTED_BASE + error_code;}
+   if(error_code)
+   { 
+      imu_sensor_data.status = DEVICE_BROKEN;
+      return NO_ERROR;
+   }
+   
    // reset the device, turn off sleep mode, set clock source
    error_code = IMU_Wakeup(I2Cx);
-   if(error_code){ return ERROR_IMU_WAKEUP_BASE + error_code;}
-
+   //if(error_code){ return ERROR_IMU_WAKEUP_BASE + error_code;}
+   if(error_code)
+   { 
+      imu_sensor_data.status = DEVICE_BROKEN;
+      return NO_ERROR;
+   }
+   
    // configuration
    error_code = IMU_Configure(I2Cx);
-   if(error_code){ return ERROR_IMU_CONFIG_BASE + error_code;}
+   //if(error_code){ return ERROR_IMU_CONFIG_BASE + error_code;}
+   if(error_code)
+   { 
+      imu_sensor_data.status = DEVICE_BROKEN;
+      return NO_ERROR;
+   }
 
+   // check akm compass
+   
+   
    // calibration and multipliers
    imu_sensor_data.AMult = 2.0f / 32768.0f;
    imu_sensor_data.GMult = 250.0f / 32768.0f;
    imu_sensor_data.MMult = 10.0f * 4912.0f / 32768.0f;
    error_code = IMU_Mag_Calib(I2Cx, imu_sensor_data.M_Calib);
-   if(error_code){ return ERROR_IMU_CALIBRATED_BASE + error_code;}
+   //if(error_code){ return ERROR_IMU_CALIBRATED_BASE + error_code;}
+   if(error_code)
+   { 
+      imu_sensor_data.status = DEVICE_BROKEN;
+      return NO_ERROR;
+   }
 
    // update device status
    imu_sensor_data.status = DEVICE_OK;
    
-   return 0;
+   return NO_ERROR;
 }
 
 uint32_t IMU_Sensor_Update(I2C_TypeDef* I2Cx)
 {
-   imu_sensor_data.status = DEVICE_OK;
+   if(imu_sensor_data.status != DEVICE_OK)
+   {
+      return NO_ERROR;
+   }
    
    uint8_t error_code;
    uint8_t data[8];
    
    /**************** Read Accel ****************/
-   error_code = I2Cx_Recv_Bytes(I2Cx, IMU_I2C_ADD, IMU_REG_ACCEL_DATA, data, 6, I2C_EVENT_WAIT);
-   if(error_code){ return ERROR_IMU_ACC_UPDATE_BASE + error_code;}
+   error_code = I2Cx_Recv_Bytes(I2Cx, device_address, IMU_REG_ACCEL_DATA, data, 6, I2C_EVENT_WAIT);
+   //if(error_code){ return ERROR_IMU_ACC_UPDATE_BASE + error_code;}
+   if(error_code)
+   { 
+      imu_sensor_data.status = DEVICE_BROKEN;
+      return NO_ERROR;
+   }
 
    imu_sensor_data.Ax_Raw = ((int16_t) data[0] << 8) | data[1];
    imu_sensor_data.Ax = (float)imu_sensor_data.Ax_Raw * imu_sensor_data.AMult;
@@ -100,8 +134,13 @@ uint32_t IMU_Sensor_Update(I2C_TypeDef* I2Cx)
    imu_sensor_data.Az = (float)imu_sensor_data.Az_Raw * imu_sensor_data.AMult;
   
    /***************** Read Gyro ****************/
-   error_code = I2Cx_Recv_Bytes(I2Cx, IMU_I2C_ADD, IMU_REG_GYRO_DATA, data, 6, I2C_EVENT_WAIT);
-   if(error_code){ return ERROR_IMU_GYRO_UPDATE_BASE + error_code;}
+   error_code = I2Cx_Recv_Bytes(I2Cx, device_address, IMU_REG_GYRO_DATA, data, 6, I2C_EVENT_WAIT);
+   //if(error_code){ return ERROR_IMU_GYRO_UPDATE_BASE + error_code;}
+   if(error_code)
+   { 
+      imu_sensor_data.status = DEVICE_BROKEN;
+      return NO_ERROR;
+   }
 
    // store previous gyro readings
    imu_sensor_data.gyro_prev[0] = imu_sensor_data.Gx;
@@ -121,8 +160,13 @@ uint32_t IMU_Sensor_Update(I2C_TypeDef* I2Cx)
    imu_sensor_data.gyro_filtered[2] = A_GYRO * imu_sensor_data.Gz + (1 - A_GYRO) * imu_sensor_data.gyro_prev[2];
    
    /***************** Read Mag *****************/
-   error_code = I2Cx_Recv_Bytes(I2Cx, IMU_AKM_ADD, IMU_REG_MAG_ST1, data, 8, I2C_EVENT_WAIT);
-   if(error_code){ return ERROR_IMU_MGN_UPDATE_BASE + error_code;}
+   error_code = I2Cx_Recv_Bytes(I2Cx, IMU_AKM_ADD, IMU_REG_MAG_ST1, data, 8, I2C_EVENT_WAIT *2);
+   //if(error_code){ return ERROR_IMU_MGN_UPDATE_BASE + error_code;}
+   if(error_code)
+   { 
+      imu_sensor_data.status = DEVICE_BROKEN;
+      return NO_ERROR;
+   }
    
    // store previous mgn readings
    imu_sensor_data.xm_prev[0] = imu_sensor_data.Mx;
@@ -154,12 +198,17 @@ uint32_t IMU_Sensor_Update(I2C_TypeDef* I2Cx)
       imu_sensor_data.status = READING_ERROR;
    }
   
-   return 0;
+   return NO_ERROR;
 }
 
 
 imu_sensor_t IMU_Sensor_GetData(void){
    return imu_sensor_data;
+}
+
+void IMU_Sensor_SetStatus(device_status_e new_status)
+{
+   imu_sensor_data.status = new_status;
 }
 
 uint8_t	IMU_Wakeup(I2C_TypeDef* I2Cx)
@@ -169,17 +218,17 @@ uint8_t	IMU_Wakeup(I2C_TypeDef* I2Cx)
 
    /************ reset the device ************/
    data = IMU_RESET;
-   error_code = I2Cx_Send_Bytes(I2Cx, IMU_I2C_ADD, IMU_REG_PWR_MGMT_1, &data, 1, I2C_EVENT_WAIT);
+   error_code = I2Cx_Send_Bytes(I2Cx, device_address, IMU_REG_PWR_MGMT_1, &data, 1, I2C_EVENT_WAIT);
    if(error_code){return error_code;}
 
    /************ clear sleep bit ************/
    data = 0x00;
-   error_code = I2Cx_Send_Bytes(I2Cx, IMU_I2C_ADD, IMU_REG_PWR_MGMT_1, &data, 1, I2C_EVENT_WAIT);
+   error_code = I2Cx_Send_Bytes(I2Cx, device_address, IMU_REG_PWR_MGMT_1, &data, 1, I2C_EVENT_WAIT);
    if(error_code){return error_code;}
 
    /************ choose clock source ************/
    data = IMU_CLK_AUTO;
-   error_code = I2Cx_Send_Bytes(I2Cx, IMU_I2C_ADD, IMU_REG_PWR_MGMT_1, &data, 1, I2C_EVENT_WAIT);
+   error_code = I2Cx_Send_Bytes(I2Cx, device_address, IMU_REG_PWR_MGMT_1, &data, 1, I2C_EVENT_WAIT);
    if(error_code){return error_code;}
 
    return 0;
@@ -194,7 +243,7 @@ uint8_t	IMU_Configure(I2C_TypeDef* I2Cx)
    /******************* MPU9255 Config ******************/
    // enable I2C bypass
    data = IMU_I2C_BYPAsS_EN;
-   error_code = I2Cx_Send_Bytes(I2Cx, IMU_I2C_ADD, IMU_REG_INT_PIN_CFG, &data, 1, I2C_EVENT_WAIT);
+   error_code = I2Cx_Send_Bytes(I2Cx, device_address, IMU_REG_INT_PIN_CFG, &data, 1, I2C_EVENT_WAIT);
    if(error_code){return error_code;}
 
    return 0;
@@ -250,4 +299,20 @@ uint8_t IMU_Mag_Calib(I2C_TypeDef* I2Cx, float* calib)
    while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(IMU_MAG_PD_WAIT));
 
    return 0;
+}
+
+void IMU_Change_Activated_Module(void)
+{
+   switch(activated_imu)
+   {
+      case FIRST:
+         activated_imu = SECOND;
+         GPIO_SetBits(SENSOR_ACTIVATION_PORT, IMU_ACTIVATION_PIN);
+      break;
+      
+      case SECOND:
+         activated_imu = FIRST;
+         GPIO_ResetBits(SENSOR_ACTIVATION_PORT, IMU_ACTIVATION_PIN);
+      break;   
+   }
 }

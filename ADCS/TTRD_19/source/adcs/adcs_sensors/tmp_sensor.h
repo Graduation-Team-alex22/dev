@@ -67,5 +67,8 @@ uint32_t TMP_Sensor_update(void);
 */
 tmp_sensor_t TMP_Sensor_GetData(void); 
 
+void TMP_Sensor_SetStatus(device_status_e new_status);
+void TMP_Change_Activated_Module(void);
+
 #endif
 

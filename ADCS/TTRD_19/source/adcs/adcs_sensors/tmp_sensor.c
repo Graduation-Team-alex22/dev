@@ -17,6 +17,9 @@ static I2C_TypeDef* tmp_I2Cx_g;
 static tmp_sensor_t tmp_sensor;
 static uint8_t data[2];
 
+// activation
+static activated_sensor_e activated_tmp = FIRST;
+
 // ------ Private FUNCTIONS --------------------------------------------------
 static float TEMP_SENSOR_Calculate_Value(void);
 
@@ -34,11 +37,16 @@ uint32_t TMP_Sensor_Init(I2C_TypeDef* I2Cx)
 
    // check if the device is connected - no check for whoiam
    error_code = I2Cx_Is_Device_Connected(I2Cx, TMP_I2C_ADD, TMP_ID_REG, TMP_ID_VALUE, I2C_EVENT_WAIT);
-   if(error_code){ return ERROR_TMP_CONNECTED_BASE + error_code;}
+   //if(error_code){ return ERROR_TMP_CONNECTED_BASE + error_code;}
+   if(error_code)
+   {
+      tmp_sensor.status = DEVICE_BROKEN; 
+      return NO_ERROR;
+   }
 
    // wait for 6 ms
-   TIMEOUT_T3_USEC_Start();
-   while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(6000));
+   //TIMEOUT_T3_USEC_Start();
+   //while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(6000));
 
    // update device status
    tmp_sensor.status = DEVICE_OK;
@@ -49,16 +57,23 @@ uint32_t TMP_Sensor_Init(I2C_TypeDef* I2Cx)
 
 uint32_t TMP_Sensor_update(void)
 {
-   uint8_t data[2];
-   uint8_t error_code;
-
-   error_code = I2Cx_Recv_Bytes(tmp_I2Cx_g, TMP_I2C_ADD, TEMP_REG_ADDRESS, data, 2, I2C_EVENT_WAIT);
-   if(error_code) { return ERROR_TMP_UPDATE_BASE + error_code; }
+   if(tmp_sensor.status != DEVICE_OK)
+   {
+      return NO_ERROR;
+   }
+   
+   uint8_t error_code = I2Cx_Recv_Bytes(tmp_I2Cx_g, TMP_I2C_ADD, TEMP_REG_ADDRESS, data, 2, I2C_EVENT_WAIT);
+   //if(error_code) { return ERROR_TMP_UPDATE_BASE + error_code; }
+   if(error_code)
+   {
+      tmp_sensor.status = DEVICE_BROKEN; 
+      return NO_ERROR;
+   }
 
    // Calculate temperature based on updated data
    tmp_sensor.temprature = TEMP_SENSOR_Calculate_Value();
    
-   return 0;
+   return NO_ERROR;
 }
 
 
@@ -85,4 +100,28 @@ static float TEMP_SENSOR_Calculate_Value(void)
    }
 
    return ret;
+}
+
+
+void TMP_Sensor_SetStatus(device_status_e new_status)
+{
+   tmp_sensor.status = new_status; 
+}
+
+
+
+void TMP_Change_Activated_Module(void)
+{
+   switch(activated_tmp)
+   {
+      case FIRST:
+         activated_tmp = SECOND;
+         GPIO_SetBits(SENSOR_ACTIVATION_PORT, TMP_ACTIVATION_PIN);
+      break;
+      
+      case SECOND:
+         activated_tmp = FIRST;
+         GPIO_ResetBits(SENSOR_ACTIVATION_PORT, TMP_ACTIVATION_PIN);
+      break;   
+   }
 }

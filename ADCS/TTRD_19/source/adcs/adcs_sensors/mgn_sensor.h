@@ -37,9 +37,9 @@ Date:		2022-03-18
 #define			MGN_OVER_SAMPLING_128		((uint8_t)0x80)
 #define			MGN_OVER_SAMPLING_64       ((uint8_t)0xC0)
 #define MGN_IS_OVER_SAMPLING_X(n)         (((n) == MGN_OVER_SAMPLING_512) || \
-                                                ((n) == MGN_OVER_SAMPLING_256) || \
-                                                ((n) == MGN_OVER_SAMPLING_128) || \
-                                                ((n) == MGN_OVER_SAMPLING_64))
+                                          ((n) == MGN_OVER_SAMPLING_256) || \
+                                          ((n) == MGN_OVER_SAMPLING_128) || \
+                                          ((n) == MGN_OVER_SAMPLING_64))
                                                 
 // OUTPUT_RATE_X
 #define        MGN_OUTPUT_RATE_10         ((uint8_t)0x00)
@@ -47,19 +47,19 @@ Date:		2022-03-18
 #define        MGN_OUTPUT_RATE_100        ((uint8_t)0x08)
 #define        MGN_OUTPUT_RATE_200        ((uint8_t)0x0C)
 #define MGN_IS_OUTPUT_RATE_X(n)           (((n) == MGN_OUTPUT_RATE_10) || \
-                                                ((n) == MGN_OUTPUT_RATE_50) || \
-                                                ((n) == MGN_OUTPUT_RATE_100) || \
-                                                ((n) == MGN_OUTPUT_RATE_200))
+                                          ((n) == MGN_OUTPUT_RATE_50) || \
+                                          ((n) == MGN_OUTPUT_RATE_100) || \
+                                          ((n) == MGN_OUTPUT_RATE_200))
 // RANGE_X
 #define        MGN_RANGE_2                ((uint8_t)0x00)			
 #define        MGN_RANGE_8                ((uint8_t)0x10)	
 #define        MGN_IS_RANGE_X(n)          (((n) == MGN_RANGE_2) || \
-                                                ((n) == MGN_RANGE_8))	
+                                          ((n) == MGN_RANGE_8))	
 // OP_MODE_X
 #define        MGN_OP_MODE_STANDBY        ((uint8_t)0x00)			
 #define        MGN_OP_MODE_CONT           ((uint8_t)0x01)	 // continuous mode
 #define        MGN_IS_OP_MODE_X(n)        (((n) == MGN_OP_MODE_CONT) || \
-                                                ((n) == MGN_OP_MODE_STANDBY))		
+                                          ((n) == MGN_OP_MODE_STANDBY))		
 
 /************ Public structures ************/
 typedef struct {
@@ -119,5 +119,8 @@ uint32_t MGN_Sensor_Update(void);
 
 */
 mgn_sensor_t MGN_Sensor_GetData(void);
+
+void MGN_Sensor_SetStatus(device_status_e new_status);
+void MGN_Change_Activated_Module(void);
 
 #endif

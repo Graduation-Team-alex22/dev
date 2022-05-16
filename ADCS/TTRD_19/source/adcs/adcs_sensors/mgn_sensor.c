@@ -27,6 +27,8 @@
 static I2C_TypeDef* mgn_I2Cx_g;
 static mgn_sensor_t mgn_data_g;
 static uint8_t mgn_range_g;
+// activation
+static activated_sensor_e activated_mgn = FIRST;
 
 /************* PRIVATE FUNCTIONS ************/
 uint8_t MGN_Configure(mgn_init_t* mgn_init);
@@ -52,32 +54,48 @@ uint32_t MGN_Sensor_Init(I2C_TypeDef* I2Cx, mgn_init_t* mgn_init)
 
    // check if the device is connected - no check for whoiam
    error_code = I2Cx_Is_Device_Connected(I2Cx, MGN_I2C_ADD, 0xFF, 0xFF, I2C_EVENT_WAIT);
-   if(error_code){ return ERROR_MGN_CONNECTED_BASE + error_code;}
-
+   //if(error_code){ return ERROR_MGN_CONNECTED_BASE + error_code;}
+   if(error_code)
+   {
+      mgn_data_g.status = DEVICE_BROKEN;
+      return NO_ERROR;
+   }
+   
    // configure the device
    error_code = MGN_Configure(mgn_init);
-   if(error_code){ return ERROR_MGN_CONFIG_BASE + error_code;}
+   //if(error_code){ return ERROR_MGN_CONFIG_BASE + error_code;}
+   if(error_code)
+   {
+      mgn_data_g.status = DEVICE_BROKEN;
+      return NO_ERROR;
+   }
 
    // wait for 6 ms
-   TIMEOUT_T3_USEC_Start();
-   while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(6000));
+   //TIMEOUT_T3_USEC_Start();
+   //while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(6000));
 
    // update device status
    mgn_data_g.status = DEVICE_OK;
    
-   return 0;
+   return NO_ERROR;
 }
 
 uint32_t MGN_Sensor_Update(void)
 {
-   // update device status
-   mgn_data_g.status = DEVICE_OK;
-   
+   if(mgn_data_g.status != DEVICE_OK)
+   {
+      return NO_ERROR;
+   }
    
    uint8_t error_code, data[6] = {0};
 
    error_code =I2Cx_Recv_Bytes(mgn_I2Cx_g, MGN_I2C_ADD, MGN_REG_DATA_XL, data, 6, I2C_EVENT_WAIT);
-   if(error_code) {return ERROR_MGN_UPDATE_BASE + error_code;}
+   //if(error_code) {return ERROR_MGN_UPDATE_BASE + error_code;}
+   if(error_code)
+   {
+      mgn_data_g.status = DEVICE_BROKEN;
+      return NO_ERROR;
+   }
 
    // extract raw data
    mgn_data_g.raw[0] = ((int16_t) data[1] << 8) | data[0] ;
@@ -110,7 +128,7 @@ uint32_t MGN_Sensor_Update(void)
       mgn_data_g.status = READING_ERROR;
    }
    
-   return 0;
+   return NO_ERROR;
 }
 
 mgn_sensor_t MGN_Sensor_GetData(void)
@@ -139,4 +157,26 @@ uint8_t MGN_Configure(mgn_init_t* mgn_init)
    error_code = I2Cx_Send_Bytes(mgn_I2Cx_g, MGN_I2C_ADD, MGN_REG_CONTROL2, &tmpreg, 1, I2C_EVENT_WAIT);
 
    return error_code;
+}
+
+
+void MGN_Sensor_SetStatus(device_status_e new_status)
+{
+   mgn_data_g.status = new_status;
+}
+
+void MGN_Change_Activated_Module(void)
+{
+   switch(activated_mgn)
+   {
+      case FIRST:
+         activated_mgn = SECOND;
+         GPIO_SetBits(SENSOR_ACTIVATION_PORT, MGN_ACTIVATION_PIN);
+      break;
+      
+      case SECOND:
+         activated_mgn = FIRST;
+         GPIO_ResetBits(SENSOR_ACTIVATION_PORT, MGN_ACTIVATION_PIN);
+      break;   
+   }
 }

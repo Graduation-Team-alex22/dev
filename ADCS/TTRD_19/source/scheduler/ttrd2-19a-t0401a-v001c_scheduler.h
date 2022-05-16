@@ -72,6 +72,7 @@ typedef struct
 void SCH_Init_Microseconds(const uint32_t TICKus);    
 void SCH_Start(void);
 void SCH_Dispatch_Tasks(void);
+uint32_t SCH_Get_LastRunTaskID(void);
 
 void SCH_Add_Task(uint32_t (* pTask)(),
                   const uint32_t DELAY,   // Ticks
@@ -84,7 +85,7 @@ void SCH_Add_Task(uint32_t (* pTask)(),
 // during the execution of the program
 //
 // MUST BE CHECKED FOR EACH PROJECT (*not* dynamic)
-#define SCH_MAX_TASKS (18)
+#define SCH_MAX_TASKS (19)
 
 // Usually set to 1, unless 'Long Tasks' are employed
 #define SCH_TICK_COUNT_LIMIT (1)

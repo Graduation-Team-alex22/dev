@@ -4,10 +4,13 @@
 #include "app_sensor_imu_task.h"
 #include "../main/project.h"
 
+#define DIAGNOSIS_OUTPUT
+
 #ifdef DIAGNOSIS_OUTPUT
-#include "stdio.h"
+#include "../adcs/services_utilities/printf.h"
 #include "../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h"
 #endif
+
 
 /*----------------------------------------------------------------------------*-
 
@@ -49,7 +52,7 @@
 void App_Sensor_Imu_Init(void)
 {
    #ifdef DIAGNOSIS_OUTPUT
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG - INIT] IMU Init\n");
+      UART2_BUF_O_Write_String_To_Buffer("[DIAG - IMU] Init\n");
       UART2_BUF_O_Send_All_Data();
    #endif
     error_t error_code = IMU_Sensor_Init(I2C1);
@@ -104,13 +107,12 @@ uint32_t App_Sensor_Imu_Update(void)
       PROCESSOR_Perform_Safe_Shutdown(error_code);
    }
    
+   imu_sensor_t t = IMU_Sensor_GetData();
+   
    #ifdef DIAGNOSIS_OUTPUT
-      char buff[200];
-      imu_sensor_t t = IMU_Sensor_GetData();
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Update] IMU Update\n");
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG - Data]: \n");
-      sprintf(buff, "A: %+.3f %+.3f %+.3f\nG: %+.3f %+.3f %+.3f\nM: %+.3f %+.3f %+.3f\n",
-                     t.Ax, t.Ay, t.Az, t.Gx, t.Gy, t.Gz, t.Mx, t.My, t.Mz);
+      char buff[200] = {0};
+      sprintf(buff, "[DIAG - IMU] A: %+.3f %+.3f %+.3f\n[DIAG - IMU] G: %+.3f %+.3f %+.3f\n[DIAG - IMU] M: %+.3f %+.3f %+.3f\n",
+                    t.Ax, t.Ay, t.Az, t.Gx, t.Gy, t.Gz, t.Mx, t.My, t.Mz);
       UART2_BUF_O_Write_String_To_Buffer(buff);
       UART2_BUF_O_Send_All_Data();
    #endif
