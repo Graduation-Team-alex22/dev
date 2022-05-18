@@ -153,56 +153,7 @@
           <Name>(105=349,290,1028,648,0)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint>
-        <Bp>
-          <Number>0</Number>
-          <Type>0</Type>
-          <LineNumber>105</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134238816</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\source\adcs\adcs_sensors\imu_sensor.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\TTRD_ERES2\../source/adcs/adcs_sensors/imu_sensor.c\105</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>65</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134238706</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\source\adcs\adcs_sensors\imu_sensor.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\TTRD_ERES2\../source/adcs/adcs_sensors/imu_sensor.c\65</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>73</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134237804</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\source\adcs\adcs_sensors\driver_i2c.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\TTRD_ERES2\../source/adcs/adcs_sensors/driver_i2c.c\73</Expression>
-        </Bp>
-      </Breakpoint>
+      <Breakpoint/>
       <WatchWindow1>
         <Ww>
           <count>0</count>
@@ -213,6 +164,11 @@
           <count>1</count>
           <WinNumber>1</WinNumber>
           <ItemText>Wait_idx_g</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>imu_sensor_data</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
@@ -914,7 +870,7 @@
 
   <Group>
     <GroupName>hsi_library</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

@@ -2,11 +2,12 @@
 #include " ../../../main/project.h"
 #include "../config.h"
 #include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
+#include "math.h"
 
 /************ PRIVATE DEFINITIONS ************/
 
 // Timeout Periods
-#define  IMU_I2C_EVENT_WAIT             500			// microseconds
+#define  IMU_I2C_EVENT_WAIT         500			// microseconds
 #define  IMU_MAG_PD_WAIT            200			// magnometer mode switch time in microseconds
 
 // Device I2C Addresses
@@ -160,7 +161,7 @@ uint32_t IMU_Sensor_Update(I2C_TypeDef* I2Cx)
    imu_sensor_data.gyro_filtered[2] = A_GYRO * imu_sensor_data.Gz + (1 - A_GYRO) * imu_sensor_data.gyro_prev[2];
    
    /***************** Read Mag *****************/
-   /*error_code = I2Cx_Recv_Bytes(I2Cx, IMU_AKM_ADD, IMU_REG_MAG_ST1, data, 8, IMU_I2C_EVENT_WAIT *2);
+   error_code = I2Cx_Recv_Bytes(I2Cx, IMU_AKM_ADD, IMU_REG_MAG_ST1, data, 8, IMU_I2C_EVENT_WAIT *2);
    //if(error_code){ return ERROR_IMU_MGN_UPDATE_BASE + error_code;}
    if(error_code)
    { 
@@ -190,14 +191,16 @@ uint32_t IMU_Sensor_Update(I2C_TypeDef* I2Cx)
    imu_sensor_data.xm_filtered[2] = A_MGN * imu_sensor_data.Mz + (1 - A_MGN) * imu_sensor_data.xm_prev[2];
    
    // calculate the magnitude of mag vector
-   imu_sensor_data.xm_norm = vect_magnitude_arr((double*)&imu_sensor_data.Mx);
+   imu_sensor_data.xm_norm = sqrt(  imu_sensor_data.xm_filtered[0] * imu_sensor_data.xm_filtered[0]
+                                  + imu_sensor_data.xm_filtered[1] * imu_sensor_data.xm_filtered[1]
+                                  + imu_sensor_data.xm_filtered[2] * imu_sensor_data.xm_filtered[2] ) ;
    
-   if (imu_sensor_data.xm_norm > MAX_IGRF_NORM
+   /*if (imu_sensor_data.xm_norm > MAX_IGRF_NORM
    || imu_sensor_data.xm_norm < MIN_IGRF_NORM) 
    {
       imu_sensor_data.status = READING_ERROR;
-   }
-  */
+   }*/
+  
    return NO_ERROR;
 }
 
