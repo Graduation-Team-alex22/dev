@@ -52,7 +52,7 @@
 void App_Sensor_Imu_Init(void)
 {
    #ifdef DIAGNOSIS_OUTPUT
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG - IMU] Init\n");
+      UART2_BUF_O_Write_String_To_Buffer("[INIT - IMU]\n");
       UART2_BUF_O_Send_All_Data();
    #endif
     error_t error_code = IMU_Sensor_Init(I2C1);
@@ -110,11 +110,14 @@ uint32_t App_Sensor_Imu_Update(void)
    imu_sensor_t t = IMU_Sensor_GetData();
    
    #ifdef DIAGNOSIS_OUTPUT
-      char buff[200] = {0};
-      sprintf(buff, "[DIAG - IMU] A: %+.3f %+.3f %+.3f\n[DIAG - IMU] G: %+.3f %+.3f %+.3f\n[DIAG - IMU] M: %+.3f %+.3f %+.3f\n",
-                    t.Ax, t.Ay, t.Az, t.Gx, t.Gy, t.Gz, t.Mx, t.My, t.Mz);
-      UART2_BUF_O_Write_String_To_Buffer(buff);
-      UART2_BUF_O_Send_All_Data();
+      if( t.status == DEVICE_OK )
+      {
+         char buff[200] = {0};
+         sprintf(buff, "[DIAG - IMU] A: %+.3f %+.3f %+.3f\n[DIAG - IMU] G: %+.3f %+.3f %+.3f\n[DIAG - IMU] M: %+.3f %+.3f %+.3f\n",
+                       t.Ax, t.Ay, t.Az, t.Gx, t.Gy, t.Gz, t.Mx, t.My, t.Mz);
+         UART2_BUF_O_Write_String_To_Buffer(buff);
+         UART2_BUF_O_Send_All_Data();
+      }
    #endif
     
    return 0;

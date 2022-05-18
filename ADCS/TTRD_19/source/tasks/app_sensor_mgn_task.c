@@ -52,7 +52,7 @@
 void App_Sensor_Mgn_Init(void)
 {
    #ifdef DIAGNOSIS_OUTPUT
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG - MGN] Init\n");
+      UART2_BUF_O_Write_String_To_Buffer("[INIT - MGN]\n");
       UART2_BUF_O_Send_All_Data();
    #endif
    mgn_init_t mgn_init;
@@ -114,12 +114,15 @@ uint32_t App_Sensor_Mgn_Update(void)
 	}
    
    #ifdef DIAGNOSIS_OUTPUT
-      char buf[200] = {0};
       mgn_sensor_t tg = MGN_Sensor_GetData();
-      sprintf(buf, "[DIAG - MGN] X: %+.4f  Y: %+.4f  Z:%+.4f\n",
-                   tg.mag[0], tg.mag[1], tg.mag[2]);
-	   UART2_BUF_O_Write_String_To_Buffer(buf);
-      UART2_BUF_O_Send_All_Data();
+      if(tg.status == DEVICE_OK)
+      {
+         char buf[200] = {0};
+         sprintf(buf, "[DIAG - MGN] X: %+.4f  Y: %+.4f  Z:%+.4f\n",
+                      tg.mag[0], tg.mag[1], tg.mag[2]);
+         UART2_BUF_O_Write_String_To_Buffer(buf);
+         UART2_BUF_O_Send_All_Data();
+      }
    #endif
    
 	return 0;

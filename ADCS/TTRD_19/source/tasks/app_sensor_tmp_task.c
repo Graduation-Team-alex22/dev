@@ -48,7 +48,7 @@
 void App_Sensor_Tmp_Init(void)
 {
    #ifdef DIAGNOSIS_OUTPUT
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG - TMP] Init\n");
+      UART2_BUF_O_Write_String_To_Buffer("[INIT - TMP]\n");
       UART2_BUF_O_Send_All_Data();
    #endif
 	error_t error_code = TMP_Sensor_Init(I2C1);
@@ -105,11 +105,14 @@ uint32_t App_Sensor_Tmp_Update(void)
    }
    
    #ifdef DIAGNOSIS_OUTPUT
-      char buf[200] = {0};
       tmp_sensor_t tg = TMP_Sensor_GetData();
-      sprintf(buf, "[DIAG - TMP] Temperature: %3.4f\n", tg.temprature );
-      UART2_BUF_O_Write_String_To_Buffer(buf);
-      UART2_BUF_O_Send_All_Data();
+      if(tg.status == DEVICE_OK)
+      {
+         char buf[200] = {0};
+         sprintf(buf, "[DIAG - TMP] Temperature: %3.4f\n", tg.temprature );
+         UART2_BUF_O_Write_String_To_Buffer(buf);
+         UART2_BUF_O_Send_All_Data();
+      }
    #endif
    
 	return NO_ERROR;

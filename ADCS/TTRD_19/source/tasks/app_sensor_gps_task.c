@@ -47,7 +47,7 @@
 void App_Sensor_Gps_Init(void)
 {
    #ifdef DIAGNOSIS_OUTPUT
-      UART2_BUF_O_Write_String_To_Buffer("[DIAG - GPS] Init\n");
+      UART2_BUF_O_Write_String_To_Buffer("[INIT - GPS]\n");
       UART2_BUF_O_Send_All_Data();
    #endif
    GPS_Sensor_Init( DMA1_Stream2 );
