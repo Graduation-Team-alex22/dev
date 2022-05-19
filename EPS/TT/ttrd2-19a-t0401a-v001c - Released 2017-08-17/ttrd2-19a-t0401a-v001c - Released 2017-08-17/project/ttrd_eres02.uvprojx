@@ -384,14 +384,14 @@
           <GroupName>main</GroupName>
           <Files>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\source\main\main.c</FilePath>
-            </File>
-            <File>
               <FileName>main.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\source\main\main.h</FilePath>
+            </File>
+            <File>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\main\main.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -551,7 +551,7 @@
             <File>
               <FileName>Adcdma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Adcdma.c</FilePath>
+              <FilePath>..\source\tasks\Adcdma.c</FilePath>
             </File>
           </Files>
         </Group>

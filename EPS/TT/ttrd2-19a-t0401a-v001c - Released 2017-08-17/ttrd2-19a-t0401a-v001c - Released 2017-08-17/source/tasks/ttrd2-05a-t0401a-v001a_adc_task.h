@@ -41,7 +41,7 @@
 
 #ifndef _ADC_H
 #define _ADC_H 1
-
+#define ADC_SOFTWARE_START               ((uint32_t)0x00000010)
 #include "../main/main.h"
 
 // ------ Public function prototypes (declarations) --------------------------
@@ -49,6 +49,7 @@
 void     ADC1_Init(void);
 uint32_t ADC1_Update(void);
 int32_t ADC1_Get_Temperature_Celsius(void); 
+uint32_t ADC1_Read_Channel(const uint32_t CHANNEL,const uint32_t ADC_SAMPLE_TIME);
 
 #endif
 

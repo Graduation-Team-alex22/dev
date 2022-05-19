@@ -102,7 +102,7 @@
 #define ADC_CURRENT_CHANNEL_BOTTOM ADC_CHANNEL_20
 #define ADC_CURRENT_CHANNEL_LEFT ADC_CHANNEL_11
 #define ADC_CURRENT_CHANNEL_RIGHT ADC_CHANNEL_18
-/*Set up power modules adc voltage channels*/
+/*Set up power modules adc voltage channels	solar panels	*/
 #define ADC_VOLTAGE_CHANNEL_TOP ADC_CHANNEL_6
 #define ADC_VOLTAGE_CHANNEL_BOTTOM ADC_CHANNEL_21
 #define ADC_VOLTAGE_CHANNEL_LEFT ADC_CHANNEL_10

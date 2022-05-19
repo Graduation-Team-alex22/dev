@@ -53,5 +53,7 @@
 .\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/ttrd2-05a-t0401a-v001a_switch_task.h
 .\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h
 .\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/ttrd2-19a-t0401a-v001b_processor_task.h
+.\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/Adcdma.h
+.\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../tasks/raa.h
 .\objects\ttrd2-19a-t0401a-v001b_processor.o: ..\source\processor\../scheduler/ttrd2-18a-t0401a-v001a_monittor_i.h

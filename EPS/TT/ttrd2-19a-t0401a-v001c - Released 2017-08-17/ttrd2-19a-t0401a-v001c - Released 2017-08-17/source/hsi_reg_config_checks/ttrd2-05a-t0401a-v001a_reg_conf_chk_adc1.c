@@ -83,12 +83,12 @@ static uint32_t ADC1_sqr1_ig;
 
 -*----------------------------------------------------------------------------*/
 void REG_CONFIG_CHECKS_ADC1_Store(void)
-   {
-   ADC_ccr_ig   = ~(ADC->CCR);    
-   ADC1_cr1_ig  = ~(ADC1->CR1);
-   ADC1_cr2_ig  = ~(ADC1->CR2);
-   ADC1_sqr1_ig = ~(ADC1->SQR1);
-   }
+{
+ ADC_ccr_ig   = ~(ADC->CCR);    
+ ADC1_cr1_ig  = ~(ADC1->CR1);
+ ADC1_cr2_ig  = ~(ADC1->CR2);
+ ADC1_sqr1_ig = ~(ADC1->SQR1);
+}
 
 /*----------------------------------------------------------------------------*-
    

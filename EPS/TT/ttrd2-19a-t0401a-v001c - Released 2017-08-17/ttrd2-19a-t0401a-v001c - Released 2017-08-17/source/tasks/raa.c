@@ -6,6 +6,7 @@
 //#include "stm32f4xx_rcc.h"
 //#include "stm32f4xx_gpio.h"
 //#include "stm32f4xx_adc.h"
+
 uint32_t ADC1_Read_Channel(const uint32_t CHANNEL,const uint32_t ADC_SAMPLE_TIME) 
 {
    uint32_t T3;
@@ -35,7 +36,9 @@ uint32_t ADC1_Read_Channel(const uint32_t CHANNEL,const uint32_t ADC_SAMPLE_TIME
 
 
 uint32_t Rofa_Task_Update(void)
-{ //uint32_t r=RETURN_NORMAL_STATE;
+{ 
+UART2_BUF_O_Write_String_To_Buffer("A1: \n");
+//uint32_t r=RETURN_NORMAL_STATE;
 // if (SWITCH_BUTTON1_Get_State() == BUTTON1_NOT_PRESSED)
 //{UART2_BUF_O_Write_String_To_Buffer("Hello World\n");
 //  UART2_BUF_O_Send_All_Data();}
@@ -106,18 +109,18 @@ uint32_t Rofa_Task_Update(void)
 //	//Here we start the related DMA
 //	DMA_Cmd(DMA2_Stream0, ENABLE);
 
-	//////////////
-uint32_t ADCreff = ADC1_Read_Channel(ADC_Channel_1, ADC_SampleTime_480Cycles);
-//uint32_t ADCreading=500000;
-uint16_t ADCreading=ADC_GetConversionValue(ADC1);
-//char data=(char)ADC_GetConversionValue(ADC1);
-//UART2_BUF_O_Write_Number04_To_Buffer(ADCreff);
+//	//////////////
+//uint32_t ADCreff = ADC1_Read_Channel(ADC_Channel_1, ADC_SampleTime_480Cycles);
+////uint32_t ADCreading=500000;
+//uint16_t ADCreading=ADC_GetConversionValue(ADC1);
+////char data=(char)ADC_GetConversionValue(ADC1);
+////UART2_BUF_O_Write_Number04_To_Buffer(ADCreff);
+//////UART2_BUF_O_Write__To_Buffer(&data);
+////UART2_BUF_O_Send_All_Data();
+
+//UART2_BUF_O_Write_Number04_To_Buffer(ADCreading);
 ////UART2_BUF_O_Write__To_Buffer(&data);
 //UART2_BUF_O_Send_All_Data();
-
-UART2_BUF_O_Write_Number04_To_Buffer(ADCreading);
-//UART2_BUF_O_Write__To_Buffer(&data);
-UART2_BUF_O_Send_All_Data();
 return RETURN_NORMAL_STATE;
 }
 
