@@ -54,7 +54,7 @@
 
 // Range of expected reference voltage values (raw ADC1 readings)
 #define ADC1_REF_MIN (1400)
-#define ADC1_REF_MAX (1700)
+#define ADC1_REF_MAX (2000)
 #define ADC1_REF_CHANGE (10)
 #define TEMP_REF_CHANGE (20)
 

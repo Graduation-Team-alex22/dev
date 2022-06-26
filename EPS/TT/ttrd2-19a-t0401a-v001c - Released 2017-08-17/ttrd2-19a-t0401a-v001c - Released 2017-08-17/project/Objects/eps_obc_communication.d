@@ -44,6 +44,7 @@
 .\objects\eps_obc_communication.o: ..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h
 .\objects\eps_obc_communication.o: ..\source\tasks\../support_functions/../main/../port/port.h
 .\objects\eps_obc_communication.o: ..\source\tasks\../support_functions/../main/../port/../main/main.h
+.\objects\eps_obc_communication.o: ..\source\tasks\../support_functions/../main/../port/eps_configuration.h
 .\objects\eps_obc_communication.o: ..\source\tasks\../support_functions/../main/../processor/ttrd2-19a-t0401a-v001b_processor.h
 .\objects\eps_obc_communication.o: ..\source\tasks\../support_functions/../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h
 .\objects\eps_obc_communication.o: ..\source\tasks\../support_functions/../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h

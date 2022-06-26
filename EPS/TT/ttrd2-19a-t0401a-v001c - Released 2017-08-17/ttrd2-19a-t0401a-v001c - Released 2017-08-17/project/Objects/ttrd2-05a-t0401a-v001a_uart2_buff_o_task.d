@@ -43,6 +43,7 @@
 .\objects\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o: ..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h
 .\objects\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o: ..\source\tasks\../main/../port/port.h
 .\objects\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o: ..\source\tasks\../main/../port/../main/main.h
+.\objects\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o: ..\source\tasks\../main/../port/eps_configuration.h
 .\objects\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o: ..\source\tasks\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h
 .\objects\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o: ..\source\tasks\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h
 .\objects\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o: ..\source\tasks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h

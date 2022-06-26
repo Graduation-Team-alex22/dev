@@ -45,6 +45,7 @@
 .\objects\eps_power_module.o: ..\source\tasks\../port/../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h
 .\objects\eps_power_module.o: ..\source\tasks\../port/../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h
 .\objects\eps_power_module.o: ..\source\tasks\../port/../main/../port/port.h
+.\objects\eps_power_module.o: ..\source\tasks\../port/../main/../port/eps_configuration.h
 .\objects\eps_power_module.o: ..\source\tasks\../port/../main/../processor/ttrd2-19a-t0401a-v001b_processor.h
 .\objects\eps_power_module.o: ..\source\tasks\../port/../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h
 .\objects\eps_power_module.o: ..\source\tasks\../port/../main/../scheduler/../main/main.h

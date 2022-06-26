@@ -42,6 +42,7 @@
 .\objects\main.o: ..\source\main\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h
 .\objects\main.o: ..\source\main\../port/port.h
 .\objects\main.o: ..\source\main\../port/../main/main.h
+.\objects\main.o: ..\source\main\../port/eps_configuration.h
 .\objects\main.o: ..\source\main\../processor/ttrd2-19a-t0401a-v001b_processor.h
 .\objects\main.o: ..\source\main\../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h
 .\objects\main.o: ..\source\main\../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h

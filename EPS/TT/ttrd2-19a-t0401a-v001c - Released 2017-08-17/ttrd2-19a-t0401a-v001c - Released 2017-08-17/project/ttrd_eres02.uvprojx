@@ -403,6 +403,11 @@
               <FileType>5</FileType>
               <FilePath>..\source\port\port.h</FilePath>
             </File>
+            <File>
+              <FileName>eps_configuration.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\source\port\eps_configuration.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

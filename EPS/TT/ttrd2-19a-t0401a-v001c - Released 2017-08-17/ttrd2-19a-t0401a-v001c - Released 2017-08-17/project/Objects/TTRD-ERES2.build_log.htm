@@ -22,18 +22,30 @@ Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
 C:\Users\Abdelrahman Ahmed\Documents\GitHub\dev\EPS\TT\ttrd2-19a-t0401a-v001c - Released 2017-08-17\ttrd2-19a-t0401a-v001c - Released 2017-08-17\project\ttrd_eres02.uvprojx
-Project File Date:  05/19/2022
+Project File Date:  05/20/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'E:\Program Files\New Folder\keil\ARM\ARMCC\Bin'
 Build target 'STM32F407VG'
-compiling ttrd2-19a-t0401a-v001b_processor.c...
-..\source\processor\../tasks/Adcdma.h(14): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\source\processor\ttrd2-19a-t0401a-v001b_processor.c: 1 warning, 0 errors
+compiling eps_power_module.c...
+..\source\tasks\eps_soft_error_handling.h(101): warning:  #1-D: last line of file ends without a newline
+    */
+..\source\tasks\eps_state.h(183): warning:  #1-D: last line of file ends without a newline
+  #endif /* INC_EPS_STATE_H_ */
+..\source\tasks\eps_power_module.c(28): warning:  #9-D: nested comment is not allowed
+  //////*/
+..\source\tasks\eps_power_module.c(241): warning:  #177-D: variable "error_status"  was declared but never referenced
+  uint16_t error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_ALL;
+..\source\tasks\eps_power_module.c(289): warning:  #177-D: variable "adc_measurement_dma_power_modules"  was declared but never referenced
+  	uint32_t adc_measurement_dma_power_modules[67]= { 0 };//2*64 +1
+..\source\tasks\eps_power_module.c(295): warning:  #177-D: variable "voltage_avg"  was declared but never referenced
+  	uint32_t voltage_avg =0;
+..\source\tasks\eps_power_module.c(296): warning:  #177-D: variable "current_avg"  was declared but never referenced
+  	uint32_t current_avg =0;
+..\source\tasks\eps_power_module.c: 7 warnings, 0 errors
 linking...
-Program Size: Code=18172 RO-data=424 RW-data=1040 ZI-data=2912  
-".\Objects\TTRD-ERES2.axf" - 0 Error(s), 1 Warning(s).
+Program Size: Code=18540 RO-data=424 RW-data=1040 ZI-data=2912  
+".\Objects\TTRD-ERES2.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -46,7 +58,7 @@ Package Vendor: Keil
   E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

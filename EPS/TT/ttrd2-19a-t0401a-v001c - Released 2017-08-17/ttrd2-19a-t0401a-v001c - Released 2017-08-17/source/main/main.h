@@ -65,6 +65,7 @@
 
 // Port header
 #include "../port/port.h"
+#include "../port/eps_configuration.h"
 
 // Processor module
 #include "../processor/ttrd2-19a-t0401a-v001b_processor.h"

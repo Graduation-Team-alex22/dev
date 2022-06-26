@@ -10,9 +10,9 @@
 
 typedef enum 
 {
-  HAL_UNLOCKED = 0x00,
-  HAL_LOCKED   = 0x01  
-} HAL_LockTypeDef;
+  UNLOCKED = 0x00,
+  LOCKED   = 0x01  
+} LockTypeDef;
 typedef struct
 {
   uint32_t Prescaler;         /*!< Specifies the prescaler value used to divide the TIM clock.
@@ -72,7 +72,7 @@ typedef struct
   HAL_TIM_ActiveChannel    Channel;       /*!< Active channel                    */
   //DMA_HandleTypeDef        *hdma[7];      /*!< DMA Handlers array
                                             // This array is accessed by a @ref TIM_DMA_Handle_index */
-  HAL_LockTypeDef             Lock;          /*!< Locking object                    */
+  LockTypeDef             Lock;          /*!< Locking object                    */
  // __IO HAL_TIM_StateTypeDef   State;        /*!< TIM operation state               */
 }TIM_HandleTypeDef;
 
@@ -99,7 +99,7 @@ typedef struct {
 	uint32_t previous_voltage; /**<  average voltage input at previous mppt step*/
 	uint8_t incremennt_flag;/**<  flag for mppt algorithm must be initialized to 1*/
 	uint32_t pwm_duty_cycle; /**<  duty cycle of power module pwm output*/
-	//TIM_HandleTypeDef *htim_pwm;/**<  assign wich timer is assigned for this pwm output*/
+	TIM_HandleTypeDef *htim_pwm;/**<  assign wich timer is assigned for this pwm output*/
 	uint32_t timChannel;/**<  assign the proper timer channel assigned to module pwm output*/
 	//ADC_HandleTypeDef *hadc_power_module;/**<  adc handle for voltage and current measurements for each power module*/
 	uint32_t ADC_channel_current;/**<  adc channel; for current measurements for this power module*/

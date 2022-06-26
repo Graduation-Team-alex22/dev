@@ -556,13 +556,13 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          // Note: WCET / BCET data obtained using TTRD2-19b
          //
          //           A                      B   C    D     E
-         SCH_Add_Task(WATCHDOG_Update,       0,  1,   1,  0);    // iWDT
-         SCH_Add_Task(HEARTBEAT_SW_Update,   0,  200, 7,  6);    // Heartbeat
-         SCH_Add_Task(SWITCH_BUTTON1_Update, 10, 2,   8,  7);    // Switch
-         SCH_Add_Task(ADC1_Update,           0,  100, 100, 0);   // ADC1
-         SCH_Add_Task(PROCESSOR_TASK_Update, 0,  200, 17, 2);    // Proc task   
-         SCH_Add_Task(UART2_BUF_O_Update,    0,  1,   212, 104); // UART2
-				 SCH_Add_Task(ADC1_External_Update,0,100,1000, 2);  //Rofa & Abdo Task UART Tranceiver
+         SCH_Add_Task(WATCHDOG_Update,       0,  1,   1,     0); // iWDT
+         SCH_Add_Task(HEARTBEAT_SW_Update,   0,  200, 7,     6); // Heartbeat
+         SCH_Add_Task(SWITCH_BUTTON1_Update, 10, 2,   8,     7); // Switch
+         SCH_Add_Task(ADC1_Update,           0,  100, 100,   0); // ADC1
+         SCH_Add_Task(PROCESSOR_TASK_Update, 0,  200, 17 ,   2); // Proc task   
+         SCH_Add_Task(UART2_BUF_O_Update,    0,  1  , 212, 104); // UART2
+				 SCH_Add_Task(ADC1_External_Update,  0,  100, 1000,  2); //ADC Task for reading voltages and currents
          // Feed the watchdog
          WATCHDOG_Update();
 

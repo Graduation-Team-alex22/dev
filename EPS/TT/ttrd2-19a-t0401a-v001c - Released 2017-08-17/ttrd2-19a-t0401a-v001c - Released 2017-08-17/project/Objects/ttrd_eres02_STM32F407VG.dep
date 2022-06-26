@@ -1,8 +1,8 @@
 Dependencies for Project 'ttrd_eres02', Target 'STM32F407VG': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
-F (..\source\main\main.h)(0x628662CA)()
+F (..\source\main\main.h)(0x6287D619)()
 F (..\source\main\main.c)(0x58BCED2C)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (..\source\main\main.h)(0x628662CA)
+I (..\source\main\main.h)(0x6287D619)
 I (..\source\main\../hsi_library/misc.h)(0x581CC67C)
 I (..\source\main\../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\main\../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -42,13 +42,15 @@ I (..\source\main\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_g
 I (..\source\main\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\main\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\main\../port/port.h)(0x6284F9C7)
-I (..\source\main\../port/../main/main.h)(0x628662CA)
+I (..\source\main\../port/../main/main.h)(0x6287D619)
+I (..\source\main\../port/eps_configuration.h)(0x62B868D8)
 I (..\source\main\../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\main\../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\main\../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
 F (..\source\port\port.h)(0x6284F9C7)()
+F (..\source\port\eps_configuration.h)(0x62B868D8)()
 F (..\source\support_functions\ttrd2-05a-t0401a-v001a_timeout_t3.c)(0x58BCED2A)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-05a-t0401a-v001a_timeout_t3.o --omf_browse .\objects\ttrd2-05a-t0401a-v001a_timeout_t3.crf --depend .\objects\ttrd2-05a-t0401a-v001a_timeout_t3.d)
-I (..\source\support_functions\../main/main.h)(0x628662CA)
+I (..\source\support_functions\../main/main.h)(0x6287D619)
 I (..\source\support_functions\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\support_functions\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\support_functions\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -88,13 +90,14 @@ I (..\source\support_functions\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a
 I (..\source\support_functions\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\support_functions\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\support_functions\../main/../port/port.h)(0x6284F9C7)
-I (..\source\support_functions\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\support_functions\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\support_functions\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\support_functions\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\support_functions\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\support_functions\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
 F (..\source\support_functions\ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)()
-F (..\source\tasks\ttrd2-05a-t0401a-v001a_adc_task.c)(0x628669F8)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-05a-t0401a-v001a_adc_task.o --omf_browse .\objects\ttrd2-05a-t0401a-v001a_adc_task.crf --depend .\objects\ttrd2-05a-t0401a-v001a_adc_task.d)
-I (..\source\tasks\../main/main.h)(0x628662CA)
+F (..\source\tasks\ttrd2-05a-t0401a-v001a_adc_task.c)(0x62879BD3)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-05a-t0401a-v001a_adc_task.o --omf_browse .\objects\ttrd2-05a-t0401a-v001a_adc_task.crf --depend .\objects\ttrd2-05a-t0401a-v001a_adc_task.d)
+I (..\source\tasks\../main/main.h)(0x6287D619)
 I (..\source\tasks\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\tasks\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\tasks\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -134,14 +137,15 @@ I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_c
 I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\tasks\../main/../port/port.h)(0x6284F9C7)
-I (..\source\tasks\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\tasks\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\tasks\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\tasks\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\tasks\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\tasks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
 F (..\source\tasks\ttrd2-05a-t0401a-v001a_adc_task.h)(0x628668EE)()
 F (..\source\tasks\ttrd2-05a-t0401a-v001a_heartbeat_sw_task.c)(0x59955068)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-05a-t0401a-v001a_heartbeat_sw_task.o --omf_browse .\objects\ttrd2-05a-t0401a-v001a_heartbeat_sw_task.crf --depend .\objects\ttrd2-05a-t0401a-v001a_heartbeat_sw_task.d)
 I (..\source\tasks\ttrd2-05a-t0401a-v001a_heartbeat_sw_task.h)(0x58BCED2A)
-I (..\source\tasks\../main/main.h)(0x628662CA)
+I (..\source\tasks\../main/main.h)(0x6287D619)
 I (..\source\tasks\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\tasks\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\tasks\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -181,7 +185,8 @@ I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_c
 I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\tasks\../main/../port/port.h)(0x6284F9C7)
-I (..\source\tasks\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\tasks\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\tasks\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\tasks\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\tasks\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\tasks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
@@ -189,7 +194,7 @@ I (..\source\tasks\ttrd2-05a-t0401a-v001a_switch_task.h)(0x58BCED2A)
 F (..\source\tasks\ttrd2-05a-t0401a-v001a_heartbeat_sw_task.h)(0x58BCED2A)()
 F (..\source\tasks\ttrd2-05a-t0401a-v001a_iwdt_task.c)(0x58BCF4F0)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-05a-t0401a-v001a_iwdt_task.o --omf_browse .\objects\ttrd2-05a-t0401a-v001a_iwdt_task.crf --depend .\objects\ttrd2-05a-t0401a-v001a_iwdt_task.d)
 I (..\source\tasks\ttrd2-05a-t0401a-v001a_iwdt_task.h)(0x58BCF4F0)
-I (..\source\tasks\../main/main.h)(0x628662CA)
+I (..\source\tasks\../main/main.h)(0x6287D619)
 I (..\source\tasks\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\tasks\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\tasks\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -229,13 +234,14 @@ I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_c
 I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\tasks\../main/../port/port.h)(0x6284F9C7)
-I (..\source\tasks\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\tasks\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\tasks\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\tasks\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\tasks\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\tasks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
 F (..\source\tasks\ttrd2-05a-t0401a-v001a_iwdt_task.h)(0x58BCF4F0)()
 F (..\source\tasks\ttrd2-05a-t0401a-v001a_switch_task.c)(0x59955068)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-05a-t0401a-v001a_switch_task.o --omf_browse .\objects\ttrd2-05a-t0401a-v001a_switch_task.crf --depend .\objects\ttrd2-05a-t0401a-v001a_switch_task.d)
-I (..\source\tasks\../main/main.h)(0x628662CA)
+I (..\source\tasks\../main/main.h)(0x6287D619)
 I (..\source\tasks\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\tasks\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\tasks\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -275,7 +281,8 @@ I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_c
 I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\tasks\../main/../port/port.h)(0x6284F9C7)
-I (..\source\tasks\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\tasks\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\tasks\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\tasks\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\tasks\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\tasks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
@@ -283,7 +290,7 @@ I (..\source\tasks\ttrd2-05a-t0401a-v001a_switch_task.h)(0x58BCED2A)
 F (..\source\tasks\ttrd2-05a-t0401a-v001a_switch_task.h)(0x58BCED2A)()
 F (..\source\tasks\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.c)(0x59955068)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.o --omf_browse .\objects\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.crf --depend .\objects\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.d)
 I (..\source\tasks\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h)(0x620038AC)
-I (..\source\tasks\../main/main.h)(0x628662CA)
+I (..\source\tasks\../main/main.h)(0x6287D619)
 I (..\source\tasks\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\tasks\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\tasks\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -323,13 +330,14 @@ I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_c
 I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\tasks\../main/../port/port.h)(0x6284F9C7)
-I (..\source\tasks\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\tasks\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\tasks\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\tasks\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\tasks\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\tasks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
 F (..\source\tasks\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h)(0x620038AC)()
 F (..\source\tasks\ttrd2-19a-t0401a-v001b_processor_task.c)(0x59955068)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-19a-t0401a-v001b_processor_task.o --omf_browse .\objects\ttrd2-19a-t0401a-v001b_processor_task.crf --depend .\objects\ttrd2-19a-t0401a-v001b_processor_task.d)
-I (..\source\tasks\../main/main.h)(0x628662CA)
+I (..\source\tasks\../main/main.h)(0x6287D619)
 I (..\source\tasks\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\tasks\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\tasks\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -369,7 +377,8 @@ I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_c
 I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\tasks\../main/../port/port.h)(0x6284F9C7)
-I (..\source\tasks\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\tasks\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\tasks\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\tasks\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\tasks\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\tasks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
@@ -379,7 +388,7 @@ F (..\source\tasks\ttrd2-19a-t0401a-v001b_processor_task.h)(0x58BCED2A)()
 F (..\source\tasks\raa.h)(0x6286404F)()
 F (..\source\tasks\raa.c)(0x62866E49)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\raa.o --omf_browse .\objects\raa.crf --depend .\objects\raa.d)
 I (..\source\tasks\raa.h)(0x6286404F)
-I (..\source\tasks\../main/main.h)(0x628662CA)
+I (..\source\tasks\../main/main.h)(0x6287D619)
 I (..\source\tasks\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\tasks\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\tasks\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -419,7 +428,8 @@ I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_c
 I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\tasks\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\tasks\../main/../port/port.h)(0x6284F9C7)
-I (..\source\tasks\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\tasks\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\tasks\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\tasks\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\tasks\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\tasks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
@@ -464,13 +474,14 @@ I (..\source\hsi_library\stm32f4xx_dac.h)(0x581CC67C)
 I (..\source\hsi_library\stm32f4xx_dcmi.h)(0x581CC67C)
 I (..\source\hsi_library\stm32f4xx_fsmc.h)(0x61D1C5ED)
 I (..\source\tasks\../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
-I (..\source\tasks\../support_functions/../main/main.h)(0x628662CA)
+I (..\source\tasks\../support_functions/../main/main.h)(0x6287D619)
 I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.h)(0x58BCED2C)
 I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.h)(0x58BCED2C)
 I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\tasks\../support_functions/../main/../port/port.h)(0x6284F9C7)
-I (..\source\tasks\../support_functions/../main/../port/../main/main.h)(0x628662CA)
+I (..\source\tasks\../support_functions/../main/../port/../main/main.h)(0x6287D619)
+I (..\source\tasks\../support_functions/../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\tasks\../support_functions/../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\tasks\../support_functions/../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\tasks\../support_functions/../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
@@ -511,9 +522,9 @@ I (..\source\hsi_library\stm32f4xx_can.h)(0x5821F052)
 I (..\source\hsi_library\stm32f4xx_dac.h)(0x581CC67C)
 I (..\source\hsi_library\stm32f4xx_dcmi.h)(0x581CC67C)
 I (..\source\hsi_library\stm32f4xx_fsmc.h)(0x61D1C5ED)
-F (..\source\tasks\eps_power_module.h)(0x6240E173)()
-F (..\source\tasks\eps_power_module.c)(0x6240C4DE)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\eps_power_module.o --omf_browse .\objects\eps_power_module.crf --depend .\objects\eps_power_module.d)
-I (..\source\tasks\eps_power_module.h)(0x6240E173)
+F (..\source\tasks\eps_power_module.h)(0x62B880F8)()
+F (..\source\tasks\eps_power_module.c)(0x62B88575)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\eps_power_module.o --omf_browse .\objects\eps_power_module.crf --depend .\objects\eps_power_module.d)
+I (..\source\tasks\eps_power_module.h)(0x62B880F8)
 I (..\source\hsi_library\stm32f4xx_adc.h)(0x581CC67C)
 I (..\source\hsi_library\stm32f4xx.h)(0x56DD3AA6)
 I (..\source\hsi_library\core_cm4.h)(0x56DD3AA6)
@@ -551,15 +562,16 @@ I (..\source\hsi_library\stm32f4xx_fsmc.h)(0x61D1C5ED)
 I (..\source\tasks\eps_state.h)(0x620FC927)
 I (..\source\tasks\eps_soft_error_handling.h)(0x620FC889)
 I (..\source\tasks\../port/port.h)(0x6284F9C7)
-I (..\source\tasks\../port/../main/main.h)(0x628662CA)
+I (..\source\tasks\../port/../main/main.h)(0x6287D619)
 I (..\source\tasks\../port/../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.h)(0x58BCED2C)
 I (..\source\tasks\../port/../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.h)(0x58BCED2C)
 I (..\source\tasks\../port/../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\tasks\../port/../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\tasks\../port/../main/../port/port.h)(0x6284F9C7)
+I (..\source\tasks\../port/../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\tasks\../port/../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\tasks\../port/../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
-I (..\source\tasks\../port/../main/../scheduler/../main/main.h)(0x628662CA)
+I (..\source\tasks\../port/../main/../scheduler/../main/main.h)(0x6287D619)
 I (..\source\tasks\../port/../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
 F (..\source\tasks\eps_state.h)(0x620FC927)()
 F (..\source\tasks\eps_state.c)(0x620FCD1F)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\eps_state.o --omf_browse .\objects\eps_state.crf --depend .\objects\eps_state.d)
@@ -603,9 +615,9 @@ I (..\source\tasks\tc74.h)(0x62250BEF)
 F (..\source\tasks\eps_soft_error_handling.h)(0x620FC889)()
 F (..\source\tasks\eps_soft_error_handling.c)(0x620FCA3E)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\eps_soft_error_handling.o --omf_browse .\objects\eps_soft_error_handling.crf --depend .\objects\eps_soft_error_handling.d)
 I (..\source\tasks\eps_soft_error_handling.h)(0x620FC889)
-F (..\source\tasks\Adcdma.h)(0x62866997)()
-F (..\source\tasks\Adcdma.c)(0x628670FF)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\adcdma.o --omf_browse .\objects\adcdma.crf --depend .\objects\adcdma.d)
-I (..\source\tasks\Adcdma.h)(0x62866997)
+F (..\source\tasks\Adcdma.h)(0x6286752C)()
+F (..\source\tasks\Adcdma.c)(0x62B868CC)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\adcdma.o --omf_browse .\objects\adcdma.crf --depend .\objects\adcdma.d)
+I (..\source\tasks\Adcdma.h)(0x6286752C)
 I (..\source\hsi_library\stm32f4xx_adc.h)(0x581CC67C)
 I (..\source\hsi_library\stm32f4xx.h)(0x56DD3AA6)
 I (..\source\hsi_library\core_cm4.h)(0x56DD3AA6)
@@ -642,12 +654,13 @@ I (..\source\hsi_library\stm32f4xx_dcmi.h)(0x581CC67C)
 I (..\source\hsi_library\stm32f4xx_fsmc.h)(0x61D1C5ED)
 I (..\source\tasks\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.h)(0x58BCED2C)
 I (..\source\tasks\../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
-I (..\source\tasks\../support_functions/../main/main.h)(0x628662CA)
+I (..\source\tasks\../support_functions/../main/main.h)(0x6287D619)
 I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.h)(0x58BCED2C)
 I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\tasks\../support_functions/../main/../port/port.h)(0x6284F9C7)
-I (..\source\tasks\../support_functions/../main/../port/../main/main.h)(0x628662CA)
+I (..\source\tasks\../support_functions/../main/../port/../main/main.h)(0x6287D619)
+I (..\source\tasks\../support_functions/../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\tasks\../support_functions/../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\tasks\../support_functions/../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\tasks\../support_functions/../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
@@ -2136,7 +2149,7 @@ I (..\source\hsi_library\stm32f4xx_dac.h)(0x581CC67C)
 I (..\source\hsi_library\stm32f4xx_dcmi.h)(0x581CC67C)
 F (..\source\hsi_library\stm32f4xx_fsmc.h)(0x61D1C5ED)()
 F (..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.c)(0x6284FD76)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.o --omf_browse .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.crf --depend .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.d)
-I (..\source\hsi_reg_config_checks\../main/main.h)(0x628662CA)
+I (..\source\hsi_reg_config_checks\../main/main.h)(0x6287D619)
 I (..\source\hsi_reg_config_checks\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\hsi_reg_config_checks\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\hsi_reg_config_checks\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -2176,13 +2189,14 @@ I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_con
 I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\hsi_reg_config_checks\../main/../port/port.h)(0x6284F9C7)
-I (..\source\hsi_reg_config_checks\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\hsi_reg_config_checks\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\hsi_reg_config_checks\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\hsi_reg_config_checks\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\hsi_reg_config_checks\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\hsi_reg_config_checks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
 F (..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.h)(0x58BCED2C)()
 F (..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.c)(0x58BCED2C)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.o --omf_browse .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.crf --depend .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.d)
-I (..\source\hsi_reg_config_checks\../main/main.h)(0x628662CA)
+I (..\source\hsi_reg_config_checks\../main/main.h)(0x6287D619)
 I (..\source\hsi_reg_config_checks\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\hsi_reg_config_checks\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\hsi_reg_config_checks\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -2222,13 +2236,14 @@ I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_con
 I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\hsi_reg_config_checks\../main/../port/port.h)(0x6284F9C7)
-I (..\source\hsi_reg_config_checks\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\hsi_reg_config_checks\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\hsi_reg_config_checks\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\hsi_reg_config_checks\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\hsi_reg_config_checks\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\hsi_reg_config_checks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
 F (..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.h)(0x58BCED2C)()
 F (..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.c)(0x58BCED2C)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.o --omf_browse .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.crf --depend .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.d)
-I (..\source\hsi_reg_config_checks\../main/main.h)(0x628662CA)
+I (..\source\hsi_reg_config_checks\../main/main.h)(0x6287D619)
 I (..\source\hsi_reg_config_checks\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\hsi_reg_config_checks\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\hsi_reg_config_checks\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -2268,13 +2283,14 @@ I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_con
 I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\hsi_reg_config_checks\../main/../port/port.h)(0x6284F9C7)
-I (..\source\hsi_reg_config_checks\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\hsi_reg_config_checks\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\hsi_reg_config_checks\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\hsi_reg_config_checks\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\hsi_reg_config_checks\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\hsi_reg_config_checks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
 F (..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)()
 F (..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.c)(0x59955068)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.o --omf_browse .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.crf --depend .\objects\ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.d)
-I (..\source\hsi_reg_config_checks\../main/main.h)(0x628662CA)
+I (..\source\hsi_reg_config_checks\../main/main.h)(0x6287D619)
 I (..\source\hsi_reg_config_checks\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\hsi_reg_config_checks\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\hsi_reg_config_checks\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -2314,7 +2330,8 @@ I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_con
 I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\hsi_library\../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\hsi_reg_config_checks\../main/../port/port.h)(0x6284F9C7)
-I (..\source\hsi_reg_config_checks\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\hsi_reg_config_checks\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\hsi_reg_config_checks\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\hsi_reg_config_checks\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\hsi_reg_config_checks\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\hsi_reg_config_checks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
@@ -2355,7 +2372,7 @@ I (..\source\hsi_library\stm32f4xx_dac.h)(0x581CC67C)
 I (..\source\hsi_library\stm32f4xx_dcmi.h)(0x581CC67C)
 I (..\source\hsi_library\stm32f4xx_fsmc.h)(0x61D1C5ED)
 F (..\source\hsi_startup\ttrd2-19a-t0401a-v001a_assert_failed.c)(0x59955068)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-19a-t0401a-v001a_assert_failed.o --omf_browse .\objects\ttrd2-19a-t0401a-v001a_assert_failed.crf --depend .\objects\ttrd2-19a-t0401a-v001a_assert_failed.d)
-I (..\source\hsi_startup\../main/main.h)(0x628662CA)
+I (..\source\hsi_startup\../main/main.h)(0x6287D619)
 I (..\source\hsi_startup\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\hsi_startup\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\hsi_startup\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -2395,7 +2412,8 @@ I (..\source\hsi_startup\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a
 I (..\source\hsi_startup\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\hsi_startup\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\hsi_startup\../main/../port/port.h)(0x6284F9C7)
-I (..\source\hsi_startup\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\hsi_startup\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\hsi_startup\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\hsi_startup\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\hsi_startup\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\hsi_startup\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
@@ -2403,7 +2421,7 @@ I (..\source\hsi_startup\../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h)(0x
 F (..\source\hsi_startup\startup_stm32f407xx.s)(0x5F6B2636)(--cpu Cortex-M4.fp.sp --pd "__EVAL SETA 1" -g --apcs=interwork -I ..\source\startup -I ..\source\cora\hwt\inc -I ..\source\cora\hwt\src-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"--pd "__UVISION_VERSION SETA 535" --pd "STM32F407xx SETA 1" --pd "CORTEX SETA 1"--list .\listings\startup_stm32f407xx.lst --xref -o .\objects\startup_stm32f407xx.o --depend .\objects\startup_stm32f407xx.d)
 F (..\source\processor\ttrd2-04a-t0401a-v001a_pfc_reporting.c)(0x58BCED2C)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-04a-t0401a-v001a_pfc_reporting.o --omf_browse .\objects\ttrd2-04a-t0401a-v001a_pfc_reporting.crf --depend .\objects\ttrd2-04a-t0401a-v001a_pfc_reporting.d)
 I (..\source\processor\ttrd2-04a-t0401a-v001a_pfc_reporting.h)(0x58BCED2C)
-I (..\source\processor\../main/main.h)(0x628662CA)
+I (..\source\processor\../main/main.h)(0x6287D619)
 I (..\source\processor\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\processor\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\processor\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -2443,14 +2461,15 @@ I (..\source\processor\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_r
 I (..\source\processor\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\processor\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\processor\../main/../port/port.h)(0x6284F9C7)
-I (..\source\processor\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\processor\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\processor\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\processor\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\processor\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\processor\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
 I (..\source\processor\../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h)(0x620038AC)
 F (..\source\processor\ttrd2-04a-t0401a-v001a_pfc_reporting.h)(0x58BCED2C)()
-F (..\source\processor\ttrd2-19a-t0401a-v001b_processor.c)(0x62867164)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-19a-t0401a-v001b_processor.o --omf_browse .\objects\ttrd2-19a-t0401a-v001b_processor.crf --depend .\objects\ttrd2-19a-t0401a-v001b_processor.d)
-I (..\source\processor\../main/main.h)(0x628662CA)
+F (..\source\processor\ttrd2-19a-t0401a-v001b_processor.c)(0x6287C707)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-19a-t0401a-v001b_processor.o --omf_browse .\objects\ttrd2-19a-t0401a-v001b_processor.crf --depend .\objects\ttrd2-19a-t0401a-v001b_processor.d)
+I (..\source\processor\../main/main.h)(0x6287D619)
 I (..\source\processor\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\processor\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\processor\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -2490,7 +2509,8 @@ I (..\source\processor\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_r
 I (..\source\processor\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\processor\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\processor\../main/../port/port.h)(0x6284F9C7)
-I (..\source\processor\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\processor\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\processor\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\processor\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\processor\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\processor\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
@@ -2502,13 +2522,13 @@ I (..\source\processor\../tasks/ttrd2-05a-t0401a-v001a_iwdt_task.h)(0x58BCF4F0)
 I (..\source\processor\../tasks/ttrd2-05a-t0401a-v001a_switch_task.h)(0x58BCED2A)
 I (..\source\processor\../tasks/ttrd2-05a-t0401a-v001a_uart2_buff_o_task.h)(0x620038AC)
 I (..\source\processor\../tasks/ttrd2-19a-t0401a-v001b_processor_task.h)(0x58BCED2A)
-I (..\source\processor\../tasks/Adcdma.h)(0x62866997)
+I (..\source\processor\../tasks/Adcdma.h)(0x6286752C)
 I (..\source\processor\../tasks/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
 I (..\source\processor\../tasks/raa.h)(0x6286404F)
 I (..\source\processor\../scheduler/ttrd2-18a-t0401a-v001a_monittor_i.h)(0x593E80D8)
 F (..\source\processor\ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)()
 F (..\source\processor\ttrd2-19a-t0401a-v001b_run_time_tests.c)(0x628662B2)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.o --omf_browse .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.crf --depend .\objects\ttrd2-19a-t0401a-v001b_run_time_tests.d)
-I (..\source\processor\../main/main.h)(0x628662CA)
+I (..\source\processor\../main/main.h)(0x6287D619)
 I (..\source\processor\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\processor\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\processor\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -2548,7 +2568,8 @@ I (..\source\processor\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_r
 I (..\source\processor\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\processor\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\processor\../main/../port/port.h)(0x6284F9C7)
-I (..\source\processor\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\processor\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\processor\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\processor\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\processor\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\processor\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
@@ -2556,7 +2577,7 @@ I (..\source\processor\../tasks/ttrd2-05a-t0401a-v001a_iwdt_task.h)(0x58BCF4F0)
 F (..\source\processor\ttrd2-19a-t0401a-v001b_run_time_tests.h)(0x58BCED2C)()
 F (..\source\scheduler\ttrd2-18a-t0401a-v001a_monittor_i.c)(0x59955068)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-18a-t0401a-v001a_monittor_i.o --omf_browse .\objects\ttrd2-18a-t0401a-v001a_monittor_i.crf --depend .\objects\ttrd2-18a-t0401a-v001a_monittor_i.d)
 I (..\source\scheduler\ttrd2-18a-t0401a-v001a_monittor_i.h)(0x593E80D8)
-I (..\source\scheduler\../main/main.h)(0x628662CA)
+I (..\source\scheduler\../main/main.h)(0x6287D619)
 I (..\source\scheduler\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\scheduler\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\scheduler\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -2596,13 +2617,14 @@ I (..\source\scheduler\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_r
 I (..\source\scheduler\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\scheduler\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\scheduler\../main/../port/port.h)(0x6284F9C7)
-I (..\source\scheduler\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\scheduler\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\scheduler\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\scheduler\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\scheduler\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\scheduler\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
 F (..\source\scheduler\ttrd2-18a-t0401a-v001a_monittor_i.h)(0x593E80D8)()
 F (..\source\scheduler\ttrd2-19a-t0401a-v001b_predicttor_i.c)(0x59955068)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-19a-t0401a-v001b_predicttor_i.o --omf_browse .\objects\ttrd2-19a-t0401a-v001b_predicttor_i.crf --depend .\objects\ttrd2-19a-t0401a-v001b_predicttor_i.d)
-I (..\source\scheduler\../main/main.h)(0x628662CA)
+I (..\source\scheduler\../main/main.h)(0x6287D619)
 I (..\source\scheduler\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\scheduler\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\scheduler\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -2642,7 +2664,8 @@ I (..\source\scheduler\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_r
 I (..\source\scheduler\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\scheduler\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\scheduler\../main/../port/port.h)(0x6284F9C7)
-I (..\source\scheduler\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\scheduler\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\scheduler\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\scheduler\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\scheduler\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\scheduler\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
@@ -2650,7 +2673,7 @@ I (..\source\scheduler\ttrd2-19a-t0401a-v001b_predicttor_i_tick_list.h)(0x620044
 F (..\source\scheduler\ttrd2-19a-t0401a-v001b_predicttor_i.h)(0x593E80D6)()
 F (..\source\scheduler\ttrd2-19a-t0401a-v001b_predicttor_i_tick_list.h)(0x62004465)()
 F (..\source\scheduler\ttrd2-19a-t0401a-v001c_scheduler.c)(0x59955068)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\ttrd2-19a-t0401a-v001c_scheduler.o --omf_browse .\objects\ttrd2-19a-t0401a-v001c_scheduler.crf --depend .\objects\ttrd2-19a-t0401a-v001c_scheduler.d)
-I (..\source\scheduler\../main/main.h)(0x628662CA)
+I (..\source\scheduler\../main/main.h)(0x6287D619)
 I (..\source\scheduler\../main/../hsi_library/misc.h)(0x581CC67C)
 I (..\source\scheduler\../main/../hsi_library/stm32f4xx.h)(0x56DD3AA6)
 I (..\source\scheduler\../main/../hsi_library/core_cm4.h)(0x56DD3AA6)
@@ -2690,7 +2713,8 @@ I (..\source\scheduler\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_r
 I (..\source\scheduler\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\scheduler\../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\scheduler\../main/../port/port.h)(0x6284F9C7)
-I (..\source\scheduler\../main/../port/../main/main.h)(0x628662CA)
+I (..\source\scheduler\../main/../port/../main/main.h)(0x6287D619)
+I (..\source\scheduler\../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\scheduler\../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\scheduler\../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\scheduler\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h)(0x58BCED2A)
