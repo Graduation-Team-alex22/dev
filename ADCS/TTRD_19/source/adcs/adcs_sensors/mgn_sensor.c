@@ -70,9 +70,6 @@ uint32_t MGN_Sensor_Init(I2C_TypeDef* I2Cx, mgn_init_t* mgn_init)
       return NO_ERROR;
    }
 
-   // wait for 6 ms
-   //TIMEOUT_T3_USEC_Start();
-   //while(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(6000));
 
    // update device status
    mgn_data_g.status = DEVICE_OK;
@@ -82,7 +79,7 @@ uint32_t MGN_Sensor_Init(I2C_TypeDef* I2Cx, mgn_init_t* mgn_init)
 
 uint32_t MGN_Sensor_Update(void)
 {
-   if(mgn_data_g.status != DEVICE_OK)
+   if(mgn_data_g.status != DEVICE_OK )
    {
       return NO_ERROR;
    }
@@ -120,13 +117,14 @@ uint32_t MGN_Sensor_Update(void)
    mgn_data_g.mag_filtered[2] = A_MGN * mgn_data_g.mag[2] 
                               + (1 - A_MGN) * mgn_data_g.prev_mag[2];                           
    
+   /*
    // calculate the magnitude of the vector
    mgn_data_g.rm_norm = vect_magnitude_arr(mgn_data_g.mag);
    if (mgn_data_g.rm_norm > MAX_IGRF_NORM
    || mgn_data_g.rm_norm  < MIN_IGRF_NORM) 
    {
       mgn_data_g.status = READING_ERROR;
-   }
+   }*/
    
    return NO_ERROR;
 }

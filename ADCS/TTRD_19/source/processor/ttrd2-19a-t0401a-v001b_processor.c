@@ -533,14 +533,12 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          UART2_BUF_O_Write_String_To_Buffer("NORMAL_M\n");
              UART2_BUF_O_Send_All_Data();
                 
-         UART2_BUF_O_Write_String_To_Buffer("Inshallah the dots will connect one day 101010101\n");
-         UART2_BUF_O_Write_String_To_Buffer("Inshallah the dots will connect one day 101010101\n");
-         UART2_BUF_O_Write_String_To_Buffer("Inshallah the dots will connect one day 101010101\n");
-         UART2_BUF_O_Write_String_To_Buffer("Inshallah the dots will connect one day 101010101\n");
-         // UART2_BUF_O_Write_String_To_Buffer("Inshallah the dots will connect one day 101010101\n");
-         // UART2_BUF_O_Write_String_To_Buffer("Inshallah the dots will connect one day 101010101\n");
-         // UART2_BUF_O_Write_String_To_Buffer("Inshallah the dots will connect one day 101010101\n");
-         // UART2_BUF_O_Write_String_To_Buffer("Inshallah the dots will connect one day 101010101\n");
+         UART2_BUF_O_Write_String_To_Buffer("-------------------------------------------------\n");
+         UART2_BUF_O_Write_String_To_Buffer("-------------------------------------------------\n");
+         UART2_BUF_O_Write_String_To_Buffer("-------------------------------------------------\n");
+         UART2_BUF_O_Write_String_To_Buffer("-------------------------------------------------\n");
+         UART2_BUF_O_Write_String_To_Buffer("-------------------------------------------------\n");
+         UART2_BUF_O_Write_String_To_Buffer("-------------------------------------------------\n");
          UART2_BUF_O_Send_All_Data();
 
          UART2_BUF_O_Write_String_To_Buffer("NORMAL_M3\n");

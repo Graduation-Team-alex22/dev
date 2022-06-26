@@ -118,7 +118,7 @@ uint32_t App_Sensor_Mgn_Update(void)
       if(tg.status == DEVICE_OK)
       {
          char buf[200] = {0};
-         sprintf(buf, "[DIAG - MGN] X: %+.4f  Y: %+.4f  Z:%+.4f\n",
+         sprintf(buf, "[DIAG - MGN] X: %+.4f  Y: %+.4f  Z:%+.4f <GAUSS>\n",
                       tg.mag[0], tg.mag[1], tg.mag[2]);
          UART2_BUF_O_Write_String_To_Buffer(buf);
          UART2_BUF_O_Send_All_Data();
