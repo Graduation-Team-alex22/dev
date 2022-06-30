@@ -1,7 +1,11 @@
 // eps_power_module.h
 
 #include "stm32f4xx_adc.h"
+#include "../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.h"
 
+//#include "stm32l1xx_hal.h"
+#include "../port/eps_configuration.h"
+#include "eps_soft_error_handling.h"
 
 
 #ifndef _EPS_POWER_MODULE_H_
@@ -86,6 +90,35 @@ typedef enum {
 }EPS_mppt_power_module_state;
 
 
+typedef struct 
+//#else
+//typedef struct
+//#endif
+{
+  ADC_TypeDef                   *Instance;                   /*!< Register base address */
+
+  ADC_InitTypeDef               Init;                        /*!< ADC required parameters */
+ 
+	ADC_CommonInitTypeDef         Comm_Init;
+  __IO uint32_t                 NbrOfCurrentConversionRank;  /*!< ADC number of current conversion rank */
+
+ // DMA_HandleTypeDef             *DMA_Handle;                 /*!< Pointer DMA Handler */
+
+  LockTypeDef                   Lock;                        /*!< ADC locking object */
+
+  __IO uint32_t                 State;                       /*!< ADC communication state */
+
+  __IO uint32_t                 ErrorCode;                   /*!< ADC Error code */
+	#if (USE_HAL_ADC_REGISTER_CALLBACKS == 1)
+  void (* ConvCpltCallback)(struct __ADC_HandleTypeDef *hadc);              /*!< ADC conversion complete callback */
+  void (* ConvHalfCpltCallback)(struct __ADC_HandleTypeDef *hadc);          /*!< ADC conversion DMA half-transfer callback */
+  void (* LevelOutOfWindowCallback)(struct __ADC_HandleTypeDef *hadc);      /*!< ADC analog watchdog 1 callback */
+  void (* ErrorCallback)(struct __ADC_HandleTypeDef *hadc);                 /*!< ADC error callback */
+  void (* InjectedConvCpltCallback)(struct __ADC_HandleTypeDef *hadc);      /*!< ADC group injected conversion complete callback */
+  void (* MspInitCallback)(struct __ADC_HandleTypeDef *hadc);               /*!< ADC Msp Init callback */
+  void (* MspDeInitCallback)(struct __ADC_HandleTypeDef *hadc);             /*!< ADC Msp DeInit callback */
+	#endif /* USE_HAL_ADC_REGISTER_CALLBACKS */
+}ADC_HandleTypeDef;
 /**
  * @brief Power module parameters.
  *
@@ -101,19 +134,23 @@ typedef struct {
 	uint32_t pwm_duty_cycle; /**<  duty cycle of power module pwm output*/
 	TIM_HandleTypeDef *htim_pwm;/**<  assign wich timer is assigned for this pwm output*/
 	uint32_t timChannel;/**<  assign the proper timer channel assigned to module pwm output*/
-	//ADC_HandleTypeDef *hadc_power_module;/**<  adc handle for voltage and current measurements for each power module*/
+	ADC_HandleTypeDef *hadc_power_module;/**<  adc handle for voltage and current measurements for each power module*/
 	uint32_t ADC_channel_current;/**<  adc channel; for current measurements for this power module*/
 	uint32_t ADC_channel_voltage;/**<  adc channel for voltage measurements for this power module*/
 
 }EPS_PowerModule;
 
 
-//void EPS_PowerModule_init(EPS_PowerModule *module_X, uint32_t starting_pwm_dutycycle, TIM_HandleTypeDef *htim, uint32_t timer_channel, ADC_HandleTypeDef *hadc_power_module, uint32_t ADC_channel_current, uint32_t ADC_channel_voltage);
+
+
+void EPS_PowerModule_init(EPS_PowerModule *module_X, uint32_t starting_pwm_dutycycle, TIM_HandleTypeDef *htim, uint32_t timer_channel, ADC_HandleTypeDef *hadc_power_module, uint32_t ADC_channel_current, uint32_t ADC_channel_voltage);
 void EPS_update_power_module_state(EPS_PowerModule *power_module);
 void EPS_PowerModule_mppt_update_pwm(EPS_PowerModule *moduleX);
 void EPS_PowerModule_mppt_apply_pwm(EPS_PowerModule *moduleX);
-//EPS_soft_error_status EPS_PowerModule_init_ALL(EPS_PowerModule *module_top, EPS_PowerModule *module_bottom, EPS_PowerModule *module_left, EPS_PowerModule *module_right);
+EPS_soft_error_status EPS_PowerModule_init_ALL(EPS_PowerModule *module_top, EPS_PowerModule *module_bottom, EPS_PowerModule *module_left, EPS_PowerModule *module_right);
 
+void EPS_Power_Task_Init(void);
 
 
 #endif /* _EPS_POWER_MODULE_H_ */
+

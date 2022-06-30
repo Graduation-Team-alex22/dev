@@ -522,9 +522,9 @@ I (..\source\hsi_library\stm32f4xx_can.h)(0x5821F052)
 I (..\source\hsi_library\stm32f4xx_dac.h)(0x581CC67C)
 I (..\source\hsi_library\stm32f4xx_dcmi.h)(0x581CC67C)
 I (..\source\hsi_library\stm32f4xx_fsmc.h)(0x61D1C5ED)
-F (..\source\tasks\eps_power_module.h)(0x62B880F8)()
-F (..\source\tasks\eps_power_module.c)(0x62B88575)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\eps_power_module.o --omf_browse .\objects\eps_power_module.crf --depend .\objects\eps_power_module.d)
-I (..\source\tasks\eps_power_module.h)(0x62B880F8)
+F (..\source\tasks\eps_power_module.h)(0x62BCDA62)()
+F (..\source\tasks\eps_power_module.c)(0x62BCDA6B)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\source\hsi_library -I ..\source\hsi_startup-I"E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="535" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_FULL_ASSERT -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000" -DCORTEX-o .\objects\eps_power_module.o --omf_browse .\objects\eps_power_module.crf --depend .\objects\eps_power_module.d)
+I (..\source\tasks\eps_power_module.h)(0x62BCDA62)
 I (..\source\hsi_library\stm32f4xx_adc.h)(0x581CC67C)
 I (..\source\hsi_library\stm32f4xx.h)(0x56DD3AA6)
 I (..\source\hsi_library\core_cm4.h)(0x56DD3AA6)
@@ -559,8 +559,9 @@ I (..\source\hsi_library\stm32f4xx_can.h)(0x5821F052)
 I (..\source\hsi_library\stm32f4xx_dac.h)(0x581CC67C)
 I (..\source\hsi_library\stm32f4xx_dcmi.h)(0x581CC67C)
 I (..\source\hsi_library\stm32f4xx_fsmc.h)(0x61D1C5ED)
-I (..\source\tasks\eps_state.h)(0x620FC927)
+I (..\source\tasks\../port/eps_configuration.h)(0x62B868D8)
 I (..\source\tasks\eps_soft_error_handling.h)(0x620FC889)
+I (..\source\tasks\eps_state.h)(0x620FC927)
 I (..\source\tasks\../port/port.h)(0x6284F9C7)
 I (..\source\tasks\../port/../main/main.h)(0x6287D619)
 I (..\source\tasks\../port/../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.h)(0x58BCED2C)
@@ -568,7 +569,6 @@ I (..\source\tasks\../port/../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v00
 I (..\source\tasks\../port/../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.h)(0x58BCED2C)
 I (..\source\tasks\../port/../main/../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.h)(0x58BCED2C)
 I (..\source\tasks\../port/../main/../port/port.h)(0x6284F9C7)
-I (..\source\tasks\../port/../main/../port/eps_configuration.h)(0x62B868D8)
 I (..\source\tasks\../port/../main/../processor/ttrd2-19a-t0401a-v001b_processor.h)(0x58BCED2C)
 I (..\source\tasks\../port/../main/../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h)(0x62003741)
 I (..\source\tasks\../port/../main/../scheduler/../main/main.h)(0x6287D619)

@@ -50,7 +50,7 @@ int main()
    {
    // Check mode, add tasks to schedule
    PROCESSOR_Init();
-
+	
    // Start the scheduler
    SCH_Start();
 

@@ -11,6 +11,7 @@
 #include "eps_state.h"
 #include "../port/port.h"
 
+//TIM_HandleTypeDef htim3;
 //extern ADC_HandleTypeDef hadc;
 //extern TIM_HandleTypeDef htim3;
 /* 
@@ -175,8 +176,7 @@ PWM example
   * @param  ADC_channel_voltage:  pointer to adc channel with the voltage measurement.
   * @retval None.
   */
-void EPS_PowerModule_init(EPS_PowerModule *module_X, uint32_t starting_pwm_dutycycle, uint16_t *htim, uint32_t timer_channel, uint16_t *hadc_power_module, uint32_t ADC_channel_current, uint32_t ADC_channel_voltage){
-
+void EPS_PowerModule_init(EPS_PowerModule *module_X, uint32_t starting_pwm_dutycycle, TIM_HandleTypeDef *htim, uint32_t timer_channel, ADC_HandleTypeDef *hadc_power_module, uint32_t ADC_channel_current, uint32_t ADC_channel_voltage){
 	//initialize properly all power module entries.
 	module_X->module_state = POWER_MODULE_ON;
 	module_X->current =0;
@@ -184,10 +184,10 @@ void EPS_PowerModule_init(EPS_PowerModule *module_X, uint32_t starting_pwm_dutyc
 	module_X->previous_power =0;
 	module_X->previous_voltage =0;
 	module_X->pwm_duty_cycle = starting_pwm_dutycycle;
-	//module_X->htim_pwm = htim;
+	module_X->htim_pwm = htim;
 	module_X->timChannel = timer_channel;
 	module_X->incremennt_flag = 1;//start by incrementing
-	//module_X->hadc_power_module = hadc_power_module;
+	module_X->hadc_power_module = hadc_power_module;
 	module_X->ADC_channel_current = ADC_channel_current;
 	module_X->ADC_channel_voltage = ADC_channel_voltage;
 
@@ -199,10 +199,20 @@ void EPS_PowerModule_init(EPS_PowerModule *module_X, uint32_t starting_pwm_dutyc
 	
 	TIM_3_InitStruct.TIM_ClockDivision =TIM_CKD_DIV1;
 	TIM_3_InitStruct.TIM_CounterMode = TIM_CounterMode_Up ;
-	TIM_3_InitStruct.TIM_Period = 0 ;
-	TIM_3_InitStruct.TIM_Prescaler=0xa0;
+	TIM_3_InitStruct.TIM_Period = 0xa0;
+	TIM_3_InitStruct.TIM_Prescaler=0;
 	
 	TIM_TimeBaseInit(TIM3, &TIM_3_InitStruct);
+	
+	//
+	
+	
+
+	
+	
+	
+	
+	//
 	
 	 TIM_OCInitTypeDef sConfigOC;
 	 sConfigOC.TIM_OCMode= TIM_OCMode_PWM1;
@@ -235,23 +245,50 @@ void EPS_PowerModule_init(EPS_PowerModule *module_X, uint32_t starting_pwm_dutyc
   * @param  module_right: pointer to right solar panel side power module
   * @retval Error status for handling and debugging.
   */
-uint16_t EPS_PowerModule_init_ALL(EPS_PowerModule *module_top, EPS_PowerModule *module_bottom, EPS_PowerModule *module_left, EPS_PowerModule *module_right)
+EPS_soft_error_status EPS_PowerModule_init_ALL(EPS_PowerModule *module_top, EPS_PowerModule *module_bottom, EPS_PowerModule *module_left, EPS_PowerModule *module_right)
 {
 
-uint16_t error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_ALL;
-
+  uint16_t error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_ALL;
+  
+	
+	TIM_HandleTypeDef htim3;
+	htim3.Instance = TIM3;
+  htim3.Init.TIM_Prescaler = 0;
+  htim3.Init.TIM_CounterMode = TIM_CounterMode_Up;
+  htim3.Init.TIM_Period = 0xa0;
+  htim3.Init.TIM_ClockDivision = TIM_CKD_DIV1;
+	//
+	
+	ADC_HandleTypeDef hadc; 
+	
+	hadc.Instance = ADC1;
+  hadc.Comm_Init.ADC_Prescaler = ADC_Prescaler_Div2;
+  hadc.Init.ADC_Resolution = ADC_Resolution_12b;
+  hadc.Init.ADC_DataAlign = ADC_DataAlign_Right;
+  hadc.Init.ADC_ScanConvMode = ENABLE;
+  //hadc.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+  //hadc.Init.LowPowerAutoWait = ADC_AUTOWAIT_DISABLE;
+  //hadc.Init.LowPowerAutoPowerOff = ADC_AUTOPOWEROFF_DISABLE;
+ // hadc.Init.ChannelsBank = ADC_CHANNELS_BANK_A;
+  hadc.Init.ADC_ContinuousConvMode = DISABLE;// Enable in eclipse
+  hadc.Init.ADC_NbrOfConversion = 14;
+  //hadc.Init.DiscontinuousConvMode = DISABLE;
+  //hadc.Init.ADC_ExternalTrigConv = ADC_SOFTWARE_START;
+  hadc.Init.ADC_ExternalTrigConv = ADC_ExternalTrigConvEdge_None;
+  //hadc.Init.DMAContinuousRequests = ENABLE;
+	
 	/*start timer3 pwm base generation (initialized pwm duty cycle from mx must be 0) */
 	//HAL_TIM_Base_Start(&htim3);
 
 	/* initialize all power modules and dem mppt cotrol blocks.*/
-//	error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_TOP;
-//	EPS_PowerModule_init(module_top, MPPT_STARTUP_PWM_DUTYCYCLE, &htim3, PWM_TIM_CHANNEL_TOP, &hadc, ADC_CURRENT_CHANNEL_TOP, ADC_VOLTAGE_CHANNEL_TOP);
-//	error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_BOTTOM;
-//	EPS_PowerModule_init(module_bottom, MPPT_STARTUP_PWM_DUTYCYCLE, &htim3, PWM_TIM_CHANNEL_BOTTOM, &hadc, ADC_CURRENT_CHANNEL_BOTTOM, ADC_VOLTAGE_CHANNEL_BOTTOM);
-//	error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_LEFT;
-//	EPS_PowerModule_init(module_left, MPPT_STARTUP_PWM_DUTYCYCLE, &htim3, PWM_TIM_CHANNEL_LEFT, &hadc, ADC_CURRENT_CHANNEL_LEFT, ADC_VOLTAGE_CHANNEL_LEFT);
-//	error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_RIGHT;
-//	EPS_PowerModule_init(module_right, MPPT_STARTUP_PWM_DUTYCYCLE, &htim3, PWM_TIM_CHANNEL_RIGHT, &hadc, ADC_CURRENT_CHANNEL_RIGHT, ADC_VOLTAGE_CHANNEL_RIGHT);
+	error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_TOP;
+	EPS_PowerModule_init(module_top, MPPT_STARTUP_PWM_DUTYCYCLE, &htim3, PWM_TIM_CHANNEL_TOP, &hadc, ADC_CURRENT_CHANNEL_TOP, ADC_VOLTAGE_CHANNEL_TOP);
+	error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_BOTTOM;
+	EPS_PowerModule_init(module_bottom, MPPT_STARTUP_PWM_DUTYCYCLE, &htim3, PWM_TIM_CHANNEL_BOTTOM, &hadc, ADC_CURRENT_CHANNEL_BOTTOM, ADC_VOLTAGE_CHANNEL_BOTTOM);
+	error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_LEFT;
+	EPS_PowerModule_init(module_left, MPPT_STARTUP_PWM_DUTYCYCLE, &htim3, PWM_TIM_CHANNEL_LEFT, &hadc, ADC_CURRENT_CHANNEL_LEFT, ADC_VOLTAGE_CHANNEL_LEFT);
+	error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_RIGHT;
+	EPS_PowerModule_init(module_right, MPPT_STARTUP_PWM_DUTYCYCLE, &htim3, PWM_TIM_CHANNEL_RIGHT, &hadc, ADC_CURRENT_CHANNEL_RIGHT, ADC_VOLTAGE_CHANNEL_RIGHT);
 uint16_t EPS_SOFT_ERROR_POWER_MODULE_INIT_ALL_COMPLETE;
 	return EPS_SOFT_ERROR_POWER_MODULE_INIT_ALL_COMPLETE;
 }
@@ -440,19 +477,5 @@ void EPS_PowerModule_mppt_apply_pwm(EPS_PowerModule *moduleX){
 	  moduleX->previous_power = power_now_avg;
 	  moduleX->previous_voltage = moduleX->voltage;
 	  moduleX->pwm_duty_cycle = duty_cycle;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
+void EPS_Power_Task_Init(void){}

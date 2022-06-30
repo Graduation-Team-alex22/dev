@@ -34,18 +34,20 @@ compiling eps_power_module.c...
   #endif /* INC_EPS_STATE_H_ */
 ..\source\tasks\eps_power_module.c(28): warning:  #9-D: nested comment is not allowed
   //////*/
-..\source\tasks\eps_power_module.c(241): warning:  #177-D: variable "error_status"  was declared but never referenced
+..\source\tasks\eps_power_module.c(255): warning:  #188-D: enumerated type mixed with another type
+  	return EPS_SOFT_ERROR_POWER_MODULE_INIT_ALL_COMPLETE;
+..\source\tasks\eps_power_module.c(240): warning:  #177-D: variable "error_status"  was declared but never referenced
   uint16_t error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_ALL;
-..\source\tasks\eps_power_module.c(289): warning:  #177-D: variable "adc_measurement_dma_power_modules"  was declared but never referenced
+..\source\tasks\eps_power_module.c(288): warning:  #177-D: variable "adc_measurement_dma_power_modules"  was declared but never referenced
   	uint32_t adc_measurement_dma_power_modules[67]= { 0 };//2*64 +1
-..\source\tasks\eps_power_module.c(295): warning:  #177-D: variable "voltage_avg"  was declared but never referenced
+..\source\tasks\eps_power_module.c(294): warning:  #177-D: variable "voltage_avg"  was declared but never referenced
   	uint32_t voltage_avg =0;
-..\source\tasks\eps_power_module.c(296): warning:  #177-D: variable "current_avg"  was declared but never referenced
+..\source\tasks\eps_power_module.c(295): warning:  #177-D: variable "current_avg"  was declared but never referenced
   	uint32_t current_avg =0;
-..\source\tasks\eps_power_module.c: 7 warnings, 0 errors
+..\source\tasks\eps_power_module.c: 8 warnings, 0 errors
 linking...
 Program Size: Code=18540 RO-data=424 RW-data=1040 ZI-data=2912  
-".\Objects\TTRD-ERES2.axf" - 0 Error(s), 7 Warning(s).
+".\Objects\TTRD-ERES2.axf" - 0 Error(s), 8 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -58,7 +60,7 @@ Package Vendor: Keil
   E:\Program Files\New Folder\keil\pack\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

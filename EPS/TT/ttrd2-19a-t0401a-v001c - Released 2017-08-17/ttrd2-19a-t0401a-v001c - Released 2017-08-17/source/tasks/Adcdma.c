@@ -31,7 +31,7 @@ void ADC1_External_Init(void)
   //uint32_t              ADC_ref; % previosely defined in the ttrd ADC task
    
 	 ADC_InitStructure.ADC_Resolution = ADC_Resolution_12b;
-	 ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
+	
 	 ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
 	
 	 // Set up ADC in independent mode
