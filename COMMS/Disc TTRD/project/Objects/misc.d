@@ -2,7 +2,7 @@
 .\objects\misc.o: ..\source\hsi_library\misc.h
 .\objects\misc.o: ..\source\hsi_library\stm32f4xx.h
 .\objects\misc.o: ..\source\hsi_library\core_cm4.h
-.\objects\misc.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\misc.o: D:\Keil\ARM\Compiler5\Bin\..\include\stdint.h
 .\objects\misc.o: ..\source\hsi_library\core_cmInstr.h
 .\objects\misc.o: ..\source\hsi_library\core_cmFunc.h
 .\objects\misc.o: ..\source\hsi_library\core_cmSimd.h

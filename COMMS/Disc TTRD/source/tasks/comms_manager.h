@@ -57,33 +57,32 @@ struct _comms_data
 extern struct _comms_data comms_data;
 
 //Init 
-void comms_init(void); // Implemented.
+void comms_init(void);  
 
 //Update
 //updates are in rx_manager & tx_manager
 
 //Setters
-void set_cmd_and_ctrl_period(uint8_t enable); // Implemented.
+void set_cmd_and_ctrl_period(uint8_t enable);  
 
-int32_t recv_payload(uint8_t *out, size_t len, size_t timeout_ms);// Implemented.
+int32_t recv_payload(uint8_t *out, size_t len); 
 
-SAT_returnState recv_ecss(uint8_t *payload, const uint16_t payload_size);//originally rx_ecss // Implemented.
+SAT_returnState recv_ecss(uint8_t *payload, const uint16_t payload_size);//originally rx_ecss  
 
 //Getters
-int32_t send_payload(const uint8_t *in, size_t len, uint8_t is_wod, size_t timeout_ms); // Implemented.
+int32_t send_payload(const uint8_t *in, size_t len, uint8_t is_wod);  
 
-int32_t send_payload_cw(const uint8_t *in, size_t len);// Implemented.
+int32_t send_payload_cw(const uint8_t *in, size_t len); 
 
-int32_t send_cw_beacon(void);// Implemented.
+int32_t send_cw_beacon(void); 
 
-uint8_t is_tx_enabled(void); // Implemented.
+uint8_t is_tx_enabled(void);  
 
-uint8_t is_cmd_ctrl_enabled(void); // Implemented.
+uint8_t is_cmd_ctrl_enabled(void);  
 
-SAT_returnState send_ecss(tc_tm_pkt *pkt); //originally tx_ecss // Implemented.
+SAT_returnState send_ecss(tc_tm_pkt *pkt); //originally tx_ecss  
 
-SAT_returnState route_pkt(tc_tm_pkt *pkt);// Implemented.
+SAT_returnState route_pkt(tc_tm_pkt *pkt); 
 
-SAT_returnState check_timeouts(void);
 
 #endif /* INC_COMMS_MANAGER_H_ */

@@ -59,13 +59,12 @@ SAT_returnState import_pkt(TC_TM_app_id app_id, struct _uart_data *data)// worki
 	SAT_returnState res;
 	SAT_returnState res_deframe;
 
-	OBC_T_DMA_CHECK(data);
-	
+	OBC_C_DMA_CHECK(data);
 	res = OBC_C_UART_recv(data); //<-------------------------------------------------------------------
 	if( res == SATR_EOT ) 
 	{
-		//UART2_BUF_O_Write_String_To_Buffer("got msg\n");
-		size = data->uart_size;
+		UART2_BUF_O_Write_String_To_Buffer("got msg\n");
+		size = data->uart_size;		
 		res_deframe = HLDLC_deframe(data->uart_unpkt_buf, data->deframed_buf, &size); //<------------------------------------
 		if(res_deframe == SATR_EOT) 
 		{
@@ -101,7 +100,6 @@ SAT_returnState import_pkt(TC_TM_app_id app_id, struct _uart_data *data)// worki
 			stats_dropped_hldlc();
 		}
 	}
-
 	return SATR_OK;
 }
 

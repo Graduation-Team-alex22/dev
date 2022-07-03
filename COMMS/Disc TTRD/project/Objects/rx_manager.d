@@ -1,12 +1,12 @@
 .\objects\rx_manager.o: ..\source\tasks\rx_manager.c
 .\objects\rx_manager.o: ..\source\tasks\rx_manager.h
 .\objects\rx_manager.o: ..\source\tasks\../main/main.h
-.\objects\rx_manager.o: D:\Keil\ARM\ARMCC\Bin\..\include\string.h
-.\objects\rx_manager.o: D:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\rx_manager.o: D:\Keil\ARM\Compiler5\Bin\..\include\string.h
+.\objects\rx_manager.o: D:\Keil\ARM\Compiler5\Bin\..\include\stddef.h
 .\objects\rx_manager.o: ..\source\tasks\../main/../hsi_library/misc.h
 .\objects\rx_manager.o: ..\source\tasks\../main/../hsi_library/stm32f4xx.h
 .\objects\rx_manager.o: ..\source\tasks\../main/../hsi_library/core_cm4.h
-.\objects\rx_manager.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\rx_manager.o: D:\Keil\ARM\Compiler5\Bin\..\include\stdint.h
 .\objects\rx_manager.o: ..\source\hsi_library\core_cmInstr.h
 .\objects\rx_manager.o: ..\source\hsi_library\core_cmFunc.h
 .\objects\rx_manager.o: ..\source\hsi_library\core_cmSimd.h
@@ -50,7 +50,7 @@
 .\objects\rx_manager.o: ..\source\tasks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\rx_manager.o: ..\source\tasks\../main/../support_functions/stats.h
 .\objects\rx_manager.o: ..\source\tasks\../main/../support_functions/../tasks/ttrd2-05a-t0401a-v001a_adc_task.h
-.\objects\rx_manager.o: D:\Keil\ARM\ARMCC\Bin\..\include\math.h
+.\objects\rx_manager.o: D:\Keil\ARM\Compiler5\Bin\..\include\math.h
 .\objects\rx_manager.o: ..\source\tasks\../main/../support_functions/wod_handling.h
 .\objects\rx_manager.o: ..\source\tasks\../main/../support_functions/ax_25.h
 .\objects\rx_manager.o: ..\source\tasks\../main/../support_functions/services.h

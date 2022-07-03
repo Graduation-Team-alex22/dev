@@ -587,7 +587,7 @@ void PROCESSOR_Configure_Reqd_MoSt(void)
          // Set up WDT 
          // Timeout is parameter * 125 µs: param 80 => ~10 ms
          // NOTE: WDT driven by RC oscillator - timing varies with temperature            
-         //WATCHDOG_Init(80);
+         WATCHDOG_Init(80);
 
          // Prepare for heartbeat task
          HEARTBEAT_SW_Init();

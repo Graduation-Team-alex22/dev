@@ -189,12 +189,12 @@ void stats_outbound(uint8_t type, TC_TM_app_id app_id, TC_TM_app_id dest_id, tc_
 	UART2_BUF_O_Write_Number04_To_Buffer(pkt->ser_type);
 	UART2_BUF_O_Write_String_To_Buffer(")\n");
 }
-void stats_dropped_hldlc() 
+void stats_dropped_hldlc(void) 
 {
 	ecss_stats.dropped_hldlc++;
 }
 
-void stats_dropped_upack() 
+void stats_dropped_upack(void) 
 {
 	ecss_stats.dropped_unpack++;
 }																				 
@@ -240,8 +240,9 @@ uint16_t ecss_stats_hk(uint8_t *buffer)
 #ifdef __GNUC__
 const uint32_t __attribute__((section (".comms_storage_section"))) occupy_sector[SECTOR_11_SIZE] __attribute__ ((aligned (4))) = { 0x16264e84, 0x48};
 #else
-#pragma location = 0x080E0000
-const uint32_t occupy_sector[SECTOR_11_SIZE] = { 0x16264e84, 0x48 };
+
+	#pragma location = 0x080E0000
+	const uint32_t occupy_sector[SECTOR_11_SIZE] = { 0x16264e84, 0x48 };
 #endif
 
 //Init
@@ -464,6 +465,7 @@ SAT_returnState hk_report_parameters(HK_struct_id sid, tc_tm_pkt *pkt)
 		//SYSVIEW_PRINT("COMMS HEALTH: Temp %u", pkt->data[1]);
 		UART2_BUF_O_Write_String_To_Buffer("COMMS HEALTH: Temp ");
 		UART2_BUF_O_Write_Number04_To_Buffer(pkt->data[1]);
+		UART2_BUF_O_Write_String_To_Buffer("\n\n");
 	}
 	else if(sid == EX_HEALTH_REP) 
 	{
@@ -717,14 +719,13 @@ SAT_returnState unpack_pkt(const uint8_t *buf, tc_tm_pkt *pkt, const uint16_t si
 
 	pkt->verification_state = SATR_PKT_INIT;
 
-	UART2_BUF_O_Write_pkt_To_Buffer(pkt);
+	
 	if(!(C_ASSERT(pkt->app_id < LAST_APP_ID && pkt->dest_id < LAST_APP_ID && pkt->app_id != pkt->dest_id) == true)) 
 	{
 		pkt->verification_state = SATR_PKT_ILLEGAL_APPID;
 		return SATR_PKT_ILLEGAL_APPID; 
 	}
-
-	if(!(C_ASSERT(pkt->len == size - ECSS_HEADER_SIZE - 1) == true)) 
+	if(!(C_ASSERT(pkt->len <= size - ECSS_HEADER_SIZE - 1) == true)) 
 	{
 		pkt->verification_state = SATR_PKT_INV_LEN;
 		return SATR_PKT_INV_LEN; 
@@ -757,6 +758,7 @@ SAT_returnState unpack_pkt(const uint8_t *buf, tc_tm_pkt *pkt, const uint16_t si
 		UART2_BUF_O_Write_Number04_To_Buffer(pkt->ser_type);
 		UART2_BUF_O_Write_String_To_Buffer(", ");
 		UART2_BUF_O_Write_Number04_To_Buffer(pkt->ser_subtype);
+		
 		
 		return SATR_PKT_ILLEGAL_PKT_TP; 
 	}
@@ -813,6 +815,7 @@ SAT_returnState unpack_pkt(const uint8_t *buf, tc_tm_pkt *pkt, const uint16_t si
 	{
 		pkt->data[i] = buf[ECSS_DATA_OFFSET+i];
 	}
+	UART2_BUF_O_Write_pkt_To_Buffer(pkt);
 	return SATR_OK;
 }
 
@@ -1103,7 +1106,7 @@ SAT_returnState verification_crt_pkt(const tc_tm_pkt *pkt, tc_tm_pkt **out, SAT_
 
 
 ////////////////////////////////////////////// PERSISTENT MEM DONE /////////////////////////////////////////////////////
-uint32_t comms_persistent_mem_init()
+uint32_t comms_persistent_mem_init(void)
 {
   return flash_INIT();
 }

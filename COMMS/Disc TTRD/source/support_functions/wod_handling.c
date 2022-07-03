@@ -111,22 +111,18 @@ void comms_ex_wod_init(void)
  */
 int32_t comms_wod_send(uint8_t bypass_check) 
 {
-//	UART2_BUF_O_Write_String_To_Buffer("Test1");
   int32_t ret = 0;
 
   /* Check if the satellite is during command and control phase */
   if(is_cmd_ctrl_enabled() && !bypass_check) 
 	{
-//		UART2_BUF_O_Write_String_To_Buffer("Test2");
     return 0;
   }
 
   /* If the last OBC WOD was valid, send it but for a finite number of times */
   if(last_wod.valid && last_wod.tx_cnt < __WOD_VALID_REPEATS) 
 	{
-//		UART2_BUF_O_Write_String_To_Buffer("Test3");
-//		UART2_BUF_O_Write_StringByLength_To_Buffer(last_wod.wod, last_wod.len);
-    ret = send_payload(last_wod.wod, last_wod.len, 1, COMMS_DEFAULT_TIMEOUT_MS);
+    ret = send_payload(last_wod.wod, last_wod.len, 1);
     if(ret > 0)
 		{
       last_wod.tx_cnt++;
@@ -134,16 +130,14 @@ int32_t comms_wod_send(uint8_t bypass_check)
   }
   else
 	{
-	//	UART2_BUF_O_Write_String_To_Buffer("Test4");
     /*
      * Send a WOD with all zeros to the Ground. This will indicate the
      * communication problem with the OBC
      */
-		//UART2_BUF_O_Write_StringByLength_To_Buffer(last_wod.wod, last_wod.len);
-    memset(last_wod.wod, 0, WOD_SIZE);
-    ret = send_payload(last_wod.wod, WOD_SIZE, 1, COMMS_DEFAULT_TIMEOUT_MS);
+		char* data = " Hello From UPSAT WOD: OBC is not Connected or the connection got a trouble, now i will write a long string so that we get 332 \n\nHello From UPSAT WOD: OBC is not Connected or the connection got a trouble, now i almost done \n\n\n\n         ";
+    memcpy(last_wod.wod, data, WOD_SIZE);
+    ret = send_payload(last_wod.wod, WOD_SIZE, 1);
   }
-	//UART2_BUF_O_Write_String_To_Buffer("Test5");
   return ret;
 }
 /**

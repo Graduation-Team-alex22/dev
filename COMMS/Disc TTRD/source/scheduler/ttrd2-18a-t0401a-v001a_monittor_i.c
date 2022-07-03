@@ -330,22 +330,22 @@ void MONITTORi_Disable(void)
 
 -*----------------------------------------------------------------------------*/
 void SysTick_Handler(void)
-   {
+{
    // Check the current mode
    if (PROCESSOR_Get_MoSt() == STARTUP_06a_MONITTOR_ORUN_CHECK_M)
-      {
+		{
       // This is expected behaviour in this mode (run-time test)
       PROCESSOR_Store_Reqd_MoSt(STARTUP_06b_MONITTOR_URUN_CHECK_M);
       PROCESSOR_Store_PFC(PFC_NO_FAULT);
       PROCESSOR_Change_MoSt();
-      }
+		}
    else
-      {
+		{
       // This is *not* expected behaviour
       // Treated as a Fatal Platform Failure
       PROCESSOR_Perform_Safe_Shutdown(PFC_MONITTOR_OVERRUN);
-      }
-   }
+		}
+}
 
 /*----------------------------------------------------------------------------*-
   ------------------------------ END OF FILE ---------------------------------

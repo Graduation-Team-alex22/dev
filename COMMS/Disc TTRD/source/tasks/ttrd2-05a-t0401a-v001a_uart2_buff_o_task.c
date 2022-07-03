@@ -56,7 +56,7 @@
 // ------ Private constants --------------------------------------------------
 #define ARRAY_LEN(x)            (sizeof(x) / sizeof((x)[0]))
 // The transmit buffer length
-#define UART2_TX_BUFFER_SIZE_BYTES 4000
+#define UART2_TX_BUFFER_SIZE_BYTES 6000
 #define UART2_RX_BUFFER_SIZE_BYTES 4000
 char * data="Hello TTRD\n";
 uint8_t UART2_Flag=0;
@@ -543,8 +543,15 @@ void     UART2_BUF_O_Write_pkt_To_Buffer(tc_tm_pkt *pkt)
 	UART2_BUF_O_Write_Number02_To_Buffer(pkt->ser_subtype);
 	UART2_BUF_O_Write_String_To_Buffer("\npkt->verification_state: ");
 	UART2_BUF_O_Write_Number04_To_Buffer(pkt->verification_state);
+//	UART2_BUF_O_Write_String_To_Buffer("\npkt->data: ");
+//	UART2_BUF_O_Write_StringByLength_To_Buffer(pkt->data,pkt->len);
 	UART2_BUF_O_Write_String_To_Buffer("\npkt->data: ");
-	UART2_BUF_O_Write_StringByLength_To_Buffer(pkt->data,sizeof(pkt->data));
+	//UART2_BUF_O_Write_String_To_Buffer((const char*)pkt->data);
+	for(int i = 0; i < pkt->len; i++) 
+	{
+		uint8_t d = pkt->data[i];
+		UART2_BUF_O_Write_Char_To_Buffer(pkt->data[i]);
+	}
 	UART2_BUF_O_Write_String_To_Buffer("\n/*********************** End of Packet ***************************************/\n");
 }
 void UART2_BUF_O_Write_StringByLength_To_Buffer(const void* data, size_t len)
@@ -605,6 +612,7 @@ void UART2_BUF_O_Write_Char_To_Buffer(const char CHARACTER)
 		}
 	else
 		{
+			UART2_BUF_O_Write_String_To_Buffer("\nSize Error");
 		// Write buffer is full
 		// No error handling / reporting here (characters may be lost)
 		// Adapt as required to meet the needs of your application
@@ -649,26 +657,62 @@ void UART2_BUF_O_Write_Char_To_Buffer(const char CHARACTER)
 
 -*----------------------------------------------------------------------------*/
 void UART2_BUF_O_Write_Number10_To_Buffer(const uint32_t DATA)
-   {
-   char Digit[11];
+{
+	char Digit[11];
 
-   __disable_irq();
-   Digit[10] = '\0';  // Null terminator
-   Digit[9]  = 48 + (DATA % 10);
-   Digit[8]  = 48 + ((DATA/10) % 10);
-   Digit[7]  = 48 + ((DATA/100) % 10);
-   Digit[6]  = 48 + ((DATA/1000) % 10);
-   Digit[5]  = 48 + ((DATA/10000) % 10);
-   Digit[4]  = 48 + ((DATA/100000) % 10);
-   Digit[3]  = 48 + ((DATA/1000000) % 10);
-   Digit[2]  = 48 + ((DATA/10000000) % 10);
-   Digit[1]  = 48 + ((DATA/100000000) % 10);
-   Digit[0]  = 48 + ((DATA/1000000000) % 10);
-   __enable_irq();
+	__disable_irq();
+	Digit[10] = '\0';  // Null terminator
+	Digit[9]  = 48 + (DATA % 10);
+	Digit[8]  = 48 + ((DATA/10) % 10);
+	Digit[7]  = 48 + ((DATA/100) % 10);
+	Digit[6]  = 48 + ((DATA/1000) % 10);
+	Digit[5]  = 48 + ((DATA/10000) % 10);
+	Digit[4]  = 48 + ((DATA/100000) % 10);
+	Digit[3]  = 48 + ((DATA/1000000) % 10);
+	Digit[2]  = 48 + ((DATA/10000000) % 10);
+	Digit[1]  = 48 + ((DATA/100000000) % 10);
+	Digit[0]  = 48 + ((DATA/1000000000) % 10);
+	__enable_irq();
 
-   UART2_BUF_O_Write_String_To_Buffer(Digit);
-   }
+	UART2_BUF_O_Write_String_To_Buffer(Digit);
+}
+void UART2_BUF_O_Write_Signed_Number_To_Buffer(int32_t DATA)
+{
+	char Digit[11];
+	__disable_irq();
+	if(DATA > 0)
+	{
+		Digit[10] = '\0';  // Null terminator
+		Digit[9]  = 48 + (DATA % 10);
+		Digit[8]  = 48 + ((DATA/10) % 10);
+		Digit[7]  = 48 + ((DATA/100) % 10);
+		Digit[6]  = 48 + ((DATA/1000) % 10);
+		Digit[5]  = 48 + ((DATA/10000) % 10);
+		Digit[4]  = 48 + ((DATA/100000) % 10);
+		Digit[3]  = 48 + ((DATA/1000000) % 10);
+		Digit[2]  = 48 + ((DATA/10000000) % 10);
+		Digit[1]  = 48 + ((DATA/100000000) % 10);
+		Digit[0]  = 48 + ((DATA/1000000000) % 10);
+	}
+	else
+	{
+		DATA = ~DATA+1;
+		Digit[6] = '\0';  // Null terminator
+		Digit[5]  = '-'; //
+		Digit[4]  = 48 + (DATA % 10);
+		Digit[3]  = 48 + ((DATA/10) % 10);
+		Digit[2]  = 48 + ((DATA/100) % 10);
+		Digit[1]  = 48 + ((DATA/1000) % 10);
+		Digit[0]  = 48 + ((DATA/10000) % 10);
+//		Digit[2]  = 48 + ((DATA/100000) % 10);
+//		Digit[1]  = 48 + ((DATA/1000000) % 10);
+//		Digit[0]  = 48 + ((DATA/10000000) % 10);
+		
+	}
+	__enable_irq();
 
+	UART2_BUF_O_Write_String_To_Buffer(Digit);
+}
 /*----------------------------------------------------------------------------*-
 
   UART2_BUF_O_Write_Number04_To_Buffer()

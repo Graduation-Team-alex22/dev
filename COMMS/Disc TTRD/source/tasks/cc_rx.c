@@ -171,10 +171,6 @@ uint32_t CC_RX_update(void)
 		CC_RX_DMA_CHECK();
 		CC_RX_SET_Parameters();
 	}
-	else
-	{// need here to make init function for automatic setting values
-		//CC_RX
-	}		
 	return Return_value;
 }	
 
@@ -299,11 +295,10 @@ int32_t  CC_RX_data_packet(uint8_t *out, size_t max_len)
 	{
 		UART2_BUF_O_Write_String_To_Buffer("\nSize Error:");
 		UART2_BUF_O_Write_String_To_Buffer("\n--> Size:");
-		UART2_BUF_O_Write_Number10_To_Buffer(length);
+		UART2_BUF_O_Write_Signed_Number_To_Buffer(length);
 		UART2_BUF_O_Write_String_To_Buffer("\n");
 		length=AX25_MAX_FRAME_LEN;
 	}
-	//memset(out,'\0',max_len);
 	memcpy(out, data, length);
 	return length;
 }
@@ -316,7 +311,7 @@ void CC_RX_Clear_Command(void)
 	CC_RX_SP_Command[3]='\0';
 	CC_RX_SP_Command[4]='\0';
 }
-void  	 CC_RX_SET_Parameters(void)
+void CC_RX_SET_Parameters(void)
 {
 	if(CC_RX_FLAGS.SetParam_Flag == 1)
 	{
@@ -514,27 +509,27 @@ void  	 CC_RX_SET_Parameters(void)
 
 -*----------------------------------------------------------------------------*/
 void CC_RX_BUF_O_Check_Data_Integrity(void)
-   {
-   // Check the UART register configuration
-   REG_CONFIG_CHECKS_UART_Check(USART3); 
+{
+	// Check the UART register configuration
+	REG_CONFIG_CHECKS_UART_Check(USART3); 
 
-   // Check integrity of 'waiting' index
-   if ((CC_RX_Wait_idx_g != (~CC_RX_Wait_idx_ig)))
-      {
-      // Data have been corrupted: Treat here as Fatal Platform Failure
-      PROCESSOR_Perform_Safe_Shutdown(PFC_LONG_TERM_DATA_CORRUPTION);
-      }          
+	// Check integrity of 'waiting' index
+	if ((CC_RX_Wait_idx_g != (~CC_RX_Wait_idx_ig)))
+	{
+		// Data have been corrupted: Treat here as Fatal Platform Failure
+		PROCESSOR_Perform_Safe_Shutdown(PFC_LONG_TERM_DATA_CORRUPTION);
+	}          
 
-   // Check integrity of data in Tx buffer
-   for (uint32_t i = 0; i < CC_RX_TX_BUFFER_SIZE_BYTES; i++)  
-      {
-      if ((CC_RX_Tx_buffer_g[i] != ((char) ~CC_RX_Tx_buffer_ig[i])))
-         {
-         // Data have been corrupted: Treat here as Fatal Platform Failure
-         PROCESSOR_Perform_Safe_Shutdown(PFC_LONG_TERM_DATA_CORRUPTION);
-         }            
-      }
-   }
+	// Check integrity of data in Tx buffer
+	for (uint32_t i = 0; i < CC_RX_TX_BUFFER_SIZE_BYTES; i++)  
+	{
+		if ((CC_RX_Tx_buffer_g[i] != ((char) ~CC_RX_Tx_buffer_ig[i])))
+		 {
+			 // Data have been corrupted: Treat here as Fatal Platform Failure
+			 PROCESSOR_Perform_Safe_Shutdown(PFC_LONG_TERM_DATA_CORRUPTION);
+		 }            
+	}
+}
 
  /*----------------------------------------------------------------------------*-
    
@@ -567,15 +562,14 @@ void CC_RX_BUF_O_Check_Data_Integrity(void)
 void CC_RX_BUF_O_Send_Char(const char CHARACTER)
 {
 	// Check data integrity
-	//CC_RX_BUF_O_Check_Data_Integrity();
+	CC_RX_BUF_O_Check_Data_Integrity();
 
 	// We use a baudrate-dependent timeout (based on T3)
-	//TIMEOUT_T3_USEC_Start();
-	while(USART_GetFlagStatus(USART3, USART_FLAG_TXE) == 0);
-	// while((USART_GetFlagStatus(USART3, USART_FLAG_TXE) == 0) &&(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(CC_RX_Timeout_us_g)));
+	TIMEOUT_T3_USEC_Start();
+	while((USART_GetFlagStatus(USART3, USART_FLAG_TXE) == 0) &&(COUNTING == TIMEOUT_T3_USEC_Get_Timer_State(CC_RX_Timeout_us_g)));
 	USART_SendData(USART3, CHARACTER);
 }
-	 /**----------------------------------------------------------------------------*-
+/**----------------------------------------------------------------------------*-
  * \brief           Check for new data received with DMA
  *
  * Not doing reads fast enough may cause DMA to overflow unread received bytes,
@@ -668,7 +662,6 @@ void CC_RX_PROCESS_DATA(void* data, size_t len)
 				{
 					CC_RX_FLAGS.Start1_Flag=1;	// rises the flag that a frame has started
 					CC_RX_FLAGS.StartPtr1=d;		// take that pointer of the start of the frame
-					CC_RX_FLAGS.Frame_Flag=1;
 				}
 				else if((CC_RX_FLAGS.End1_Flag == 0) && (CC_RX_FLAGS.Start1_Flag ==1))
 				{
@@ -692,7 +685,6 @@ void CC_RX_PROCESS_DATA(void* data, size_t len)
 				{
 					CC_RX_FLAGS.Start2_Flag=1;	// rises the flag that a frame has started
 					CC_RX_FLAGS.StartPtr2=d;		// take that pointer of the start of the frame
-					CC_RX_FLAGS.Frame_Flag=1;
 				}
 				else if((CC_RX_FLAGS.End2_Flag == 0) && (CC_RX_FLAGS.Start2_Flag ==1))
 				{
@@ -716,7 +708,6 @@ void CC_RX_PROCESS_DATA(void* data, size_t len)
 				{
 					CC_RX_FLAGS.Start3_Flag=1;	// rises the flag that a frame has started
 					CC_RX_FLAGS.StartPtr3=d;		// take that pointer of the start of the frame
-					CC_RX_FLAGS.Frame_Flag=1;
 				}
 				else if((CC_RX_FLAGS.End3_Flag == 0) && (CC_RX_FLAGS.Start3_Flag ==1))
 				{
@@ -766,15 +757,15 @@ void CC_RX_PROCESS_DATA(void* data, size_t len)
 
 -*----------------------------------------------------------------------------*/
 void CC_RX_BUF_O_Write_String_To_Buffer(const char* const STR_PTR)
-   {
+{
    uint32_t i = 0;
 
    while ((STR_PTR[i] != '\0')&&(STR_PTR[i] != '*'))
-      {
+	{
       CC_RX_BUF_O_Write_Char_To_Buffer(STR_PTR[i]);
       i++;
-      }
-   }
+	}
+}
 /*----------------------------------------------------------------------------*-
    
   CC_RX_BUF_O_Write_Char_To_Buffer()
@@ -807,7 +798,7 @@ void CC_RX_BUF_O_Write_String_To_Buffer(const char* const STR_PTR)
 
 -*----------------------------------------------------------------------------*/
 void CC_RX_BUF_O_Write_Char_To_Buffer(const char CHARACTER)
-   {
+{
    // Write to the buffer *only* if there is space
    if (CC_RX_Wait_idx_g < CC_RX_TX_BUFFER_SIZE_BYTES)
       {
@@ -824,7 +815,7 @@ void CC_RX_BUF_O_Write_Char_To_Buffer(const char CHARACTER)
 
    // Update the copy
    CC_RX_Wait_idx_ig = ~CC_RX_Wait_idx_g;
-   }
+}
 	 /*----------------------------------------------------------------------------*-
 
   CC_RX_BUF_O_Send_All_Data()
@@ -861,7 +852,7 @@ void CC_RX_BUF_O_Write_Char_To_Buffer(const char CHARACTER)
 
 -*----------------------------------------------------------------------------*/
 void CC_RX_BUF_O_Send_All_Data(void)
-   {
+{
    // Check data integrity
    CC_RX_BUF_O_Check_Data_Integrity();
 
@@ -878,7 +869,7 @@ void CC_RX_BUF_O_Send_All_Data(void)
    CC_RX_Sent_idx_ig = ~0;
    CC_RX_Wait_idx_g = 0;
    CC_RX_Wait_idx_ig = ~0;
-   }
+}
 	 
 	 
 	 

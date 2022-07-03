@@ -1,12 +1,12 @@
 .\objects\stats.o: ..\source\support_functions\stats.c
 .\objects\stats.o: ..\source\support_functions\stats.h
 .\objects\stats.o: ..\source\support_functions\../main/main.h
-.\objects\stats.o: D:\Keil\ARM\ARMCC\Bin\..\include\string.h
-.\objects\stats.o: D:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\stats.o: D:\Keil\ARM\Compiler5\Bin\..\include\string.h
+.\objects\stats.o: D:\Keil\ARM\Compiler5\Bin\..\include\stddef.h
 .\objects\stats.o: ..\source\support_functions\../main/../hsi_library/misc.h
 .\objects\stats.o: ..\source\support_functions\../main/../hsi_library/stm32f4xx.h
 .\objects\stats.o: ..\source\support_functions\../main/../hsi_library/core_cm4.h
-.\objects\stats.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\stats.o: D:\Keil\ARM\Compiler5\Bin\..\include\stdint.h
 .\objects\stats.o: ..\source\hsi_library\core_cmInstr.h
 .\objects\stats.o: ..\source\hsi_library\core_cmFunc.h
 .\objects\stats.o: ..\source\hsi_library\core_cmSimd.h
@@ -50,7 +50,7 @@
 .\objects\stats.o: ..\source\support_functions\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\stats.o: ..\source\support_functions\../main/../support_functions/stats.h
 .\objects\stats.o: ..\source\support_functions\../main/../support_functions/services.h
-.\objects\stats.o: D:\Keil\ARM\ARMCC\Bin\..\include\math.h
+.\objects\stats.o: D:\Keil\ARM\Compiler5\Bin\..\include\math.h
 .\objects\stats.o: ..\source\support_functions\../main/../support_functions/config.h
 .\objects\stats.o: ..\source\support_functions\../main/../support_functions/upsat.h
 .\objects\stats.o: ..\source\support_functions\../main/../support_functions/../tasks/obc_comm.h
