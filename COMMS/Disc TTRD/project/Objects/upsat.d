@@ -1,12 +1,12 @@
 .\objects\upsat.o: ..\source\support_functions\upsat.c
 .\objects\upsat.o: ..\source\support_functions\upsat.h
 .\objects\upsat.o: ..\source\support_functions\../main/main.h
-.\objects\upsat.o: D:\Keil\ARM\ARMCC\Bin\..\include\string.h
-.\objects\upsat.o: D:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\upsat.o: D:\Keil\ARM\Compiler5\Bin\..\include\string.h
+.\objects\upsat.o: D:\Keil\ARM\Compiler5\Bin\..\include\stddef.h
 .\objects\upsat.o: ..\source\support_functions\../main/../hsi_library/misc.h
 .\objects\upsat.o: ..\source\support_functions\../main/../hsi_library/stm32f4xx.h
 .\objects\upsat.o: ..\source\support_functions\../main/../hsi_library/core_cm4.h
-.\objects\upsat.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\upsat.o: D:\Keil\ARM\Compiler5\Bin\..\include\stdint.h
 .\objects\upsat.o: ..\source\hsi_library\core_cmInstr.h
 .\objects\upsat.o: ..\source\hsi_library\core_cmFunc.h
 .\objects\upsat.o: ..\source\hsi_library\core_cmSimd.h
@@ -50,7 +50,7 @@
 .\objects\upsat.o: ..\source\support_functions\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\upsat.o: ..\source\support_functions\../main/../support_functions/stats.h
 .\objects\upsat.o: ..\source\support_functions\../main/../support_functions/../tasks/ttrd2-05a-t0401a-v001a_adc_task.h
-.\objects\upsat.o: D:\Keil\ARM\ARMCC\Bin\..\include\math.h
+.\objects\upsat.o: D:\Keil\ARM\Compiler5\Bin\..\include\math.h
 .\objects\upsat.o: ..\source\support_functions\../main/../support_functions/wod_handling.h
 .\objects\upsat.o: ..\source\support_functions\../main/../support_functions/ax_25.h
 .\objects\upsat.o: ..\source\support_functions\../main/../support_functions/services.h

@@ -18,11 +18,9 @@ void rx_init(void);
 //update 
 uint32_t rx_update(void);
 
-//Setters
+//Getters
 
-int32_t rx_data_continuous (uint8_t *out, size_t maxlen, size_t timeout_ms);
-
-int32_t rx_data (uint8_t *out, size_t len, size_t timeout_ms);
+int32_t rx_data (uint8_t *out, size_t len);
 
 /***********************************************************************************/
 #elif CC1120

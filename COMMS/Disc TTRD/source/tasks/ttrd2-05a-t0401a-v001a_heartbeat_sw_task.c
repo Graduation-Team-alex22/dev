@@ -86,7 +86,7 @@ void HEARTBEAT_SW_Init(void)
    GPIO_InitTypeDef GPIO_InitStruct;
      
    // Enable GPIOA clock 
-   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+   RCC_AHB1PeriphClockCmd(HEARTBEAT_LED_PORT_RCC, ENABLE);
      
    // Configure port pin for the LED
    GPIO_InitStruct.GPIO_Mode  = GPIO_Mode_OUT;

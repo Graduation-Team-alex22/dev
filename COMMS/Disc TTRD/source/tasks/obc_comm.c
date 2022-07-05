@@ -20,6 +20,11 @@ static char  OBC_C_Tx_buffer2_ig[OBC_C_TX_BUFFER_SIZE_BYTES];  // Inverted copy
 
 static char OBC_C_Rx_buffer_g[OBC_C_RX_BUFFER_SIZE_BYTES];
 static char OBC_C_Rx_buffer_ig[OBC_C_RX_BUFFER_SIZE_BYTES];  // Inverted copy
+
+static uint16_t counter1 =0;
+uint8_t Frame1[OBC_C_RX_BUFFER_SIZE_BYTES];
+static uint16_t counter2 =0;
+uint8_t Frame2[OBC_C_RX_BUFFER_SIZE_BYTES];
  
 // Index of data in the buffer that has not yet been sent (with inv. copy)
 static uint32_t OBC_C_Wait_idx_g  = 0;  
@@ -148,7 +153,7 @@ void OBC_C_BUF_O_Init(uint32_t BAUD_RATE)
 
 	hdma_usart6_tx.DMA_Channel = OBC_C_DMA_Channel;
 	hdma_usart6_tx.DMA_PeripheralBaseAddr = (uint32_t) (&(OBC_C_UARTX->DR)); 
-	hdma_usart6_tx.DMA_Memory0BaseAddr = (uint32_t)OBC_C_Rx_buffer_g;
+	hdma_usart6_tx.DMA_Memory0BaseAddr = (uint32_t)OBC_C_Tx_buffer_g;
 	hdma_usart6_tx.DMA_DIR = DMA_DIR_MemoryToPeripheral;
 	hdma_usart6_tx.DMA_BufferSize = OBC_C_TX_BUFFER_SIZE_BYTES+1;
 	hdma_usart6_tx.DMA_Mode = DMA_Mode_Normal;
@@ -160,9 +165,6 @@ void OBC_C_BUF_O_Init(uint32_t BAUD_RATE)
 	 
 //   Enable USART DMA TX Requsts 
 	 USART_DMACmd(OBC_C_UARTX, USART_DMAReq_Tx, ENABLE);
-//	 while(!DMA_GetCmdStatus(OBC_C_DMA_TX_STREAM))
-//	 {
-//	 };
 	 
 	 // Enable USART DMA RX Requsts
    DMA_Cmd (OBC_C_DMA_RX_STREAM, ENABLE);
@@ -180,15 +182,9 @@ void OBC_C_BUF_O_Init(uint32_t BAUD_RATE)
 		OBC_C_Tx_buffer_ig[i] = (char) ~'X'; 
 		OBC_C_Tx_buffer2_ig[i] =(char) ~'G';
 		}
-//	for (uint32_t i = 0; i < OBC_C_RX_BUFFER_SIZE_BYTES; i++)
-//		{
-//		OBC_C_Rx_buffer_g[i] = 'K';
-//			
-//		OBC_C_Rx_buffer_ig[i] = (char) ~'K'; 
-//		}
+
 	// Store the UART register configuration
-	REG_CONFIG_CHECKS_UART_Store(USART6);
-		
+	REG_CONFIG_CHECKS_UART_Store(USART6);	
 }
 // update
 uint32_t OBC_C_update(void)
@@ -255,8 +251,6 @@ int32_t  OBC_C_data_packet(const uint8_t *data, size_t size, uint8_t *rec_data)
 }
 
 
-
-
 /*----------------------------------------------------------------------------*-
 
   OBC_C_BUF_O_Check_Data_Integrity()
@@ -311,66 +305,7 @@ void OBC_C_BUF_O_Check_Data_Integrity(void)
 		 }            
 	}
 }
-/**----------------------------------------------------------------------------*-
- * \brief           Check for new data received with DMA
- *
- * Not doing reads fast enough may cause DMA to overflow unread received bytes,
- * hence application will lost useful data.
- *
- * Solutions to this are:
- * - Improve architecture design to achieve faster reads
- * - Increase raw buffer size and allow DMA to write more data before this function is called
- */
-void OBC_T_DMA_CHECK(struct _uart_data *uart_data)
-{
-	static uint32_t old_pos=0;
-	uint32_t pos=0;
-	pos = ARRAY_LEN(OBC_C_Rx_buffer_g) - DMA_GetCurrDataCounter(OBC_C_DMA_RX_STREAM);
-	if (pos>=OBC_C_RX_BUFFER_SIZE_BYTES)//OBC_C_RX_BUFFER_SIZE_BYTES
-		pos=0;
-	if (pos != old_pos) /* Check change in received data */
-	{
-		if (pos > old_pos) 
-		{                    /* Current position is over previous one */
-			OBC_T_PROCESS_DATA(&OBC_C_Rx_buffer_g[old_pos], pos - old_pos);		
-		} 
-		else 
-		{
-			OBC_T_PROCESS_DATA(&OBC_C_Rx_buffer_g[old_pos], ARRAY_LEN(OBC_C_Rx_buffer_g) - old_pos);
-			if (pos > 0) 
-			{
-				OBC_T_PROCESS_DATA(&OBC_C_Rx_buffer_g[0], pos);
-			}
-		}
-		old_pos = pos;                          /* Save current position as old for next transfers */
-	}  
-}
-void OBC_C_DMA_CHECK(struct _uart_data *uart_data)
-{
-//static uint32_t old_pos=0;
-//uint32_t pos=0;
-////__HAL_DMA_GET_COUNTER(Sucess) IS_DMA_BUFFER_SIZE  IS_DMA_PERIPHERAL_DATA_SIZE  IS_DMA_MEMORY_DATA_SIZE
-//pos = ARRAY_LEN(OBC_C_Rx_buffer_g) - DMA_GetCurrDataCounter(OBC_C_DMA_RX_STREAM);
-//if (pos>=OBC_C_RX_BUFFER_SIZE_BYTES)//OBC_C_RX_BUFFER_SIZE_BYTES
-// pos=0;  
-// if (pos != old_pos) 
-// {                       /* Check change in received data */
-//	 //UART2_BUF_O_Write_String_To_Buffer("DMA got msg\n");
-//		if (pos > old_pos) 
-//		{                    /* Current position is over previous one */
-//			OBC_C_PROCESS_DATA(&OBC_C_Rx_buffer_g[old_pos], pos - old_pos, uart_data, old_pos, pos);
-//		} 
-//		else 
-//		{
-//			OBC_C_PROCESS_DATA(&OBC_C_Rx_buffer_g[old_pos], ARRAY_LEN(OBC_C_Rx_buffer_g) - old_pos, uart_data, old_pos, pos);
-//			if ((pos > 0) && (OBC_C_DMA_flag == 0)) 
-//			{
-//				OBC_C_PROCESS_DATA(&OBC_C_Rx_buffer_g[0], pos, uart_data, old_pos, pos);
-//			}
-//		}
-//		old_pos = pos;                          /* Save current position as old for next transfers */
-//	}
-}
+
 /**
  * \brief           Process received data over UART
  * \note            Either process them directly or copy to other bigger buffer
@@ -386,9 +321,10 @@ void OBC_C_DMA_CHECK(struct _uart_data *uart_data)
  * \param[in]       data: Data to process
  * \param[in]       len: Length in units of bytes
  */
-void OBC_T_PROCESS_DATA(void* data, size_t len)
+void OBC_C_PROCESS_DATA(void* data, size_t len)
 {
 	uint8_t* d = data;
+
 	for ( ;len > 0;len--, ++d)
 	{
 		if(OBC_C_FLAGS.SetParam_Flag)
@@ -405,13 +341,12 @@ void OBC_T_PROCESS_DATA(void* data, size_t len)
 			UART2_BUF_O_Write_String_To_Buffer("\nOBC_RX:rcvd 7E\n");
 			if(OBC_C_FLAGS.ID_Flag == 1)
 			{
-				UART2_BUF_O_Write_String_To_Buffer("Hello 1\n");
 				if((OBC_C_FLAGS.End1_Flag == 0) && (OBC_C_FLAGS.Start1_Flag ==0))
 				{
-					UART2_BUF_O_Write_String_To_Buffer("Hello 2\n");
+					counter1 =0;
+					Frame1[counter1++]=0x7E;
 					OBC_C_FLAGS.Start1_Flag=1;	// rises the flag that a frame has started
 					OBC_C_FLAGS.StartPtr1=d;		// take that pointer of the start of the frame
-					OBC_C_FLAGS.Frame_Flag=1;
 				}
 				else if((OBC_C_FLAGS.End1_Flag == 0) && (OBC_C_FLAGS.Start1_Flag ==1))
 				{
@@ -419,13 +354,15 @@ void OBC_T_PROCESS_DATA(void* data, size_t len)
 					OBC_C_FLAGS.EndPtr1=d;		// take that pointer of the end of the frame
 					OBC_C_FLAGS.ID_Flag = 2;
 					OBC_C_DMA_flag =1;
+					Frame1[counter1++]=0x7E;
+					Frame1[counter1]='\0';
 					UART2_BUF_O_Write_String_To_Buffer("msg rcvd1\n");
 				}
 				else
 				{
 					UART2_BUF_O_Write_String_To_Buffer("CC_RX:Frame Error 1\n");
 					OBC_C_FLAGS.Error_Flag=1;
-					
+					counter1=0;
 					OBC_C_FLAGS.End1_Flag=0;
 					OBC_C_FLAGS.Start1_Flag=0;
 				}
@@ -434,169 +371,44 @@ void OBC_T_PROCESS_DATA(void* data, size_t len)
 			{
 				if((OBC_C_FLAGS.End2_Flag == 0) && (OBC_C_FLAGS.Start2_Flag ==0))
 				{
+					counter2 =0;
+					Frame2[counter2++]=0x7E;
 					OBC_C_FLAGS.Start2_Flag=1;	// rises the flag that a frame has started
 					OBC_C_FLAGS.StartPtr2=d;		// take that pointer of the start of the frame
-					OBC_C_FLAGS.Frame_Flag=1;
 				}
 				else if((OBC_C_FLAGS.End2_Flag == 0) && (OBC_C_FLAGS.Start2_Flag ==1))
 				{
 					OBC_C_FLAGS.End2_Flag=1;	// rises the flag that a frame has ended
 					OBC_C_FLAGS.EndPtr2=d;		// take that pointer of the end of the frame
-					OBC_C_FLAGS.ID_Flag = 3;
+					OBC_C_FLAGS.ID_Flag = 1;
 					OBC_C_DMA_flag =1;
+					Frame2[counter2++]=0x7E;
+					Frame2[counter2]='\0';
 					UART2_BUF_O_Write_String_To_Buffer("msg rcvd2\n");
 				}
 				else
 				{
 					UART2_BUF_O_Write_String_To_Buffer("CC_RX:Frame Error 2\n");
 					OBC_C_FLAGS.Error_Flag=1;
-
+					counter2=0;
 					OBC_C_FLAGS.End2_Flag=0;
 					OBC_C_FLAGS.Start2_Flag=0;
 				}
 			}
-			else if(OBC_C_FLAGS.ID_Flag == 3)
-			{
-				if((OBC_C_FLAGS.End3_Flag == 0) && (OBC_C_FLAGS.Start3_Flag ==0))
-				{
-					OBC_C_FLAGS.Start3_Flag=1;	// rises the flag that a frame has started
-					OBC_C_FLAGS.StartPtr3=d;		// take that pointer of the start of the frame
-					OBC_C_FLAGS.Frame_Flag=1;
-				}
-				else if((OBC_C_FLAGS.End3_Flag == 0) && (OBC_C_FLAGS.Start3_Flag ==1))
-				{
-					OBC_C_FLAGS.End3_Flag=1;	// rises the flag that a frame has ended
-					OBC_C_FLAGS.EndPtr3=d;		// take that pointer of the end of the frame
-					OBC_C_FLAGS.ID_Flag = 1;
-					OBC_C_DMA_flag =1;
-					UART2_BUF_O_Write_String_To_Buffer("msg rcvd3\n");
-				}
-				else
-				{
-					UART2_BUF_O_Write_String_To_Buffer("CC_RX:Frame Error 3\n");
-					OBC_C_FLAGS.Error_Flag=1;
 
-					OBC_C_FLAGS.End3_Flag=0;
-					OBC_C_FLAGS.Start3_Flag=0;
-				}
+		}
+		else
+		{
+			if((OBC_C_FLAGS.ID_Flag == 1)&&(OBC_C_FLAGS.Start1_Flag==1)&&(OBC_C_FLAGS.End1_Flag==0))
+			{
+					Frame1[counter1++] =*d;
+			}
+			if((OBC_C_FLAGS.ID_Flag == 2)&&(OBC_C_FLAGS.Start2_Flag==1)&&(OBC_C_FLAGS.End2_Flag==0))
+			{
+					Frame2[counter2++] =*d;
 			}
 		}
 	}
-}
-void OBC_C_PROCESS_DATA(const void* data, size_t len, struct _uart_data *uart_data, uint32_t old_pos, uint32_t pos)
-{
-//	const uint8_t* d = data;
-//	uint8_t c = len;
-//	uint8_t err =0;
-//	
-//	for ( uint32_t i =0; len > 0; len-- ,++d ,++i )
-//	{
-//		if( (c == len) && (*d == HLDLC_START_FLAG) )
-//		{
-//			uart_data->uart_buf[i] = *d;
-//		//  UART2_BUF_O_Write_String_To_Buffer("DMA got msg\n");
-//		}
-//		else if(*d == HLDLC_START_FLAG)
-//		{
-//		 //UART2_BUF_O_Write_String_To_Buffer("DMA got msg\n");
-//			uart_data->uart_buf[i] = *d;
-//			OBC_C_size = i+1;
-//			if(pos > old_pos)
-//			{
-//			 old_pos = old_pos + OBC_C_size +err;
-//			 //UART2_BUF_O_Write_String_To_Buffer("DMA got msg\n");
-//			 OBC_C_DMA_flag = 1;
-//			}
-//			else if((pos < old_pos) && (old_pos +i < OBC_C_RX_BUFFER_SIZE_BYTES))
-//			{
-//			 old_pos = old_pos +OBC_C_size +err;
-//			 OBC_C_DMA_flag = 1;
-//			}
-//			else if(pos > 0)
-//			{
-//				old_pos = OBC_C_size +err;
-//				OBC_C_DMA_flag = 1;
-//			}
-//			break;
-//	  }
-//		else if( c > len )
-//		{
-//			uart_data->uart_buf[i] = *d;
-//		}
-//		else
-//		{
-//			i--;
-//			len++;
-//			err++;
-//		}
-//	}
-}
-SAT_returnState OBC_C_UART_recv(struct _uart_data *uart_data) 
-{
-	if(OBC_C_DMA_flag)
-	{
-		uint8_t* data;
-		int32_t length;
-		if(OBC_C_FLAGS.ID_Flag == 2)// frame recvd from 1
-		{
-			UART2_BUF_O_Write_String_To_Buffer("\nOBC_C_UART_recv1");
-			length = OBC_C_FLAGS.EndPtr1 - OBC_C_FLAGS.StartPtr1+1;
-			data = OBC_C_FLAGS.StartPtr1;
-			
-			
-			// clearing the frame parameters
-			OBC_C_FLAGS.End1_Flag=0;
-			OBC_C_FLAGS.EndPtr1=0;
-			OBC_C_FLAGS.Length1=0;
-			OBC_C_FLAGS.Start1_Flag=0;
-			OBC_C_FLAGS.StartPtr1=0;
-		}
-		else if(OBC_C_FLAGS.ID_Flag == 3)// frame recvd from 2
-		{
-			UART2_BUF_O_Write_String_To_Buffer("\nOBC_C_UART_recv2");
-			length = OBC_C_FLAGS.EndPtr2 - OBC_C_FLAGS.StartPtr2+1;
-			data = OBC_C_FLAGS.StartPtr2;
-
-
-			// clearing the frame parameters
-			OBC_C_FLAGS.Start2_Flag=0;
-			OBC_C_FLAGS.End2_Flag=0;
-			OBC_C_FLAGS.StartPtr2=0;
-			OBC_C_FLAGS.EndPtr2=0;
-			OBC_C_FLAGS.Length2=0;
-		}
-		else if (OBC_C_FLAGS.ID_Flag == 1)// frame recvd from 3
-		{
-			UART2_BUF_O_Write_String_To_Buffer("\nOBC_C_UART_recv3");
-			length = OBC_C_FLAGS.EndPtr3 - OBC_C_FLAGS.StartPtr3+1;
-			data = OBC_C_FLAGS.StartPtr3;
-			
-			// clearing the frame parameters
-			OBC_C_FLAGS.Start3_Flag=0;
-			OBC_C_FLAGS.End3_Flag=0;
-			OBC_C_FLAGS.StartPtr3=0;
-			OBC_C_FLAGS.EndPtr3=0;
-			OBC_C_FLAGS.Length3=0;
-		}
-		UART2_BUF_O_Write_String_To_Buffer("\n--> Size:");
-		UART2_BUF_O_Write_Number04_To_Buffer(length);
-		UART2_BUF_O_Write_String_To_Buffer("\n");
-		if(length > AX25_MAX_FRAME_LEN) // here need to make a request for the corrupted packet
-		{
-			UART2_BUF_O_Write_String_To_Buffer("\nSize Error:");
-			UART2_BUF_O_Write_String_To_Buffer("\n--> Size:");
-			UART2_BUF_O_Write_Number10_To_Buffer(length);
-			UART2_BUF_O_Write_String_To_Buffer("\n");
-			length=AX25_MAX_FRAME_LEN;
-		}
-		
-		UART2_BUF_O_Write_String_To_Buffer("OBC_C_UART_recv\n");
-		uart_data->uart_size = length;
-		memcpy(uart_data->uart_unpkt_buf, data, length);
-		OBC_C_DMA_flag = 0;
-		return SATR_EOT;
-	}
-	return SATR_OK;
 }
 void OBC_C_UART_send( uint8_t *buf, uint16_t size) 
 {
@@ -786,10 +598,93 @@ void OBC_C_BUF_O_Send_All_Data(void)
 	}
 }
 
+// Getters
+/**----------------------------------------------------------------------------*-
+ * \brief           Check for new data received with DMA
+ *
+ * Not doing reads fast enough may cause DMA to overflow unread received bytes,
+ * hence application will lost useful data.
+ *
+ * Solutions to this are:
+ * - Improve architecture design to achieve faster reads
+ * - Increase raw buffer size and allow DMA to write more data before this function is called
+ */
+void OBC_C_DMA_CHECK(struct _uart_data *uart_data)
+{
+	static uint32_t old_pos=0;
+	uint32_t pos=0;
+	pos = ARRAY_LEN(OBC_C_Rx_buffer_g) - DMA_GetCurrDataCounter(OBC_C_DMA_RX_STREAM);
+	if (pos >= OBC_C_RX_BUFFER_SIZE_BYTES)
+		pos-=OBC_C_RX_BUFFER_SIZE_BYTES;
+	if (pos != old_pos) /* Check change in received data */
+	{
+//		UART2_BUF_O_Write_String_To_Buffer("Pos: ");
+//		UART2_BUF_O_Write_Number10_To_Buffer(pos);
+//		UART2_BUF_O_Write_String_To_Buffer("\n\n");
+		if (pos > old_pos) 
+		{                    /* Current position is over previous one */
+			OBC_C_PROCESS_DATA(&OBC_C_Rx_buffer_g[old_pos], pos - old_pos);		
+		} 
+		else 
+		{
+			OBC_C_PROCESS_DATA(&OBC_C_Rx_buffer_g[old_pos], ARRAY_LEN(OBC_C_Rx_buffer_g) - old_pos);
+			if (pos > 0) 
+			{
+				OBC_C_PROCESS_DATA(&OBC_C_Rx_buffer_g[0], pos);
+			}
+		}
+		old_pos = pos;                          /* Save current position as old for next transfers */
 
+	}
+}
 
+SAT_returnState OBC_C_UART_recv(struct _uart_data *uart_data) 
+{
+	if(OBC_C_DMA_flag)
+	{
+		int32_t length;
+		if(OBC_C_FLAGS.ID_Flag == 2)// frame recvd from 1
+		{
+			UART2_BUF_O_Write_String_To_Buffer("\nOBC_C_UART_recv1");
+			length = counter1;
+			// clearing the frame parameters
+			OBC_C_FLAGS.End1_Flag=0;
+			OBC_C_FLAGS.EndPtr1=0;
+			OBC_C_FLAGS.Length1=0;
+			OBC_C_FLAGS.Start1_Flag=0;
+			OBC_C_FLAGS.StartPtr1=0;
+		}
+		else if(OBC_C_FLAGS.ID_Flag == 1)// frame recvd from 2
+		{
+			UART2_BUF_O_Write_String_To_Buffer("\nOBC_C_UART_recv2");
+			length = counter2;
+			// clearing the frame parameters
+			OBC_C_FLAGS.Start2_Flag=0;
+			OBC_C_FLAGS.End2_Flag=0;
+			OBC_C_FLAGS.StartPtr2=0;
+			OBC_C_FLAGS.EndPtr2=0;
+			OBC_C_FLAGS.Length2=0;
+		}
+		if(length > OBC_C_RX_BUFFER_SIZE_BYTES) // here need to make a request for the corrupted packet
+		{
+			UART2_BUF_O_Write_String_To_Buffer("\nSize Error:");
+			UART2_BUF_O_Write_String_To_Buffer("\n--> Size:");
+			UART2_BUF_O_Write_Signed_Number_To_Buffer(length);
+			UART2_BUF_O_Write_String_To_Buffer("\n");
+			length=OBC_C_RX_BUFFER_SIZE_BYTES;
+		}
 
-
+		uart_data->uart_size = length;
+		if(OBC_C_FLAGS.ID_Flag == 2)// frame recvd from 1
+			memcpy(uart_data->uart_unpkt_buf, Frame1, length);
+		else if(OBC_C_FLAGS.ID_Flag == 1)// frame recvd from 2
+			memcpy(uart_data->uart_unpkt_buf, Frame2, length);
+		
+		OBC_C_DMA_flag = 0;
+		return SATR_EOT;
+	}
+	return SATR_OK;
+}
 
 
 

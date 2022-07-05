@@ -1,11 +1,11 @@
 .\objects\tickcounter.o: ..\source\tasks\TickCounter.c
 .\objects\tickcounter.o: ..\source\tasks\../main/main.h
-.\objects\tickcounter.o: D:\Keil\ARM\ARMCC\Bin\..\include\string.h
-.\objects\tickcounter.o: D:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\tickcounter.o: D:\Keil\ARM\Compiler5\Bin\..\include\string.h
+.\objects\tickcounter.o: D:\Keil\ARM\Compiler5\Bin\..\include\stddef.h
 .\objects\tickcounter.o: ..\source\tasks\../main/../hsi_library/misc.h
 .\objects\tickcounter.o: ..\source\tasks\../main/../hsi_library/stm32f4xx.h
 .\objects\tickcounter.o: ..\source\tasks\../main/../hsi_library/core_cm4.h
-.\objects\tickcounter.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\tickcounter.o: D:\Keil\ARM\Compiler5\Bin\..\include\stdint.h
 .\objects\tickcounter.o: ..\source\hsi_library\core_cmInstr.h
 .\objects\tickcounter.o: ..\source\hsi_library\core_cmFunc.h
 .\objects\tickcounter.o: ..\source\hsi_library\core_cmSimd.h
@@ -49,7 +49,7 @@
 .\objects\tickcounter.o: ..\source\tasks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\tickcounter.o: ..\source\tasks\../main/../support_functions/stats.h
 .\objects\tickcounter.o: ..\source\tasks\../main/../support_functions/../tasks/ttrd2-05a-t0401a-v001a_adc_task.h
-.\objects\tickcounter.o: D:\Keil\ARM\ARMCC\Bin\..\include\math.h
+.\objects\tickcounter.o: D:\Keil\ARM\Compiler5\Bin\..\include\math.h
 .\objects\tickcounter.o: ..\source\tasks\../main/../support_functions/wod_handling.h
 .\objects\tickcounter.o: ..\source\tasks\../main/../support_functions/ax_25.h
 .\objects\tickcounter.o: ..\source\tasks\../main/../support_functions/services.h

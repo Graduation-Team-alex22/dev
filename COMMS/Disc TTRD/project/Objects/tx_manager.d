@@ -1,12 +1,12 @@
 .\objects\tx_manager.o: ..\source\tasks\tx_manager.c
 .\objects\tx_manager.o: ..\source\tasks\tx_manager.h
 .\objects\tx_manager.o: ..\source\tasks\../main/main.h
-.\objects\tx_manager.o: D:\Keil\ARM\ARMCC\Bin\..\include\string.h
-.\objects\tx_manager.o: D:\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\tx_manager.o: D:\Keil\ARM\Compiler5\Bin\..\include\string.h
+.\objects\tx_manager.o: D:\Keil\ARM\Compiler5\Bin\..\include\stddef.h
 .\objects\tx_manager.o: ..\source\tasks\../main/../hsi_library/misc.h
 .\objects\tx_manager.o: ..\source\tasks\../main/../hsi_library/stm32f4xx.h
 .\objects\tx_manager.o: ..\source\tasks\../main/../hsi_library/core_cm4.h
-.\objects\tx_manager.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\tx_manager.o: D:\Keil\ARM\Compiler5\Bin\..\include\stdint.h
 .\objects\tx_manager.o: ..\source\hsi_library\core_cmInstr.h
 .\objects\tx_manager.o: ..\source\hsi_library\core_cmFunc.h
 .\objects\tx_manager.o: ..\source\hsi_library\core_cmSimd.h
@@ -50,7 +50,7 @@
 .\objects\tx_manager.o: ..\source\tasks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\tx_manager.o: ..\source\tasks\../main/../support_functions/stats.h
 .\objects\tx_manager.o: ..\source\tasks\../main/../support_functions/../tasks/ttrd2-05a-t0401a-v001a_adc_task.h
-.\objects\tx_manager.o: D:\Keil\ARM\ARMCC\Bin\..\include\math.h
+.\objects\tx_manager.o: D:\Keil\ARM\Compiler5\Bin\..\include\math.h
 .\objects\tx_manager.o: ..\source\tasks\../main/../support_functions/wod_handling.h
 .\objects\tx_manager.o: ..\source\tasks\../main/../support_functions/ax_25.h
 .\objects\tx_manager.o: ..\source\tasks\../main/../support_functions/services.h

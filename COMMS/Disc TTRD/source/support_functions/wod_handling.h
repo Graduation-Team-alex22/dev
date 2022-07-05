@@ -16,8 +16,7 @@
  */
 #define WOD_MAX_DATASETS 32
 
-#define WOD_SIZE (sizeof(uint32_t)				\
-	+ ((WOD_DATASET_SIZE*8+1) * WOD_MAX_DATASETS / 8))
+#define WOD_SIZE (sizeof(uint32_t)+ ((WOD_DATASET_SIZE*8+1) * WOD_MAX_DATASETS / 8))
 
 /**
  * WOD packet as it handled inside the COMMS
@@ -74,3 +73,4 @@ void store_ex_wod_obc(const uint8_t *obc_wod, size_t len);
 
 
 #endif /* INC_WOD_HANDLING_H_ */
+

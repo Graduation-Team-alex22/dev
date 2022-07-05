@@ -3,26 +3,37 @@
 		At the moment am working on the next functions at the destination
 		
   ----------------------------------------------------------------------------
-	 1) rx_update DONE
-	 2) cc_tx_data_continuous redesign @ tx_data DONE
-   3) import_pkt -->(implement UART5&its DMA, HLDLC_deframe, HAL_uart_rx) DONE
+	 1) rx_update 																		DONE
+	 2) cc_tx_data_continuous redesign @ tx_data 																						 DONE
+   3) import_pkt -->(implement UART5&its DMA, HLDLC_deframe, HAL_uart_rx) 								 DONE
 	 4) export_pkt -->(implement UART5&its DMA, HLDLC_frame, HAL_uart_tx, HAL_uart_tx_check) DONE
-	 ---> implement UART5&its DMA  DONE 
-	 ---> HLDLC_deframe, HLDLC_frame  DONE
-	 ---> HAL_uart_rx, HAL_uart_tx DONE
+	 ---> implement UART5&its DMA  										DONE 
+	 ---> HLDLC_deframe, HLDLC_frame									DONE
+	 ---> HAL_uart_rx, HAL_uart_tx 										DONE
 	 5) Add the update & Init functions working on it DONE
 	 6) testing the code and verify everything is working <--------------- this will act as the end of the code
-	 ---> sysrefresh is working fine
-	 ---> exporting packet is working fine			DONE
-	 ---> tx to ground working fine  		DONE
-	 ---> rx from ground working fine   DONE
-	 --->created packet sucessfully without data DONE
+	 ---> sysrefresh is working fine									DONE
+	 ---> exporting packet is working fine						DONE
+	 ---> tx to ground working fine  									DONE
+	 ---> rx from ground working fine  								DONE
+	 --->created packet sucessfully without data 			DONE
 	 ---> create packet with data
 	 6) CMD&CTRL for the CC1101_UART modules 
-	 7) Morse on-off symbols transmit function is a pluse
-		
-		i have commented comms_read_persistent_word and flash functions
--*----------------------------------------------------------------------------*/
+	 7) Morse on-off symbols transmit function is a pluse  (not good idea -> edited) @ref CW_TASK_REF
+	 8) need to add a print for negative numbers 		  DONE
+	 9) Ground station RX tasks:
+	 ---> decode a saved packet												DONE
+	 ---> get data from serial port										DONE
+	 ---> split data into Packets											DONE
+	 --->	decode packets from the serial							DONE
+	 ---> extract the payload											need some work from the other systems
+	 ---> display the data 												need some work from the other systems
+	 10) Ground station TX tasks:
+	 
+	 
+	 
+	 ---> check some parts of code								@ref FLASH_CHECK, check_rf_switch_cmd
+\-*----------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------*-
 
    main.h (Release 2017-08-17a)

@@ -6,7 +6,7 @@
 #define __FILE_ID__ 25
 
 //extern SAT_returnState verification_app (tc_tm_pkt *pkt);
-extern int32_t send_payload (const uint8_t *in, size_t len, uint8_t is_wod, size_t timeout_ms);
+extern int32_t send_payload (const uint8_t *in, size_t len, uint8_t is_wod);
 
 static uint8_t interm_buf[AX25_PREAMBLE_LEN + AX25_POSTAMBLE_LEN + AX25_MAX_FRAME_LEN + 2];
 static uint8_t send_buf[TC_MAX_PKT_SIZE];
@@ -140,22 +140,20 @@ set_cmd_and_ctrl_period(uint8_t enable)
  *
  * @param out the output buffer, large enough to hold a valid payload
  * @param len the size of the buffer
- * @param timeout_ms the timeout limit in milliseconds
  * @return the size of the AX.25 payload or appropriate error code
  */
-int32_t recv_payload(uint8_t *out, size_t len, size_t timeout_ms)//done
+int32_t recv_payload(uint8_t *out, size_t len)
 {
 	int32_t ret;
   uint8_t check;
 //	UART2_BUF_O_Write_String_To_Buffer("in recv_payload\n");
-//	UART2_BUF_O_Write_Number10_To_Buffer(len);
+//	UART2_BUF_O_Write_Signed_Number_To_Buffer(len);
   if(len > AX25_MAX_FRAME_LEN) 
 	{
 		return COMMS_STATUS_BUFFER_OVERFLOW;
 	}
 	// recvd & decoded frame
-	ret = rx_data(interm_buf, len, timeout_ms);
-//	CC_TX_BUF_O_Write_Frame_To_Buffer(interm_buf,ret);
+	ret = rx_data(interm_buf, len);
 //	UART2_BUF_O_Write_Number04_To_Buffer(ret);
 	
 	if(ret < 1)
@@ -169,7 +167,7 @@ int32_t recv_payload(uint8_t *out, size_t len, size_t timeout_ms)//done
 
 	/* Now check if the frame was indented for us */
   check = ax25_check_dest_callsign(interm_buf, (size_t)ret, __UPSAT_CALLSIGN);// check if its for our cubsat or not
-//	UART2_BUF_O_Write_Number10_To_Buffer(check);
+//	UART2_BUF_O_Write_Signed_Number_To_Buffer(check);
 
   if(!check)
 	{
@@ -180,13 +178,12 @@ int32_t recv_payload(uint8_t *out, size_t len, size_t timeout_ms)//done
    * NOTE: UPSat frames using only Short Address field.
    */
   ret = ax25_extract_payload(out, interm_buf,(size_t) ret, AX25_MIN_ADDR_LEN, 1);	
-//	CC_TX_BUF_O_Write_Frame_To_Buffer(out,ret);
 	
 	  /* Now check if the received frame contains an RF swicth ON/OFF command */
   if(ret > 0)
 	{
     check = check_rf_switch_cmd(out, ret);
-		//UART2_BUF_O_Write_Number10_To_Buffer(check);
+		//UART2_BUF_O_Write_Signed_Number_To_Buffer(check);
 		
     if(check)
 		{
@@ -263,8 +260,10 @@ int32_t send_cw_beacon(void)
   }
 
   memset(send_buffer, 0, AX25_MAX_FRAME_LEN);
-  send_buffer[i++] = 'U';
-  send_buffer[i++] = 'P';
+  send_buffer[i++] = 'A';
+  send_buffer[i++] = 'L';
+	send_buffer[i++] = 'E';
+	send_buffer[i++] = 'X';
   send_buffer[i++] = 'S';
   send_buffer[i++] = 'A';
   send_buffer[i++] = 'T';
@@ -283,8 +282,9 @@ uint8_t is_tx_enabled()
 {
   uint32_t val;
 
-//  val = comms_read_persistent_word(__COMMS_RF_KEY_FLASH_OFFSET); // 0x0 //<------
-  if(val != __COMMS_RF_OFF_KEY) {
+  val = comms_read_persistent_word(__COMMS_RF_KEY_FLASH_OFFSET); // 0x0 //<------ @ref FLASH_CHECK
+  if(val != __COMMS_RF_OFF_KEY) 
+	{
     return 1;
   }
   return 0;
@@ -333,7 +333,7 @@ SAT_returnState send_ecss(tc_tm_pkt *pkt)
 		return ret;
 	}
 
-	ret = send_payload(send_buf, (size_t)size, 0,COMMS_DEFAULT_TIMEOUT_MS);
+	ret = send_payload(send_buf, (size_t)size, 0);
 	if(ret < 1)
 	{
 		return SATR_ERROR;
@@ -478,10 +478,9 @@ SAT_returnState route_pkt(tc_tm_pkt *pkt)
  * @param in the payload buffer
  * @param len the length of the payload in bytes
  * @param is_wod set to true if the frame is a WOD
- * @param timeout_ms the timeout limit in milliseconds
  * @return number of bytes sent or appropriate error code
  */
-int32_t send_payload(const uint8_t *in, size_t len, uint8_t is_wod, size_t timeout_ms)
+int32_t send_payload(const uint8_t *in, size_t len, uint8_t is_wod)
 {
   int32_t ret;
 
@@ -499,7 +498,7 @@ int32_t send_payload(const uint8_t *in, size_t len, uint8_t is_wod, size_t timeo
   }
 
   memset(send_temp_buf, 0, sizeof(send_temp_buf));
-  ret = tx_data(in, len, send_temp_buf, is_wod, timeout_ms);
+  ret = tx_data(in, len, send_temp_buf, is_wod);
   comms_rf_stats_frame_transmitted(&comms_stats, ret > 1, ret);
   return ret;
 }
@@ -524,8 +523,8 @@ int32_t send_payload_cw(const uint8_t *in, size_t len)
     return COMMS_STATUS_RF_OFF;
   }
 
-	ret = tx_data(in, len,rx,1,5000);
-  //ret = tx_data_cw(in, len); //<----------- still need too much work lets use normal transmit instead
+	ret = tx_data(in, len,rx,1);
+  //ret = tx_data_cw(in, len); //<---------------- not working with this module go for @ref CW_TASK_REF
   return ret;
 }
 
@@ -537,7 +536,7 @@ int32_t send_payload_cw(const uint8_t *in, size_t len)
  * @return 0 in case the received payload was not an RF switch command,
  * 1 if it was.
  */
-static inline uint8_t check_rf_switch_cmd(const uint8_t *in, size_t len)
+static inline uint8_t check_rf_switch_cmd(const uint8_t *in, size_t len) 
 {
   uint32_t i;
   uint8_t flag = 0;

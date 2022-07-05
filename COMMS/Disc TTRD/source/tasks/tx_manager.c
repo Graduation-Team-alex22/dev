@@ -7,8 +7,8 @@ static uint8_t tmp_buf[AX25_PREAMBLE_LEN + AX25_POSTAMBLE_LEN + AX25_MAX_FRAME_L
 static cw_pulse_t cw_buf[AX25_MAX_FRAME_LEN * 10];
 uint32_t tx_job_desc = __COMMS_DEFAULT_HEADLESS_TX_PATTERN;
 uint32_t tx_job_cnt = 0;
- 
- 
+extern ax25_handle_t h_ax25dec;
+extern scrambler_handle_t h_scrabler;
 //Init
 void tx_init(void)
 {
@@ -22,7 +22,7 @@ uint32_t tx_type_update(void)
 	uint32_t now;
 	
 	now = getCurrentTick();
-	if(now < tick || now - tick > __TX_INTERVAL_MS)//__TX_INTERVAL_MS
+	if(now < tick || now - tick > 10000)//__TX_INTERVAL_MS
 		{
 			
 			tick = now;
@@ -78,7 +78,7 @@ uint32_t tx_update(void)
 	int32_t ret = COMMS_STATUS_OK;
 	now = getCurrentTick();
 	
-	if(now < tick || now - tick > 1000)//__TX_INTERVAL_MS
+	if(now < tick || now - tick > 10000)//__TX_INTERVAL_MS
 	{
 		tick = now;
 		if(tx_jobs.tx_cw)
@@ -86,7 +86,7 @@ uint32_t tx_update(void)
 			tx_jobs.tx_wod = 0;
 			tx_jobs.tx_cw = 0;
 			UART2_BUF_O_Write_String_To_Buffer("TX UPDATE: CW\n");
-			ret = send_cw_beacon(); // <------------ still using the normal wod
+			ret = send_cw_beacon();
 		}
 		else if(tx_jobs.tx_wod)
 		{
@@ -113,9 +113,11 @@ uint32_t tx_update(void)
  * @param timeout_ms the timeout in milliseconds
  * @return the number of bytes sent or appropriate error code
  */
-//Getters
-int32_t tx_data(const uint8_t *in, size_t len, uint8_t *dev_rx_buffer, uint8_t is_wod, size_t timeout_ms)
+//Setters
+
+int32_t tx_data(const uint8_t *in, size_t len, uint8_t *dev_rx_buffer, uint8_t is_wod)
 {
+	
   int32_t ret = 0;
   /* This routine can not handle large payloads */
   if(len == 0) 
@@ -127,15 +129,27 @@ int32_t tx_data(const uint8_t *in, size_t len, uint8_t *dev_rx_buffer, uint8_t i
     return COMMS_STATUS_BUFFER_OVERFLOW;
   }
 
+//	UART2_BUF_O_Write_String_To_Buffer("\n\n\n\n\n\n\n");
+//	UART2_BUF_O_Write_String_To_Buffer("\n*************************** before ax25 send ***********************\n");
+//	UART2_BUF_O_Write_StringByLength_To_Buffer(in, len);
+	
   /* Prepare the AX.25 frame */
   ret = ax25_send(tmp_buf, in, len, is_wod);
+	
+//	UART2_BUF_O_Write_String_To_Buffer("\n*************************** after ax25 send ***********************\n");
+//	UART2_BUF_O_Write_StringByLength_To_Buffer(tmp_buf, ret);
+//	UART2_BUF_O_Write_String_To_Buffer("\n********************************************************************\n");
   if(ret < 1)
 	{
     return COMMS_STATUS_NO_DATA;
   }
 
-  /* Issue the frame at the CC1120 */
+
+  /* Issue the frame at the CC1101 */
+	CC_TX_BUF_O_Write_String_To_Buffer("\n~~~~~\n");
   ret = CC_TX_data_packet(tmp_buf, ret);
+	CC_TX_BUF_O_Write_String_To_Buffer("\n-----\n");
+
   if(ret < 1)
 	{
     return ret;
@@ -169,10 +183,10 @@ int32_t tx_data_cw (const uint8_t *in, size_t len)
     return COMMS_STATUS_INVALID_FRAME;
   }
 
-//	ret = CC_TX_data_packet_cw(cw_buf, symbols_num); //<----------------------------- redesign needed it needs to transmit for a period of time and stop for another
+//	ret = CC_TX_data_packet_cw(cw_buf, symbols_num); //<----------------------------- redesign needed it needs to transmit for a period of time and stop for another @ref CW_TASK_REF
 	
- // ret = cc_tx_cw(cw_buf, symbols_num);
-  if(ret != CW_OK) {
+  if(ret != CW_OK) 
+	{
     return COMMS_STATUS_INVALID_FRAME;
   }
   return len;

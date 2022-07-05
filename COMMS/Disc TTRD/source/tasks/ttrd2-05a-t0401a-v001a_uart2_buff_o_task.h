@@ -62,6 +62,7 @@ void     UART2_BUF_O_Write_String_To_Buffer(const char* const);
 void 		 UART2_BUF_O_Write_Frame_To_Buffer(const void* data, size_t len);
 void     UART2_BUF_O_Write_Char_To_Buffer(const char);
 
+void UART2_BUF_O_Write_Signed_Number_To_Buffer( int32_t DATA);
 void     UART2_BUF_O_Write_Number10_To_Buffer(const uint32_t DATA);
 void     UART2_BUF_O_Write_Number04_To_Buffer(const uint32_t DATA);
 void     UART2_BUF_O_Write_Number03_To_Buffer(const uint32_t DATA);

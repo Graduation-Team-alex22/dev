@@ -388,7 +388,8 @@ typedef enum {
 #define traceASSERTION(FID, LINE) ;
 #define C_ASSERT(e)    ((e) ? (true) : (tst_debugging(__FILE_ID__, __LINE__, #e)))
 
-union _cnv {
+union _cnv 
+{
     double cnvD;
     float cnvF;
     uint32_t cnv32;
@@ -457,9 +458,9 @@ void stats_inbound(uint8_t type, TC_TM_app_id app_id, TC_TM_app_id dest_id, tc_t
 
 void stats_outbound(uint8_t type, TC_TM_app_id app_id, TC_TM_app_id dest_id, tc_tm_pkt *pkt);
 
-void stats_dropped_hldlc();
+void stats_dropped_hldlc(void);
 
-void stats_dropped_upack();
+void stats_dropped_upack(void);
 
 // SF_G
 uint16_t ecss_stats_hk(uint8_t *buffer);
@@ -872,7 +873,7 @@ extern uint8_t dbg_msg;
 
 ////////////////////////////////////////// PERSISTENT_MEM DONE ////////////////////////////////////////////////////////////////
 // Init
-uint32_t comms_persistent_mem_init();
+uint32_t comms_persistent_mem_init(void);
 
 //Update
 
@@ -914,8 +915,8 @@ void pkt_pool_IDLE(uint32_t tmp_time);
 
 ///////////////////////////////////////////////// POWER_CONTROL ///////////////////////////////////////////////////////////
 //Setters
-extern void HAL_comms_SD_ON();
-extern void HAL_comms_SD_OFF();
+extern void HAL_comms_SD_ON(void);
+extern void HAL_comms_SD_OFF(void);
 //extern void HAL_sys_delay(uint32_t sec); // REMOVE
 
 //SF_S
