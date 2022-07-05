@@ -152,45 +152,45 @@ void UART2_BUF_O_Init(uint32_t BAUD_RATE)
    USART_Init(USART2, &USART_InitStructure);
 
 	/* Configure DMA Initialization Structure */
-  DMA_InitStructure.DMA_BufferSize = TX_BUFFER_SIZE_BYTES+1 ;
-  DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Disable ;
-  DMA_InitStructure.DMA_FIFOThreshold = DMA_FIFOThreshold_1QuarterFull ;
-  DMA_InitStructure.DMA_MemoryBurst = DMA_MemoryBurst_Single ;
-  DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
-  DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
-  DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;
-  DMA_InitStructure.DMA_PeripheralBaseAddr =(uint32_t) (&(USART2->DR)) ;
-  DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
-  DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
-  DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
-  DMA_InitStructure.DMA_Priority = DMA_Priority_High;
+   DMA_InitStructure.DMA_BufferSize = TX_BUFFER_SIZE_BYTES;
+   DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Disable ;
+   DMA_InitStructure.DMA_FIFOThreshold = DMA_FIFOThreshold_1QuarterFull ;
+   DMA_InitStructure.DMA_MemoryBurst = DMA_MemoryBurst_Single ;
+   DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
+   DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
+   DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;
+   DMA_InitStructure.DMA_PeripheralBaseAddr =(uint32_t) (&(USART2->DR)) ;
+   DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
+   DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
+   DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+   DMA_InitStructure.DMA_Priority = DMA_Priority_High;
 
-	/* Configure TX DMA */
-  DMA_InitStructure.DMA_Channel = DMA_Channel_4 ;
-  DMA_InitStructure.DMA_DIR = DMA_DIR_MemoryToPeripheral ;
-  DMA_InitStructure.DMA_Memory0BaseAddr =(uint32_t)Tx_buffer_g ;
-  DMA_Init(DMA1_Stream6,&DMA_InitStructure);
+   /* Configure TX DMA */
+   DMA_InitStructure.DMA_Channel = DMA_Channel_4 ;
+   DMA_InitStructure.DMA_DIR = DMA_DIR_MemoryToPeripheral ;
+   DMA_InitStructure.DMA_Memory0BaseAddr =(uint32_t)Tx_buffer_g ;
+   DMA_Init(DMA1_Stream6,&DMA_InitStructure);
 
-	// Enable UART2
-	USART_Cmd(USART2, ENABLE);
+   // Enable UART2
+   USART_Cmd(USART2, ENABLE);
 
-	// Enable USART DMA TX Requsts 
-	USART_DMACmd(USART2, USART_DMAReq_Tx, ENABLE);
+   // Enable USART DMA TX Requsts 
+   USART_DMACmd(USART2, USART_DMAReq_Tx, ENABLE);
 
+   // Configure buffer
+   for (uint32_t i = 0; i < TX_BUFFER_SIZE_BYTES; i++)
+   {
+      Tx_buffer_g[i] = 'X';
+      Tx_buffer2_g[i] = 'G';
+      Tx_buffer_ig[i] = (char) ~'X'; 
+   }
 
-	// Configure buffer
-	for (uint32_t i = 0; i < TX_BUFFER_SIZE_BYTES; i++)
-		{
-		Tx_buffer_g[i] = 'X';
-		Tx_buffer2_g[i] = 'G';
-		Tx_buffer_ig[i] = (char) ~'X'; 
-		}
-
-	Wait_idx_g = 0;
-	Wait_idx_ig = ~0;
-		
-	// Store the UART register configuration
-	REG_CONFIG_CHECKS_UART_Store(USART2);
+   Wait_idx_g = 0;
+   Wait_idx_ig = ~0;
+   DMA1_Stream6->NDTR = 0;
+   
+   // Store the UART register configuration
+   REG_CONFIG_CHECKS_UART_Store(USART2);
 }
 
 /*----------------------------------------------------------------------------*-
@@ -284,47 +284,47 @@ uint32_t UART2_BUF_O_Update(void)
 void UART2_BUF_O_Send_All_Data(void)
 {
 	
-	// wait until the previous transfer is done
-	if(DMA1_Stream6->NDTR == 0 || DMA1_Stream6->NDTR == TX_BUFFER_SIZE_BYTES+1)
-	{
-		// Check data integrity
-		UART2_BUF_O_Check_Data_Integrity();
-		
-		// set the dma transfer data length
-		DMA1_Stream6->NDTR = Wait_idx_g;
-		// set memory base address to one of two buffers
-		if( buffer_select_g == 1 )
-		{
-			DMA1_Stream6->M0AR = (uint32_t)Tx_buffer_g ;
-			buffer_select_g = 2;
-		}
-		else
-		{
-			DMA1_Stream6->M0AR = (uint32_t)Tx_buffer2_g ;
-			buffer_select_g = 1;
-		}
+   // wait until the previous transfer is done
+   if( DMA1_Stream6->NDTR == 0 )
+   {
+      // Check data integrity
+      UART2_BUF_O_Check_Data_Integrity();
+      
+      // set the dma transfer data length
+      DMA1_Stream6->NDTR = Wait_idx_g;
+      // set memory base address to one of two buffers
+      if( buffer_select_g == 1 )
+      {
+         DMA1_Stream6->M0AR = (uint32_t)Tx_buffer_g ;
+         buffer_select_g = 2;
+      }
+      else
+      {
+         DMA1_Stream6->M0AR = (uint32_t)Tx_buffer2_g ;
+         buffer_select_g = 1;
+      }
 
-		// Clear DMA Stream Flags
-		DMA1->HIFCR |= (0x3D << 16);
+      // Clear DMA Stream Flags
+      DMA1->HIFCR |= (0x3D << 16);
 
 
-		// Clear USART Transfer Complete Flags
-		USART_ClearFlag(USART2,USART_FLAG_TC);  
+      // Clear USART Transfer Complete Flags
+      USART_ClearFlag(USART2,USART_FLAG_TC);  
 
-		// Enable DMA USART TX Stream 
-		DMA_Cmd(DMA1_Stream6,ENABLE);
+      // Enable DMA USART TX Stream 
+      DMA_Cmd(DMA1_Stream6,ENABLE);
 
-		// wait until it's enabled
-		// while( DMA_GetCmdStatus(DMA1_Stream6) == DISABLE );
+      // wait until it's enabled
+      // while( DMA_GetCmdStatus(DMA1_Stream6) == DISABLE );
 
-		// Reset the indices
-		Wait_idx_g = 0;
-		Wait_idx_ig = ~0;
-	}
+      // Reset the indices
+      Wait_idx_g = 0;
+      Wait_idx_ig = ~0;
+   }
 	
 }
 
-void     UART2_BUF_O_Send_All_Data_Blocking(void)
+void UART2_BUF_O_Send_All_Data_Blocking(void)
 {
    
    // wait until uart buffer is emptied

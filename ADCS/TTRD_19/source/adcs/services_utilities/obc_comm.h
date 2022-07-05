@@ -14,5 +14,5 @@ error_t OBC_Comm_Update(void);
 obc_comm_flags_t OBC_Comm_GetFlags(void);
 error_t OBC_Comm_GetTLE(char* pTLE_Str);
 error_t OBC_Comm_GetSLR(uint8_t* pSLR_Values);
-
+char* OBC_Comm_GetpBuffer_TX(void);
 #endif

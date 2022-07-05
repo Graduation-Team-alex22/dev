@@ -1,12 +1,12 @@
 .\objects\cc_tx.o: ..\source\tasks\cc_tx.c
 .\objects\cc_tx.o: ..\source\tasks\cc_tx.h
 .\objects\cc_tx.o: ..\source\tasks\../main/main.h
-.\objects\cc_tx.o: D:\Keil\ARM\Compiler5\Bin\..\include\string.h
-.\objects\cc_tx.o: D:\Keil\ARM\Compiler5\Bin\..\include\stddef.h
+.\objects\cc_tx.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\cc_tx.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\cc_tx.o: ..\source\tasks\../main/../hsi_library/misc.h
 .\objects\cc_tx.o: ..\source\tasks\../main/../hsi_library/stm32f4xx.h
 .\objects\cc_tx.o: ..\source\tasks\../main/../hsi_library/core_cm4.h
-.\objects\cc_tx.o: D:\Keil\ARM\Compiler5\Bin\..\include\stdint.h
+.\objects\cc_tx.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\cc_tx.o: ..\source\hsi_library\core_cmInstr.h
 .\objects\cc_tx.o: ..\source\hsi_library\core_cmFunc.h
 .\objects\cc_tx.o: ..\source\hsi_library\core_cmSimd.h
@@ -50,7 +50,7 @@
 .\objects\cc_tx.o: ..\source\tasks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\cc_tx.o: ..\source\tasks\../main/../support_functions/stats.h
 .\objects\cc_tx.o: ..\source\tasks\../main/../support_functions/../tasks/ttrd2-05a-t0401a-v001a_adc_task.h
-.\objects\cc_tx.o: D:\Keil\ARM\Compiler5\Bin\..\include\math.h
+.\objects\cc_tx.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\cc_tx.o: ..\source\tasks\../main/../support_functions/wod_handling.h
 .\objects\cc_tx.o: ..\source\tasks\../main/../support_functions/ax_25.h
 .\objects\cc_tx.o: ..\source\tasks\../main/../support_functions/services.h
