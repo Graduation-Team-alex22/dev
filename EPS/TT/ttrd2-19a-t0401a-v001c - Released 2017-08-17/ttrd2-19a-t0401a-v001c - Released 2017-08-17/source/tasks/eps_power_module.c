@@ -10,7 +10,7 @@
 #include "stm32f4xx_rcc.h"
 #include "eps_state.h"
 #include "../port/port.h"
-
+#include "../port/eps_configuration.h"
 //TIM_HandleTypeDef htim3;
 //extern ADC_HandleTypeDef hadc;
 //extern TIM_HandleTypeDef htim3;
@@ -269,7 +269,7 @@ EPS_soft_error_status EPS_PowerModule_init_ALL(EPS_PowerModule *module_top, EPS_
   //hadc.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
   //hadc.Init.LowPowerAutoWait = ADC_AUTOWAIT_DISABLE;
   //hadc.Init.LowPowerAutoPowerOff = ADC_AUTOPOWEROFF_DISABLE;
- // hadc.Init.ChannelsBank = ADC_CHANNELS_BANK_A;
+  //hadc.Init.ChannelsBank = ADC_CHANNELS_BANK_A;
   hadc.Init.ADC_ContinuousConvMode = DISABLE;// Enable in eclipse
   hadc.Init.ADC_NbrOfConversion = 14;
   //hadc.Init.DiscontinuousConvMode = DISABLE;
@@ -280,16 +280,20 @@ EPS_soft_error_status EPS_PowerModule_init_ALL(EPS_PowerModule *module_top, EPS_
 	/*start timer3 pwm base generation (initialized pwm duty cycle from mx must be 0) */
 	//HAL_TIM_Base_Start(&htim3);
 
-	/* initialize all power modules and dem mppt cotrol blocks.*/
+	/* initialize all power modules and dem mppt cotrol blocks.
+	
+	for the stm32l152 please don't forget to uncomment the right and the bottom module init
+	
+	*/
 	error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_TOP;
 	EPS_PowerModule_init(module_top, MPPT_STARTUP_PWM_DUTYCYCLE, &htim3, PWM_TIM_CHANNEL_TOP, &hadc, ADC_CURRENT_CHANNEL_TOP, ADC_VOLTAGE_CHANNEL_TOP);
 	error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_BOTTOM;
-	EPS_PowerModule_init(module_bottom, MPPT_STARTUP_PWM_DUTYCYCLE, &htim3, PWM_TIM_CHANNEL_BOTTOM, &hadc, ADC_CURRENT_CHANNEL_BOTTOM, ADC_VOLTAGE_CHANNEL_BOTTOM);
+	// EPS_PowerModule_init(module_bottom, MPPT_STARTUP_PWM_DUTYCYCLE, &htim3, PWM_TIM_CHANNEL_BOTTOM, &hadc, ADC_CURRENT_CHANNEL_BOTTOM, ADC_VOLTAGE_CHANNEL_BOTTOM);
 	error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_LEFT;
 	EPS_PowerModule_init(module_left, MPPT_STARTUP_PWM_DUTYCYCLE, &htim3, PWM_TIM_CHANNEL_LEFT, &hadc, ADC_CURRENT_CHANNEL_LEFT, ADC_VOLTAGE_CHANNEL_LEFT);
 	error_status = EPS_SOFT_ERROR_POWER_MODULE_INIT_RIGHT;
-	EPS_PowerModule_init(module_right, MPPT_STARTUP_PWM_DUTYCYCLE, &htim3, PWM_TIM_CHANNEL_RIGHT, &hadc, ADC_CURRENT_CHANNEL_RIGHT, ADC_VOLTAGE_CHANNEL_RIGHT);
-uint16_t EPS_SOFT_ERROR_POWER_MODULE_INIT_ALL_COMPLETE;
+	//EPS_PowerModule_init(module_right, MPPT_STARTUP_PWM_DUTYCYCLE, &htim3, PWM_TIM_CHANNEL_RIGHT, &hadc, ADC_CURRENT_CHANNEL_RIGHT, ADC_VOLTAGE_CHANNEL_RIGHT);
+  uint16_t EPS_SOFT_ERROR_POWER_MODULE_INIT_ALL_COMPLETE;
 	return EPS_SOFT_ERROR_POWER_MODULE_INIT_ALL_COMPLETE;
 }
 
@@ -298,24 +302,24 @@ uint16_t EPS_SOFT_ERROR_POWER_MODULE_INIT_ALL_COMPLETE;
   * @param  power_module: pointer to  power module instance for which to get adc measurements.
   * @retval None.
   */
-void EPS_update_power_module_state(EPS_PowerModule *power_module){
+void EPS_update_power_module_state(EPS_PowerModule *power_module,ADC_InitTypeDef hadc1){
 
 	/*initialize adc handle*/
-	//power_module->hadc_power_module->Init.NbrOfConversion = 2;
-	//power_module->hadc_power_module->NbrOfConversionRank = 2;
-	//HAL_ADC_Init(power_module->hadc_power_module);
+	power_module->hadc_power_module->Init.ADC_NbrOfConversion = 2;
+	power_module->hadc_power_module->NbrOfCurrentConversionRank = 2;
+	ADC_Init(ADC1,&hadc1);
 
 	/*setup conversion sequence for */
-	//ADC_ChannelConfTypeDef sConfig;
-	//sConfig.SamplingTime = ADC_SAMPLETIME_192CYCLES;
+	ADC_ChannelConfTypeDef sConfig;
+	sConfig.SamplingTime = ADC_SAMPLETIME_192CYCLES;
 
 	/*power module current*/
-	//sConfig.Channel = power_module->ADC_channel_current ;
-	//sConfig.Rank = 1;
-	//HAL_ADC_ConfigChannel(power_module->hadc_power_module, &sConfig);
+	sConfig.Channel = power_module->ADC_channel_current ;
+	sConfig.Rank = 1;
+	HAL_ADC_ConfigChannel(power_module->hadc_power_module, &sConfig);
 
 	/*power module voltage*/
-	//sConfig.Channel = power_module->ADC_channel_voltage ;
+	sConfig.Channel = power_module->ADC_channel_voltage ;
 	//sConfig.Rank = 2;
 	//HAL_ADC_ConfigChannel(power_module->hadc_power_module, &sConfig);
 
@@ -335,23 +339,23 @@ void EPS_update_power_module_state(EPS_PowerModule *power_module){
 	/*Wait till DMA ADC sequence transfer is ready*/
 	//while(adc_reading_complete==ADC_TRANSFER_NOT_COMPLETED){
 		//wait for dma transfer complete.
-	}
+
 	/*ADC must be stopped in the adc dma transfer complete callback.*/
 
 	//HAL_ADC_Stop_DMA(power_module->hadc_power_module);
 
 	/*de-interleave and sum voltage and current measurements.*/
-//	for (uint32_t  sum_index = 2 ; sum_index < 66; sum_index+=2) {
-//		/*top*/
-//		current_avg = current_avg + adc_measurement_dma_power_modules[sum_index];
-//		voltage_avg = voltage_avg + adc_measurement_dma_power_modules[sum_index+1];
-//	}
+	for (uint32_t  sum_index = 2 ; sum_index < 66; sum_index+=2) {
+		/*top*/
+		current_avg = current_avg + adc_measurement_dma_power_modules[sum_index];
+		voltage_avg = voltage_avg + adc_measurement_dma_power_modules[sum_index+1];
+	}
 
 	/*filter ting*/
 	/*average of 16 concecutive adc measurements.skip the first to avoid adc power up distortion.*/
 	//power_module->voltage = voltage_avg>>5;
 	//power_module->current = current_avg>>5;
-
+}
 
 
 
