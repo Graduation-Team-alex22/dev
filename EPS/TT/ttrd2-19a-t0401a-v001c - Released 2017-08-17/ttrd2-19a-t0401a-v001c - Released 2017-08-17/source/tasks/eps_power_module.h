@@ -144,7 +144,7 @@ typedef struct {
 
 
 void EPS_PowerModule_init(EPS_PowerModule *module_X, uint32_t starting_pwm_dutycycle, TIM_HandleTypeDef *htim, uint32_t timer_channel, ADC_HandleTypeDef *hadc_power_module, uint32_t ADC_channel_current, uint32_t ADC_channel_voltage);
-void EPS_update_power_module_state(EPS_PowerModule *power_module);
+void EPS_update_power_module_state(EPS_PowerModule *power_module,ADC_InitTypeDef hadc);
 void EPS_PowerModule_mppt_update_pwm(EPS_PowerModule *moduleX);
 void EPS_PowerModule_mppt_apply_pwm(EPS_PowerModule *moduleX);
 EPS_soft_error_status EPS_PowerModule_init_ALL(EPS_PowerModule *module_top, EPS_PowerModule *module_bottom, EPS_PowerModule *module_left, EPS_PowerModule *module_right);
