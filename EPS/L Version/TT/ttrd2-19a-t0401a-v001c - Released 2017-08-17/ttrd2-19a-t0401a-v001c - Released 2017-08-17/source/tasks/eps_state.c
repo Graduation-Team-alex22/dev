@@ -3,7 +3,7 @@
 
 #include "eps_state.h"
 #include "tc74.h"
-#include "stm32f4xx_i2c.h"
+#include "../main/main.h"
 //#include "cpu_adc_utilities.h"
 
 EPS_adc_dma_transfer_status adc_reading_complete=ADC_TRANSFER_NOT_COMPLETED;/* flag to check when dma transfer is complete.*/
@@ -123,7 +123,7 @@ static EPS_soft_error_status EPS_update_state_adc_measurements(volatile EPS_Stat
 //	HAL_ADC_ConfigChannel(hadc_eps, &sConfig);
 
 	/*cpu internal temp sensor*/
-//	sConfig.Channel = ADC_CHANNEL_TEMPSENSOR;
+//	sConfig.Channel = ADC_Channel_TEMPSENSOR;
 //	sConfig.Rank = 6;
 //	HAL_ADC_ConfigChannel(hadc_eps, &sConfig);
 

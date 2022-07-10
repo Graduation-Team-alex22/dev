@@ -1,7 +1,6 @@
 // 'eps_obc_communication'
 #include "eps_obc_communication.h"
-#include "stm32f4xx_usart.h"
-#include "stm32f4xx_dma.h"
+#include "../main/main.h"
 #include "../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h"
 
 // The transmit buffer length
@@ -79,7 +78,7 @@ void EPS_obc_communication_init(void){
    RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);
 
    // GPIOA clock enable 
-   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
+   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
 
    // GPIO config
    GPIO_InitStructure.GPIO_Pin   = UART3_TX_PIN; 

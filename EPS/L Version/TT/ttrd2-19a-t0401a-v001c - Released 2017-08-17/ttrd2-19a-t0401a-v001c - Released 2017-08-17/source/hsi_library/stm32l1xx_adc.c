@@ -650,7 +650,7 @@ void ADC_AnalogWatchdogSingleChannelConfig(ADC_TypeDef* ADCx, uint8_t ADC_Channe
 
   /* Check the parameters */
   assert_param(IS_ADC_ALL_PERIPH(ADCx));
-  assert_param(IS_ADC_CHANNEL(ADC_Channel));
+  assert_param(IS_ADC_Channel(ADC_Channel));
 
   /* Get the old register value */
   tmpreg = ADCx->CR1;
@@ -818,7 +818,7 @@ void ADC_RegularChannelConfig(ADC_TypeDef* ADCx, uint8_t ADC_Channel, uint8_t Ra
 
   /* Check the parameters */
   assert_param(IS_ADC_ALL_PERIPH(ADCx));
-  assert_param(IS_ADC_CHANNEL(ADC_Channel));
+  assert_param(IS_ADC_Channel(ADC_Channel));
   assert_param(IS_ADC_REGULAR_RANK(Rank));
   assert_param(IS_ADC_SAMPLE_TIME(ADC_SampleTime));
 
@@ -1308,7 +1308,7 @@ void ADC_InjectedChannelConfig(ADC_TypeDef* ADCx, uint8_t ADC_Channel, uint8_t R
 
   /* Check the parameters */
   assert_param(IS_ADC_ALL_PERIPH(ADCx));
-  assert_param(IS_ADC_CHANNEL(ADC_Channel));
+  assert_param(IS_ADC_Channel(ADC_Channel));
   assert_param(IS_ADC_INJECTED_RANK(Rank));
   assert_param(IS_ADC_SAMPLE_TIME(ADC_SampleTime));
   

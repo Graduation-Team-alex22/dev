@@ -15,7 +15,7 @@ void TC74_init(void){
 	//	Enable peripheral clock using RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2Cx, ENABLE)
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C2, ENABLE);
 	 // GPIOB clock enable 
-   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
 	 //RCC_I2CCLKConfig(RCC_PCLKConfig());
    GPIO_PinAFConfig(GPIOB, GPIO_PinSource11, GPIO_AF_I2C2);
 

@@ -117,7 +117,7 @@ void REG_CONFIG_CHECKS_GPIO_Store(void)
    
    // We also store the RCC settings  
    // These will be updated by changes to RCC settings for *any* port
-   GPIOx_rcc_ig = ~(RCC->AHB1ENR);
+   GPIOx_rcc_ig = ~(RCC->AHBENR);
 
    // Store Port A configuration  
    GPIOA_moder_ig   = ~(GPIOA->MODER);
@@ -197,7 +197,7 @@ void REG_CONFIG_CHECKS_GPIO_Check(void)
    {
    uint32_t Result = REGISTERS_OK;
 
-   if (GPIOx_rcc_ig != ~(RCC->AHB1ENR))         // RCC settings
+   if (GPIOx_rcc_ig != ~(RCC->AHBENR))         // RCC settings
       {
       Result = REGISTERS_CHANGED;
       }

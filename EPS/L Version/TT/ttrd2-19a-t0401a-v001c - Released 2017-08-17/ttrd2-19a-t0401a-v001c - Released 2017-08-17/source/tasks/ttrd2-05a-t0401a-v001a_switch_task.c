@@ -99,7 +99,7 @@ void SWITCH_BUTTON1_Init(void)
    GPIO_InitTypeDef GPIO_InitStruct;
   
    // Enable GPIOC clock 
-   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
+   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
   
    // Configure the switch pin for input
    GPIO_InitStruct.GPIO_Mode  = GPIO_Mode_IN;

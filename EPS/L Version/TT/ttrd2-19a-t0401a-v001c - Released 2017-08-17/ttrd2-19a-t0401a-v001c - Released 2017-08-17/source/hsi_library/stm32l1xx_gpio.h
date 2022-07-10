@@ -86,10 +86,11 @@ typedef enum
   GPIO_Speed_400KHz = 0x00, /*!< Very Low Speed */
   GPIO_Speed_2MHz   = 0x01, /*!< Low Speed */
   GPIO_Speed_10MHz  = 0x02, /*!< Medium Speed */
-  GPIO_Speed_40MHz  = 0x03  /*!< High Speed */
+  GPIO_Speed_40MHz  = 0x03,  /*!< High Speed */
+	GPIO_High_Speed = 0x03
 }GPIOSpeed_TypeDef;
-#define IS_GPIO_SPEED(SPEED) (((SPEED) == GPIO_Speed_400KHz) || ((SPEED) == GPIO_Speed_2MHz) || \
-                              ((SPEED) == GPIO_Speed_10MHz)||  ((SPEED) == GPIO_Speed_40MHz))
+#define IS_GPIO_SPEED(SPEED) ( ((SPEED) == GPIO_Speed_400KHz) || ((SPEED) == GPIO_Speed_2MHz) || \
+                               ((SPEED) == GPIO_Speed_10MHz)||  ((SPEED) == GPIO_Speed_40MHz) || ((SPEED) == GPIO_High_Speed))
 /**
   * @}
   */

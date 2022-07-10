@@ -48,14 +48,14 @@
 
 // Links to HSI libraries
 #include "../hsi_library/misc.h"
-#include "../hsi_library/stm32f4xx_gpio.h"
-#include "../hsi_library/stm32f4xx_pwr.h"
-#include "../hsi_library/stm32f4xx_rcc.h"
-#include "../hsi_library/stm32f4xx_tim.h"
-#include "../hsi_library/stm32f4xx_usart.h"
-#include "../hsi_library/stm32f4xx_adc.h"
-#include "../hsi_library/stm32f4xx_iwdg.h"
-#include "../hsi_library/stm32f4xx_rtc.h"
+#include "../hsi_library/stm32l1xx_gpio.h"
+#include "../hsi_library/stm32l1xx_pwr.h"
+#include "../hsi_library/stm32l1xx_rcc.h"
+#include "../hsi_library/stm32l1xx_tim.h"
+#include "../hsi_library/stm32l1xx_usart.h"
+#include "../hsi_library/stm32l1xx_adc.h"
+#include "../hsi_library/stm32l1xx_iwdg.h"
+#include "../hsi_library/stm32l1xx_rtc.h"
 
 // HSI register configuration checks
 #include "../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.h"

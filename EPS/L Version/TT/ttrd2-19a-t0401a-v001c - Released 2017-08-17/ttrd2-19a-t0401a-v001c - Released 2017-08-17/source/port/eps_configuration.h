@@ -43,10 +43,10 @@ Channel 11 -------> Left   PWM
 Channel 18 -------> Right  PWM
 
 */
-#define PWM_TIM_CHANNEL_TOP    TIM_Channel_3
-#define PWM_TIM_CHANNEL_BOTTOM TIM_Channel_1
-#define PWM_TIM_CHANNEL_LEFT   TIM_Channel_2
-#define PWM_TIM_CHANNEL_RIGHT  TIM_Channel_4
+#define PWM_TIM_Channel_TOP    TIM_Channel_3
+#define PWM_TIM_Channel_BOTTOM TIM_Channel_1
+#define PWM_TIM_Channel_LEFT   TIM_Channel_2
+#define PWM_TIM_Channel_RIGHT  TIM_Channel_4
 
 
 /*

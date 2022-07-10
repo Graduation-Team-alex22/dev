@@ -8,8 +8,7 @@
 #ifndef INC_EPS_STATE_H_
 #define INC_EPS_STATE_H_
 
-#include "stm32f4xx_i2c.h"
-#include "stm32f4xx_adc.h"
+#include "../main/main.h"
 //#include "eps_configuration.h"
 //#include "tc74_temp_sensor.h"
 #include "eps_soft_error_handling.h"

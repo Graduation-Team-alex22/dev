@@ -121,10 +121,10 @@ void ADC1_Init(void)
    RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);
  
    // Set up ADC in independent mode
-   ADC_CommonInitStructure.ADC_Mode = ADC_Mode_Independent;
+  // ADC_CommonInitStructure.ADC_Mode = ADC_Mode_Independent;
    ADC_CommonInitStructure.ADC_Prescaler = ADC_Prescaler_Div2;
-   ADC_CommonInitStructure.ADC_DMAAccessMode = ADC_DMAAccessMode_Disabled;
-   ADC_CommonInitStructure.ADC_TwoSamplingDelay = ADC_TwoSamplingDelay_5Cycles;
+//   ADC_CommonInitStructure.ADC_DMAAccessMode = ADC_DMAAccessMode_Disabled;
+//   ADC_CommonInitStructure.ADC_TwoSamplingDelay = ADC_TwoSamplingDelay_5Cycles;
    ADC_CommonInit(&ADC_CommonInitStructure);
  
    // Set up ADC1: 12-bit; single-conversion 
@@ -155,7 +155,7 @@ void ADC1_Init(void)
   // and a 12-cycle ramp-up time   
 
   // Check the reference voltage
-  ADC_ref = ADC1_Read_Channel(ADC_Channel_17, ADC_SampleTime_480Cycles);
+  ADC_ref = ADC1_Read_Channel(ADC_Channel_17, ADC_SampleTime_384Cycles);
  
   // Check that the reference value is in range
   if ((ADC_ref < ADC1_REF_MIN) || (ADC_ref > ADC1_REF_MAX))
@@ -170,7 +170,7 @@ void ADC1_Init(void)
    ADC_ref_v_g = ADC_ref;
             
    // Read and store the temperature value (raw reading)
-   ADC1_temperature_raw_g = ADC1_Read_Channel(ADC_Channel_16, ADC_SampleTime_480Cycles);  
+   ADC1_temperature_raw_g = ADC1_Read_Channel(ADC_Channel_16, ADC_SampleTime_384Cycles);  
    
    // Note that we don't check the absolute temperature value 
    // (we check only for rapid changes while the system operates)
@@ -239,7 +239,7 @@ uint32_t ADC1_Update(void)
    REG_CONFIG_CHECKS_ADC1_Check();
   
    // Read reference voltage 
-   uint32_t ADC_ref = ADC1_Read_Channel(ADC_Channel_17, ADC_SampleTime_480Cycles);
+   uint32_t ADC_ref = ADC1_Read_Channel(ADC_Channel_17, ADC_SampleTime_384Cycles);
  
    // Check that the reference value is in range 
    // We assume that the reference is stable
@@ -256,7 +256,7 @@ uint32_t ADC1_Update(void)
    // (otherwise we won't get this far)
 
    // Take temperature reading
-   uint32_t ADC_temp = ADC1_Read_Channel(ADC_Channel_16, ADC_SampleTime_480Cycles);      
+   uint32_t ADC_temp = ADC1_Read_Channel(ADC_Channel_16, ADC_SampleTime_384Cycles);      
 
    // Update stored temperature value
    ADC1_temperature_raw_g = ADC_temp;      

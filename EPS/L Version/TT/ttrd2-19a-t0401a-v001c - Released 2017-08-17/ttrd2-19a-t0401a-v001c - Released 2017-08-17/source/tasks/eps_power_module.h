@@ -1,6 +1,6 @@
 // eps_power_module.h
 
-#include "stm32f4xx_adc.h"
+#include "../main/main.h"
 #include "../hsi_reg_config_checks/ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.h"
 
 //#include "stm32l1xx_hal.h"
@@ -135,15 +135,15 @@ typedef struct {
 	TIM_HandleTypeDef *htim_pwm;/**<  assign wich timer is assigned for this pwm output*/
 	uint32_t timChannel;/**<  assign the proper timer channel assigned to module pwm output*/
 	ADC_HandleTypeDef *hadc_power_module;/**<  adc handle for voltage and current measurements for each power module*/
-	uint32_t ADC_channel_current;/**<  adc channel; for current measurements for this power module*/
-	uint32_t ADC_channel_voltage;/**<  adc channel for voltage measurements for this power module*/
+	uint32_t ADC_Channel_current;/**<  adc channel; for current measurements for this power module*/
+	uint32_t ADC_Channel_voltage;/**<  adc channel for voltage measurements for this power module*/
 
 }EPS_PowerModule;
 
 
 
 
-void EPS_PowerModule_init(EPS_PowerModule *module_X, uint32_t starting_pwm_dutycycle, TIM_HandleTypeDef *htim, uint32_t timer_channel, ADC_HandleTypeDef *hadc_power_module, uint32_t ADC_channel_current, uint32_t ADC_channel_voltage);
+void EPS_PowerModule_init(EPS_PowerModule *module_X, uint32_t starting_pwm_dutycycle, TIM_HandleTypeDef *htim, uint32_t timer_channel, ADC_HandleTypeDef *hadc_power_module, uint32_t ADC_Channel_current, uint32_t ADC_Channel_voltage);
 void EPS_update_power_module_state(EPS_PowerModule *power_module,ADC_InitTypeDef hadc);
 void EPS_PowerModule_mppt_update_pwm(EPS_PowerModule *moduleX);
 void EPS_PowerModule_mppt_apply_pwm(EPS_PowerModule *moduleX);

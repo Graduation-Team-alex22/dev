@@ -99,8 +99,8 @@ void REG_CONFIG_CHECKS_UART_Store(USART_TypeDef* pUSARTx)
    {
    // Valid UART? 
    if (((pUSARTx != USART1) &&
-        (pUSARTx != USART2) &&
-        (pUSARTx != USART6)))
+        (pUSARTx != USART2) /*&&
+        (pUSARTx != USART6) */))
       {
       // We treat this as a Fatal Platform Failure
       PROCESSOR_Perform_Safe_Shutdown(PFC_INVALID_UART);
@@ -175,8 +175,8 @@ void REG_CONFIG_CHECKS_UART_Check(USART_TypeDef* pUSARTx)
 
    // Valid UART? 
    if (((pUSARTx != USART1) &&
-        (pUSARTx != USART2) &&
-        (pUSARTx != USART6)))
+        (pUSARTx != USART2) /*&&
+        (pUSARTx != USART6)*/))
       {
       // We treat this as a Fatal Platform Failure
       PROCESSOR_Perform_Safe_Shutdown(PFC_INVALID_UART);

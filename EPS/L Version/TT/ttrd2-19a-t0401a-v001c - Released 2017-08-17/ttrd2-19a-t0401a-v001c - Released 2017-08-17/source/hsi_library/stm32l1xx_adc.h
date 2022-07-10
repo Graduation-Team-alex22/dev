@@ -209,7 +209,7 @@ typedef struct
   * @}
   */ 
 
-/** @defgroup ADC_channels 
+/** @defgroup ADC_Channels 
   * @{
   */ 
 /* ADC Bank A Channels -------------------------------------------------------*/  
@@ -268,7 +268,7 @@ typedef struct
 #define ADC_Channel_TempSensor                     ((uint8_t)ADC_Channel_16)
 #define ADC_Channel_Vrefint                        ((uint8_t)ADC_Channel_17)
 
-#define IS_ADC_CHANNEL(CHANNEL) (((CHANNEL) == ADC_Channel_0)  || ((CHANNEL) == ADC_Channel_1)  || \
+#define IS_ADC_Channel(CHANNEL) (((CHANNEL) == ADC_Channel_0)  || ((CHANNEL) == ADC_Channel_1)  || \
                                  ((CHANNEL) == ADC_Channel_2)  || ((CHANNEL) == ADC_Channel_3)  || \
                                  ((CHANNEL) == ADC_Channel_4)  || ((CHANNEL) == ADC_Channel_5)  || \
                                  ((CHANNEL) == ADC_Channel_6)  || ((CHANNEL) == ADC_Channel_7)  || \

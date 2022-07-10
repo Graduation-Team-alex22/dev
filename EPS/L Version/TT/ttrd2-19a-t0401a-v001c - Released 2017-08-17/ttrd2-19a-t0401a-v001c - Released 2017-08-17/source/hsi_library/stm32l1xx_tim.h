@@ -224,7 +224,7 @@ typedef struct
 #define TIM_Channel_3                      ((uint16_t)0x0008)
 #define TIM_Channel_4                      ((uint16_t)0x000C)
 
-#define IS_TIM_CHANNEL(CHANNEL) (((CHANNEL) == TIM_Channel_1) || \
+#define IS_TIM_Channel(CHANNEL) (((CHANNEL) == TIM_Channel_1) || \
                                  ((CHANNEL) == TIM_Channel_2) || \
                                  ((CHANNEL) == TIM_Channel_3) || \
                                  ((CHANNEL) == TIM_Channel_4))

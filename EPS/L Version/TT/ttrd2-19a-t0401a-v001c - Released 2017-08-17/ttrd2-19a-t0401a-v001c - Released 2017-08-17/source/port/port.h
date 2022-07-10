@@ -93,27 +93,27 @@
 #define ADC_VALUE_3V_BAT_VOLTAGE ((uint16_t) 670)/*3 volt value measured at adc...for obc service. 0.54Volt in the adc given the 0.18v/v voltage divider - x/4095 *3.3 = 0.54 =>x=670 the adc measurement for 3Volt*/
 #define ADC_VALUE_1A_BAT_CURRENT ((uint16_t) 3475)/*1 ampere value measured at adc...for obc service. 2.8Volt in the adc given the 2.8v/A voltage divider - x/4095 *3.3 = 2.8 =>x=3475 the adc measurement for 1ampere*/
 /*Set up power modules pwm timer channels*/
-#define PWM_TIM_CHANNEL_TOP TIM_CHANNEL_3
-#define PWM_TIM_CHANNEL_BOTTOM TIM_CHANNEL_1
-#define PWM_TIM_CHANNEL_LEFT TIM_CHANNEL_2
-#define PWM_TIM_CHANNEL_RIGHT TIM_CHANNEL_4
+#define PWM_TIM_Channel_TOP TIM_Channel_3
+#define PWM_TIM_Channel_BOTTOM TIM_Channel_1
+#define PWM_TIM_Channel_LEFT TIM_Channel_2
+#define PWM_TIM_Channel_RIGHT TIM_Channel_4
 /*Set up power modules adc current channels*/
-#define ADC_CURRENT_CHANNEL_TOP ADC_CHANNEL_5
-#define ADC_CURRENT_CHANNEL_BOTTOM ADC_CHANNEL_20
-#define ADC_CURRENT_CHANNEL_LEFT ADC_CHANNEL_11
-#define ADC_CURRENT_CHANNEL_RIGHT ADC_CHANNEL_18
+#define ADC_CURRENT_CHANNEL_TOP ADC_Channel_5
+#define ADC_CURRENT_CHANNEL_BOTTOM ADC_Channel_20
+#define ADC_CURRENT_CHANNEL_LEFT ADC_Channel_11
+#define ADC_CURRENT_CHANNEL_RIGHT ADC_Channel_18
 /*Set up power modules adc voltage channels	solar panels	*/
-#define ADC_VOLTAGE_CHANNEL_TOP ADC_CHANNEL_6
-#define ADC_VOLTAGE_CHANNEL_BOTTOM ADC_CHANNEL_21
-#define ADC_VOLTAGE_CHANNEL_LEFT ADC_CHANNEL_10
-#define ADC_VOLTAGE_CHANNEL_RIGHT ADC_CHANNEL_19
+#define ADC_VOLTAGE_CHANNEL_TOP ADC_Channel_6
+#define ADC_VOLTAGE_CHANNEL_BOTTOM ADC_Channel_21
+#define ADC_VOLTAGE_CHANNEL_LEFT ADC_Channel_10
+#define ADC_VOLTAGE_CHANNEL_RIGHT ADC_Channel_19
 
 /*Setup eps state adc channels*/
-#define ADC_VBAT ADC_CHANNEL_1;
-#define ADC_IBAT_PLUS ADC_CHANNEL_2;
-#define ADC_IBAT_MINUS ADC_CHANNEL_3;
-#define ADC_I3V3 ADC_CHANNEL_4;
-#define ADC_I5V ADC_CHANNEL_12;
+#define ADC_VBAT ADC_Channel_1;
+#define ADC_IBAT_PLUS ADC_Channel_2;
+#define ADC_IBAT_MINUS ADC_Channel_3;
+#define ADC_I3V3 ADC_Channel_4;
+#define ADC_I5V ADC_Channel_12;
 
 
 /**

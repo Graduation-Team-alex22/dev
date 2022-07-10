@@ -118,7 +118,7 @@ void UART2_BUF_O_Init(uint32_t BAUD_RATE)
    RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
 
    // GPIOA clock enable 
-   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 
    // GPIO config
    GPIO_InitStructure.GPIO_Pin   = UART2_TX_PIN; 

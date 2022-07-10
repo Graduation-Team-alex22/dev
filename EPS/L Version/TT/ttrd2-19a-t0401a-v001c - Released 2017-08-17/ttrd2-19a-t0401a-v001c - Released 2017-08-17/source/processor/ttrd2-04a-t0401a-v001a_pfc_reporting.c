@@ -85,7 +85,7 @@ void REPORT_PFC_Init(void)
    GPIO_InitTypeDef GPIO_InitStruct;
      
    // Enable GPIOA clock 
-   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
      
    // Configure port pin for the LED
    GPIO_InitStruct.GPIO_Mode  = GPIO_Mode_OUT;

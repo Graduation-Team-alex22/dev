@@ -310,18 +310,18 @@ void EPS_update_power_module_state(EPS_PowerModule *power_module,ADC_InitTypeDef
 	ADC_Init(ADC1,&hadc1);
 
 	/*setup conversion sequence for */
-	ADC_ChannelConfTypeDef sConfig;
-	sConfig.SamplingTime = ADC_SAMPLETIME_192CYCLES;
+//	ADC_ChannelConfTypeDef sConfig;
+//	sConfig.SamplingTime = ADC_SAMPLETIME_192CYCLES;
 
-	/*power module current*/
-	sConfig.Channel = power_module->ADC_channel_current ;
-	sConfig.Rank = 1;
-	HAL_ADC_ConfigChannel(power_module->hadc_power_module, &sConfig);
+//	/*power module current*/
+//	sConfig.Channel = power_module->ADC_channel_current ;
+//	sConfig.Rank = 1;
+//	HAL_ADC_ConfigChannel(power_module->hadc_power_module, &sConfig);
 
-	/*power module voltage*/
-	sConfig.Channel = power_module->ADC_channel_voltage ;
-	//sConfig.Rank = 2;
-	//HAL_ADC_ConfigChannel(power_module->hadc_power_module, &sConfig);
+//	/*power module voltage*/
+//	sConfig.Channel = power_module->ADC_channel_voltage ;
+//	//sConfig.Rank = 2;
+//	//HAL_ADC_ConfigChannel(power_module->hadc_power_module, &sConfig);
 
 
 

@@ -1,7 +1,7 @@
 #ifndef _TC74_H
 #define _TC74_H
 
-#include "stm32f4xx_i2c.h"
+#include "../main/main.h"
 /* tc74 register addresses */
 #define TC74_CONFIGURATION_REGISTER	0x01 /**< */
 #define TC74_TEMPERATURE_REGISTER	0x00 /**< */

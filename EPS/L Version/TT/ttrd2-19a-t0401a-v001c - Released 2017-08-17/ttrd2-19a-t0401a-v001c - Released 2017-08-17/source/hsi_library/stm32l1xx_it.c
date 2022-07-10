@@ -22,7 +22,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l1xx_it.h"
-#include "main.h"
+#include "../main/main.h"
 
 /** @addtogroup STM32L1xx_StdPeriph_Templates
   * @{

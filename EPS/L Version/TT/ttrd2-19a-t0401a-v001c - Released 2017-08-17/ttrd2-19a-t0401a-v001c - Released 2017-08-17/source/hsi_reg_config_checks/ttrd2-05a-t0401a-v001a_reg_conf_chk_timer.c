@@ -45,13 +45,13 @@
 #include "../main/main.h"
 
 // ------ Private (inverted) copies of register configurations ---------------
-
+/*
 static uint32_t Tim1_cr1_ig;
 static uint32_t Tim1_arr_ig;
 static uint32_t Tim1_psc_ig;
 static uint32_t Tim1_rcr_ig;
 static uint32_t Tim1_egr_ig;
-
+*/
 static uint32_t Tim2_cr1_ig;
 static uint32_t Tim2_arr_ig;
 static uint32_t Tim2_psc_ig;
@@ -118,7 +118,7 @@ static uint32_t Tim11_egr_ig;
 -*----------------------------------------------------------------------------*/
 void REG_CONFIG_TIMER_Store(TIM_TypeDef* TIMx)
    {
-   if (TIMx == TIM1)
+   /*if (TIMx == TIM1)
       {
       Tim1_cr1_ig = ~(TIMx->CR1);
       Tim1_arr_ig = ~(TIMx->ARR);
@@ -126,7 +126,7 @@ void REG_CONFIG_TIMER_Store(TIM_TypeDef* TIMx)
       Tim1_rcr_ig = ~(TIMx->RCR);  // TIM1 only
       Tim1_egr_ig = ~(TIMx->EGR);        
       }
-   else if (TIMx == TIM2)
+   else*/ if (TIMx == TIM2)
       {
       Tim2_cr1_ig = ~(TIMx->CR1);
       Tim2_arr_ig = ~(TIMx->ARR);
@@ -213,7 +213,7 @@ void REG_CONFIG_TIMER_Check(TIM_TypeDef* TIMx)
    {
    uint32_t Result = REGISTERS_OK;
 
-   if (TIMx == TIM1)
+   /*if (TIMx == TIM1)
       {
       if ((Tim1_cr1_ig != ~(TIMx->CR1)) ||
           (Tim1_arr_ig != ~(TIMx->ARR)) ||
@@ -224,7 +224,7 @@ void REG_CONFIG_TIMER_Check(TIM_TypeDef* TIMx)
          Result = REGISTERS_CHANGED;
          }        
       }
-   else if (TIMx == TIM2)
+   else*/ if (TIMx == TIM2)
       {
       if ((Tim2_cr1_ig != ~(TIMx->CR1)) ||
           (Tim2_arr_ig != ~(TIMx->ARR)) ||

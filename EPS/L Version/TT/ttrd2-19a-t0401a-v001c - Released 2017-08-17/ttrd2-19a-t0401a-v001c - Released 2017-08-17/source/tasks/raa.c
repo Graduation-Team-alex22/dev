@@ -44,9 +44,9 @@ UART2_BUF_O_Write_String_To_Buffer("A1: \n");
 //  UART2_BUF_O_Send_All_Data();}
 //
 	//Enable Required Buses
-//	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+//	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 //	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);
-//	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2, ENABLE);
+//	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA2, ENABLE);
 
 
 //	//GPIO structure to config the GPIO pins
@@ -110,7 +110,7 @@ UART2_BUF_O_Write_String_To_Buffer("A1: \n");
 //	DMA_Cmd(DMA2_Stream0, ENABLE);
 
 //	//////////////
-//uint32_t ADCreff = ADC1_Read_Channel(ADC_Channel_1, ADC_SampleTime_480Cycles);
+//uint32_t ADCreff = ADC1_Read_Channel(ADC_Channel_1, ADC_SampleTime_384Cycles);
 ////uint32_t ADCreading=500000;
 //uint16_t ADCreading=ADC_GetConversionValue(ADC1);
 ////char data=(char)ADC_GetConversionValue(ADC1);

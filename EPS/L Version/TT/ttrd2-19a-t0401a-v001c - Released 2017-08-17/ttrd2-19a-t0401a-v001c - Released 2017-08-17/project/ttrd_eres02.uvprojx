@@ -337,7 +337,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>STM32F40_41xxx USE_FULL_ASSERT USE_STDPERIPH_DRIVER HSE_VALUE=8000000 CORTEX</Define>
+              <Define>STM32L1XX_MD USE_FULL_ASSERT USE_STDPERIPH_DRIVER HSE_VALUE=8000000 CORTEX</Define>
               <Undefine></Undefine>
               <IncludePath>..\source\hsi_library; ..\source\hsi_startup</IncludePath>
             </VariousControls>
@@ -564,84 +564,9 @@
           <GroupName>hsi_library</GroupName>
           <Files>
             <File>
-              <FileName>arm_common_tables.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\arm_common_tables.h</FilePath>
-            </File>
-            <File>
-              <FileName>arm_const_structs.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\arm_const_structs.h</FilePath>
-            </File>
-            <File>
-              <FileName>arm_math.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\arm_math.h</FilePath>
-            </File>
-            <File>
-              <FileName>core_cm0.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\core_cm0.h</FilePath>
-            </File>
-            <File>
-              <FileName>core_cm0plus.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\core_cm0plus.h</FilePath>
-            </File>
-            <File>
-              <FileName>core_cm3.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\core_cm3.h</FilePath>
-            </File>
-            <File>
-              <FileName>core_cm4.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\core_cm4.h</FilePath>
-            </File>
-            <File>
-              <FileName>core_cm4_simd.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\core_cm4_simd.h</FilePath>
-            </File>
-            <File>
-              <FileName>core_cmFunc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\core_cmFunc.h</FilePath>
-            </File>
-            <File>
-              <FileName>core_cmInstr.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\core_cmInstr.h</FilePath>
-            </File>
-            <File>
-              <FileName>core_cmSimd.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\core_cmSimd.h</FilePath>
-            </File>
-            <File>
-              <FileName>core_sc000.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\core_sc000.h</FilePath>
-            </File>
-            <File>
-              <FileName>core_sc300.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\core_sc300.h</FilePath>
-            </File>
-            <File>
               <FileName>misc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\hsi_library\misc.c</FilePath>
-            </File>
-            <File>
-              <FileName>misc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\misc.h</FilePath>
-            </File>
-            <File>
-              <FileName>stm32l1xx.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx.h</FilePath>
             </File>
             <File>
               <FileName>stm32l1xx_adc.c</FileName>
@@ -649,19 +574,9 @@
               <FilePath>..\source\hsi_library\stm32l1xx_adc.c</FilePath>
             </File>
             <File>
-              <FileName>stm32l1xx_adc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_adc.h</FilePath>
-            </File>
-            <File>
               <FileName>stm32l1xx_aes.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\hsi_library\stm32l1xx_aes.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32l1xx_aes.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_aes.h</FilePath>
             </File>
             <File>
               <FileName>stm32l1xx_aes_util.c</FileName>
@@ -674,24 +589,9 @@
               <FilePath>..\source\hsi_library\stm32l1xx_comp.c</FilePath>
             </File>
             <File>
-              <FileName>stm32l1xx_comp.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_comp.h</FilePath>
-            </File>
-            <File>
-              <FileName>stm32l1xx_conf.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_conf.h</FilePath>
-            </File>
-            <File>
               <FileName>stm32l1xx_crc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\hsi_library\stm32l1xx_crc.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32l1xx_crc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_crc.h</FilePath>
             </File>
             <File>
               <FileName>stm32l1xx_dac.c</FileName>
@@ -699,19 +599,9 @@
               <FilePath>..\source\hsi_library\stm32l1xx_dac.c</FilePath>
             </File>
             <File>
-              <FileName>stm32l1xx_dac.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_dac.h</FilePath>
-            </File>
-            <File>
               <FileName>stm32l1xx_dbgmcu.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\hsi_library\stm32l1xx_dbgmcu.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32l1xx_dbgmcu.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_dbgmcu.h</FilePath>
             </File>
             <File>
               <FileName>stm32l1xx_dma.c</FileName>
@@ -719,29 +609,14 @@
               <FilePath>..\source\hsi_library\stm32l1xx_dma.c</FilePath>
             </File>
             <File>
-              <FileName>stm32l1xx_dma.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_dma.h</FilePath>
-            </File>
-            <File>
               <FileName>stm32l1xx_exti.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\hsi_library\stm32l1xx_exti.c</FilePath>
             </File>
             <File>
-              <FileName>stm32l1xx_exti.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_exti.h</FilePath>
-            </File>
-            <File>
               <FileName>stm32l1xx_flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\hsi_library\stm32l1xx_flash.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32l1xx_flash.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_flash.h</FilePath>
             </File>
             <File>
               <FileName>stm32l1xx_flash_ramfunc.c</FileName>
@@ -754,19 +629,9 @@
               <FilePath>..\source\hsi_library\stm32l1xx_fsmc.c</FilePath>
             </File>
             <File>
-              <FileName>stm32l1xx_fsmc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_fsmc.h</FilePath>
-            </File>
-            <File>
               <FileName>stm32l1xx_gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\hsi_library\stm32l1xx_gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32l1xx_gpio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_gpio.h</FilePath>
             </File>
             <File>
               <FileName>stm32l1xx_i2c.c</FileName>
@@ -774,19 +639,9 @@
               <FilePath>..\source\hsi_library\stm32l1xx_i2c.c</FilePath>
             </File>
             <File>
-              <FileName>stm32l1xx_i2c.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_i2c.h</FilePath>
-            </File>
-            <File>
               <FileName>stm32l1xx_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\hsi_library\stm32l1xx_it.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32l1xx_it.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_it.h</FilePath>
             </File>
             <File>
               <FileName>stm32l1xx_iwdg.c</FileName>
@@ -794,19 +649,9 @@
               <FilePath>..\source\hsi_library\stm32l1xx_iwdg.c</FilePath>
             </File>
             <File>
-              <FileName>stm32l1xx_iwdg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_iwdg.h</FilePath>
-            </File>
-            <File>
               <FileName>stm32l1xx_lcd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\hsi_library\stm32l1xx_lcd.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32l1xx_lcd.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_lcd.h</FilePath>
             </File>
             <File>
               <FileName>stm32l1xx_opamp.c</FileName>
@@ -814,19 +659,9 @@
               <FilePath>..\source\hsi_library\stm32l1xx_opamp.c</FilePath>
             </File>
             <File>
-              <FileName>stm32l1xx_opamp.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_opamp.h</FilePath>
-            </File>
-            <File>
               <FileName>stm32l1xx_pwr.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\hsi_library\stm32l1xx_pwr.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32l1xx_pwr.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_pwr.h</FilePath>
             </File>
             <File>
               <FileName>stm32l1xx_rcc.c</FileName>
@@ -834,19 +669,9 @@
               <FilePath>..\source\hsi_library\stm32l1xx_rcc.c</FilePath>
             </File>
             <File>
-              <FileName>stm32l1xx_rcc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_rcc.h</FilePath>
-            </File>
-            <File>
               <FileName>stm32l1xx_rtc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\hsi_library\stm32l1xx_rtc.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32l1xx_rtc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_rtc.h</FilePath>
             </File>
             <File>
               <FileName>stm32l1xx_sdio.c</FileName>
@@ -854,19 +679,9 @@
               <FilePath>..\source\hsi_library\stm32l1xx_sdio.c</FilePath>
             </File>
             <File>
-              <FileName>stm32l1xx_sdio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_sdio.h</FilePath>
-            </File>
-            <File>
               <FileName>stm32l1xx_spi.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\hsi_library\stm32l1xx_spi.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32l1xx_spi.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_spi.h</FilePath>
             </File>
             <File>
               <FileName>stm32l1xx_syscfg.c</FileName>
@@ -874,19 +689,9 @@
               <FilePath>..\source\hsi_library\stm32l1xx_syscfg.c</FilePath>
             </File>
             <File>
-              <FileName>stm32l1xx_syscfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_syscfg.h</FilePath>
-            </File>
-            <File>
               <FileName>stm32l1xx_tim.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\hsi_library\stm32l1xx_tim.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32l1xx_tim.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_tim.h</FilePath>
             </File>
             <File>
               <FileName>stm32l1xx_usart.c</FileName>
@@ -894,19 +699,9 @@
               <FilePath>..\source\hsi_library\stm32l1xx_usart.c</FilePath>
             </File>
             <File>
-              <FileName>stm32l1xx_usart.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_usart.h</FilePath>
-            </File>
-            <File>
               <FileName>stm32l1xx_wwdg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\source\hsi_library\stm32l1xx_wwdg.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32l1xx_wwdg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\source\hsi_library\stm32l1xx_wwdg.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -959,9 +754,9 @@
           <GroupName>hsi_startup</GroupName>
           <Files>
             <File>
-              <FileName>startup_stm32l152xb.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>..\source\hsi_startup\startup_stm32l152xb.s</FilePath>
+              <FileName>ttrd2-19a-t0401a-v001a_assert_failed.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\source\hsi_startup\ttrd2-19a-t0401a-v001a_assert_failed.c</FilePath>
             </File>
             <File>
               <FileName>system_stm32l1xx.c</FileName>
@@ -974,9 +769,9 @@
               <FilePath>..\source\hsi_startup\system_stm32l1xx.h</FilePath>
             </File>
             <File>
-              <FileName>ttrd2-19a-t0401a-v001a_assert_failed.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\source\hsi_startup\ttrd2-19a-t0401a-v001a_assert_failed.c</FilePath>
+              <FileName>startup_stm32l1xx_hd.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\source\hsi_startup\startup_stm32l1xx_hd.s</FilePath>
             </File>
           </Files>
         </Group>
