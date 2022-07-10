@@ -2,6 +2,9 @@
 #define _PROJECT_H
 
 #include "stdint.h"
+#include "../hsi_library/stm32f4xx_dma.h"
+#include "../hsi_library/stm32f4xx_usart.h"
+
 
 #define DIAGNOSIS_OUTPUT
 
@@ -78,6 +81,7 @@ typedef uint32_t error_t;
 #define IMU_ACTIVATION_PIN       GPIO_Pin_9
 #define MGN_ACTIVATION_PIN       GPIO_Pin_10
 #define TMP_ACTIVATION_PIN       GPIO_Pin_13
+
 
 void Project_MSP_Init(void);
 void HardFault_Handler(void);

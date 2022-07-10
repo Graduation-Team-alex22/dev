@@ -3,30 +3,173 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: µVision V5.37.0.0
-Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: A E, N, LIC=6XJWD-S34L7-TSHXU-AU97D-14VUR-YFSX7
+IDE-Version: µVision V5.36.0.0
+Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Mohamed Said, NA, LIC=MGXJH-F23G0-K1UKE-NBZIR-73GTI-9HM5F
  
 Tool Versions:
-Toolchain:       MDK-ARM Professional  Version: 5.37.0.0
-Toolchain Path:  D:\Keil\ARM\Compiler5\Bin
+Toolchain:       MDK-ARM Professional  Version: 5.36.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 7 (build 960)
 Assembler:       Armasm.exe V5.06 update 7 (build 960)
 Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
 Library Manager: ArmAr.exe V5.06 update 7 (build 960)
 Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
-CPU DLL:         SARMCM3.DLL V5.37.0.0
-Dialog DLL:      DCM.DLL V1.17.5.0
+CPU DLL:         SARMCM3.DLL V5.36.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
 Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
-Dialog DLL:      TCM.DLL V1.56.1.0
+Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
-F:\Engineering\eng\GP\CubeSat\COMM\Coding\Disc TTRD\project\ttrd_eres02.uvprojx
-Project File Date:  07/01/2022
+D:\_g_project\dev\COMMS\Disc TTRD\project\ttrd_eres02.uvprojx
+Project File Date:  07/04/2022
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil\ARM\Compiler5\Bin'
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'STM32F407VG'
+compiling upsat.c...
+..\source\support_functions\upsat.c(88): warning:  #188-D: enumerated type mixed with another type
+  			TC_TM_app_id dest = 0;
+..\source\support_functions\upsat.c(138): warning:  #188-D: enumerated type mixed with another type
+  	crt_pkt(*pkt, EPS_APP_ID, TC, TC_ACK_NO, TC_TEST_SERVICE, TC_CT_PERFORM_TEST, SYSTEM_APP_ID);
+..\source\support_functions\upsat.c: 2 warnings, 0 errors
+compiling ax_25.c...
+..\source\support_functions\ax_25.c(620): warning:  #177-D: variable "pad_bits"  was declared but never referenced
+    size_t pad_bits = 0;
+..\source\support_functions\ax_25.c: 1 warning, 0 errors
+compiling services.c...
+..\source\support_functions\services.c(101): warning:  #188-D: enumerated type mixed with another type
+  	TC_TM_app_id source = 0;
+..\source\support_functions\services.c(102): warning:  #188-D: enumerated type mixed with another type
+  	TC_TM_app_id dest = 0;
+..\source\support_functions\services.c(131): warning:  #188-D: enumerated type mixed with another type
+  	TC_TM_app_id source = 0;
+..\source\support_functions\services.c(132): warning:  #188-D: enumerated type mixed with another type
+  	TC_TM_app_id dest = 0;
+..\source\support_functions\services.c(244): warning:  #161-D: unrecognized #pragma
+  	#pragma location = 0x080E0000
+..\source\support_functions\services.c(1022): warning:  #188-D: enumerated type mixed with another type
+  	crt_pkt(*pkt, SYSTEM_APP_ID, TM, TC_ACK_NO, TC_TEST_SERVICE, TM_CT_REPORT_TEST, dest_id);
+..\source\support_functions\services.c: 6 warnings, 0 errors
+compiling main.c...
+..\source\main\main.c(64): warning:  #111-D: statement is unreachable
+     return 1;
+..\source\main\main.c: 1 warning, 0 errors
+compiling ttrd2-05a-t0401a-v001a_timeout_t3.c...
+compiling stats.c...
+compiling cw.c...
+..\source\support_functions\cw.c(705): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 0.0) {
+..\source\support_functions\cw.c(708): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 2.0) {
+..\source\support_functions\cw.c(711): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 4.0) {
+..\source\support_functions\cw.c(714): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 6.0) {
+..\source\support_functions\cw.c(717): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 8.0) {
+..\source\support_functions\cw.c(720): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 10.0) {
+..\source\support_functions\cw.c(723): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 12.0) {
+..\source\support_functions\cw.c(726): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 14.0) {
+..\source\support_functions\cw.c(729): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 16.0) {
+..\source\support_functions\cw.c(732): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 20.0) {
+..\source\support_functions\cw.c(735): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 24.0) {
+..\source\support_functions\cw.c(738): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 28.0) {
+..\source\support_functions\cw.c(741): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 32.0) {
+..\source\support_functions\cw.c(744): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 36.0) {
+..\source\support_functions\cw.c(747): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 40.0) {
+..\source\support_functions\cw.c(750): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 42.0) {
+..\source\support_functions\cw.c(753): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 44.0) {
+..\source\support_functions\cw.c(756): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 46.0) {
+..\source\support_functions\cw.c(759): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 48.0) {
+..\source\support_functions\cw.c(762): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    else if (temp < 50.0) {
+..\source\support_functions\cw.c: 20 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_iwdt_task.c...
+compiling sha256.c...
+compiling ttrd2-05a-t0401a-v001a_adc_task.c...
+..\source\tasks\ttrd2-05a-t0401a-v001a_adc_task.c(399): warning:  #550-D: variable "Temp_celsius"  was set but never used
+     int32_t  Temp_celsius = 0;
+..\source\tasks\ttrd2-05a-t0401a-v001a_adc_task.c: 1 warning, 0 errors
+compiling ttrd2-05a-t0401a-v001a_switch_task.c...
+compiling ttrd2-05a-t0401a-v001a_heartbeat_sw_task.c...
+compiling wod_handling.c...
+..\source\support_functions\wod_handling.c(212): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    return (uint8_t)((val + 15.0) / 0.25);
+..\source\support_functions\wod_handling.c: 1 warning, 0 errors
+compiling large_data_services.c...
+..\source\support_functions\large_data_services.c(561): warning:  #188-D: enumerated type mixed with another type
+  	crt_pkt(*pkt, SYSTEM_APP_ID, TM, TC_ACK_NO, TC_LARGE_DATA_SERVICE, 0, dest_id); //what dest_id ?
+..\source\support_functions\large_data_services.c(561): warning:  #188-D: enumerated type mixed with another type
+  	crt_pkt(*pkt, SYSTEM_APP_ID, TM, TC_ACK_NO, TC_LARGE_DATA_SERVICE, 0, dest_id); //what dest_id ?
+..\source\support_functions\large_data_services.c(579): warning:  #188-D: enumerated type mixed with another type
+  	crt_pkt(*pkt, SYSTEM_APP_ID, TM, TC_ACK_NO, TC_LARGE_DATA_SERVICE, TM_LD_ACK_UPLINK, dest_id);
+..\source\support_functions\large_data_services.c(579): warning:  #188-D: enumerated type mixed with another type
+  	crt_pkt(*pkt, SYSTEM_APP_ID, TM, TC_ACK_NO, TC_LARGE_DATA_SERVICE, TM_LD_ACK_UPLINK, dest_id);
+..\source\support_functions\large_data_services.c(597): warning:  #188-D: enumerated type mixed with another type
+  	crt_pkt(*pkt, SYSTEM_APP_ID, TM, TC_ACK_NO, TC_LARGE_DATA_SERVICE, subtype, dest_id);
+..\source\support_functions\large_data_services.c(597): warning:  #188-D: enumerated type mixed with another type
+  	crt_pkt(*pkt, SYSTEM_APP_ID, TM, TC_ACK_NO, TC_LARGE_DATA_SERVICE, subtype, dest_id);
+..\source\support_functions\large_data_services.c: 6 warnings, 0 errors
+compiling rx_manager.c...
+..\source\tasks\rx_manager.c(68): warning:  #177-D: function "reset_rx_irqs"  was declared but never referenced
+  static inline void reset_rx_irqs()
+..\source\tasks\rx_manager.c: 1 warning, 0 errors
+compiling TickCounter.c...
+compiling ttrd2-19a-t0401a-v001b_processor_task.c...
+compiling comms_manager.c...
+..\source\tasks\comms_manager.c(228): warning:  #188-D: enumerated type mixed with another type
+    TC_TM_app_id dest = 0;
+..\source\tasks\comms_manager.c(333): warning:  #188-D: enumerated type mixed with another type
+  		return ret;
+..\source\tasks\comms_manager.c(611): warning:  #1-D: last line of file ends without a newline
+  }
+..\source\tasks\comms_manager.c(542): warning:  #177-D: variable "flag"  was declared but never referenced
+    uint8_t flag = 0;
+..\source\tasks\comms_manager.c(21): warning:  #550-D: variable "rx_fifo_tick"  was set but never used
+  static uint32_t rx_fifo_tick;
+..\source\tasks\comms_manager.c: 5 warnings, 0 errors
+compiling tx_manager.c...
+..\source\tasks\tx_manager.c(78): warning:  #550-D: variable "ret"  was set but never used
+  	int32_t ret = COMMS_STATUS_OK;
+..\source\tasks\tx_manager.c: 1 warning, 0 errors
+compiling cc_rx.c...
+..\source\tasks\cc_rx.c(894): warning:  #1-D: last line of file ends without a newline
+  	 
+..\source\tasks\cc_rx.c(18): warning:  #177-D: variable "CC_RX_Rx_buffer_ig"  was declared but never referenced
+  static char CC_RX_Rx_buffer_ig[CC_RX_RX_BUFFER_SIZE_BYTES];  // Inverted copy
+..\source\tasks\cc_rx.c(22): warning:  #550-D: variable "CC_RX_Sent_idx_ig"  was set but never used
+  static uint32_t CC_RX_Sent_idx_ig = ~0;  
+..\source\tasks\cc_rx.c(30): warning:  #177-D: variable "CC_RX_Timeout_us_ig"  was declared but never referenced
+  static uint32_t CC_RX_Timeout_us_ig;
+..\source\tasks\cc_rx.c: 4 warnings, 0 errors
+compiling ttrd2-05a-t0401a-v001a_uart2_buff_o_task.c...
+..\source\tasks\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.c(408): warning:  #177-D: variable "T3"  was declared but never referenced
+  	uint32_t T3;
+..\source\tasks\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.c(552): warning:  #177-D: variable "d"  was declared but never referenced
+  		uint8_t d = pkt->data[i];
+..\source\tasks\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.c(77): warning:  #177-D: variable "UART2_Rx_buffer_ig"  was declared but never referenced
+  static char UART2_Rx_buffer_ig[UART2_RX_BUFFER_SIZE_BYTES];  // Inverted copy
+..\source\tasks\ttrd2-05a-t0401a-v001a_uart2_buff_o_task.c: 3 warnings, 0 errors
+compiling misc.c...
+compiling stm32f4xx_crc.c...
+compiling stm32f4xx_cec.c...
+compiling stm32f4xx_adc.c...
+compiling stm32f4xx_can.c...
 compiling obc_comm.c...
 ..\source\tasks\obc_comm.c(563): warning:  #177-D: variable "T3"  was declared but never referenced
   	uint32_t T3;
@@ -37,9 +180,76 @@ compiling obc_comm.c...
 ..\source\tasks\obc_comm.c(22): warning:  #177-D: variable "OBC_C_Rx_buffer_ig"  was declared but never referenced
   static char OBC_C_Rx_buffer_ig[OBC_C_RX_BUFFER_SIZE_BYTES];  // Inverted copy
 ..\source\tasks\obc_comm.c: 4 warnings, 0 errors
+compiling cc_tx.c...
+..\source\tasks\cc_tx.c(716): warning:  #177-D: variable "T3"  was declared but never referenced
+  	uint32_t T3;
+..\source\tasks\cc_tx.c(18): warning:  #550-D: variable "CC_TX_Tx_buffer2_ig"  was set but never used
+  static char  CC_TX_Tx_buffer2_ig[CC_TX_TX_BUFFER_SIZE_BYTES];  // Inverted copy
+..\source\tasks\cc_tx.c(21): warning:  #177-D: variable "CC_TX_Rx_buffer_ig"  was declared but never referenced
+  static char CC_TX_Rx_buffer_ig[CC_TX_RX_BUFFER_SIZE_BYTES];  // Inverted copy
+..\source\tasks\cc_tx.c: 3 warnings, 0 errors
+compiling stm32f4xx_cryp_des.c...
+compiling stm32f4xx_dbgmcu.c...
+compiling stm32f4xx_cryp_tdes.c...
+compiling stm32f4xx_dcmi.c...
+compiling stm32f4xx_dac.c...
+compiling stm32f4xx_cryp.c...
+compiling stm32f4xx_cryp_aes.c...
+compiling stm32f4xx_exti.c...
+compiling stm32f4xx_dma2d.c...
+compiling stm32f4xx_flash_ramfunc.c...
+compiling stm32f4xx_dsi.c...
+compiling stm32f4xx_dfsdm.c...
+compiling stm32f4xx_flash.c...
+compiling stm32f4xx_dma.c...
+compiling stm32f4xx_fmpi2c.c...
+compiling stm32f4xx_hash_md5.c...
+compiling stm32f4xx_hash.c...
+compiling stm32f4xx_hash_sha1.c...
+compiling stm32f4xx_gpio.c...
+compiling stm32f4xx_iwdg.c...
+compiling stm32f4xx_i2c.c...
+compiling stm32f4xx_qspi.c...
+compiling stm32f4xx_rng.c...
+compiling stm32f4xx_lptim.c...
+compiling stm32f4xx_pwr.c...
+compiling stm32f4xx_ltdc.c...
+compiling stm32f4xx_rtc.c...
+compiling stm32f4xx_rcc.c...
+compiling stm32f4xx_syscfg.c...
+compiling stm32f4xx_spdifrx.c...
+compiling stm32f4xx_wwdg.c...
+compiling stm32f4xx_sdio.c...
+compiling stm32f4xx_sai.c...
+compiling stm32f4xx_usart.c...
+compiling stm32f4xx_tim.c...
+compiling stm32f4xx_fsmc.c...
+compiling stm32f4xx_spi.c...
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_gpio.c...
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_timer.c...
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_adc1.c...
+assembling startup_stm32f407xx.s...
+compiling ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.c...
+..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.c(67): warning:  #550-D: variable "uart4_cr1_ig"  was set but never used
+  static uint32_t uart4_cr1_ig;
+..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.c(68): warning:  #550-D: variable "uart4_cr2_ig"  was set but never used
+  static uint32_t uart4_cr2_ig;
+..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.c(69): warning:  #550-D: variable "uart4_cr3_ig"  was set but never used
+  static uint32_t uart4_cr3_ig;
+..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.c(70): warning:  #550-D: variable "uart4_brr_ig"  was set but never used
+  static uint32_t uart4_brr_ig;
+..\source\hsi_reg_config_checks\ttrd2-05a-t0401a-v001a_reg_conf_chk_uart.c: 4 warnings, 0 errors
+compiling system_stm32f4xx.c...
+compiling ttrd2-19a-t0401a-v001a_assert_failed.c...
+compiling ttrd2-19a-t0401a-v001b_run_time_tests.c...
+compiling ttrd2-18a-t0401a-v001a_monittor_i.c...
+compiling ttrd2-04a-t0401a-v001a_pfc_reporting.c...
+compiling ttrd2-19a-t0401a-v001b_processor.c...
+compiling ttrd2-19a-t0401a-v001b_predicttor_i.c...
+compiling ttrd2-19a-t0401a-v001c_scheduler.c...
 linking...
 Program Size: Code=57922 RO-data=25074 RW-data=3716 ZI-data=97668  
-".\Objects\TTRD-ERES2.axf" - 0 Error(s), 4 Warning(s).
+".\Objects\TTRD-ERES2.axf" - 0 Error(s), 63 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -49,10 +259,10 @@ Package Vendor: Keil
                 STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
-  D:/Keil/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+  C:\Users\bluph\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:24
 </pre>
 </body>
 </html>

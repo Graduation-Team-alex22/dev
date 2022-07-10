@@ -1,11 +1,11 @@
 .\objects\ttrd2-19a-t0401a-v001b_processor_task.o: ..\source\tasks\ttrd2-19a-t0401a-v001b_processor_task.c
 .\objects\ttrd2-19a-t0401a-v001b_processor_task.o: ..\source\tasks\../main/main.h
-.\objects\ttrd2-19a-t0401a-v001b_processor_task.o: D:\Keil\ARM\Compiler5\Bin\..\include\string.h
-.\objects\ttrd2-19a-t0401a-v001b_processor_task.o: D:\Keil\ARM\Compiler5\Bin\..\include\stddef.h
+.\objects\ttrd2-19a-t0401a-v001b_processor_task.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\ttrd2-19a-t0401a-v001b_processor_task.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\ttrd2-19a-t0401a-v001b_processor_task.o: ..\source\tasks\../main/../hsi_library/misc.h
 .\objects\ttrd2-19a-t0401a-v001b_processor_task.o: ..\source\tasks\../main/../hsi_library/stm32f4xx.h
 .\objects\ttrd2-19a-t0401a-v001b_processor_task.o: ..\source\tasks\../main/../hsi_library/core_cm4.h
-.\objects\ttrd2-19a-t0401a-v001b_processor_task.o: D:\Keil\ARM\Compiler5\Bin\..\include\stdint.h
+.\objects\ttrd2-19a-t0401a-v001b_processor_task.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\ttrd2-19a-t0401a-v001b_processor_task.o: ..\source\hsi_library\core_cmInstr.h
 .\objects\ttrd2-19a-t0401a-v001b_processor_task.o: ..\source\hsi_library\core_cmFunc.h
 .\objects\ttrd2-19a-t0401a-v001b_processor_task.o: ..\source\hsi_library\core_cmSimd.h
@@ -49,7 +49,7 @@
 .\objects\ttrd2-19a-t0401a-v001b_processor_task.o: ..\source\tasks\../main/../support_functions/ttrd2-05a-t0401a-v001a_timeout_t3.h
 .\objects\ttrd2-19a-t0401a-v001b_processor_task.o: ..\source\tasks\../main/../support_functions/stats.h
 .\objects\ttrd2-19a-t0401a-v001b_processor_task.o: ..\source\tasks\../main/../support_functions/../tasks/ttrd2-05a-t0401a-v001a_adc_task.h
-.\objects\ttrd2-19a-t0401a-v001b_processor_task.o: D:\Keil\ARM\Compiler5\Bin\..\include\math.h
+.\objects\ttrd2-19a-t0401a-v001b_processor_task.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\ttrd2-19a-t0401a-v001b_processor_task.o: ..\source\tasks\../main/../support_functions/wod_handling.h
 .\objects\ttrd2-19a-t0401a-v001b_processor_task.o: ..\source\tasks\../main/../support_functions/ax_25.h
 .\objects\ttrd2-19a-t0401a-v001b_processor_task.o: ..\source\tasks\../main/../support_functions/services.h

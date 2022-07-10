@@ -2,7 +2,7 @@
 .\objects\stm32f4xx_spi.o: ..\source\hsi_library\stm32f4xx_spi.h
 .\objects\stm32f4xx_spi.o: ..\source\hsi_library\stm32f4xx.h
 .\objects\stm32f4xx_spi.o: ..\source\hsi_library\core_cm4.h
-.\objects\stm32f4xx_spi.o: D:\Keil\ARM\Compiler5\Bin\..\include\stdint.h
+.\objects\stm32f4xx_spi.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\stm32f4xx_spi.o: ..\source\hsi_library\core_cmInstr.h
 .\objects\stm32f4xx_spi.o: ..\source\hsi_library\core_cmFunc.h
 .\objects\stm32f4xx_spi.o: ..\source\hsi_library\core_cmSimd.h

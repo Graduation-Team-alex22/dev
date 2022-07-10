@@ -1,23 +1,26 @@
 #include "../hsi_library/stm32f4xx_gpio.h"
 #include "../hsi_library/stm32f4xx_i2c.h"
 #include "../hsi_library/stm32f4xx_usart.h"
+#include "../hsi_library/stm32f4xx_dma.h"
 #include "../scheduler/ttrd2-19a-t0401a-v001c_scheduler.h"
 
 #include "project.h"
 
 #include "../adcs/adcs_sensors/gps_sensor.h"
+#include "../adcs/services_utilities/obc_comm.h"
 
 //-- Private funtions -----------------------
 void I2C1_Init(void);
 void UART4_DMA_RX_Init(void);
 void Activation_Pins_Init(void);
+void OBC_COMM_USART_DMA_Init(uint16_t BAUD_RATE);
 
 // initializes the peripherals needed in the project
 void Project_MSP_Init(void)
 {
    I2C1_Init();
    UART4_DMA_RX_Init();
-   
+   OBC_COMM_USART_DMA_Init(9600);
 }
 
 void I2C1_Init()
@@ -158,6 +161,77 @@ void Activation_Pins_Init(void)
    GPIO_ResetBits(SENSOR_ACTIVATION_PORT, TMP_ACTIVATION_PIN);
 }
 
+
+void OBC_COMM_USART_DMA_Init(uint16_t BAUD_RATE)
+{
+   GPIO_InitTypeDef GPIO_InitStructure;
+   USART_InitTypeDef USART_InitStructure;
+   DMA_InitTypeDef  DMA_InitStructure;
+   
+   // USART clock enable 
+   RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);
+
+   // GPIO clock enable 
+   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+		 
+   /* Enable the DMA clock */
+   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA1, ENABLE);
+   
+   // GPIO pin config TX - PB10
+   GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_10; 
+   GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF;
+   GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+   GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;
+   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+   GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+   GPIO_PinAFConfig(GPIOB, GPIO_PinSource10, GPIO_AF_USART3);
+   
+   // USART configuration
+   // - BaudRate as specified in function parameter
+   // - Word Length = 8 Bits
+   // - One Stop Bit
+   // - No parity
+   // - Hardware flow control disabled (RTS and CTS signals)
+   // - Tx (only) enabled
+   USART_InitStructure.USART_BaudRate = BAUD_RATE;
+   USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+   USART_InitStructure.USART_StopBits = USART_StopBits_1;
+   USART_InitStructure.USART_Parity = USART_Parity_No;
+   USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+   USART_InitStructure.USART_Mode = USART_Mode_Tx;
+   USART_Init(USART3, &USART_InitStructure);
+   
+   /* Configure DMA Initialization Structure */
+   DMA_InitStructure.DMA_BufferSize = 1;  // doesn't really matter
+   DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Disable ;
+   DMA_InitStructure.DMA_FIFOThreshold = DMA_FIFOThreshold_1QuarterFull ;
+   DMA_InitStructure.DMA_MemoryBurst = DMA_MemoryBurst_Single ;
+   DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
+   DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
+   DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;
+   DMA_InitStructure.DMA_PeripheralBaseAddr =(uint32_t) (&(USART3->DR)) ;
+   DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
+   DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
+   DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+   DMA_InitStructure.DMA_Priority = DMA_Priority_High;
+   
+   /* Configure TX DMA stream - stream 3 channel 4 */
+   DMA_InitStructure.DMA_Channel = DMA_Channel_4 ;
+   DMA_InitStructure.DMA_DIR = DMA_DIR_MemoryToPeripheral ;
+   DMA_InitStructure.DMA_Memory0BaseAddr =(uint32_t)OBC_Comm_GetpBuffer_TX();
+   DMA_Init(DMA1_Stream3,&DMA_InitStructure);
+   
+   // Enable UART3
+   USART_Cmd(USART3, ENABLE);
+
+   // Enable USART DMA TX Requsts 
+   USART_DMACmd(USART3, USART_DMAReq_Tx, ENABLE);
+   
+   
+   // zero the NDTR register initially
+   DMA1_Stream3->NDTR = 0;
+}
 
 
 void HardFault_Handler(void)
