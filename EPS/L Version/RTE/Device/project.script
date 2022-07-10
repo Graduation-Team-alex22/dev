@@ -1,0 +1,6 @@
+load STM32L152RBTx 
+project name STCubeGenerated 
+project toolchain "MDK-ARM V5" 
+project path "C:\Users\Abdelrahman Ahmed\Documents\GitHub\dev\EPS\L Version\RTE\Device\STM32L152RBTx\" 
+set tpl_path "E:\Program Files\New Folder\keil\pack\Keil\STM32L1xx_DFP\1.4.1\MDK\CubeMX" 
+set dest_path "STM32L152RBTx" 
