@@ -1,5 +1,5 @@
 #include "tc74.h"
-#include "stm32f4xx_rcc.h"
+#include "../main/main.h"
 
 /**
   * @brief Reads the word in temperature measurement register of the device and returns the current status of the specified address.
